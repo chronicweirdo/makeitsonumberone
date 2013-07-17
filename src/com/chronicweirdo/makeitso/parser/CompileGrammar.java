@@ -13,6 +13,7 @@ import java.util.List;
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
+import org.antlr.v4.Tool;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -29,7 +30,7 @@ public class CompileGrammar {
 			IOException {
 		// TODO Auto-generated method stub
 		String path = "grammar\\Hello.g4";
-		// Tool.main(new String[] {path});
+		Tool.main(new String[] {path});
 		/*
 		 * SimpleCompiler compiler = new SimpleCompiler();
 		 * compiler.cook("HelloLexer.class", new FileInputStream(new

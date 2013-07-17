@@ -51,25 +51,32 @@ public class HelloLexer extends Lexer {
 	@Override
 	public void action(RuleContext _localctx, int ruleIndex, int actionIndex) {
 		switch (ruleIndex) {
+		case 1: ID_action((RuleContext)_localctx, actionIndex); break;
+
 		case 2: WS_action((RuleContext)_localctx, actionIndex); break;
 		}
 	}
 	private void WS_action(RuleContext _localctx, int actionIndex) {
 		switch (actionIndex) {
-		case 0: skip();  break;
+		case 1: skip();  break;
+		}
+	}
+	private void ID_action(RuleContext _localctx, int actionIndex) {
+		switch (actionIndex) {
+		case 0: System.out.println("id: "); break;
 		}
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\2\5\33\b\1\4\2\t\2"+
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\2\5\35\b\1\4\2\t\2"+
 		"\4\3\t\3\4\4\t\4\3\2\3\2\3\2\3\2\3\2\3\2\3\3\6\3\21\n\3\r\3\16\3\22\3"+
-		"\4\6\4\26\n\4\r\4\16\4\27\3\4\3\4\2\5\3\3\1\5\4\1\7\5\2\3\2\4\3\2c|\5"+
-		"\2\13\f\17\17\"\"\34\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\3\t\3\2\2\2\5"+
-		"\20\3\2\2\2\7\25\3\2\2\2\t\n\7j\2\2\n\13\7g\2\2\13\f\7n\2\2\f\r\7n\2\2"+
-		"\r\16\7q\2\2\16\4\3\2\2\2\17\21\t\2\2\2\20\17\3\2\2\2\21\22\3\2\2\2\22"+
-		"\20\3\2\2\2\22\23\3\2\2\2\23\6\3\2\2\2\24\26\t\3\2\2\25\24\3\2\2\2\26"+
-		"\27\3\2\2\2\27\25\3\2\2\2\27\30\3\2\2\2\30\31\3\2\2\2\31\32\b\4\2\2\32"+
-		"\b\3\2\2\2\5\2\22\27";
+		"\3\3\3\3\4\6\4\30\n\4\r\4\16\4\31\3\4\3\4\2\5\3\3\1\5\4\2\7\5\3\3\2\4"+
+		"\3\2c|\5\2\13\f\17\17\"\"\36\2\3\3\2\2\2\2\5\3\2\2\2\2\7\3\2\2\2\3\t\3"+
+		"\2\2\2\5\20\3\2\2\2\7\27\3\2\2\2\t\n\7j\2\2\n\13\7g\2\2\13\f\7n\2\2\f"+
+		"\r\7n\2\2\r\16\7q\2\2\16\4\3\2\2\2\17\21\t\2\2\2\20\17\3\2\2\2\21\22\3"+
+		"\2\2\2\22\20\3\2\2\2\22\23\3\2\2\2\23\24\3\2\2\2\24\25\b\3\2\2\25\6\3"+
+		"\2\2\2\26\30\t\3\2\2\27\26\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3"+
+		"\2\2\2\32\33\3\2\2\2\33\34\b\4\3\2\34\b\3\2\2\2\5\2\22\31";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {
