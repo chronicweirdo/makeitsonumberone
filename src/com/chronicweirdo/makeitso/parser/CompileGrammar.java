@@ -29,7 +29,7 @@ public class CompileGrammar {
 	public static void main(String[] args) throws FileNotFoundException,
 			IOException {
 		// TODO Auto-generated method stub
-		String path = "grammar\\Hello.g4";
+		String path = "grammar/Hello.g4";
 		Tool.main(new String[] {path});
 		/*
 		 * SimpleCompiler compiler = new SimpleCompiler();

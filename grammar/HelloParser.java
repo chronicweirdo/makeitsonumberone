@@ -1,4 +1,4 @@
-// Generated from grammar\Hello.g4 by ANTLR 4.1
+// Generated from grammar/Hello.g4 by ANTLR 4.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -64,6 +64,7 @@ public class HelloParser extends Parser {
 			{
 			setState(2); match(1);
 			setState(3); match(ID);
+			System.out.println("first term");
 			}
 		}
 		catch (RecognitionException re) {
@@ -78,9 +79,9 @@ public class HelloParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\5\b\4\2\t\2\3\2\3"+
-		"\2\3\2\3\2\2\3\2\2\2\6\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\3\3\2\2\2"+
-		"\2";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\5\t\4\2\t\2\3\2\3"+
+		"\2\3\2\3\2\3\2\2\3\2\2\2\7\2\4\3\2\2\2\4\5\7\3\2\2\5\6\7\4\2\2\6\7\b\2"+
+		"\1\2\7\3\3\2\2\2\2";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

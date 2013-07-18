@@ -1,4 +1,4 @@
-// Generated from grammar\Hello.g4 by ANTLR 4.1
+// Generated from grammar/Hello.g4 by ANTLR 4.1
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
