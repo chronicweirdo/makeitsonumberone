@@ -1,0 +1,1 @@
+mRNA from step filter cntn_ion_channel=step.ion_channel,cntn_name="specific name" order date asc,time_spent desc,time_elapsed asc limit 12.cntn_type " " type="ID",cntn_gene="Gene",cntn_name="Sequence"

@@ -9,11 +9,14 @@ import java.net.URLClassLoader;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.tools.JavaCompiler;
 import javax.tools.ToolProvider;
 
+import org.antlr.runtime.RecognitionException;
 import org.antlr.v4.Tool;
+import org.antlr.v4.tool.Grammar;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
@@ -24,43 +27,60 @@ public class CompileGrammar {
 	 * @param args
 	 * @throws IOException
 	 * @throws FileNotFoundException
+	 * @throws RecognitionException 
 	 * @throws CompileException
 	 */
 	public static void main(String[] args) throws FileNotFoundException,
-			IOException {
+			IOException, RecognitionException {
+		compileGrammar("grammar/Hello.g4");
+	}
+
+	private static void oldCompileGrammar(String path) {
 		// TODO Auto-generated method stub
-		String path = "grammar/Hello.g4";
-		Tool.main(new String[] {path});
+		Tool.main(new String[] { path });
 		/*
 		 * SimpleCompiler compiler = new SimpleCompiler();
 		 * compiler.cook("HelloLexer.class", new FileInputStream(new
 		 * File("grammar\\HelloLexer.java")));
 		 */
 		// compile("grammar\\HelloLexer.java");
-		/*for (File file : findClassFiles("grammar")) {
-			compile(file.getAbsolutePath());
-		}*/
-		//compile("C:\\Users\\Silviu\\workspace\\makeitso\\grammar\\HelloParser.java");
-		//compile("C:\\Users\\Silviu\\workspace\\makeitso\\grammar\\HelloListener.java");
+		/*
+		 * for (File file : findClassFiles("grammar")) {
+		 * compile(file.getAbsolutePath()); }
+		 */
+		// compile("C:\\Users\\Silviu\\workspace\\makeitso\\grammar\\HelloParser.java");
+		// compile("C:\\Users\\Silviu\\workspace\\makeitso\\grammar\\HelloListener.java");
 		compile(findClassFiles("grammar"));
 		loadClassFile("grammar");
 	}
-	
+
+	private static void compileGrammar(String path)
+			throws FileNotFoundException, RecognitionException {
+		String grammar = readFile(path);
+		Tool antlr = new Tool();
+		antlr.process(new Grammar(grammar), true);
+		System.out.println("done");
+	}
+
+	private static String readFile(String path) throws FileNotFoundException {
+		return new Scanner(new File(path)).useDelimiter("\\Z").next();
+	}
+
 	private static void loadClassFile(String path) {
 		File file = new File(path);
 
 		try {
-		    // Convert File to a URL
-		    URL url = file.toURL();          // file:/c:/myclasses/
-		    URL[] urls = new URL[]{url};
+			// Convert File to a URL
+			URL url = file.toURL(); // file:/c:/myclasses/
+			URL[] urls = new URL[] { url };
 
-		    // Create a new class loader with the directory
-		    ClassLoader cl = new URLClassLoader(urls);
+			// Create a new class loader with the directory
+			ClassLoader cl = new URLClassLoader(urls);
 
-		    // Load in the class; MyClass.class should be located in
-		    // the directory file:/c:/myclasses/com/mycompany
-		    Class cls = cl.loadClass("HelloBaseListener");
-		    cls.newInstance();
+			// Load in the class; MyClass.class should be located in
+			// the directory file:/c:/myclasses/com/mycompany
+			Class cls = cl.loadClass("HelloBaseListener");
+			cls.newInstance();
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
@@ -89,7 +109,7 @@ public class CompileGrammar {
 		Collection<File> files = FileUtils.listFiles(new File(path), filter,
 				null);
 		List<String> names = new ArrayList<String>();
-		
+
 		for (File f : files) {
 			System.out.println(f.getAbsolutePath());
 			names.add(f.getAbsolutePath());
@@ -116,18 +136,18 @@ public class CompileGrammar {
 		}
 	}
 
-	/*private static void compile2(String path) {
-		JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-		List<String> optionList = new ArrayList<String>();
-		// set compiler's classpath to be same as the runtime's
-		optionList.addAll(Arrays.asList("-classpath",
-				System.getProperty("java.class.path")));
-
-		// any other options you want
-		//optionList.addAll(Arrays.asList(options));
-
-		JavaCompiler.CompilationTask task = compiler.getTask(null, null,
-				null, optionList, null, new JavaFileObject);
-	}*/
+	/*
+	 * private static void compile2(String path) { JavaCompiler compiler =
+	 * ToolProvider.getSystemJavaCompiler(); List<String> optionList = new
+	 * ArrayList<String>(); // set compiler's classpath to be same as the
+	 * runtime's optionList.addAll(Arrays.asList("-classpath",
+	 * System.getProperty("java.class.path")));
+	 * 
+	 * // any other options you want
+	 * //optionList.addAll(Arrays.asList(options));
+	 * 
+	 * JavaCompiler.CompilationTask task = compiler.getTask(null, null, null,
+	 * optionList, null, new JavaFileObject); }
+	 */
 
 }
