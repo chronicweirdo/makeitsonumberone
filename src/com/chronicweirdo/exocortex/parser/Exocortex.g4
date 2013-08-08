@@ -1,0 +1,18 @@
+grammar Exocortex;
+@header
+{
+package com.chronicweirdo.exocortex.parser;
+}
+
+query : STRING;
+map : '[]'
+	| '[' entry (',' entry)* ']';
+entry: STRING;
+
+
+STRING : '"' ~[\"] '"';
+ID : ('a'..'z'|'A'..'Z'|'_')+;
+NUMBER
+	: ('0'..'9')* '.' ('0'..'9')+
+	| '0'..'9'+;
+WS : [ \t\n\r]+ -> skip ;
