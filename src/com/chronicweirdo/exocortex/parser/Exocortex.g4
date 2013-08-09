@@ -4,7 +4,8 @@ grammar Exocortex;
 package com.chronicweirdo.exocortex.parser;
 }
 
-query : STRING;
+query : define;
+define : ID '=' value;
 map : '[]'
 	| '[' entry (',' entry)* ']';
 entry: key ':' value;
@@ -14,11 +15,10 @@ value
 	| map;
 primitive : STRING | NUMBER | BOOLEAN;
 
-
+BOOLEAN : 'true' | 'false';
 STRING : '"' ~[\"] '"';
-ID : ('a'..'z'|'A'..'Z'|'_')+;
+ID : ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 NUMBER
 	: ('0'..'9')* '.' ('0'..'9')+
 	| '0'..'9'+;
 WS : [ \t\n\r]+ -> skip ;
-BOOLEAN : 'true' | 'false';

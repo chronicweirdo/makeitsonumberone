@@ -1,1 +1,1 @@
-[a:"1",b:[c:"2"], double:1.1, long:123]
+var1 = [a:"1",b:[c:"2"], double:1.1, long:123, btrue:true, bfalse:false]

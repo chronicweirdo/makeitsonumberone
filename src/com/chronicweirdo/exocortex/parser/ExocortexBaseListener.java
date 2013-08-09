@@ -1,4 +1,4 @@
-// Generated from src/com/chronicweirdo/exocortex/parser/Exocortex.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
 
 package com.chronicweirdo.exocortex.parser;
 
@@ -14,6 +14,19 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class ExocortexBaseListener implements ExocortexListener {
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterDefine(@NotNull ExocortexParser.DefineContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitDefine(@NotNull ExocortexParser.DefineContext ctx) { }
+
 	/**
 	 * {@inheritDoc}
 	 * <p/>

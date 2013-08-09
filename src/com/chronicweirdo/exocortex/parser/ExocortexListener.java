@@ -1,4 +1,4 @@
-// Generated from src/com/chronicweirdo/exocortex/parser/Exocortex.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
 
 package com.chronicweirdo.exocortex.parser;
 
@@ -10,6 +10,17 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * {@link ExocortexParser}.
  */
 public interface ExocortexListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by {@link ExocortexParser#define}.
+	 * @param ctx the parse tree
+	 */
+	void enterDefine(@NotNull ExocortexParser.DefineContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ExocortexParser#define}.
+	 * @param ctx the parse tree
+	 */
+	void exitDefine(@NotNull ExocortexParser.DefineContext ctx);
+
 	/**
 	 * Enter a parse tree produced by {@link ExocortexParser#query}.
 	 * @param ctx the parse tree

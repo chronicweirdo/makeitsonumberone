@@ -14,7 +14,7 @@ public class Compile {
 	}
 	
 	public static void main(String[] args) {
-		//execute("src\\com\\chronicweirdo\\exocortex\\parser\\Exocortex.g4");
-		execute("src/com/chronicweirdo/exocortex/parser/Exocortex.g4");
+		execute("src\\com\\chronicweirdo\\exocortex\\parser\\Exocortex.g4");
+		//execute("src/com/chronicweirdo/exocortex/parser/Exocortex.g4");
 	}
 }

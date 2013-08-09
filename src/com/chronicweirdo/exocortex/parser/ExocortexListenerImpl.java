@@ -7,24 +7,27 @@ import java.util.Map;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import com.chronicweirdo.exocortex.parser.ExocortexParser.DefineContext;
 import com.chronicweirdo.exocortex.parser.ExocortexParser.EntryContext;
 import com.chronicweirdo.exocortex.parser.ExocortexParser.MapContext;
 import com.chronicweirdo.exocortex.parser.ExocortexParser.ValueContext;
 
 public class ExocortexListenerImpl extends ExocortexBaseListener {
 
-	private List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+	private Map<String, Object> variables = new HashMap<String, Object>();
 	
-	public List<Map<String, Object>> getMaps() {
-		return maps;
+	public Map<String, Object> getVariables() {
+		return variables;
 	}
 
 	@Override
-	public void exitMap(@NotNull MapContext ctx) {
-		if (!(ctx.getParent() instanceof ValueContext)) {
-			maps.add(parseMap(ctx));
-		}
+	public void exitDefine(@NotNull DefineContext ctx) {
+		String name = ctx.ID().getText();
+		Object value = parseValue(ctx.value());
+		variables.put(name, value);
 	}
+
+
 
 	private Map<String, Object> parseMap(MapContext ctx) {
 		Map<String, Object> map = new HashMap<String, Object>();

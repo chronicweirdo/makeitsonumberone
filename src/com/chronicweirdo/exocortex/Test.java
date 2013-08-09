@@ -1,13 +1,12 @@
 package com.chronicweirdo.exocortex;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Scanner;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
@@ -61,15 +60,15 @@ public class Test {
 		Class lexerClass = ExocortexLexer.class;
 		Class parserClass = ExocortexParser.class;
 		ExocortexListenerImpl listener = new ExocortexListenerImpl();
-		String methodName = "map";
+		String methodName = "query";
 		String input = readFile("/com/chronicweirdo/exocortex/test/query1");
 		execute(lexerClass, parserClass, listener, methodName, input);
-		print(listener.getMaps());
+		print(listener.getVariables());
 	}
 	
-	public static void print(List<Map<String, Object>> maps) {
-		for (Map map: maps) {
-			System.out.println(map.toString());
+	public static void print(Map<String, Object> maps) {
+		for (Entry<String, Object> e: maps.entrySet()) {
+			System.out.println(e.getKey() + " = " + e.getValue().toString());
 		}
 		System.out.println();
 	}
