@@ -1,4 +1,4 @@
-// Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/exocortex/parser/Exocortex.g4 by ANTLR 4.1
 
 package com.chronicweirdo.exocortex.parser;
 
@@ -45,6 +45,19 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterValue(@NotNull ExocortexParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitValue(@NotNull ExocortexParser.ValueContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterMap(@NotNull ExocortexParser.MapContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -52,6 +65,32 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitMap(@NotNull ExocortexParser.MapContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterPrimitive(@NotNull ExocortexParser.PrimitiveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitPrimitive(@NotNull ExocortexParser.PrimitiveContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterKey(@NotNull ExocortexParser.KeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitKey(@NotNull ExocortexParser.KeyContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

@@ -1,4 +1,4 @@
-// Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/exocortex/parser/Exocortex.g4 by ANTLR 4.1
 
 package com.chronicweirdo.exocortex.parser;
 
@@ -33,6 +33,17 @@ public interface ExocortexListener extends ParseTreeListener {
 	void exitEntry(@NotNull ExocortexParser.EntryContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link ExocortexParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(@NotNull ExocortexParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ExocortexParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(@NotNull ExocortexParser.ValueContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link ExocortexParser#map}.
 	 * @param ctx the parse tree
 	 */
@@ -42,4 +53,26 @@ public interface ExocortexListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitMap(@NotNull ExocortexParser.MapContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ExocortexParser#primitive}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrimitive(@NotNull ExocortexParser.PrimitiveContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ExocortexParser#primitive}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrimitive(@NotNull ExocortexParser.PrimitiveContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link ExocortexParser#key}.
+	 * @param ctx the parse tree
+	 */
+	void enterKey(@NotNull ExocortexParser.KeyContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link ExocortexParser#key}.
+	 * @param ctx the parse tree
+	 */
+	void exitKey(@NotNull ExocortexParser.KeyContext ctx);
 }

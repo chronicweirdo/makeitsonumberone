@@ -1,4 +1,4 @@
-// Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/exocortex/parser/Exocortex.g4 by ANTLR 4.1
 
 package com.chronicweirdo.exocortex.parser;
 
@@ -17,14 +17,17 @@ public class ExocortexParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__3=1, T__2=2, T__1=3, T__0=4, STRING=5, ID=6, NUMBER=7, WS=8;
+		T__4=1, T__3=2, T__2=3, T__1=4, T__0=5, STRING=6, ID=7, NUMBER=8, WS=9, 
+		BOOLEAN=10;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'[]'", "']'", "','", "'['", "STRING", "ID", "NUMBER", "WS"
+		"<INVALID>", "'[]'", "']'", "','", "'['", "':'", "STRING", "ID", "NUMBER", 
+		"WS", "BOOLEAN"
 	};
 	public static final int
-		RULE_query = 0, RULE_map = 1, RULE_entry = 2;
+		RULE_query = 0, RULE_map = 1, RULE_entry = 2, RULE_key = 3, RULE_value = 4, 
+		RULE_primitive = 5;
 	public static final String[] ruleNames = {
-		"query", "map", "entry"
+		"query", "map", "entry", "key", "value", "primitive"
 	};
 
 	@Override
@@ -65,7 +68,7 @@ public class ExocortexParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(6); match(STRING);
+			setState(12); match(STRING);
 			}
 		}
 		catch (RecognitionException re) {
@@ -105,34 +108,34 @@ public class ExocortexParser extends Parser {
 		enterRule(_localctx, 2, RULE_map);
 		int _la;
 		try {
-			setState(20);
+			setState(26);
 			switch (_input.LA(1)) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(8); match(1);
+				setState(14); match(1);
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(9); match(4);
-				setState(10); entry();
-				setState(15);
+				setState(15); match(4);
+				setState(16); entry();
+				setState(21);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==3) {
 					{
 					{
-					setState(11); match(3);
-					setState(12); entry();
+					setState(17); match(3);
+					setState(18); entry();
 					}
 					}
-					setState(17);
+					setState(23);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(18); match(2);
+				setState(24); match(2);
 				}
 				break;
 			default:
@@ -151,7 +154,12 @@ public class ExocortexParser extends Parser {
 	}
 
 	public static class EntryContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(ExocortexParser.STRING, 0); }
+		public ValueContext value() {
+			return getRuleContext(ValueContext.class,0);
+		}
+		public KeyContext key() {
+			return getRuleContext(KeyContext.class,0);
+		}
 		public EntryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -172,7 +180,153 @@ public class ExocortexParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(22); match(STRING);
+			setState(28); key();
+			setState(29); match(5);
+			setState(30); value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class KeyContext extends ParserRuleContext {
+		public TerminalNode ID() { return getToken(ExocortexParser.ID, 0); }
+		public TerminalNode STRING() { return getToken(ExocortexParser.STRING, 0); }
+		public KeyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_key; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).enterKey(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).exitKey(this);
+		}
+	}
+
+	public final KeyContext key() throws RecognitionException {
+		KeyContext _localctx = new KeyContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_key);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(32);
+			_la = _input.LA(1);
+			if ( !(_la==STRING || _la==ID) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ValueContext extends ParserRuleContext {
+		public MapContext map() {
+			return getRuleContext(MapContext.class,0);
+		}
+		public PrimitiveContext primitive() {
+			return getRuleContext(PrimitiveContext.class,0);
+		}
+		public ValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_value; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).enterValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).exitValue(this);
+		}
+	}
+
+	public final ValueContext value() throws RecognitionException {
+		ValueContext _localctx = new ValueContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_value);
+		try {
+			setState(36);
+			switch (_input.LA(1)) {
+			case STRING:
+			case NUMBER:
+			case BOOLEAN:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(34); primitive();
+				}
+				break;
+			case 1:
+			case 4:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(35); map();
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class PrimitiveContext extends ParserRuleContext {
+		public TerminalNode BOOLEAN() { return getToken(ExocortexParser.BOOLEAN, 0); }
+		public TerminalNode NUMBER() { return getToken(ExocortexParser.NUMBER, 0); }
+		public TerminalNode STRING() { return getToken(ExocortexParser.STRING, 0); }
+		public PrimitiveContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_primitive; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).enterPrimitive(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof ExocortexListener ) ((ExocortexListener)listener).exitPrimitive(this);
+		}
+	}
+
+	public final PrimitiveContext primitive() throws RecognitionException {
+		PrimitiveContext _localctx = new PrimitiveContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_primitive);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(38);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << STRING) | (1L << NUMBER) | (1L << BOOLEAN))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
 			}
 		}
 		catch (RecognitionException re) {
@@ -187,14 +341,17 @@ public class ExocortexParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\n\33\4\2\t\2\4\3"+
-		"\t\3\4\4\t\4\3\2\3\2\3\3\3\3\3\3\3\3\3\3\7\3\20\n\3\f\3\16\3\23\13\3\3"+
-		"\3\3\3\5\3\27\n\3\3\4\3\4\3\4\2\5\2\4\6\2\2\31\2\b\3\2\2\2\4\26\3\2\2"+
-		"\2\6\30\3\2\2\2\b\t\7\7\2\2\t\3\3\2\2\2\n\27\7\3\2\2\13\f\7\6\2\2\f\21"+
-		"\5\6\4\2\r\16\7\5\2\2\16\20\5\6\4\2\17\r\3\2\2\2\20\23\3\2\2\2\21\17\3"+
-		"\2\2\2\21\22\3\2\2\2\22\24\3\2\2\2\23\21\3\2\2\2\24\25\7\4\2\2\25\27\3"+
-		"\2\2\2\26\n\3\2\2\2\26\13\3\2\2\2\27\5\3\2\2\2\30\31\7\7\2\2\31\7\3\2"+
-		"\2\2\4\21\26";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\f+\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\3\2\3\2\3\3\3\3\3\3\3\3\3\3\7\3\26"+
+		"\n\3\f\3\16\3\31\13\3\3\3\3\3\5\3\35\n\3\3\4\3\4\3\4\3\4\3\5\3\5\3\6\3"+
+		"\6\5\6\'\n\6\3\7\3\7\3\7\2\b\2\4\6\b\n\f\2\4\3\2\b\t\5\2\b\b\n\n\f\f\'"+
+		"\2\16\3\2\2\2\4\34\3\2\2\2\6\36\3\2\2\2\b\"\3\2\2\2\n&\3\2\2\2\f(\3\2"+
+		"\2\2\16\17\7\b\2\2\17\3\3\2\2\2\20\35\7\3\2\2\21\22\7\6\2\2\22\27\5\6"+
+		"\4\2\23\24\7\5\2\2\24\26\5\6\4\2\25\23\3\2\2\2\26\31\3\2\2\2\27\25\3\2"+
+		"\2\2\27\30\3\2\2\2\30\32\3\2\2\2\31\27\3\2\2\2\32\33\7\4\2\2\33\35\3\2"+
+		"\2\2\34\20\3\2\2\2\34\21\3\2\2\2\35\5\3\2\2\2\36\37\5\b\5\2\37 \7\7\2"+
+		"\2 !\5\n\6\2!\7\3\2\2\2\"#\t\2\2\2#\t\3\2\2\2$\'\5\f\7\2%\'\5\4\3\2&$"+
+		"\3\2\2\2&%\3\2\2\2\'\13\3\2\2\2()\t\3\2\2)\r\3\2\2\2\5\27\34&";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {
