@@ -1,1 +1,0 @@
-cntn_type " " type="ID",cntn_gene="Gene",cntn_name="Sequence"
