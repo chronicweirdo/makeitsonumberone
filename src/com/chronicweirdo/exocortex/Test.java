@@ -1,11 +1,14 @@
 package com.chronicweirdo.exocortex;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
+import java.util.Scanner;
 
 import org.antlr.v4.runtime.ANTLRInputStream;
 import org.antlr.v4.runtime.CharStream;
@@ -59,7 +62,8 @@ public class Test {
 		Class parserClass = ExocortexParser.class;
 		ExocortexListenerImpl listener = new ExocortexListenerImpl();
 		String methodName = "map";
-		execute(lexerClass, parserClass, listener, methodName, "[\"one\",\"two\"]");
+		String input = readFile("/com/chronicweirdo/exocortex/test/query1");
+		execute(lexerClass, parserClass, listener, methodName, input);
 		print(listener.getMaps());
 	}
 	
@@ -68,5 +72,11 @@ public class Test {
 			System.out.println(map.toString());
 		}
 		System.out.println();
+	}
+	
+	public static String readFile(String path) throws FileNotFoundException {
+		InputStream in = new Object().getClass().getResourceAsStream(path);
+		System.out.println(in);
+		return new Scanner(in).useDelimiter("\\Z").next();
 	}
 }
