@@ -1,1 +1,10 @@
-var1 = [a:"1",b:[c:"2"], double:1.1, long:123, btrue:true, bfalse:false]
+var1 = [a:"1",b:[c:"a string like all the love"], double:1.1, long:123, btrue:true, bfalse:false];
+12;"goodbie";
+var2 = var1;
+var3 = var1.a;
+var4 = var1[double];
+var5 = var1.b.c;
+var6 = [1, 2, 3, 4, 5];
+var7 = var6[1];
+var8 = add [x:5];
+add [x:6, y:8];

@@ -50,7 +50,7 @@ public class Test {
 
 		ParserRuleContext tree = (ParserRuleContext) method.invoke(parser);
 
-		System.out.println("done");
+		System.out.println("---- done ----");
 	}
 
 	public static void main(String[] args) throws FileNotFoundException,
@@ -60,7 +60,7 @@ public class Test {
 		Class lexerClass = ExocortexLexer.class;
 		Class parserClass = ExocortexParser.class;
 		ExocortexListenerImpl listener = new ExocortexListenerImpl();
-		String methodName = "query";
+		String methodName = "program";
 		String input = readFile("/com/chronicweirdo/exocortex/test/query1");
 		execute(lexerClass, parserClass, listener, methodName, input);
 		print(listener.getVariables());
@@ -68,14 +68,17 @@ public class Test {
 	
 	public static void print(Map<String, Object> maps) {
 		for (Entry<String, Object> e: maps.entrySet()) {
-			System.out.println(e.getKey() + " = " + e.getValue().toString());
+			if (e.getValue() != null) {
+				System.out.println(e.getKey() + " = " + e.getValue().toString());
+			} else {
+				System.out.println(e.getKey() + " = null");
+			}
 		}
 		System.out.println();
 	}
 	
 	public static String readFile(String path) throws FileNotFoundException {
 		InputStream in = new Object().getClass().getResourceAsStream(path);
-		System.out.println(in);
 		return new Scanner(in).useDelimiter("\\Z").next();
 	}
 }

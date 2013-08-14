@@ -19,6 +19,19 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterStatement(@NotNull ExocortexParser.StatementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitStatement(@NotNull ExocortexParser.StatementContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterDefine(@NotNull ExocortexParser.DefineContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -32,13 +45,13 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterQuery(@NotNull ExocortexParser.QueryContext ctx) { }
+	@Override public void enterProgram(@NotNull ExocortexParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitQuery(@NotNull ExocortexParser.QueryContext ctx) { }
+	@Override public void exitProgram(@NotNull ExocortexParser.ProgramContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -84,6 +97,19 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterAdd(@NotNull ExocortexParser.AddContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitAdd(@NotNull ExocortexParser.AddContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterPrimitive(@NotNull ExocortexParser.PrimitiveContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -97,6 +123,19 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterReference(@NotNull ExocortexParser.ReferenceContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitReference(@NotNull ExocortexParser.ReferenceContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterKey(@NotNull ExocortexParser.KeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -104,6 +143,32 @@ public class ExocortexBaseListener implements ExocortexListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitKey(@NotNull ExocortexParser.KeyContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterReferenceElement(@NotNull ExocortexParser.ReferenceElementContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitReferenceElement(@NotNull ExocortexParser.ReferenceElementContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterArray(@NotNull ExocortexParser.ArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitArray(@NotNull ExocortexParser.ArrayContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

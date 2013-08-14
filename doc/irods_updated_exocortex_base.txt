@@ -1,0 +1,17 @@
+data storage
+	primitives
+	objects (maps) association of names to values
+	value = a primitive or an object
+	path = a list of names (dot notation)
+	reference = name of a variable and path
+	path + object = value
+functions
+	*** condition is a hairy one
+	*** i need a way to define a condition with placeholders that can be applied on some generic set of arguments
+	*** actually a condition is a function that returns a value!!!, usually boolean
+	condition = test + attributes and returns a boolean value
+	test = and, or, equals, exists, ....
+	attribute = a value or a reference or a placeholder or a condition between paranthesis
+	
+data operations
+rules
