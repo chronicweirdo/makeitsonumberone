@@ -9,9 +9,28 @@ functions
 	*** condition is a hairy one
 	*** i need a way to define a condition with placeholders that can be applied on some generic set of arguments
 	*** actually a condition is a function that returns a value!!!, usually boolean
-	condition = test + attributes and returns a boolean value
-	test = and, or, equals, exists, ....
-	attribute = a value or a reference or a placeholder or a condition between paranthesis
+	call = name of a function + attributes and returns a value
+	name = (predefined boolean functions) and, or, equals, exists, .... (other predefined) size (of object)
+	attribute = a value or a reference or another call
+	function = name of the function and a list of placeholders, followed by a list of instructions
+		some of those instructions can be return instructions, returning the value
+		the current language is used to define what
+		uses calls to other functions
+	placeholder = a name representing a variable internal to the function
 	
-data operations
+	
+data operations (these are actually predefined functions themselves)
+	create record
+	update record
+	read record
+	delete record
 rules
+	rules are attached to operations (should attach to before and after?)
+	when an operation is invoked on a record, all rules attached to that operation are checked
+		a rule contains a matching function
+		the matching function receives as input the record
+		if this function returns true, the rule is invoked
+		the rule contains an execution function
+		this function receives the record as input, does something with it and must return the record
+		if it returns null, the operation is blocked
+		if a record is returned, all rules for the operation except the ones that have already run are checked again
