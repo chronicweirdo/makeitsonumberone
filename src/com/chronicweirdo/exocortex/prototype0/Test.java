@@ -1,4 +1,4 @@
-package com.chronicweirdo.exocortex;
+package com.chronicweirdo.exocortex.prototype0;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -18,9 +18,9 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
-import com.chronicweirdo.exocortex.parser.ExocortexLexer;
-import com.chronicweirdo.exocortex.parser.ExocortexListenerImpl;
-import com.chronicweirdo.exocortex.parser.ExocortexParser;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexLexer;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexListenerImpl;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser;
 
 public class Test {
 
@@ -61,7 +61,7 @@ public class Test {
 		Class parserClass = ExocortexParser.class;
 		ExocortexListenerImpl listener = new ExocortexListenerImpl();
 		String methodName = "program";
-		String input = readFile("/com/chronicweirdo/exocortex/test/query1");
+		String input = readFile("/com/chronicweirdo/exocortex/prototype0/test/query1");
 		execute(lexerClass, parserClass, listener, methodName, input);
 		print(listener.getVariables());
 	}

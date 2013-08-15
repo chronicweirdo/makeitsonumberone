@@ -1,0 +1,58 @@
+// 1 + 2
+[_type:call, _name:+, 1:1, 2:2]
+// the + function takes all values in map except _type and _name and adds them
+
+// 1 + 2 + 3 + 4
+[_type:call, _name:+, 1, 2, 3, 4]
+// shorthand notation in a map when only a value is mentioned, an index is added as the key starting
+// from 0, always incrementing
+
+[_type:call, _name:return, false]
+[_type:call, _name:return, 1]
+[_type:call, _name:return, [_type:file, _name:myFile]]
+[_type:call, _name:return, x:0, y:0]
+// the return function takes all that has been provided in it and tries to create a result value
+// this value can be a primitive or a map
+// shorthands:
+// if a series of values are mentioned, the return function creates a map from those values
+// if only one values is provided, no key, it will just return the value at key 0
+// if you want to return a list of one element, it has to be a list
+// if you want to return a list of two elements, it can be two elements directly in the call
+
+// if x return y else return z
+[_type:call, _name:if, 0:x, 1:y, 2:z]
+[_type:call, _name:if, x, y, z]
+[_type:call, _name:if, if:x, then:y, else:z]
+
+// set a value in a map
+// file._type=folder
+[_type:call, _name:set, map:file, path:_type, value:folder]
+[_type:call, _name:set, file, _type, folder]
+// obj.author.name=tom
+// obj.author.surname=evans
+[_type:call, _name:set, [_type:call, _name:set, obj, author.surname, evans], author.name, tom]
+[_type:call, _name:set, obj:[_type:call, _name:set, map:obj, path:author.surname, value:evans], 
+path:author.name, value:tom]
+// in simpler lisp style
+(set (set obj author.surname evans) author.name tom)
+// should be a prettyer way to write this
+_ = obj
+(set _ author.surname evans)
+(set _ author.name tom)
+// by using some default variable to which the result of a function is assigned
+// is this how the block function should work?
+// do I actually have variables in my system?
+
+// if i want to do this:
+if map._type!=file return map // we only do this for file data
+map.extension=extractExtension(map.path)
+return map
+// in lisp style should work like this
+(if (map._type!=file) map (update(map,extension,(extractExtension map.path))))
+
+// i have a this block
+[_type:call, _name:block,
+	[_type:call, _name:if, [_type:call, _name:notEqual, map._type, file],
+		
+	],
+]

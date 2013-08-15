@@ -1,6 +1,6 @@
 // Generated from src\com\chronicweirdo\exocortex\parser\Exocortex.g4 by ANTLR 4.1
 
-package com.chronicweirdo.exocortex.parser;
+package com.chronicweirdo.exocortex.prototype0.parser;
 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;

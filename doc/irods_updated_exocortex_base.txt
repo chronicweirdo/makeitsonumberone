@@ -21,16 +21,20 @@ functions
 	function (this is a map defining code to be executed)
 		_type is "function"
 		name of the function
-		?a map of placeholders
+		a map of placeholders
 			these are the internal variables of the function
 			can mention a default value
-		!!!!or maybe the input should always be a map and the output should always be a map
+			these will be fields in the call map, so they can't be _type and _name
 		a function
 			can be a block function with a list of instructions
 			uses the input map, can access values in it
 			???can send a value/map to output (a special return keyword???)
 			nothing executed after return
-			
+		what a function does is take something and transform it into something else
+		that something that it takes is actually a call map
+		it transforms the call map into a result
+		what this result is will be determined by the return function 
+		
 	call = name of a function + attribute (a map) and returns a value
 	
 	

@@ -1,4 +1,4 @@
-package com.chronicweirdo.exocortex.parser;
+package com.chronicweirdo.exocortex.prototype0.parser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,17 +6,17 @@ import java.util.UUID;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
-import com.chronicweirdo.exocortex.Fields;
-import com.chronicweirdo.exocortex.Types;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.AddContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.ArrayContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.DefineContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.EntryContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.MapContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.ReferenceContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.ReferenceElementContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.StatementContext;
-import com.chronicweirdo.exocortex.parser.ExocortexParser.ValueContext;
+import com.chronicweirdo.exocortex.prototype0.Fields;
+import com.chronicweirdo.exocortex.prototype0.Types;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.AddContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.ArrayContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.DefineContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.EntryContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.MapContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.ReferenceContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.ReferenceElementContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.StatementContext;
+import com.chronicweirdo.exocortex.prototype0.parser.ExocortexParser.ValueContext;
 
 public class ExocortexListenerImpl extends ExocortexBaseListener {
 

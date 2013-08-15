@@ -1,7 +1,7 @@
 grammar Exocortex;
 @header
 {
-package com.chronicweirdo.exocortex.parser;
+package com.chronicweirdo.exocortex.prototype0.parser;
 }
 
 program : statement (WS* ';' WS* statement)*;
