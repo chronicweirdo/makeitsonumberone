@@ -1,0 +1,20 @@
+maybe one way to figure out how a programming language can be encoded into a
+data structure is by writing progressively more complicated pieces of
+pseudocode and try to move it into the desired data structure
+
+first, define basic programming language functinality:
+	data
+		stores information
+		primitives and maps
+	instructions
+		used to modify data
+		basic functionality provided by the language
+	functions
+		grouping of instructions
+		have inputs and outputs
+		have specific contexts
+		how is parent context inherited to child context in a map that can
+			reference values in the parent
+			need a map that contains entries in the parent as well
+			implement own hash-table based map implementation that also accepts
+			entries, not just key-value put
