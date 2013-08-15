@@ -1,3 +1,7 @@
+this is a high level programming language modeled exclusively on data storage, organization and retrieval
+https://en.wikipedia.org/wiki/High-level_programming_language
+it will have interchangeability of code and data just like Lisp, but instead of lists it uses maps
+
 data storage
 	primitives
 	objects (maps) association of names to values
@@ -5,19 +9,35 @@ data storage
 	path = a list of names (dot notation)
 	reference = name of a variable and path
 	path + object = value
+
 functions
 	*** condition is a hairy one
 	*** i need a way to define a condition with placeholders that can be applied on some generic set of arguments
 	*** actually a condition is a function that returns a value!!!, usually boolean
-	call = name of a function + attributes and returns a value
+	
 	name = (predefined boolean functions) and, or, equals, exists, .... (other predefined) size (of object)
 	attribute = a value or a reference or another call
-	function = name of the function and a list of placeholders, followed by a list of instructions
-		some of those instructions can be return instructions, returning the value
-		the current language is used to define what
-		uses calls to other functions
-	placeholder = a name representing a variable internal to the function
 	
+	function (this is a map defining code to be executed)
+		_type is "function"
+		name of the function
+		?a map of placeholders
+			these are the internal variables of the function
+			can mention a default value
+		!!!!or maybe the input should always be a map and the output should always be a map
+		a function
+			can be a block function with a list of instructions
+			uses the input map, can access values in it
+			???can send a value/map to output (a special return keyword???)
+			nothing executed after return
+			
+	call = name of a function + attribute (a map) and returns a value
+	
+	
+	predefined control functions:
+		block - a block of statements (functions), executed in sequece
+		if - a function returning a boolean, a function executed if true, a function executed otherwise (false, null, not boolean)
+		
 	
 data operations (these are actually predefined functions themselves)
 	create record

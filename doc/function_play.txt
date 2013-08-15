@@ -1,0 +1,60 @@
+// these are predefined mathematical functions
++ // adds all the values in the map
+-
+*
+/
+
+// predefined control functions
+function // used to declare a new function
+// takes as input the function that is executed
+// but this is not required necessarily, since we can just write a map with _type function
+// maybe replace the _type (inside code) with a single character, more accessible, like a ?? not dot!
+block // a list of functions called in order
+return // exits current function and makes the map following this as the result
+if // takes an argument and bla bla
+
+// using predefined functions
+// 1 + 2
+[_type:call, _name:+, _in:[1, 2]];
+// actual generated map: [_type:call,_name:+,_in:[1:1,2:2]];
+// when this is executed, a new map of type call is observed in the system (not necessarily added to the database; 
+// a predefined rule exists that knows how to treat addition of new maps of type call;
+// this rule looks at all the function maps in the system and if it finds a function with the correct name, it will send it the _in value and execute it;
+//??? this rule will return null by default, so the call is not stored in the system
+
+// 1 + (4/2) * 3
+[_type:call, _name:+, _in:[
+	1,
+	[_type:call, _name:*, _in:[
+		[_type:call, _name:/, _in:[4,2]],
+		3
+	]]
+]];
+// can be mad simpler by adding a special predicate in the programming language that generates a
+// call map, which would look like this:
+[call + [1, [call * [[call / [4/2]],3]]]]
+// does this look better in lisp?
+(+ 1 (* (/ 4 2) 3))
+// yes it does
+// we can do the same, simplified predicate for calling functions, maybe even use normal parantheses
+// to distinguish from normal maps?
+
+
+
+// when a new function is declared, a predefined rule validates it and adds it to the system if it is correct
+// this is what i want to do
+if map._type!=file return map // we only do this for file data
+map.extension=extractExtension(map.path)
+return map
+
+
+
+[_type:function, _name:updateFileByExtension, _function:[_type:call, _name:block, _in:[
+	[]
+]]];
+
+
+
+
+
+
