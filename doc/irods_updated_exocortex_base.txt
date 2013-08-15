@@ -34,7 +34,7 @@ functions
 		that something that it takes is actually a call map
 		it transforms the call map into a result
 		what this result is will be determined by the return function 
-		
+	
 	call = name of a function + attribute (a map) and returns a value
 	
 	
