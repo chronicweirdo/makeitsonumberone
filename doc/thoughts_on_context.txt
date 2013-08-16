@@ -1,0 +1,18 @@
+1.
+we could just have a context for everything
+
+2.
+we could have a context stack, with the global context at the bottom and function specific contexts
+above it
+the function specific context would also contain the call values (aparameters)
+a function context is altered by instructions, which are some sort of smaller functions - too much
+complexity
+
+3.
+we could have functions that create their own context and functions that operate on the topmost
+context
+functions operating on topmost context:
+	assign
+	mathematical
+functions creating their own context:
+	block

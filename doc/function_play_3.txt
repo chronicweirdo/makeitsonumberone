@@ -1,0 +1,78 @@
+// mathematical test
+// 3+4
+[_type:call,_name:+,1:3,2:4] // returns a value, 7
+// x=3+4
+[_type:call,_name:=,name:x,value:[_type:call,_name:+,1:3,2:4]] // this saves the value to the context
+
+// strings
+// tokenize string program.exe
+[_type:call,_name:tokenize,value:program.exe,split:.] // this returns [0:program,1:exe]
+// size of input
+[_type:call,_name:size,value:[0:program,1:exe]] // this returns 2
+// select some element based on path
+[_type:call,_name:select,value:[0:program,1:exe],path:1] // this returns exe
+// select some element from context based on path
+[_type:call,_name:select,path:fileName]
+// extract the extension from a file path, whole function, where input parameter is named fileName
+[_type:call,_name:=,
+	name:tokenizedName,
+	value:[_type:call,_name:tokenize,
+		value:[_type:call,_name:select,path:fileName],
+		split:.
+	]
+]
+[_type:call,_name:=,
+	name:size,
+	value:[_type:call,_name:size,
+		value:[_type:call,_name:select,path:tokenizedName]
+	]
+]
+[_type:call,_name:=,
+	name:extension,
+	value:[_type:call,_name:select,
+		value:[_type:call,_name:select,path:tokenizedName],
+		path:[_type:call,_name:-,
+			0:[_type:call,_name:select,path:size],
+			1:1
+		]
+	]
+]
+[_type:call,_name:return,
+	value:[_type:call,_name:select,path:extension]
+]
+// all this is inside a function that returns the extension
+// this is a block type of function that has 4 lines of code
+
+
+// we can declare a function containing all this
+[_type:function,_name:extractExtension,
+	_parameters:[0:fileName],
+	0:[_type:call,_name:=,
+		name:tokenizedName,
+		value:[_type:call,_name:tokenize,
+			value:[_type:call,_name:select,path:fileName],
+			split:.
+		]
+	]
+	1:[_type:call,_name:=,
+		name:size,
+		value:[_type:call,_name:size,
+			value:[_type:call,_name:select,path:tokenizedName]
+		]
+	]
+	2:[_type:call,_name:=,
+		name:extension,
+		value:[_type:call,_name:select,
+			value:[_type:call,_name:select,path:tokenizedName],
+			path:[_type:call,_name:-,
+				0:[_type:call,_name:select,path:size],
+				1:1
+			]
+		]
+	]
+	3:[_type:call,_name:return,
+		value:[_type:call,_name:select,path:extension]
+	]
+]
+// and then we can use this function
+[_type:call,_name:extractExtension,fileName:program.exe]

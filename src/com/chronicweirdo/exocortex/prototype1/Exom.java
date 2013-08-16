@@ -83,6 +83,13 @@ public class Exom implements Map<Object, Object> {
 			return oldEntry;
 		}
 	}
+	
+	public void putEntryNO(Exen entry) {
+		Exen oldEntry = getEntry(entry.getKey());
+		if (oldEntry == null) {
+			entries.add(entry);
+		}
+	}
 
 	@Override
 	public Object remove(Object key) {
@@ -99,6 +106,12 @@ public class Exom implements Map<Object, Object> {
 	public void putAll(Map<? extends Object, ? extends Object> m) {
 		for (Entry entry: m.entrySet()) {
 			put(entry.getKey(), entry.getValue());
+		}
+	}
+	
+	public void putAllNO(Exom map) {
+		for (Exen entry: map.entries) {
+			putEntryNO(entry);
 		}
 	}
 
@@ -128,6 +141,10 @@ public class Exom implements Map<Object, Object> {
 	@Override
 	public Set<java.util.Map.Entry<Object, Object>> entrySet() {
 		return new HashSet<java.util.Map.Entry<Object, Object>>(entries);
+	}
+	
+	public Set<Exen> entries() {
+		return new HashSet<Exen>(entries);
 	}
 	
 	@Override

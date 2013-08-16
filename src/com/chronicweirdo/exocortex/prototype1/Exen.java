@@ -31,7 +31,19 @@ public class Exen implements Entry<Object, Object> {
 
 	@Override
 	public String toString() {
-		return key.toString() + ":" + value.toString();
+		StringBuilder builder = new StringBuilder();
+		if (key != null) {
+			builder.append(key.toString());
+		} else {
+			builder.append("null");
+		}
+		builder.append(":");
+		if (value != null) {
+			builder.append(value.toString());
+		} else {
+			builder.append("null");
+		}
+		return builder.toString();
 	}
 
 	
