@@ -21,6 +21,19 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 public class Util {
 
+    private static String FILE_SEPARATOR =
+    		System.getProperties().getProperty("file.separator");
+    
+    public static String getPath(String ...elements) {
+    	StringBuilder builder = new StringBuilder();
+    	String separator = "";
+    	for (String element: elements) {
+    		builder.append(separator).append(element);
+    		separator = FILE_SEPARATOR;
+    	}
+    	return builder.toString();
+    }
+    
 	public static void compile(String path) {
 		Runtime.getRuntime().addShutdownHook(new Thread() {
 			public void run() {

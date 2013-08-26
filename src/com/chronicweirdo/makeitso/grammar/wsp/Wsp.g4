@@ -8,7 +8,7 @@ package com.chronicweirdo.makeitso.grammar.wsp;
 query : (line ';')+;
 
 line : declare? statement;
-declare : ID '=';
+declare : ID ' '* '=' ' '*;
 
 statement
 	: assignment

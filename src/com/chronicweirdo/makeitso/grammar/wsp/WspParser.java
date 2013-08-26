@@ -1,4 +1,4 @@
-// Generated from /Users/cacovean/Documents/workspace/makeitso/src/com/chronicweirdo/makeitso/grammar/wsp/Wsp.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\makeitso\grammar\wsp\Wsp.g4 by ANTLR 4.1
 
 package com.chronicweirdo.makeitso.grammar.wsp;
 
@@ -17,10 +17,10 @@ public class WspParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__4=1, T__3=2, T__2=3, T__1=4, T__0=5, STRING=6, ID=7, NUMBER=8, BLOCK_COMMENT=9, 
-		LINE_COMMENT=10, WS=11;
+		T__5=1, T__4=2, T__3=3, T__2=4, T__1=5, T__0=6, STRING=7, ID=8, NUMBER=9, 
+		BLOCK_COMMENT=10, LINE_COMMENT=11, WS=12;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'folder'", "'file'", "'upload'", "'='", "';'", "STRING", 
+		"<INVALID>", "'folder'", "' '", "'file'", "'upload'", "'='", "';'", "STRING", 
 		"ID", "NUMBER", "BLOCK_COMMENT", "LINE_COMMENT", "WS"
 	};
 	public static final int
@@ -81,13 +81,13 @@ public class WspParser extends Parser {
 				{
 				{
 				setState(14); line();
-				setState(15); match(5);
+				setState(15); match(6);
 				}
 				}
 				setState(19); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 3) | (1L << STRING) | (1L << ID))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 4) | (1L << STRING) | (1L << ID))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -170,11 +170,38 @@ public class WspParser extends Parser {
 	public final DeclareContext declare() throws RecognitionException {
 		DeclareContext _localctx = new DeclareContext(_ctx, getState());
 		enterRule(_localctx, 4, RULE_declare);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
 			setState(26); match(ID);
-			setState(27); match(4);
+			setState(30);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==2) {
+				{
+				{
+				setState(27); match(2);
+				}
+				}
+				setState(32);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
+			setState(33); match(5);
+			setState(37);
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			while (_la==2) {
+				{
+				{
+				setState(34); match(2);
+				}
+				}
+				setState(39);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -213,18 +240,18 @@ public class WspParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 6, RULE_statement);
 		try {
-			setState(31);
+			setState(42);
 			switch (_input.LA(1)) {
 			case STRING:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(29); assignment();
+				setState(40); assignment();
 				}
 				break;
-			case 3:
+			case 4:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(30); upload();
+				setState(41); upload();
 				}
 				break;
 			default:
@@ -266,7 +293,7 @@ public class WspParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33); value();
+			setState(44); value();
 			}
 		}
 		catch (RecognitionException re) {
@@ -305,14 +332,14 @@ public class WspParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(35); match(3);
-			setState(36);
+			setState(46); match(4);
+			setState(47);
 			_la = _input.LA(1);
-			if ( !(_la==1 || _la==2) ) {
+			if ( !(_la==1 || _la==3) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
-			setState(37); value();
+			setState(48); value();
 			}
 		}
 		catch (RecognitionException re) {
@@ -348,7 +375,7 @@ public class WspParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(39); match(STRING);
+			setState(50); match(STRING);
 			}
 		}
 		catch (RecognitionException re) {
@@ -363,17 +390,20 @@ public class WspParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\r,\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\6\2\24\n\2\r\2"+
-		"\16\2\25\3\3\5\3\31\n\3\3\3\3\3\3\4\3\4\3\4\3\5\3\5\5\5\"\n\5\3\6\3\6"+
-		"\3\7\3\7\3\7\3\7\3\b\3\b\3\b\2\t\2\4\6\b\n\f\16\2\3\3\2\3\4\'\2\23\3\2"+
-		"\2\2\4\30\3\2\2\2\6\34\3\2\2\2\b!\3\2\2\2\n#\3\2\2\2\f%\3\2\2\2\16)\3"+
-		"\2\2\2\20\21\5\4\3\2\21\22\7\7\2\2\22\24\3\2\2\2\23\20\3\2\2\2\24\25\3"+
-		"\2\2\2\25\23\3\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\31\5\6\4\2\30\27\3"+
-		"\2\2\2\30\31\3\2\2\2\31\32\3\2\2\2\32\33\5\b\5\2\33\5\3\2\2\2\34\35\7"+
-		"\t\2\2\35\36\7\6\2\2\36\7\3\2\2\2\37\"\5\n\6\2 \"\5\f\7\2!\37\3\2\2\2"+
-		"! \3\2\2\2\"\t\3\2\2\2#$\5\16\b\2$\13\3\2\2\2%&\7\5\2\2&\'\t\2\2\2\'("+
-		"\5\16\b\2(\r\3\2\2\2)*\7\b\2\2*\17\3\2\2\2\5\25\30!";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\16\67\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\6\2\24\n\2\r"+
+		"\2\16\2\25\3\3\5\3\31\n\3\3\3\3\3\3\4\3\4\7\4\37\n\4\f\4\16\4\"\13\4\3"+
+		"\4\3\4\7\4&\n\4\f\4\16\4)\13\4\3\5\3\5\5\5-\n\5\3\6\3\6\3\7\3\7\3\7\3"+
+		"\7\3\b\3\b\3\b\2\t\2\4\6\b\n\f\16\2\3\4\2\3\3\5\5\64\2\23\3\2\2\2\4\30"+
+		"\3\2\2\2\6\34\3\2\2\2\b,\3\2\2\2\n.\3\2\2\2\f\60\3\2\2\2\16\64\3\2\2\2"+
+		"\20\21\5\4\3\2\21\22\7\b\2\2\22\24\3\2\2\2\23\20\3\2\2\2\24\25\3\2\2\2"+
+		"\25\23\3\2\2\2\25\26\3\2\2\2\26\3\3\2\2\2\27\31\5\6\4\2\30\27\3\2\2\2"+
+		"\30\31\3\2\2\2\31\32\3\2\2\2\32\33\5\b\5\2\33\5\3\2\2\2\34 \7\n\2\2\35"+
+		"\37\7\4\2\2\36\35\3\2\2\2\37\"\3\2\2\2 \36\3\2\2\2 !\3\2\2\2!#\3\2\2\2"+
+		"\" \3\2\2\2#\'\7\7\2\2$&\7\4\2\2%$\3\2\2\2&)\3\2\2\2\'%\3\2\2\2\'(\3\2"+
+		"\2\2(\7\3\2\2\2)\'\3\2\2\2*-\5\n\6\2+-\5\f\7\2,*\3\2\2\2,+\3\2\2\2-\t"+
+		"\3\2\2\2./\5\16\b\2/\13\3\2\2\2\60\61\7\6\2\2\61\62\t\2\2\2\62\63\5\16"+
+		"\b\2\63\r\3\2\2\2\64\65\7\t\2\2\65\17\3\2\2\2\7\25\30 \',";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

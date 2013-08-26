@@ -1,4 +1,4 @@
-// Generated from /Users/cacovean/Documents/workspace/makeitso/src/com/chronicweirdo/makeitso/grammar/wsp/Wsp.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\makeitso\grammar\wsp\Wsp.g4 by ANTLR 4.1
 
 package com.chronicweirdo.makeitso.grammar.wsp;
 
