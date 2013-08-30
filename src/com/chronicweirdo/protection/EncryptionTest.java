@@ -61,7 +61,7 @@ public class EncryptionTest {
 		ConsoleUtils.print(key.getEncoded());
 		String text = "this is my message";
 		byte[] data = encrypt(key, text.getBytes());
-		ConsoleUtils.print(data, true);
+		ConsoleUtils.print(data);
 		String newText = new String(decrypt(key, data));
 		System.out.println(newText);
 	}
@@ -74,7 +74,7 @@ public class EncryptionTest {
 		String text = "this is my message\nit is long and convoluted\nbut you understand";
 		byte[] data = encrypt(key, text.getBytes());
 		FileUtils.writeFile(path, data);
-		ConsoleUtils.print(data, true);
+		ConsoleUtils.print(data);
 		byte[] newData = FileUtils.readFile(path);
 		String newText = new String(decrypt(key, newData));
 		System.out.println(newText);
@@ -90,7 +90,7 @@ public class EncryptionTest {
 		ConsoleUtils.print(key.getEncoded());
 		String text = "this is my message\nit is long and convoluted\nbut you understand";
 		byte[] data = encrypt(key, text.getBytes());
-		ConsoleUtils.print(data, true);
+		ConsoleUtils.print(data);
 		FileUtils.writeFile(path, data);
 
 		// decode

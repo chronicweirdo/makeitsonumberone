@@ -9,7 +9,7 @@ import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
-public class EncryptionUtil {
+public class EncryptionUtils {
 
 	private static final String CIPHER_AES_ECB_PKCS5_PADDING = "AES/ECB/PKCS5Padding";
 	private static final String SECRET_KEY_SPEC_AES = "AES";
