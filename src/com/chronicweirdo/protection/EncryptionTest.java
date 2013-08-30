@@ -25,17 +25,17 @@ public class EncryptionTest {
 			}
 		}
 	}
-
-	public static byte[] encrypt(Key key, String text) throws Exception {
+	
+	public static byte[] encrypt(Key key, byte[] data) throws Exception {
 		Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
 		aes.init(Cipher.ENCRYPT_MODE, key);
-		return aes.doFinal(text.getBytes());
+		return aes.doFinal(data);
 	}
 
-	public static String decrypt(Key key, byte[] data) throws Exception {
+	public static byte[] decrypt(Key key, byte[] data) throws Exception {
 		Cipher aes = Cipher.getInstance("AES/ECB/PKCS5Padding");
 		aes.init(Cipher.DECRYPT_MODE, key);
-		return new String(aes.doFinal(data));
+		return aes.doFinal(data);
 	}
 
 	public static Key key(String passphrase) throws Exception {
@@ -60,9 +60,9 @@ public class EncryptionTest {
 		Key key = key(passphrase);
 		ConsoleUtils.print(key.getEncoded());
 		String text = "this is my message";
-		byte[] data = encrypt(key, text);
+		byte[] data = encrypt(key, text.getBytes());
 		ConsoleUtils.print(data, true);
-		String newText = decrypt(key, data);
+		String newText = new String(decrypt(key, data));
 		System.out.println(newText);
 	}
 
@@ -72,11 +72,11 @@ public class EncryptionTest {
 		Key key = key(passphrase);
 		ConsoleUtils.print(key.getEncoded());
 		String text = "this is my message\nit is long and convoluted\nbut you understand";
-		byte[] data = encrypt(key, text);
+		byte[] data = encrypt(key, text.getBytes());
 		FileUtils.writeFile(path, data);
 		ConsoleUtils.print(data, true);
 		byte[] newData = FileUtils.readFile(path);
-		String newText = decrypt(key, newData);
+		String newText = new String(decrypt(key, newData));
 		System.out.println(newText);
 	}
 
@@ -89,19 +89,19 @@ public class EncryptionTest {
 		Key key = key2(passphrase, salt.getBytes());
 		ConsoleUtils.print(key.getEncoded());
 		String text = "this is my message\nit is long and convoluted\nbut you understand";
-		byte[] data = encrypt(key, text);
+		byte[] data = encrypt(key, text.getBytes());
 		ConsoleUtils.print(data, true);
 		FileUtils.writeFile(path, data);
 
 		// decode
 		Key newKey = key2(passphrase, salt.getBytes());
 		byte[] newData = FileUtils.readFile(path);
-		String newText = decrypt(key, newData);
+		String newText = new String(decrypt(key, newData));
 		System.out.println(newText);
 	}
 
 	public static void main(String[] args) throws Exception {
-		listSecurityOptions();
+		//listSecurityOptions();
 		// testSimpleEncoding();
 		testFileEncoding2();
 	}
