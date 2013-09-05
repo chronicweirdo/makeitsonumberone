@@ -1,0 +1,21 @@
+<persons>
+	<person>
+		<firstName>Skwisgaar</firstName>
+		<lastName>Skwigelf</lastName>
+	</person>
+	<person>
+		<firstName>Toki</firstName>
+		<lastName>Wartooth</lastName>
+	</person>
+	<person>
+		<firstName>Nathan</firstName>
+		<lastName>Explosion</lastName>
+	</person>
+	<person>
+		<firstName>Pickles</firstName>
+	</person>
+	<person>
+		<firstName>William</firstName>
+		<lastName>Murderface</lastName>
+	</person>
+</persons>
