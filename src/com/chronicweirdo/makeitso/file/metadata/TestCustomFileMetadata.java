@@ -1,13 +1,12 @@
 package com.chronicweirdo.makeitso.file.metadata;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.attribute.UserDefinedFileAttributeView;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.chronicweirdo.protection.SerializationUtil;
@@ -61,15 +60,16 @@ public class TestCustomFileMetadata {
 	
 	public static void main(String[] args) throws Exception {
 		String path = "data.txt";
+		//String path = "K:\\temp.txt";
 		
-		/*
-		List<String> list = new ArrayList<String>();
+		
+		/*List<String> list = new ArrayList<String>();
 		list.add("cool");
 		list.add("if");
 		list.add("this");
 		list.add("works");
 		tag(path, "array", list);
-		*/
+		tag(path, "mood", "happy");*/
 		
 		System.out.println(Files.size(Paths.get(path)));
 		
@@ -78,7 +78,7 @@ public class TestCustomFileMetadata {
 		for (String tag: tags) {
 			Object value = tag(path, tag);
 			System.out.println(value.toString());
-			delete(path, tag);
+			//delete(path, tag);
 		}
 	}
 
