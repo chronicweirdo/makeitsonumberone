@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso;
+package com.chronicweirdo.makeitso.file;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;

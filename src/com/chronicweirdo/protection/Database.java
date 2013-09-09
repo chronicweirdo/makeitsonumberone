@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
-import com.chronicweirdo.makeitso.FileUtils;
+import com.chronicweirdo.makeitso.file.FileUtils;
 
 public class Database {
 

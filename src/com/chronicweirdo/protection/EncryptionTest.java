@@ -13,7 +13,7 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.SecretKeySpec;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
-import com.chronicweirdo.makeitso.FileUtils;
+import com.chronicweirdo.makeitso.file.FileUtils;
 
 public class EncryptionTest {
 

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
-import com.chronicweirdo.makeitso.FileUtils;
+import com.chronicweirdo.makeitso.file.FileUtils;
 
 public class SerializationTest {
 
