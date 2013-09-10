@@ -51,6 +51,30 @@ public class Text {
 		}
 		return window;
 	}
+	
+	private static List<List<Character>> wrap(char[] line, int width) {
+		List<List<Character>> wrap = new ArrayList<List<Character>>();
+		for (int i = 0; i < line.length; i++) {
+			if (i % width == 0) {
+				wrap.add(new ArrayList<Character>());
+			}
+			wrap.get(wrap.size()-1).add(line[i]);
+		}
+		return wrap;
+	}
+	public static char[][] wrap(char[][] text, int width) {
+		List<List<Character>> wrap = new ArrayList<List<Character>>();
+		for (int i = 0; i < text.length; i++) {
+			wrap.addAll(wrap(text[i], width));
+		}
+		char[][] result = new char[wrap.size()][width];
+		for (int y = 0; y < wrap.size(); y++) {
+			for (int x = 0; x < wrap.get(y).size(); x++) {
+				result[y][x] = wrap.get(y).get(x);
+			}
+		}
+		return result;
+	}
 
 	public static char[][] window(String text, int x, int y, int width,
 			int height) {
@@ -81,7 +105,8 @@ public class Text {
 		//print(asMatrix(text));
 		print(window(text, 5, 0, 30, 10));
 		//Pattern stuff = Pattern.compile("(^.*$)", Pattern.MULTILINE);
-		
+		System.out.println("--------------------------------");
+		print(wrap(asMatrix(text), 50));
 	}
 
 }
