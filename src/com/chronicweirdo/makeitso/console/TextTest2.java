@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso;
+package com.chronicweirdo.makeitso.console;
 
 import java.awt.Point;
 import java.util.ArrayList;
