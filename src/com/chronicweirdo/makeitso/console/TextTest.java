@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Text {
+public class TextTest {
 	
 	private static final char NEW_LINE = '◖';
 	private static final char CARRIAGE_RETURN = '◗';
@@ -87,6 +87,16 @@ public class Text {
 		}
 		return window;
 	}
+	
+	/*
+	 * Coordonates are transformed like this:
+	 * 		When no wrap is involved:
+	 * 			text coordonates <-> window coordonates
+	 * 		When wrap is involved:
+	 * 			text coordonates <-> wrap coordonates <-> window coordonates
+	 */
+	
+	
 
 	public static void main(String[] args) {
 		String text = "Lorem ipsum dolor sit amet, \n" +
@@ -109,4 +119,5 @@ public class Text {
 		print(wrap(asMatrix(text), 50));
 	}
 
+	
 }
