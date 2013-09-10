@@ -1,5 +1,10 @@
 package com.chronicweirdo.makeitso.console;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Text {
 	
 	private static final char NEW_LINE = '◖';
@@ -20,19 +25,28 @@ public class Text {
 			System.out.println();
 		}
 	}
-	public static char[][] asMatrix(String text) {
-		// split into lines
-		String[] lines = text.split("[\n\r]");
-		int width = 0;
-		for (String line: lines) {
-			if (line.length() > width) {
-				width = line.length();
+	
+	public static List<String> lines(String text) {
+		Pattern stuff = Pattern.compile(".*[\n\r]*");
+		Matcher matcher = stuff.matcher(text);
+		List<String> lines = new ArrayList<String>();
+		while (matcher.find()) {
+			String mg = matcher.group();
+			if (mg.length() > 0) {
+				lines.add(mg);
 			}
 		}
-		char[][] window = new char[lines.length][width];
-		for (int y = 0; y < lines.length; y++) {
-			for (int x = 0; x < lines[y].length(); x++) {
-				window[y][x] = lines[y].charAt(x);
+		return lines;
+	}
+	
+	public static char[][] asMatrix(String text) {
+		// split into lines
+		List<String> lines = lines(text);
+		char[][] window = new char[lines.size()][];
+		for (int y = 0; y < lines.size(); y++) {
+			window[y] = new char[lines.get(y).length()];
+			for (int x = 0; x < lines.get(y).length(); x++) {
+				window[y][x] = lines.get(y).charAt(x);
 			}
 		}
 		return window;
@@ -63,9 +77,11 @@ public class Text {
 				"elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, \n" +
 				"adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis. \n" +
 				"Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat \n" +
-				"nisl imperdiet";
-		print(asMatrix(text));
-		print(window(text, 5, 0, 10, 10));
+				"nisl imperdie";
+		//print(asMatrix(text));
+		print(window(text, 5, 0, 30, 10));
+		//Pattern stuff = Pattern.compile("(^.*$)", Pattern.MULTILINE);
+		
 	}
 
 }
