@@ -41,7 +41,7 @@ public class TextTest2 {
 			int y = 0;
 			int i = 0;
 			while (i < fi) {
-				if (sourceText.get(new Point(i, 0)) == '\n') {
+				if (sourceText.get(new Point(i, 0)).equals('\n')) {
 					y++;
 					x = -1;
 				}
@@ -56,11 +56,12 @@ public class TextTest2 {
 			int y = destination.y;
 			int i = 0;
 			while (y > 0) {
-				if (sourceText.get(new Point(i, 0)) == '\n') {
+				if (sourceText.get(new Point(i, 0)).equals('\n')) {
 					y--;
 				}
 				i++;
 			}
+			// TODO: problem here !!!
 			i += destination.x;
 			return new Point(i, 0);
 		}
@@ -68,9 +69,10 @@ public class TextTest2 {
 	
 	public static interface Text {
 		void set(Point p, char c);
-		char get(Point p);
+		Character get(Point p);
 		void insert(Point p, char c);		
 		void delete(Point p);
+		Integer size(int y);
 	}
 	public static class OriginalText implements Text {
 		private List<Character> data;
@@ -89,8 +91,9 @@ public class TextTest2 {
 		}
 
 		@Override
-		public char get(Point p) {
+		public Character get(Point p) {
 			// y is ignored
+			if (p.x >= data.size()) return null;
 			return data.get(p.x);
 		}
 
@@ -105,6 +108,11 @@ public class TextTest2 {
 			// y is ignored
 			data.remove(p.x);
 		}
+		
+		public Integer size(int y) {
+			if (y == 0) return data.size();
+			return null;
+		}
 	}
 	
 	public static class SourcedText implements Text {
@@ -114,7 +122,7 @@ public class TextTest2 {
 		public void set(Point p, char c) {
 			source.set(transformation.source(p), c);
 		}
-		public char get(Point p){
+		public Character get(Point p){
 			return source.get(transformation.source(p));
 		}
 		public void insert(Point p, char c) {
@@ -122,6 +130,16 @@ public class TextTest2 {
 		}
 		public void delete(Point p) {
 			source.delete(transformation.source(p));
+		}
+		public Integer size(int y) {
+			int size = 0;
+			Character c = get(new Point(size, y));
+			if (c == null) return null;
+			while (c != null) {
+				size++;
+				c = get(new Point(size, y));
+			}
+			return size;
 		}
 	}
 	
@@ -137,9 +155,14 @@ public class TextTest2 {
 		 * 01  s  e  c  o  n  d     l  i  n  e
 		 */
 		OriginalText original = new OriginalText(text);
-		
 		SplitByLinesTransformation transformation = new SplitByLinesTransformation();
 		transformation.sourceText = original;
+		
+		SourcedText sourced = new SourcedText();
+		sourced.source = original;
+		sourced.transformation = transformation;
+		
+		
 		
 		Point originalDestinationPoint = new Point(3, 1);
 		Point sourcePoint = transformation.source(originalDestinationPoint);
@@ -149,6 +172,11 @@ public class TextTest2 {
 		System.out.println(sourcePoint);
 		System.out.println(destinationPoint);
 		
+		System.out.println();
+		
+		System.out.println(sourced.size(0));
+		System.out.println(sourced.size(1));
+		System.out.println(sourced.size(2));
 	}
 
 }
