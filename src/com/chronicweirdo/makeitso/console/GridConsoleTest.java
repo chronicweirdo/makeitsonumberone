@@ -1,17 +1,16 @@
 package com.chronicweirdo.makeitso.console;
 
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.Label;
+import java.awt.Panel;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class GridConsoleTest extends JPanel {
+public class GridConsoleTest extends Panel {
 	
 	private double characterWidth = 20d;
 	private double characterHeight = 30d;
@@ -56,9 +55,9 @@ public class GridConsoleTest extends JPanel {
 		//grid = new ArrayList<JLabel>();
 		for (int y = 0; y < height; y++) {
 			for (int x = 0; x < width; x++) {
-				JLabel label = new JLabel("x");
+				Label label = new Label("x");
 				label.setBackground(Color.RED);
-				label.setOpaque(true);
+				//label.setOpaque(true);
 				//grid.add(label);
 				this.add(label);
 			}
@@ -67,8 +66,8 @@ public class GridConsoleTest extends JPanel {
 
 	private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("GridConsoleDemo");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Frame frame = new Frame("GridConsoleDemo");
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add contents to the window.
         GridConsoleTest panel = new GridConsoleTest();
