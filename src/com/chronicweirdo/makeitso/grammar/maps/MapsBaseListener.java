@@ -1,4 +1,4 @@
-// Generated from src/com/chronicweirdo/makeitso/grammar/maps/Maps.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\makeitso\grammar\maps\Maps.g4 by ANTLR 4.1
 
 package com.chronicweirdo.makeitso.grammar.maps;
 
@@ -123,13 +123,13 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterPrint(@NotNull MapsParser.PrintContext ctx) { }
+	@Override public void enterFunction(@NotNull MapsParser.FunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitPrint(@NotNull MapsParser.PrintContext ctx) { }
+	@Override public void exitFunction(@NotNull MapsParser.FunctionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

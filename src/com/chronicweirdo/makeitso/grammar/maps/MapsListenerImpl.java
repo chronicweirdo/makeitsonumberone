@@ -8,14 +8,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ListContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.MapContext;
-import com.chronicweirdo.makeitso.grammar.maps.MapsParser.PrintContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.StatementContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
 
 public class MapsListenerImpl extends MapsBaseListener {
@@ -57,6 +57,8 @@ public class MapsListenerImpl extends MapsBaseListener {
 		}
 		return result;
 	}
+	
+	
 	
 	/*
 	@Override
@@ -106,12 +108,9 @@ public class MapsListenerImpl extends MapsBaseListener {
 	*/
 	
 	@Override
-	public void exitPrint(@NotNull PrintContext ctx) {
-		Object value = parse(ctx.value());
-		if (value instanceof Map) {
-			ConsoleUtils.print((Map) value);
-		} else {
-			ConsoleUtils.print(value);
+	public void exitStatement(@NotNull StatementContext ctx) {
+		if (ctx.function() != null) {
+			parse(ctx.function());
 		}
 	}
 	
@@ -199,6 +198,38 @@ public class MapsListenerImpl extends MapsBaseListener {
 					return null;
 				}
 			}
+		} else if (ctx.function() != null) {
+			return parse(ctx.function());
+		}
+		return null;
+	}
+	private Object parse(@NotNull FunctionContext ctx) {
+		Object value = parse(ctx.value());
+		if (value instanceof Map) {
+			Map map = (Map) value;
+			return function(map);
+		}
+		return null;
+	}
+	private Object function(Map map) {
+		String function = (String) map.get("function");
+		if (function.equals("assign")) {
+			String name = (String) map.get("name");
+			Object value = map.get("value");
+			if (database instanceof Map) {
+				((Map) database).put(name, value);
+				return value;
+			}
+		} else if (function.equals("print")) {
+			Object value = map.get("value");
+			if (value instanceof Map) {
+				ConsoleUtils.print((Map) value);
+			} else {
+				ConsoleUtils.print(value);
+			}
+			return value;
+		} else if (function.equals("exit")) {
+			System.exit(0);
 		}
 		return null;
 	}

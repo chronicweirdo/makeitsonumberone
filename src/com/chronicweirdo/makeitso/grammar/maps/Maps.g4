@@ -7,10 +7,9 @@ package com.chronicweirdo.makeitso.grammar.maps;
 
 program : (statement ';')+;
 statement
-	: value
-	| print;
+	: function;
 
-print : 'print' value;
+function : '|' value;
 
 map
 	: '[' entry (',' entry)* ']'
@@ -27,7 +26,8 @@ value
 	| map
 	| list
 	| database
-	| value '[' key ']' ;
+	| value '[' key ']'
+	| function;
 database : '_';
 
 // LEXER

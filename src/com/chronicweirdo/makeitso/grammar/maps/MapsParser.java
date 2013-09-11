@@ -1,4 +1,4 @@
-// Generated from src/com/chronicweirdo/makeitso/grammar/maps/Maps.g4 by ANTLR 4.1
+// Generated from src\com\chronicweirdo\makeitso\grammar\maps\Maps.g4 by ANTLR 4.1
 
 package com.chronicweirdo.makeitso.grammar.maps;
 
@@ -20,14 +20,14 @@ public class MapsParser extends Parser {
 		T__6=1, T__5=2, T__4=3, T__3=4, T__2=5, T__1=6, T__0=7, STRING=8, ID=9, 
 		NUMBER=10, BLOCK_COMMENT=11, LINE_COMMENT=12, WS=13;
 	public static final String[] tokenNames = {
-		"<INVALID>", "']'", "','", "'_'", "'['", "'print'", "':'", "';'", "STRING", 
+		"<INVALID>", "']'", "','", "'_'", "'['", "':'", "';'", "'|'", "STRING", 
 		"ID", "NUMBER", "BLOCK_COMMENT", "LINE_COMMENT", "WS"
 	};
 	public static final int
-		RULE_program = 0, RULE_statement = 1, RULE_print = 2, RULE_map = 3, RULE_list = 4, 
-		RULE_entry = 5, RULE_key = 6, RULE_value = 7, RULE_database = 8;
+		RULE_program = 0, RULE_statement = 1, RULE_function = 2, RULE_map = 3, 
+		RULE_list = 4, RULE_entry = 5, RULE_key = 6, RULE_value = 7, RULE_database = 8;
 	public static final String[] ruleNames = {
-		"program", "statement", "print", "map", "list", "entry", "key", "value", 
+		"program", "statement", "function", "map", "list", "entry", "key", "value", 
 		"database"
 	};
 
@@ -82,13 +82,13 @@ public class MapsParser extends Parser {
 				{
 				{
 				setState(18); statement();
-				setState(19); match(7);
+				setState(19); match(6);
 				}
 				}
 				setState(23); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 3) | (1L << 4) | (1L << 5) | (1L << STRING) | (1L << ID) | (1L << NUMBER))) != 0) );
+			} while ( _la==7 );
 			}
 		}
 		catch (RecognitionException re) {
@@ -103,11 +103,8 @@ public class MapsParser extends Parser {
 	}
 
 	public static class StatementContext extends ParserRuleContext {
-		public PrintContext print() {
-			return getRuleContext(PrintContext.class,0);
-		}
-		public ValueContext value() {
-			return getRuleContext(ValueContext.class,0);
+		public FunctionContext function() {
+			return getRuleContext(FunctionContext.class,0);
 		}
 		public StatementContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -127,26 +124,9 @@ public class MapsParser extends Parser {
 		StatementContext _localctx = new StatementContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_statement);
 		try {
-			setState(27);
-			switch (_input.LA(1)) {
-			case 3:
-			case 4:
-			case STRING:
-			case ID:
-			case NUMBER:
-				enterOuterAlt(_localctx, 1);
-				{
-				setState(25); value(0);
-				}
-				break;
-			case 5:
-				enterOuterAlt(_localctx, 2);
-				{
-				setState(26); print();
-				}
-				break;
-			default:
-				throw new NoViableAltException(this);
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(25); function();
 			}
 		}
 		catch (RecognitionException re) {
@@ -160,32 +140,32 @@ public class MapsParser extends Parser {
 		return _localctx;
 	}
 
-	public static class PrintContext extends ParserRuleContext {
+	public static class FunctionContext extends ParserRuleContext {
 		public ValueContext value() {
 			return getRuleContext(ValueContext.class,0);
 		}
-		public PrintContext(ParserRuleContext parent, int invokingState) {
+		public FunctionContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_print; }
+		@Override public int getRuleIndex() { return RULE_function; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof MapsListener ) ((MapsListener)listener).enterPrint(this);
+			if ( listener instanceof MapsListener ) ((MapsListener)listener).enterFunction(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof MapsListener ) ((MapsListener)listener).exitPrint(this);
+			if ( listener instanceof MapsListener ) ((MapsListener)listener).exitFunction(this);
 		}
 	}
 
-	public final PrintContext print() throws RecognitionException {
-		PrintContext _localctx = new PrintContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_print);
+	public final FunctionContext function() throws RecognitionException {
+		FunctionContext _localctx = new FunctionContext(_ctx, getState());
+		enterRule(_localctx, 4, RULE_function);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(29); match(5);
-			setState(30); value(0);
+			setState(27); match(7);
+			setState(28); value(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -225,37 +205,37 @@ public class MapsParser extends Parser {
 		enterRule(_localctx, 6, RULE_map);
 		int _la;
 		try {
-			setState(46);
-			switch ( getInterpreter().adaptivePredict(_input,3,_ctx) ) {
+			setState(44);
+			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(32); match(4);
-				setState(33); entry();
-				setState(38);
+				setState(30); match(4);
+				setState(31); entry();
+				setState(36);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==2) {
 					{
 					{
-					setState(34); match(2);
-					setState(35); entry();
+					setState(32); match(2);
+					setState(33); entry();
 					}
 					}
-					setState(40);
+					setState(38);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(41); match(1);
+				setState(39); match(1);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(43); match(4);
-				setState(44); match(6);
-				setState(45); match(1);
+				setState(41); match(4);
+				setState(42); match(5);
+				setState(43); match(1);
 				}
 				break;
 			}
@@ -297,36 +277,36 @@ public class MapsParser extends Parser {
 		enterRule(_localctx, 8, RULE_list);
 		int _la;
 		try {
-			setState(61);
-			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
+			setState(59);
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(48); match(4);
-				setState(49); value(0);
-				setState(54);
+				setState(46); match(4);
+				setState(47); value(0);
+				setState(52);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 				while (_la==2) {
 					{
 					{
-					setState(50); match(2);
-					setState(51); value(0);
+					setState(48); match(2);
+					setState(49); value(0);
 					}
 					}
-					setState(56);
+					setState(54);
 					_errHandler.sync(this);
 					_la = _input.LA(1);
 				}
-				setState(57); match(1);
+				setState(55); match(1);
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(59); match(4);
-				setState(60); match(1);
+				setState(57); match(4);
+				setState(58); match(1);
 				}
 				break;
 			}
@@ -369,9 +349,9 @@ public class MapsParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(63); key();
-			setState(64); match(6);
-			setState(65); value(0);
+			setState(61); key();
+			setState(62); match(5);
+			setState(63); value(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -409,7 +389,7 @@ public class MapsParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(67); value(0);
+			setState(65); value(0);
 			}
 		}
 		catch (RecognitionException re) {
@@ -427,6 +407,9 @@ public class MapsParser extends Parser {
 		public int _p;
 		public DatabaseContext database() {
 			return getRuleContext(DatabaseContext.class,0);
+		}
+		public FunctionContext function() {
+			return getRuleContext(FunctionContext.class,0);
 		}
 		public KeyContext key() {
 			return getRuleContext(KeyContext.class,0);
@@ -470,48 +453,54 @@ public class MapsParser extends Parser {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(76);
-			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			setState(75);
+			switch ( getInterpreter().adaptivePredict(_input,5,_ctx) ) {
 			case 1:
 				{
-				setState(70); match(STRING);
+				setState(68); match(STRING);
 				}
 				break;
 
 			case 2:
 				{
-				setState(71); match(ID);
+				setState(69); match(ID);
 				}
 				break;
 
 			case 3:
 				{
-				setState(72); match(NUMBER);
+				setState(70); match(NUMBER);
 				}
 				break;
 
 			case 4:
 				{
-				setState(73); map();
+				setState(71); map();
 				}
 				break;
 
 			case 5:
 				{
-				setState(74); list();
+				setState(72); list();
 				}
 				break;
 
 			case 6:
 				{
-				setState(75); database();
+				setState(73); database();
+				}
+				break;
+
+			case 7:
+				{
+				setState(74); function();
 				}
 				break;
 			}
 			_ctx.stop = _input.LT(-1);
-			setState(85);
+			setState(84);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			while ( _alt!=2 && _alt!=-1 ) {
 				if ( _alt==1 ) {
 					if ( _parseListeners!=null ) triggerExitRuleEvent();
@@ -520,17 +509,17 @@ public class MapsParser extends Parser {
 					{
 					_localctx = new ValueContext(_parentctx, _parentState, _p);
 					pushNewRecursionContext(_localctx, _startState, RULE_value);
-					setState(78);
-					if (!(1 >= _localctx._p)) throw new FailedPredicateException(this, "1 >= $_p");
-					setState(79); match(4);
-					setState(80); key();
-					setState(81); match(1);
+					setState(77);
+					if (!(2 >= _localctx._p)) throw new FailedPredicateException(this, "2 >= $_p");
+					setState(78); match(4);
+					setState(79); key();
+					setState(80); match(1);
 					}
 					} 
 				}
-				setState(87);
+				setState(86);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,7,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,6,_ctx);
 			}
 			}
 		}
@@ -566,7 +555,7 @@ public class MapsParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(88); match(3);
+			setState(87); match(3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -588,35 +577,35 @@ public class MapsParser extends Parser {
 	}
 	private boolean value_sempred(ValueContext _localctx, int predIndex) {
 		switch (predIndex) {
-		case 0: return 1 >= _localctx._p;
+		case 0: return 2 >= _localctx._p;
 		}
 		return true;
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\17]\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\3\2"+
-		"\6\2\30\n\2\r\2\16\2\31\3\3\3\3\5\3\36\n\3\3\4\3\4\3\4\3\5\3\5\3\5\3\5"+
-		"\7\5\'\n\5\f\5\16\5*\13\5\3\5\3\5\3\5\3\5\3\5\5\5\61\n\5\3\6\3\6\3\6\3"+
-		"\6\7\6\67\n\6\f\6\16\6:\13\6\3\6\3\6\3\6\3\6\5\6@\n\6\3\7\3\7\3\7\3\7"+
-		"\3\b\3\b\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tO\n\t\3\t\3\t\3\t\3\t\3\t\7\t"+
-		"V\n\t\f\t\16\tY\13\t\3\n\3\n\3\n\2\13\2\4\6\b\n\f\16\20\22\2\2_\2\27\3"+
-		"\2\2\2\4\35\3\2\2\2\6\37\3\2\2\2\b\60\3\2\2\2\n?\3\2\2\2\fA\3\2\2\2\16"+
-		"E\3\2\2\2\20N\3\2\2\2\22Z\3\2\2\2\24\25\5\4\3\2\25\26\7\t\2\2\26\30\3"+
-		"\2\2\2\27\24\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3"+
-		"\2\2\2\33\36\5\20\t\2\34\36\5\6\4\2\35\33\3\2\2\2\35\34\3\2\2\2\36\5\3"+
-		"\2\2\2\37 \7\7\2\2 !\5\20\t\2!\7\3\2\2\2\"#\7\6\2\2#(\5\f\7\2$%\7\4\2"+
-		"\2%\'\5\f\7\2&$\3\2\2\2\'*\3\2\2\2(&\3\2\2\2()\3\2\2\2)+\3\2\2\2*(\3\2"+
-		"\2\2+,\7\3\2\2,\61\3\2\2\2-.\7\6\2\2./\7\b\2\2/\61\7\3\2\2\60\"\3\2\2"+
-		"\2\60-\3\2\2\2\61\t\3\2\2\2\62\63\7\6\2\2\638\5\20\t\2\64\65\7\4\2\2\65"+
-		"\67\5\20\t\2\66\64\3\2\2\2\67:\3\2\2\28\66\3\2\2\289\3\2\2\29;\3\2\2\2"+
-		":8\3\2\2\2;<\7\3\2\2<@\3\2\2\2=>\7\6\2\2>@\7\3\2\2?\62\3\2\2\2?=\3\2\2"+
-		"\2@\13\3\2\2\2AB\5\16\b\2BC\7\b\2\2CD\5\20\t\2D\r\3\2\2\2EF\5\20\t\2F"+
-		"\17\3\2\2\2GH\b\t\1\2HO\7\n\2\2IO\7\13\2\2JO\7\f\2\2KO\5\b\5\2LO\5\n\6"+
-		"\2MO\5\22\n\2NG\3\2\2\2NI\3\2\2\2NJ\3\2\2\2NK\3\2\2\2NL\3\2\2\2NM\3\2"+
-		"\2\2OW\3\2\2\2PQ\6\t\2\3QR\7\6\2\2RS\5\16\b\2ST\7\3\2\2TV\3\2\2\2UP\3"+
-		"\2\2\2VY\3\2\2\2WU\3\2\2\2WX\3\2\2\2X\21\3\2\2\2YW\3\2\2\2Z[\7\5\2\2["+
-		"\23\3\2\2\2\n\31\35(\608?NW";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\17\\\4\2\t\2\4\3"+
+		"\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\3\2\3\2\3"+
+		"\2\6\2\30\n\2\r\2\16\2\31\3\3\3\3\3\4\3\4\3\4\3\5\3\5\3\5\3\5\7\5%\n\5"+
+		"\f\5\16\5(\13\5\3\5\3\5\3\5\3\5\3\5\5\5/\n\5\3\6\3\6\3\6\3\6\7\6\65\n"+
+		"\6\f\6\16\68\13\6\3\6\3\6\3\6\3\6\5\6>\n\6\3\7\3\7\3\7\3\7\3\b\3\b\3\t"+
+		"\3\t\3\t\3\t\3\t\3\t\3\t\3\t\5\tN\n\t\3\t\3\t\3\t\3\t\3\t\7\tU\n\t\f\t"+
+		"\16\tX\13\t\3\n\3\n\3\n\2\13\2\4\6\b\n\f\16\20\22\2\2^\2\27\3\2\2\2\4"+
+		"\33\3\2\2\2\6\35\3\2\2\2\b.\3\2\2\2\n=\3\2\2\2\f?\3\2\2\2\16C\3\2\2\2"+
+		"\20M\3\2\2\2\22Y\3\2\2\2\24\25\5\4\3\2\25\26\7\b\2\2\26\30\3\2\2\2\27"+
+		"\24\3\2\2\2\30\31\3\2\2\2\31\27\3\2\2\2\31\32\3\2\2\2\32\3\3\2\2\2\33"+
+		"\34\5\6\4\2\34\5\3\2\2\2\35\36\7\t\2\2\36\37\5\20\t\2\37\7\3\2\2\2 !\7"+
+		"\6\2\2!&\5\f\7\2\"#\7\4\2\2#%\5\f\7\2$\"\3\2\2\2%(\3\2\2\2&$\3\2\2\2&"+
+		"\'\3\2\2\2\')\3\2\2\2(&\3\2\2\2)*\7\3\2\2*/\3\2\2\2+,\7\6\2\2,-\7\7\2"+
+		"\2-/\7\3\2\2. \3\2\2\2.+\3\2\2\2/\t\3\2\2\2\60\61\7\6\2\2\61\66\5\20\t"+
+		"\2\62\63\7\4\2\2\63\65\5\20\t\2\64\62\3\2\2\2\658\3\2\2\2\66\64\3\2\2"+
+		"\2\66\67\3\2\2\2\679\3\2\2\28\66\3\2\2\29:\7\3\2\2:>\3\2\2\2;<\7\6\2\2"+
+		"<>\7\3\2\2=\60\3\2\2\2=;\3\2\2\2>\13\3\2\2\2?@\5\16\b\2@A\7\7\2\2AB\5"+
+		"\20\t\2B\r\3\2\2\2CD\5\20\t\2D\17\3\2\2\2EF\b\t\1\2FN\7\n\2\2GN\7\13\2"+
+		"\2HN\7\f\2\2IN\5\b\5\2JN\5\n\6\2KN\5\22\n\2LN\5\6\4\2ME\3\2\2\2MG\3\2"+
+		"\2\2MH\3\2\2\2MI\3\2\2\2MJ\3\2\2\2MK\3\2\2\2ML\3\2\2\2NV\3\2\2\2OP\6\t"+
+		"\2\3PQ\7\6\2\2QR\5\16\b\2RS\7\3\2\2SU\3\2\2\2TO\3\2\2\2UX\3\2\2\2VT\3"+
+		"\2\2\2VW\3\2\2\2W\21\3\2\2\2XV\3\2\2\2YZ\7\5\2\2Z\23\3\2\2\2\t\31&.\66"+
+		"=MV";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {
