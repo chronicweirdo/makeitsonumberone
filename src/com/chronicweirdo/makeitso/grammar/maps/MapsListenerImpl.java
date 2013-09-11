@@ -20,7 +20,7 @@ import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
 
 public class MapsListenerImpl extends MapsBaseListener {
 
-	private Object database = new HashMap();
+	private Database database = new Database();
 	
 	/*private Object parse(@NotNull FunctionContext ctx) {
 		if (ctx.find() != null) {
@@ -165,7 +165,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 		} else if (ctx.list() != null) {
 			return parse(ctx.list());
 		} else if (ctx.database() != null) {
-			return database;
+			return database.get();
 		} else if (ctx.value() != null && ctx.key() != null) {
 			Object value = parse(ctx.value());
 			Object key = parse(ctx.key().value());
