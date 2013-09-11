@@ -32,6 +32,19 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterAssignment(@NotNull MapsParser.AssignmentContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitAssignment(@NotNull MapsParser.AssignmentContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterProgram(@NotNull MapsParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -84,6 +97,19 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterVariable(@NotNull MapsParser.VariableContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitVariable(@NotNull MapsParser.VariableContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterKey(@NotNull MapsParser.KeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -91,6 +117,19 @@ public class MapsBaseListener implements MapsListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitKey(@NotNull MapsParser.KeyContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterPrint(@NotNull MapsParser.PrintContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitPrint(@NotNull MapsParser.PrintContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

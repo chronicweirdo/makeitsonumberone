@@ -1,1 +1,16 @@
-[key1 : "value1", "key2" : ["kk1" : 5, 8 : hellooo]];
+.map1 = [key1 : "value1", "key2" : ["kk1" : 5, 8 : hellooo]];
+print "map1";
+print .map1;
+print "database";
+print .;
+.map1.key3 = 5;
+print "map1";
+print .map1;
+.map1.key1 = "hello";
+.map1.key2.child = 2000;
+print "map1";
+print .map1;
+. = [:];
+print .;
+print "map1";
+print .map1;

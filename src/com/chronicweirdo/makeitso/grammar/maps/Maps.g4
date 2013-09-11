@@ -8,7 +8,12 @@ package com.chronicweirdo.makeitso.grammar.maps;
 program : (statement ';')+;
 statement
 	: map
-	| value; 
+	| value
+	| assignment
+	| print; 
+
+assignment : variable '=' value;
+print : 'print' value;
 
 map
 	: '[' entry (',' entry)* ']'
@@ -19,7 +24,11 @@ value
 	: ID
 	| STRING
 	| NUMBER
-	| map;
+	| map
+	| variable;
+variable
+	: ('.' ID)+
+	| '.';
 
 // LEXER
 STRING : '"' ~[\"]* '"' ;

@@ -22,6 +22,17 @@ public interface MapsListener extends ParseTreeListener {
 	void exitStatement(@NotNull MapsParser.StatementContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link MapsParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void enterAssignment(@NotNull MapsParser.AssignmentContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#assignment}.
+	 * @param ctx the parse tree
+	 */
+	void exitAssignment(@NotNull MapsParser.AssignmentContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link MapsParser#program}.
 	 * @param ctx the parse tree
 	 */
@@ -66,6 +77,17 @@ public interface MapsListener extends ParseTreeListener {
 	void exitMap(@NotNull MapsParser.MapContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link MapsParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void enterVariable(@NotNull MapsParser.VariableContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#variable}.
+	 * @param ctx the parse tree
+	 */
+	void exitVariable(@NotNull MapsParser.VariableContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link MapsParser#key}.
 	 * @param ctx the parse tree
 	 */
@@ -75,4 +97,15 @@ public interface MapsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitKey(@NotNull MapsParser.KeyContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link MapsParser#print}.
+	 * @param ctx the parse tree
+	 */
+	void enterPrint(@NotNull MapsParser.PrintContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#print}.
+	 * @param ctx the parse tree
+	 */
+	void exitPrint(@NotNull MapsParser.PrintContext ctx);
 }

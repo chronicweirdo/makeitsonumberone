@@ -4,19 +4,62 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.AssignmentContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.MapContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.PrintContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.VariableContext;
 
 public class MapsListenerImpl extends MapsBaseListener {
 
+	private Object database = new HashMap();
+	
+	
 	
 	@Override
-	public void exitMap(@NotNull MapContext ctx) {
-		ConsoleUtils.print("result map", parse(ctx));
+	public void exitAssignment(@NotNull AssignmentContext ctx) {
+		Object value = parse(ctx.value());
+		if (value != null) {
+			if (ctx.variable().ID() == null || ctx.variable().ID().size() == 0) {
+				// replace whole database with value
+				database = value;
+			} else {
+				Object variable = database;
+				for (int i = 0; i < ctx.variable().ID().size()-1; i++) {
+					TerminalNode id = ctx.variable().ID(i);
+					if (variable instanceof Map) {
+						Map map = (Map) variable;
+						if (map.containsKey(id.getText())) {
+							variable = map.get(id.getText());
+						} else {
+							Map newmap = new HashMap();
+							map.put(id.getText(), newmap);
+							variable = newmap;
+						}
+					}
+				}
+				// for last one, try to set new value in variable
+				if (variable instanceof Map) {
+					Map map = (Map) variable;
+					map.put(ctx.variable().ID(ctx.variable().ID().size()-1).getText(), value);
+				}
+			}
+		}
+	}
+
+	@Override
+	public void exitPrint(@NotNull PrintContext ctx) {
+		Object value = parse(ctx.value());
+		if (value instanceof Map) {
+			ConsoleUtils.print((Map) value);
+		} else {
+			ConsoleUtils.print(value);
+		}
 	}
 	
 	public Object parse(@NotNull MapContext ctx) {
@@ -52,8 +95,27 @@ public class MapsListenerImpl extends MapsBaseListener {
 			}
 		} else if (ctx.map() != null) {
 			return parse(ctx.map());
+		} else if (ctx.variable() != null) {
+			return parse(ctx.variable());
 		}
 		return null;
+	}
+	
+	private Object parse(@NotNull VariableContext ctx) {
+		Object value = database;
+		for (TerminalNode id: ctx.ID()) {
+			if (value instanceof Map) {
+				Map map = (Map) value;
+				if (map.containsKey(id.getText())) {
+					value = map.get(id.getText());
+				} else {
+					return null;
+				}
+			} else {
+				return null;
+			}
+		}
+		return value;
 	}
 	
 	private String removeQuotes(String s) {
