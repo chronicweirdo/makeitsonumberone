@@ -1,7 +1,11 @@
 package com.chronicweirdo.makeitso.grammar.maps;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.TerminalNode;
@@ -9,7 +13,10 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 import com.chronicweirdo.makeitso.ConsoleUtils;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.AssignmentContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FindContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ListContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.MapContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.PrintContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
@@ -19,7 +26,41 @@ public class MapsListenerImpl extends MapsBaseListener {
 
 	private Object database = new HashMap();
 	
+	private Object parse(@NotNull FunctionContext ctx) {
+		if (ctx.find() != null) {
+			return parse(ctx.find());
+		}
+		return null;
+	}
 	
+	private Object parse(@NotNull FindContext ctx) {
+		Pattern pattern = Pattern.compile(removeQuotes(ctx.STRING().getText()));
+		Object value = parse(ctx.value());
+		return find(value, pattern);
+	}
+	
+	private List find(Object source, Pattern pattern) {
+		List result = new ArrayList();
+		if (source instanceof Map) {
+			for (Map.Entry<Object, Object> entry: ((Map<Object, Object>) source).entrySet()) {
+				Matcher matcher = pattern.matcher(entry.getKey().toString());
+				if (matcher.matches()) {
+					result.add(entry.getValue());
+				}
+				result.addAll(find(entry.getValue(), pattern));
+			}
+		} else if (source instanceof List) {
+			for (Object entry: (List) source) {
+				result.addAll(find(entry, pattern));
+			}
+		} else {
+			Matcher matcher = pattern.matcher(source.toString());
+			if (matcher.matches()) {
+				result.add(source);
+			}
+		}
+		return result;
+	}
 	
 	@Override
 	public void exitAssignment(@NotNull AssignmentContext ctx) {
@@ -68,10 +109,25 @@ public class MapsListenerImpl extends MapsBaseListener {
 			for (EntryContext entry: ctx.entry()) {
 				Object key = parse(entry.key());
 				Object value = parse(entry.value());
-				map.put(key, value);
+				if (key != null && value != null) {
+					map.put(key, value);
+				}
 			}
 		}
 		return map;
+	}
+	
+	public Object parse(@NotNull ListContext ctx) {
+		List list = new ArrayList();
+		if (ctx.value() != null && ctx.value().size() > 0) {
+			for (ValueContext vctx: ctx.value()) {
+				Object value = parse(vctx);
+				if (value != null) {
+					list.add(value);
+				}
+			}
+		}
+		return list;
 	}
 
 	public Object parse(@NotNull KeyContext ctx) {
@@ -97,6 +153,10 @@ public class MapsListenerImpl extends MapsBaseListener {
 			return parse(ctx.map());
 		} else if (ctx.variable() != null) {
 			return parse(ctx.variable());
+		} else if (ctx.list() != null) {
+			return parse(ctx.list());
+		} else if (ctx.function() != null) {
+			return parse(ctx.function());
 		}
 		return null;
 	}

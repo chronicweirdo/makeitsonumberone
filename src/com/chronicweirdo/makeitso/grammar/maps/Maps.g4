@@ -7,17 +7,22 @@ package com.chronicweirdo.makeitso.grammar.maps;
 
 program : (statement ';')+;
 statement
-	: map
-	| value
-	| assignment
-	| print; 
+	: assignment
+	| print
+	| function;
+function
+	: find;
 
 assignment : variable '=' value;
 print : 'print' value;
+find : 'find' value STRING;
 
 map
 	: '[' entry (',' entry)* ']'
 	| '[' ':' ']';
+list
+	: '[' value (',' value)* ']'
+	| '[' ']';
 entry : key ':' value;
 key : value;
 value
@@ -25,7 +30,9 @@ value
 	| STRING
 	| NUMBER
 	| map
-	| variable;
+	| list
+	| variable
+	| '(' function ')';
 variable
 	: ('.' ID)+
 	| '.';
