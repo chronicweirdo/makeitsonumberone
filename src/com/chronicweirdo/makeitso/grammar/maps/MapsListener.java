@@ -22,17 +22,6 @@ public interface MapsListener extends ParseTreeListener {
 	void exitStatement(@NotNull MapsParser.StatementContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link MapsParser#assignment}.
-	 * @param ctx the parse tree
-	 */
-	void enterAssignment(@NotNull MapsParser.AssignmentContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#assignment}.
-	 * @param ctx the parse tree
-	 */
-	void exitAssignment(@NotNull MapsParser.AssignmentContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link MapsParser#program}.
 	 * @param ctx the parse tree
 	 */
@@ -88,15 +77,15 @@ public interface MapsListener extends ParseTreeListener {
 	void exitList(@NotNull MapsParser.ListContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link MapsParser#variable}.
+	 * Enter a parse tree produced by {@link MapsParser#database}.
 	 * @param ctx the parse tree
 	 */
-	void enterVariable(@NotNull MapsParser.VariableContext ctx);
+	void enterDatabase(@NotNull MapsParser.DatabaseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MapsParser#variable}.
+	 * Exit a parse tree produced by {@link MapsParser#database}.
 	 * @param ctx the parse tree
 	 */
-	void exitVariable(@NotNull MapsParser.VariableContext ctx);
+	void exitDatabase(@NotNull MapsParser.DatabaseContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MapsParser#key}.
@@ -110,17 +99,6 @@ public interface MapsListener extends ParseTreeListener {
 	void exitKey(@NotNull MapsParser.KeyContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link MapsParser#find}.
-	 * @param ctx the parse tree
-	 */
-	void enterFind(@NotNull MapsParser.FindContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#find}.
-	 * @param ctx the parse tree
-	 */
-	void exitFind(@NotNull MapsParser.FindContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link MapsParser#print}.
 	 * @param ctx the parse tree
 	 */
@@ -130,15 +108,4 @@ public interface MapsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitPrint(@NotNull MapsParser.PrintContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MapsParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunction(@NotNull MapsParser.FunctionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#function}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunction(@NotNull MapsParser.FunctionContext ctx);
 }

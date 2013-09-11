@@ -32,19 +32,6 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterAssignment(@NotNull MapsParser.AssignmentContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitAssignment(@NotNull MapsParser.AssignmentContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterProgram(@NotNull MapsParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -110,13 +97,13 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterVariable(@NotNull MapsParser.VariableContext ctx) { }
+	@Override public void enterDatabase(@NotNull MapsParser.DatabaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitVariable(@NotNull MapsParser.VariableContext ctx) { }
+	@Override public void exitDatabase(@NotNull MapsParser.DatabaseContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -136,19 +123,6 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterFind(@NotNull MapsParser.FindContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFind(@NotNull MapsParser.FindContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterPrint(@NotNull MapsParser.PrintContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -156,19 +130,6 @@ public class MapsBaseListener implements MapsListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitPrint(@NotNull MapsParser.PrintContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFunction(@NotNull MapsParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunction(@NotNull MapsParser.FunctionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

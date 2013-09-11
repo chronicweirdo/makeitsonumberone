@@ -7,15 +7,10 @@ package com.chronicweirdo.makeitso.grammar.maps;
 
 program : (statement ';')+;
 statement
-	: assignment
-	| print
-	| function;
-function
-	: find;
+	: value
+	| print;
 
-assignment : variable '=' value;
 print : 'print' value;
-find : 'find' value STRING;
 
 map
 	: '[' entry (',' entry)* ']'
@@ -26,16 +21,14 @@ list
 entry : key ':' value;
 key : value;
 value
-	: ID
-	| STRING
+	: STRING
+	| ID
 	| NUMBER
 	| map
 	| list
-	| variable
-	| '(' function ')';
-variable
-	: ('.' ID)+
-	| '.';
+	| database
+	| value '[' key ']' ;
+database : '_';
 
 // LEXER
 STRING : '"' ~[\"]* '"' ;
