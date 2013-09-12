@@ -12,11 +12,18 @@ statement
 function
 	: functionLong
 	| functionShort
-	//| ID ('.' ID)* '=' value // shorthand set function
-	//| ID ('.' ID)* // shorthand get function
+	| functionSet
+	| functionGet 
 	;
+	
 functionLong : '|' value;
-functionShort : '(' value value* ')'; // shorthand functions
+functionShort : '(' key value* ')'; // shorthand functions
+functionSet : path '=' value; // shorthand set function
+functionGet : path; // shorthand get function
+	
+path
+	: '.' key ('.' key)*
+	| '.';
 	
 map
 	: '[' entry (',' entry)* ']'
@@ -25,20 +32,20 @@ list
 	: '[' value (',' value)* ']'
 	| '[' ']';
 entry : key ':' value;
-key : value;
+key : value | ID;
 value
 	: STRING
-	| ID
 	| NUMBER
 	| map
 	| list
+	| function
 	| value '[' key ']'
-	| function;
+	;
 
 // LEXER
 STRING : '"' ~[\"]* '"' ;
 ID     : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-NUMBER    : ('0'..'9'|'.')+;
+NUMBER    : ('0'..'9')+ ('.'('0'..'9')+)?;
 BLOCK_COMMENT : '/*' .*? '*/' -> channel(HIDDEN);
 LINE_COMMENT : '//' ~[\r\n]* -> channel(HIDDEN);
 WS : [ \r\t\n]+ -> channel(HIDDEN);

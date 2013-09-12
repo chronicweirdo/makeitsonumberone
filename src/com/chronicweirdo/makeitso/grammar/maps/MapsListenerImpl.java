@@ -8,13 +8,14 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.misc.NotNull;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
-import com.chronicweirdo.makeitso.ConsoleUtils;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ListContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.MapContext;
+import com.chronicweirdo.makeitso.grammar.maps.MapsParser.PathContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.StatementContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
 
@@ -146,14 +147,17 @@ public class MapsListenerImpl extends MapsBaseListener {
 	}
 
 	public Object parse(@NotNull KeyContext ctx) {
-		return parse(ctx.value());
+		if (ctx.value() != null) {
+			return parse(ctx.value());
+		} else if (ctx.ID() != null){
+			return ctx.ID().getText();
+		}
+		return null;
 	}
 
 	public Object parse(@NotNull ValueContext ctx) {
 		if (ctx.STRING() != null) {
 			return removeQuotes(ctx.STRING().getText());
-		} else if (ctx.ID() != null) {
-			return ctx.ID().getText();
 		} else if (ctx.NUMBER() != null) {
 			try {
 				return Long.parseLong(ctx.NUMBER().getText());
@@ -205,6 +209,17 @@ public class MapsListenerImpl extends MapsBaseListener {
 		}
 		return null;
 	}
+	
+	private List parse(@NotNull PathContext ctx) {
+		List path = new ArrayList();
+		if (ctx.key() != null) {
+			for (KeyContext kctx: ctx.key()) {
+				path.add(parse(kctx));
+			}
+		}
+		return path;
+	}
+	
 	private Object parse(@NotNull FunctionContext ctx) {
 		if (ctx.functionLong() != null) {
 			Object value = parse(ctx.functionLong().value());
@@ -213,12 +228,19 @@ public class MapsListenerImpl extends MapsBaseListener {
 				return functions.function(map);
 			}
 		} else if (ctx.functionShort() != null) {
-			String function = parse(ctx.functionShort().value(0)).toString();
+			String function = parse(ctx.functionShort().key()).toString();
 			List parameters = new ArrayList();
-			for (int i = 1; i < ctx.functionShort().value().size(); i++) {
+			for (int i = 0; i < ctx.functionShort().value().size(); i++) {
 				parameters.add(parse(ctx.functionShort().value(i)));
 			}
 			return functions.function(function, parameters);
+		} else if (ctx.functionGet() != null) {
+			List path = parse(ctx.functionGet().path());
+			return functions.get(path);
+		} else if (ctx.functionSet() != null) {
+			List path = parse(ctx.functionSet().path());
+			Object value = parse(ctx.functionSet().value());
+			return functions.set(path, value);
 		}
 		return null;
 	}
