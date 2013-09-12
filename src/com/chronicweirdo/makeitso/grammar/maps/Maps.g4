@@ -17,13 +17,9 @@ function
 	;
 	
 functionLong : '|' value;
-functionShort : '(' key value* ')'; // shorthand functions
-functionSet : path '=' value; // shorthand set function
-functionGet : path; // shorthand get function
-	
-path
-	: '.' key ('.' key)*
-	| '.';
+functionShort : '(' ID value* ')'; // shorthand functions
+functionSet : (ID | '.') ('[' key ']')* '=' value; // shorthand set function
+functionGet: ID | '.'; // shorthand get function
 	
 map
 	: '[' entry (',' entry)* ']'
@@ -32,7 +28,7 @@ list
 	: '[' value (',' value)* ']'
 	| '[' ']';
 entry : key ':' value;
-key : value | ID;
+key : value;
 value
 	: STRING
 	| NUMBER
@@ -43,7 +39,9 @@ value
 	;
 
 // LEXER
-STRING : '"' ~[\"]* '"' ;
+STRING
+	: '"' ~[\"]* '"'
+	| '\''  ~[\\']* '\'';
 ID     : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 NUMBER    : ('0'..'9')+ ('.'('0'..'9')+)?;
 BLOCK_COMMENT : '/*' .*? '*/' -> channel(HIDDEN);

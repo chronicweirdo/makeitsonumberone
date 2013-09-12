@@ -8,14 +8,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.misc.NotNull;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ListContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.MapContext;
-import com.chronicweirdo.makeitso.grammar.maps.MapsParser.PathContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.StatementContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
 
@@ -149,8 +147,6 @@ public class MapsListenerImpl extends MapsBaseListener {
 	public Object parse(@NotNull KeyContext ctx) {
 		if (ctx.value() != null) {
 			return parse(ctx.value());
-		} else if (ctx.ID() != null){
-			return ctx.ID().getText();
 		}
 		return null;
 	}
@@ -210,7 +206,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 		return null;
 	}
 	
-	private List parse(@NotNull PathContext ctx) {
+	/*private List parse(@NotNull PathContext ctx) {
 		List path = new ArrayList();
 		if (ctx.key() != null) {
 			for (KeyContext kctx: ctx.key()) {
@@ -218,7 +214,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 			}
 		}
 		return path;
-	}
+	}*/
 	
 	private Object parse(@NotNull FunctionContext ctx) {
 		if (ctx.functionLong() != null) {
@@ -228,17 +224,26 @@ public class MapsListenerImpl extends MapsBaseListener {
 				return functions.function(map);
 			}
 		} else if (ctx.functionShort() != null) {
-			String function = parse(ctx.functionShort().key()).toString();
+			String function = ctx.functionShort().ID().getText();
 			List parameters = new ArrayList();
 			for (int i = 0; i < ctx.functionShort().value().size(); i++) {
 				parameters.add(parse(ctx.functionShort().value(i)));
 			}
 			return functions.function(function, parameters);
 		} else if (ctx.functionGet() != null) {
-			List path = parse(ctx.functionGet().path());
+			List path = new ArrayList();
+			if (ctx.functionGet().ID() != null) {
+				path.add(ctx.functionGet().ID().getText());
+			}
 			return functions.get(path);
 		} else if (ctx.functionSet() != null) {
-			List path = parse(ctx.functionSet().path());
+			List path = new ArrayList();
+			if (ctx.functionSet().ID() != null) {
+				path.add(ctx.functionSet().ID().getText());
+			}
+			for (KeyContext kctx: ctx.functionSet().key()) {
+				path.add(parse(kctx));
+			}
 			Object value = parse(ctx.functionSet().value());
 			return functions.set(path, value);
 		}
@@ -273,6 +278,8 @@ public class MapsListenerImpl extends MapsBaseListener {
 	*/
 	private String removeQuotes(String s) {
 		if (s.startsWith("\"") && s.endsWith("\"")) {
+			return s.substring(1, s.length() - 1);
+		} else if (s.startsWith("'") && s.endsWith("'")) {
 			return s.substring(1, s.length() - 1);
 		}
 		return s;

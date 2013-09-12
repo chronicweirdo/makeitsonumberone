@@ -19,71 +19,6 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterList(@NotNull MapsParser.ListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitList(@NotNull MapsParser.ListContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFunctionSet(@NotNull MapsParser.FunctionSetContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunctionSet(@NotNull MapsParser.FunctionSetContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterFunction(@NotNull MapsParser.FunctionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitFunction(@NotNull MapsParser.FunctionContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterStatement(@NotNull MapsParser.StatementContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -91,6 +26,19 @@ public class MapsBaseListener implements MapsListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitStatement(@NotNull MapsParser.StatementContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -123,13 +71,13 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterPath(@NotNull MapsParser.PathContext ctx) { }
+	@Override public void enterValue(@NotNull MapsParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitPath(@NotNull MapsParser.PathContext ctx) { }
+	@Override public void exitValue(@NotNull MapsParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -149,13 +97,13 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterValue(@NotNull MapsParser.ValueContext ctx) { }
+	@Override public void enterList(@NotNull MapsParser.ListContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitValue(@NotNull MapsParser.ValueContext ctx) { }
+	@Override public void exitList(@NotNull MapsParser.ListContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -175,6 +123,32 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterFunctionSet(@NotNull MapsParser.FunctionSetContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunctionSet(@NotNull MapsParser.FunctionSetContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterKey(@NotNull MapsParser.KeyContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -182,6 +156,19 @@ public class MapsBaseListener implements MapsListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitKey(@NotNull MapsParser.KeyContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterFunction(@NotNull MapsParser.FunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunction(@NotNull MapsParser.FunctionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
