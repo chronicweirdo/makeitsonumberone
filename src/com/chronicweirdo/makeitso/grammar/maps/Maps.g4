@@ -9,8 +9,15 @@ program : (statement ';')+;
 statement
 	: function;
 
-function : '|' value;
-
+function
+	: functionLong
+	| functionShort
+	//| ID ('.' ID)* '=' value // shorthand set function
+	//| ID ('.' ID)* // shorthand get function
+	;
+functionLong : '|' value;
+functionShort : '(' value value* ')'; // shorthand functions
+	
 map
 	: '[' entry (',' entry)* ']'
 	| '[' ':' ']';

@@ -34,7 +34,11 @@ public class TestMapsInterpreter {
 		ParserRuleContext tree = parser.program();
 	}
 	private static void readLoop() throws Exception {
+		Database database = new Database();
+		Functions functions = new BasicFunctions();
+		functions.setDatabase(database);
 		MapsListenerImpl listener = new MapsListenerImpl();
+		listener.setFunctions(functions);
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		while (true) {

@@ -20,7 +20,11 @@ import com.chronicweirdo.makeitso.grammar.maps.MapsParser.ValueContext;
 
 public class MapsListenerImpl extends MapsBaseListener {
 
-	private Database database = new Database();
+	private Functions functions;
+	
+	public void setFunctions(Functions functions) {
+		this.functions = functions;
+	}
 	
 	/*private Object parse(@NotNull FunctionContext ctx) {
 		if (ctx.find() != null) {
@@ -202,32 +206,19 @@ public class MapsListenerImpl extends MapsBaseListener {
 		return null;
 	}
 	private Object parse(@NotNull FunctionContext ctx) {
-		Object value = parse(ctx.value());
-		if (value instanceof Map) {
-			Map map = (Map) value;
-			return function(map);
-		}
-		return null;
-	}
-	private Object function(Map map) {
-		String function = (String) map.get("function");
-		if (function.equals("assign")) {
-			List path = (List) map.get("path");
-			Object value = map.get("value");
-			return database.set(path, value);
-		} else if (function.equals("print")) {
-			Object value = map.get("value");
+		if (ctx.functionLong() != null) {
+			Object value = parse(ctx.functionLong().value());
 			if (value instanceof Map) {
-				ConsoleUtils.print((Map) value);
-			} else {
-				ConsoleUtils.print(value);
+				Map map = (Map) value;
+				return functions.function(map);
 			}
-			return value;
-		} else if (function.equals("exit")) {
-			System.exit(0);
-		} else if (function.equals("get")) {
-			List path = (List) map.get("path");
-			return database.get(path);
+		} else if (ctx.functionShort() != null) {
+			String function = parse(ctx.functionShort().value(0)).toString();
+			List parameters = new ArrayList();
+			for (int i = 1; i < ctx.functionShort().value().size(); i++) {
+				parameters.add(parse(ctx.functionShort().value(i)));
+			}
+			return functions.function(function, parameters);
 		}
 		return null;
 	}

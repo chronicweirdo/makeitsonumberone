@@ -32,6 +32,19 @@ public class MapsBaseListener implements MapsListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunctionLong(@NotNull MapsParser.FunctionLongContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterProgram(@NotNull MapsParser.ProgramContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -91,6 +104,19 @@ public class MapsBaseListener implements MapsListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitList(@NotNull MapsParser.ListContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFunctionShort(@NotNull MapsParser.FunctionShortContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
