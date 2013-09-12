@@ -38,28 +38,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 		return find(value, pattern);
 	}*/
 	
-	private List find(Object source, Pattern pattern) {
-		List result = new ArrayList();
-		if (source instanceof Map) {
-			for (Map.Entry<Object, Object> entry: ((Map<Object, Object>) source).entrySet()) {
-				Matcher matcher = pattern.matcher(entry.getKey().toString());
-				if (matcher.matches()) {
-					result.add(entry.getValue());
-				}
-				result.addAll(find(entry.getValue(), pattern));
-			}
-		} else if (source instanceof List) {
-			for (Object entry: (List) source) {
-				result.addAll(find(entry, pattern));
-			}
-		} else {
-			Matcher matcher = pattern.matcher(source.toString());
-			if (matcher.matches()) {
-				result.add(source);
-			}
-		}
-		return result;
-	}
+	
 	
 	
 	

@@ -6,9 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
+import com.chronicweirdo.makeitso.file.FileUtils;
+import com.chronicweirdo.protection.SerializationUtil;
 
 public class Database {
 
+	private String path;
 	private Map data = new HashMap();
 	
 	public Object set(List path, Object value) {
@@ -108,6 +111,48 @@ public class Database {
 			}
 		}
 		return value;
+	}
+	
+	public boolean save() {
+		return save(null);
+	}
+	public boolean save(String path) {
+		if (path == null) {
+			if (this.path == null) return false;
+			path = this.path;
+		} else {
+			this.path = path;
+		}
+		try {
+			byte[] serialized = SerializationUtil.serialize(data);
+			FileUtils.writeFile(path, serialized);
+			this.path = path;
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+		
+	public boolean load() {
+		return load(null);
+	}
+	public boolean load(String path) {
+		if (path == null) {
+			if (this.path == null) return false;
+			path = this.path;
+		} else {
+			this.path = path;
+		}
+		try {
+			byte[] file = FileUtils.readFile(path);
+			data = (Map) SerializationUtil.deserialize(file);
+			this.path = path;
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 	
 	public static void main(String[] args) {

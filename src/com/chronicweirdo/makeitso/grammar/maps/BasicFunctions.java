@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
 
 public class BasicFunctions implements Functions {
 
+	private static final String F_SAVE = "save";
+	private static final String F_LOAD = "load";
+	
 	private Database database;
 	
 	@Override
@@ -46,6 +51,18 @@ public class BasicFunctions implements Functions {
 		} else if (function.equals(F_GET)) {
 			List path = path(map.get(P_PATH));
 			return database.get(path);
+		} else if (function.equals(F_SAVE)) {
+			if (map.containsKey(P_PATH)) {
+				return database.save(map.get(P_PATH).toString());
+			} else {
+				return database.save();
+			}
+		} else if (function.equals(F_LOAD)) {
+			if (map.containsKey(P_PATH)) {
+				return database.load(map.get(P_PATH).toString());
+			} else {
+				return database.load();
+			}
 		}
 		return null;
 	}
@@ -73,8 +90,37 @@ public class BasicFunctions implements Functions {
 		} else if (name.equals(F_PRINT)) {
 			if (parameters.size() != 1) return null;
 			return function(map(P_FUNCTION, name, P_VALUE, parameters.get(0)));
+		} else if (name.equals(F_SAVE) || name.equals(F_LOAD)) {
+			if (parameters.size() == 0) {
+				return function(map(P_FUNCTION, name));
+			} else if (parameters.size() == 1) {
+				return function(map(P_FUNCTION, name, P_PATH, parameters.get(0)));
+			}
 		}
 		return null;
+	}
+	
+	private List find(Object source, Pattern pattern) {
+		List result = new ArrayList();
+		if (source instanceof Map) {
+			for (Map.Entry<Object, Object> entry: ((Map<Object, Object>) source).entrySet()) {
+				Matcher matcher = pattern.matcher(entry.getKey().toString());
+				if (matcher.matches()) {
+					result.add(entry.getValue());
+				}
+				result.addAll(find(entry.getValue(), pattern));
+			}
+		} else if (source instanceof List) {
+			for (Object entry: (List) source) {
+				result.addAll(find(entry, pattern));
+			}
+		} else {
+			Matcher matcher = pattern.matcher(source.toString());
+			if (matcher.matches()) {
+				result.add(source);
+			}
+		}
+		return result;
 	}
 
 	@Override
