@@ -1,4 +1,4 @@
-// Generated from src\com\chronicweirdo\makeitso\grammar\maps\Maps.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/makeitso/grammar/maps/Maps.g4 by ANTLR 4.1
 
 package com.chronicweirdo.makeitso.grammar.maps;
 
@@ -75,17 +75,6 @@ public interface MapsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitList(@NotNull MapsParser.ListContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MapsParser#database}.
-	 * @param ctx the parse tree
-	 */
-	void enterDatabase(@NotNull MapsParser.DatabaseContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#database}.
-	 * @param ctx the parse tree
-	 */
-	void exitDatabase(@NotNull MapsParser.DatabaseContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MapsParser#key}.

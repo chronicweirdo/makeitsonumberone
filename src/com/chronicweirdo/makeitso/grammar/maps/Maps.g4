@@ -25,10 +25,8 @@ value
 	| NUMBER
 	| map
 	| list
-	| database
 	| value '[' key ']'
 	| function;
-database : '_';
 
 // LEXER
 STRING : '"' ~[\"]* '"' ;

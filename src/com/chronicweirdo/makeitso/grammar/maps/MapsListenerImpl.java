@@ -164,8 +164,6 @@ public class MapsListenerImpl extends MapsBaseListener {
 			return parse(ctx.map());
 		} else if (ctx.list() != null) {
 			return parse(ctx.list());
-		} else if (ctx.database() != null) {
-			return database.get();
 		} else if (ctx.value() != null && ctx.key() != null) {
 			Object value = parse(ctx.value());
 			Object key = parse(ctx.key().value());
@@ -214,12 +212,9 @@ public class MapsListenerImpl extends MapsBaseListener {
 	private Object function(Map map) {
 		String function = (String) map.get("function");
 		if (function.equals("assign")) {
-			String name = (String) map.get("name");
+			List path = (List) map.get("path");
 			Object value = map.get("value");
-			if (database instanceof Map) {
-				((Map) database).put(name, value);
-				return value;
-			}
+			return database.set(path, value);
 		} else if (function.equals("print")) {
 			Object value = map.get("value");
 			if (value instanceof Map) {
@@ -230,6 +225,9 @@ public class MapsListenerImpl extends MapsBaseListener {
 			return value;
 		} else if (function.equals("exit")) {
 			System.exit(0);
+		} else if (function.equals("get")) {
+			List path = (List) map.get("path");
+			return database.get(path);
 		}
 		return null;
 	}
