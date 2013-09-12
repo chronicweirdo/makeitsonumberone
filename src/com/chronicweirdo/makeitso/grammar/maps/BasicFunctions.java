@@ -1,5 +1,6 @@
 package com.chronicweirdo.makeitso.grammar.maps;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,14 +14,14 @@ public class BasicFunctions implements Functions {
 
 	private static final String F_SAVE = "save";
 	private static final String F_LOAD = "load";
-	
+
 	private Database database;
-	
+
 	@Override
 	public void setDatabase(Database database) {
 		this.database = database;
 	}
-	
+
 	private List path(Object object) {
 		if (object instanceof List) {
 			return (List) object;
@@ -66,12 +67,13 @@ public class BasicFunctions implements Functions {
 		}
 		return null;
 	}
-	
-	private Map map(Object ... object) {
-		if (object.length % 2 != 0) return null;
+
+	private Map map(Object... object) {
+		if (object.length % 2 != 0)
+			return null;
 		Map map = new HashMap();
 		for (int i = 0; i < object.length; i += 2) {
-			map.put(object[i], object[i+1]);
+			map.put(object[i], object[i + 1]);
 		}
 		return map;
 	}
@@ -79,16 +81,21 @@ public class BasicFunctions implements Functions {
 	@Override
 	public Object function(String name, List parameters) {
 		if (name.equals(F_GET)) {
-			if (parameters.size() != 1) return null;
+			if (parameters.size() != 1)
+				return null;
 			return function(map(P_FUNCTION, name, P_PATH, parameters.get(0)));
 		} else if (name.equals(F_SET)) {
-			if (parameters.size() != 2) return null;
-			return function(map(P_FUNCTION, name, P_PATH, parameters.get(0), P_VALUE, parameters.get(1)));
+			if (parameters.size() != 2)
+				return null;
+			return function(map(P_FUNCTION, name, P_PATH, parameters.get(0),
+					P_VALUE, parameters.get(1)));
 		} else if (name.equals(F_EXIT)) {
-			if (parameters.size() != 0) return null;
+			if (parameters.size() != 0)
+				return null;
 			return function(map(P_FUNCTION, name));
 		} else if (name.equals(F_PRINT)) {
-			if (parameters.size() != 1) return null;
+			if (parameters.size() != 1)
+				return null;
 			return function(map(P_FUNCTION, name, P_VALUE, parameters.get(0)));
 		} else if (name.equals(F_SAVE) || name.equals(F_LOAD)) {
 			if (parameters.size() == 0) {
@@ -99,11 +106,23 @@ public class BasicFunctions implements Functions {
 		}
 		return null;
 	}
-	
+
+	private String readPassword() throws Exception {
+		Console cons = System.console();
+		System.out.println(cons);
+		char[] passwd;
+		if ((cons = System.console()) != null
+				&& (passwd = cons.readPassword("[%s]", "Password:")) != null) {
+			java.util.Arrays.fill(passwd, ' ');
+		}
+		return null;
+	}
+
 	private List find(Object source, Pattern pattern) {
 		List result = new ArrayList();
 		if (source instanceof Map) {
-			for (Map.Entry<Object, Object> entry: ((Map<Object, Object>) source).entrySet()) {
+			for (Map.Entry<Object, Object> entry : ((Map<Object, Object>) source)
+					.entrySet()) {
 				Matcher matcher = pattern.matcher(entry.getKey().toString());
 				if (matcher.matches()) {
 					result.add(entry.getValue());
@@ -111,7 +130,7 @@ public class BasicFunctions implements Functions {
 				result.addAll(find(entry.getValue(), pattern));
 			}
 		} else if (source instanceof List) {
-			for (Object entry: (List) source) {
+			for (Object entry : (List) source) {
 				result.addAll(find(entry, pattern));
 			}
 		} else {
@@ -138,4 +157,8 @@ public class BasicFunctions implements Functions {
 		return function(map(P_FUNCTION, F_GET, P_PATH, path));
 	}
 
+	public static void main(String[] args) throws Exception {
+		BasicFunctions f = new BasicFunctions();
+		f.readPassword();
+	}
 }

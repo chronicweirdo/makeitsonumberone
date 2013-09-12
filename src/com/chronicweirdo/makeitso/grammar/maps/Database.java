@@ -7,11 +7,15 @@ import java.util.Map;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
 import com.chronicweirdo.makeitso.file.FileUtils;
+import com.chronicweirdo.protection.EncryptionUtils;
 import com.chronicweirdo.protection.SerializationUtil;
 
 public class Database {
 
+	private static final byte[] SALT = "7jlErMXhVAhIDKWOgIxp".getBytes();
+	
 	private String path;
+	private String password;
 	private Map data = new HashMap();
 	
 	public Object set(List path, Object value) {
@@ -113,46 +117,46 @@ public class Database {
 		return value;
 	}
 	
-	public boolean save() {
-		return save(null);
+	public void password(String password) {
+		this.password = password;
 	}
-	public boolean save(String path) {
-		if (path == null) {
-			if (this.path == null) return false;
-			path = this.path;
-		} else {
-			this.path = path;
-		}
+	
+	public boolean save() {
+		if (path == null) return false;
 		try {
-			byte[] serialized = SerializationUtil.serialize(data);
-			FileUtils.writeFile(path, serialized);
-			this.path = path;
+			byte[] bytes = SerializationUtil.serialize(data);
+			if (password != null) {
+				bytes = EncryptionUtils.encrypt(EncryptionUtils.key(password, SALT), bytes);
+			}
+			FileUtils.writeFile(path, bytes);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	public boolean save(String path) {
+		this.path = path;
+		return save();
 	}
 		
 	public boolean load() {
-		return load(null);
-	}
-	public boolean load(String path) {
-		if (path == null) {
-			if (this.path == null) return false;
-			path = this.path;
-		} else {
-			this.path = path;
-		}
+		if (path == null) return false;
 		try {
-			byte[] file = FileUtils.readFile(path);
-			data = (Map) SerializationUtil.deserialize(file);
-			this.path = path;
+			byte[] bytes = FileUtils.readFile(path);
+			if (password != null) {
+				bytes = EncryptionUtils.encrypt(EncryptionUtils.key(password, SALT), bytes);
+			}
+			data = (Map) SerializationUtil.deserialize(bytes);
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
+	}
+	public boolean load(String path) {
+		this.path = path;
+		return load();
 	}
 	
 	public static void main(String[] args) {
