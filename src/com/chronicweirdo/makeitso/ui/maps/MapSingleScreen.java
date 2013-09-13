@@ -1,8 +1,8 @@
 package com.chronicweirdo.makeitso.ui.maps;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import javax.swing.UnsupportedLookAndFeelException;
 
 public class MapSingleScreen extends JPanel {
 	
@@ -18,7 +17,8 @@ public class MapSingleScreen extends JPanel {
 	private JPanel valuePanel;
 	
 	public MapSingleScreen() {
-		super(new GridBagLayout());
+		//super(new GridBagLayout());
+		super(new BorderLayout());
 
 		pathPanel = new PathPanel();
 		pathPanel.setBackground(Color.green);
@@ -36,21 +36,20 @@ public class MapSingleScreen extends JPanel {
 		valuePanel.add(new JLabel("value panel"));
         
         //Add Components to this panel.
-        GridBagConstraints c = new GridBagConstraints();
-        c.gridwidth = GridBagConstraints.REMAINDER;
+        //GridBagConstraints c = new GridBagConstraints();
+        //c.gridwidth = GridBagConstraints.REMAINDER;
 
         //c.fill = GridBagConstraints.BOTH;
-        //add(textField, c);
-
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 1.0;
-        add(pathPanel, c);
+        //c.weightx = 1.0;
+        //c.weighty = 1.0;
+        //add(pathPanel, c);
+        add(pathPanel, BorderLayout.NORTH);
         
-        c.fill = GridBagConstraints.BOTH;
-        c.weightx = 1.0;
-        c.weighty = 3.0;
-        add(valuePanel, c);
+        //c.fill = GridBagConstraints.BOTH;
+        //c.weightx = 1.0;
+        //c.weighty = 3.0;
+        //add(valuePanel, c);
+        add(valuePanel, BorderLayout.CENTER);
 	}
 	
 	private static void createAndShowGUI() {
@@ -62,6 +61,7 @@ public class MapSingleScreen extends JPanel {
 		
         //Create and set up the window.
         JFrame frame = new JFrame("ConsoleDemo");
+        frame.setSize(new Dimension(500, 800));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add contents to the window.
