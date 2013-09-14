@@ -1,4 +1,4 @@
-package com.chronicweirdo;
+package com.chronicweirdo.makeitso;
 
 import java.lang.reflect.Array;
 

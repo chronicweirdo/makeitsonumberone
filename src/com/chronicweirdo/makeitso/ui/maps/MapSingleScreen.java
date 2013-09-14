@@ -3,24 +3,51 @@ package com.chronicweirdo.makeitso.ui.maps;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ComponentEvent;
+import java.awt.event.ComponentListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-public class MapSingleScreen extends JPanel {
+import com.chronicweirdo.makeitso.StructureUtils;
+
+public class MapSingleScreen extends JPanel implements MapNavigator {
 	
 	private PathPanel pathPanel;
-	private JPanel valuePanel;
+	private ValuePanel valuePanel;
+	private Object data;
+	private List path;
+	
+	@Override
+	public void setData(Object data) {
+		this.data = data;
+		// set path to null
+		this.path = new ArrayList();
+		pathPanel.setPath(this.path);
+		// display base object
+		valuePanel.setValue(this.path, this.data);
+	}
+	
+	@Override
+	public void setPath(List path) {
+		// set path
+		this.path = path;
+		pathPanel.setPath(this.path);
+		// display object
+		valuePanel.setValue(this.path, StructureUtils.get(data, path));
+		updateUI();
+	}
 	
 	public MapSingleScreen() {
 		//super(new GridBagLayout());
 		super(new BorderLayout());
 
-		pathPanel = new PathPanel();
+		pathPanel = new PathPanel(this);
 		pathPanel.setBackground(Color.green);
 		List path = new ArrayList();
 		path.add("accounts");
@@ -31,9 +58,8 @@ public class MapSingleScreen extends JPanel {
 		path.add("nothing");
 		pathPanel.update(path);
 		
-		valuePanel = new JPanel();
+		valuePanel = new ValuePanel(this);
 		valuePanel.setBackground(Color.red);
-		valuePanel.add(new JLabel("value panel"));
         
         //Add Components to this panel.
         //GridBagConstraints c = new GridBagConstraints();
@@ -50,6 +76,33 @@ public class MapSingleScreen extends JPanel {
         //c.weighty = 3.0;
         //add(valuePanel, c);
         add(valuePanel, BorderLayout.CENTER);
+        
+        addComponentListener(new ComponentListener() {
+
+			@Override
+			public void componentResized(ComponentEvent e) {
+				MapSingleScreen.this.pathPanel.resize();
+			}
+
+			@Override
+			public void componentMoved(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void componentShown(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void componentHidden(ComponentEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+        	
+        });
 	}
 	
 	private static void createAndShowGUI() {
@@ -61,15 +114,52 @@ public class MapSingleScreen extends JPanel {
 		
         //Create and set up the window.
         JFrame frame = new JFrame("ConsoleDemo");
-        frame.setSize(new Dimension(500, 800));
+        frame.setPreferredSize(new Dimension(500, 500));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Add contents to the window.
-        frame.add(new MapSingleScreen());
+        MapSingleScreen mss = new MapSingleScreen();
+        frame.add(mss);
 
         //Display the window.
         frame.pack();
         frame.setVisible(true);
+        
+        // initial data
+        Map map = new HashMap();
+        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder1", "file1"), 1);
+        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder1", "file2"), 2);
+        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder2", "file3"), 3);
+        StructureUtils.set(map, StructureUtils.list("folder2", "subfolder3", "file4"), 4);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file5"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file6"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file7"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file8"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file9"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file10"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file11"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file12"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file13"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file14"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file15"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file16"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file17"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file18"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file19"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file20"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file21"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file22"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file23"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file24"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file25"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file26"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file27"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file28"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file29"), 5);
+        StructureUtils.set(map, StructureUtils.list("folder2", "file30"), 5);
+        StructureUtils.set(map, StructureUtils.list("deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep"), "deep");
+        mss.setData(map);
+        mss.setPath(StructureUtils.list("folder1"));
     }
 
 	public static void main(String[] args) {

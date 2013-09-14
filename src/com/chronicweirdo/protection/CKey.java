@@ -2,7 +2,7 @@ package com.chronicweirdo.protection;
 
 import java.io.Serializable;
 
-import com.chronicweirdo.HashUtils;
+import com.chronicweirdo.makeitso.HashUtils;
 
 public class CKey implements Serializable {
 	
