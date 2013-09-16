@@ -1,0 +1,1 @@
+java -cp bin;lib\* com.chronicweirdo.makeitso.grammar.maps.TestMapsInterpreter

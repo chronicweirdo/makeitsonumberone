@@ -31,6 +31,10 @@ public class Database {
 		return StructureUtils.get(data, path);
 	}
 	
+	public Object delete(List path) {
+		return StructureUtils.delete(data, path);
+	}
+	
 	public void password(String password) {
 		this.password = password;
 	}
@@ -54,21 +58,21 @@ public class Database {
 		return save();
 	}
 		
-	public boolean load() {
+	public boolean load() throws Exception {
 		if (path == null) return false;
 		try {
 			byte[] bytes = FileUtils.readFile(path);
 			if (password != null) {
-				bytes = EncryptionUtils.encrypt(EncryptionUtils.key(password, SALT), bytes);
+				bytes = EncryptionUtils.decrypt(EncryptionUtils.key(password, SALT), bytes);
 			}
 			data = (Map) SerializationUtil.deserialize(bytes);
 			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+		} catch (Throwable e) {
+			//e.printStackTrace();
+			throw new Exception("Failed to load.", e);
 		}
 	}
-	public boolean load(String path) {
+	public boolean load(String path) throws Exception {
 		this.path = path;
 		return load();
 	}

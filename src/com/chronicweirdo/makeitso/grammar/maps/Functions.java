@@ -7,6 +7,7 @@ public interface Functions {
 	
 	public static final String F_SET = "set";
 	public static final String F_GET = "get";
+	public static final String F_DEL = "del";
 	public static final String F_PRINT = "print";
 	public static final String F_EXIT = "exit";
 	public static final String P_FUNCTION = "function";
@@ -15,13 +16,15 @@ public interface Functions {
 
 	void setDatabase(Database database);
 	
-	Object function(Map map);
+	Object function(Map map) throws Exception;
 	
-	Object function(String name, List parameters);
+	Object function(String name, List parameters) throws Exception;
 	
-	Object function(String name);
+	Object function(String name) throws Exception;
 	
-	Object set(List path, Object value);
+	Object set(List path, Object value) throws Exception;
 	
-	Object get(List path);
+	Object get(List path) throws Exception;
+
+	Object del(List path) throws Exception;
 }

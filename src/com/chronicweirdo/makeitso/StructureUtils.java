@@ -29,6 +29,29 @@ public class StructureUtils {
 		}
 		return list;
 	}
+	
+	public static Object delete(Object source, List path) {
+		Object current = source;
+		if (path != null) {
+			for (int i = 0; i < path.size()-1; i++) {
+				if (current == null) return null;
+				Object entry = path.get(i);
+				// see if we have an object there or not
+				Object temp = get(current, entry);
+				if (temp == null) {
+					return null;
+				} else {
+					current = temp;
+				}
+			}
+			// remove the last value
+			return delete(current, path.get(path.size()-1));
+		} else {
+			// do nothing if path is null
+			// we can't change the base database object
+			return null;
+		}
+	}
 
 	public static Object set(Object source, List path, Object value) {
 		Object current = source;
@@ -50,6 +73,39 @@ public class StructureUtils {
 		} else {
 			// do nothing if path is null
 			// we can't change the base database object
+			return null;
+		}
+	}
+	
+	private static Object delete(Object source, Object path) {
+		if (source instanceof List) {
+			// entry must be cast to int
+			try {
+				List list = (List) source;
+				Integer index = Integer.parseInt(path.toString());
+				if (index < 0) return null;
+				if (index < list.size()) {
+					// remove existing value
+					Object removed = list.get(index);
+					list.remove(index);
+					return removed;
+				} else {
+					return null;
+				}
+			} catch (NumberFormatException e) {
+				// could not set
+				return null;
+			}
+		} else if (source instanceof Map) {
+			Map map = (Map) source;
+			if (map.containsKey(path)) {
+				Object removed = map.get(path);
+				map.remove(path);
+				return removed;
+			}
+			return null;
+		} else {
+			// we can't remove a value from something else that list or map
 			return null;
 		}
 	}
@@ -86,6 +142,7 @@ public class StructureUtils {
 			return null;
 		}
 	}
+	
 	
 	// get the entry from source
 	// works for map or list
@@ -141,7 +198,10 @@ public class StructureUtils {
 		path.add("data");
 		path.add("complete");
 		set(map, path, 15);
+		set(map, list("new"), 14);
 		System.out.println(get(map, path));
+		ConsoleUtils.print(map);
+		delete(map, "home");
 		ConsoleUtils.print(map);
 	}
 

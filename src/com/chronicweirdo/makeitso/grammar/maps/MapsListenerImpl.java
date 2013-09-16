@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 
 import org.antlr.v4.runtime.misc.NotNull;
 
+import com.chronicweirdo.makeitso.ConsoleUtils;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.KeyContext;
@@ -196,35 +197,43 @@ public class MapsListenerImpl extends MapsBaseListener {
 	}*/
 	
 	private Object parse(@NotNull FunctionContext ctx) {
-		if (ctx.functionLong() != null) {
-			Object value = parse(ctx.functionLong().value());
-			if (value instanceof Map) {
-				Map map = (Map) value;
-				return functions.function(map);
+		try {
+			if (ctx.functionLong() != null) {
+				Object value = parse(ctx.functionLong().value());
+				if (value instanceof Map) {
+					Map map = (Map) value;
+					return functions.function(map);
+				}
+			} else if (ctx.functionShort() != null) {
+				String function = ctx.functionShort().ID().getText();
+				List parameters = new ArrayList();
+				for (int i = 0; i < ctx.functionShort().value().size(); i++) {
+					parameters.add(parse(ctx.functionShort().value(i)));
+				}
+				return functions.function(function, parameters);
+			} else if (ctx.functionGet() != null) {
+				List path = new ArrayList();
+				if (ctx.functionGet().ID() != null) {
+					path.add(ctx.functionGet().ID().getText());
+				}
+				return functions.get(path);
+			} else if (ctx.functionSet() != null) {
+				List path = new ArrayList();
+				if (ctx.functionSet().ID() != null) {
+					path.add(ctx.functionSet().ID().getText());
+				}
+				for (KeyContext kctx: ctx.functionSet().key()) {
+					path.add(parse(kctx));
+				}
+				Object value = parse(ctx.functionSet().value());
+				return functions.set(path, value);
 			}
-		} else if (ctx.functionShort() != null) {
-			String function = ctx.functionShort().ID().getText();
-			List parameters = new ArrayList();
-			for (int i = 0; i < ctx.functionShort().value().size(); i++) {
-				parameters.add(parse(ctx.functionShort().value(i)));
+		} catch (Exception e) {
+			String message = e.getMessage();
+			if (e.getCause() != null) {
+				message += "(" + e.getCause().getMessage() + ")";
 			}
-			return functions.function(function, parameters);
-		} else if (ctx.functionGet() != null) {
-			List path = new ArrayList();
-			if (ctx.functionGet().ID() != null) {
-				path.add(ctx.functionGet().ID().getText());
-			}
-			return functions.get(path);
-		} else if (ctx.functionSet() != null) {
-			List path = new ArrayList();
-			if (ctx.functionSet().ID() != null) {
-				path.add(ctx.functionSet().ID().getText());
-			}
-			for (KeyContext kctx: ctx.functionSet().key()) {
-				path.add(parse(kctx));
-			}
-			Object value = parse(ctx.functionSet().value());
-			return functions.set(path, value);
+			ConsoleUtils.print(message);
 		}
 		return null;
 	}
