@@ -1,24 +1,29 @@
 package com.chronicweirdo.makeitso.ui.maps;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.ScrollPane;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import com.chronicweirdo.makeitso.StructureUtils;
 
-public class ValuePanel extends JPanel {
+public class ValuePanel extends ScrollPane {
 
 	private Object value;
 	private List path;
 	private MapNavigator navigator;
 	
 	public ValuePanel(MapNavigator navigator) {
-		super(new BorderLayout());
+		//super(new BorderLayout());
+		//super(new GridLayout(0, 1));
 		this.navigator = navigator;
 	}
 	
@@ -39,15 +44,29 @@ public class ValuePanel extends JPanel {
 	private void displayMap() {
 		Map<Object, Object> map = (Map<Object, Object>) value;
 		this.removeAll();
-		ScrollPane scroll = new ScrollPane();
+		//ScrollPane scroll = new ScrollPane();
+		//scroll.setBackground(Color.blue);
 		JPanel content = new JPanel();
-		content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+		content.setBackground(Color.darkGray);
+		//content.setLayout(new BoxLayout(content, BoxLayout.Y_AXIS));
+		//content.setLayout(new GridLayout(0, 1));
+		content.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		int i = 0;
 		for (Map.Entry<Object, Object> entry: map.entrySet()) {
-			content.add(new PathButton(
+			c.gridx = 0;
+			c.gridy = i;
+			c.weightx = 1;
+			JButton button = new PathButton(
 					StructureUtils.duplicate(path, entry.getKey()),
-					entry.getKey().toString(), navigator));
+					entry.getKey().toString(), navigator);
+			//button.setPreferredSize(new Dimension(-1, 26));
+			content.add(button, c);
+			i++;
+			
 		}
-		scroll.add(content);
-		this.add(scroll, BorderLayout.CENTER);
+		this.add(content);
+		//this.add(scroll, BorderLayout.CENTER);
 	}
 }

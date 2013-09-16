@@ -1,16 +1,12 @@
 package com.chronicweirdo.makeitso.ui.maps;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import com.chronicweirdo.makeitso.StructureUtils;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Collections;
 
 public class PathPanel extends JPanel {
 
@@ -18,23 +14,37 @@ public class PathPanel extends JPanel {
 	private List path;
 	private List<PathButton> pathButtons;
 	private MapNavigator navigator;
+	private boolean initialized = false;
 	
 	public PathPanel(MapNavigator navigator) {
 		//super(new GridBagLayout());
-		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		//setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		//setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
+		setLayout(new GridLayout(0, 5));
 		this.navigator = navigator;
-		//this.setPreferredSize(new Dimension(10, 10));
+		this.path = StructureUtils.list();
+		this.add(new PathButton(path, "/", navigator));
+	}
+	
+	@Override
+	public void revalidate() {
+		super.revalidate();
+		resize();
 	}
 	
 	public void resize() {
-		int height = 0;
-		for (Component component: this.getComponents()) {
-			int tHeight = component.getBounds().y + component.getBounds().height;
-			if (height < tHeight) height = tHeight;
-		}
-		Dimension prefferedSize = new Dimension((int) this.getPreferredSize().getWidth(), height);
-		System.out.println(prefferedSize);
-		this.setPreferredSize(prefferedSize);
+		/*if (initialized) {
+			System.out.println("resizing");
+			int height = 0;
+			for (Component component: this.getComponents()) {
+				int tHeight = component.getBounds().y + component.getBounds().height;
+				if (height < tHeight) height = tHeight;
+			}
+			Dimension prefferedSize = new Dimension((int) this.getPreferredSize().getWidth(), height);
+			System.out.println(prefferedSize);
+			this.setPreferredSize(prefferedSize);
+		}*/
+		System.out.println(this.getSize());
 	}
 	
 	public void setPath(List path) {
@@ -48,6 +58,7 @@ public class PathPanel extends JPanel {
 			list = StructureUtils.duplicate(list, object);
 			this.add(new PathButton(list, object.toString(), navigator));
 		}
+		this.initialized = true;
 		//this.updateUI();
 		//this.resize();
 	}

@@ -3,6 +3,8 @@ package com.chronicweirdo.makeitso.ui.maps;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ComponentEvent;
 import java.awt.event.ComponentListener;
 import java.util.ArrayList;
@@ -39,15 +41,26 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
 		this.path = path;
 		pathPanel.setPath(this.path);
 		// display object
-		valuePanel.setValue(this.path, StructureUtils.get(data, path));
-		updateUI();
+		Object value = StructureUtils.get(data, path);
+		System.out.println(value.toString());
+		valuePanel.setValue(this.path, value);
+		//pathPanel.revalidate();
+		revalidate();
 	}
 	
 	public MapSingleScreen() {
-		//super(new GridBagLayout());
-		super(new BorderLayout());
-
+		super(new GridBagLayout());
+		//super(new BorderLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		
+		
+		c.gridx = 0;
+		c.gridy = 0;
+		c.weightx = 1;
+		//c.weighty = 1;
+		c.fill = GridBagConstraints.HORIZONTAL;
 		pathPanel = new PathPanel(this);
+		//pathPanel.setPreferredSize(new Dimension(500, 32));
 		pathPanel.setBackground(Color.green);
 		List path = new ArrayList();
 		path.add("accounts");
@@ -58,8 +71,19 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
 		path.add("nothing");
 		pathPanel.update(path);
 		
+		//add(pathPanel, BorderLayout.NORTH);
+		add(pathPanel, c);
+		
+		c.gridx = 0;
+		c.gridy = 1;
+		c.weightx = 1;
+		//c.weighty = 5;
+		c.fill = GridBagConstraints.BOTH;
 		valuePanel = new ValuePanel(this);
 		valuePanel.setBackground(Color.red);
+		
+		//add(valuePanel, BorderLayout.CENTER);
+		add(valuePanel, c);
         
         //Add Components to this panel.
         //GridBagConstraints c = new GridBagConstraints();
@@ -69,13 +93,13 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
         //c.weightx = 1.0;
         //c.weighty = 1.0;
         //add(pathPanel, c);
-        add(pathPanel, BorderLayout.NORTH);
+        
         
         //c.fill = GridBagConstraints.BOTH;
         //c.weightx = 1.0;
         //c.weighty = 3.0;
         //add(valuePanel, c);
-        add(valuePanel, BorderLayout.CENTER);
+        
         
         addComponentListener(new ComponentListener() {
 
@@ -119,7 +143,9 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
 
         //Add contents to the window.
         MapSingleScreen mss = new MapSingleScreen();
-        frame.add(mss);
+        mss.setPreferredSize(new Dimension(500, 500));
+        frame.setLayout(new BorderLayout());
+        frame.add(mss, BorderLayout.CENTER);
 
         //Display the window.
         frame.pack();
