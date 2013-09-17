@@ -69,11 +69,7 @@ public class BasicFunctions implements Functions {
 				return database.save();
 			}
 		} else if (function.equals(F_LOAD)) {
-			if (map.containsKey(P_PATH)) {
-				return database.load(map.get(P_PATH).toString());
-			} else {
-				return database.load();
-			}
+			return database.load(map.get(P_PATH).toString());
 		} else if (function.equals(F_PASS)) {
 			String password = readPassword();
 			database.password(password);
@@ -115,10 +111,10 @@ public class BasicFunctions implements Functions {
 			if (parameters.size() != 1)
 				return null;
 			return function(map(P_FUNCTION, name, P_VALUE, parameters.get(0)));
-		} else if (name.equals(F_SAVE) || name.equals(F_LOAD)) {
-			if (parameters.size() == 0) {
-				return function(map(P_FUNCTION, name));
-			} else if (parameters.size() == 1) {
+		} else if (name.equals(F_SAVE)) {
+			return null;
+		} else if (name.equals(F_LOAD)) {
+			if (parameters.size() == 1) {
 				return function(map(P_FUNCTION, name, P_PATH, parameters.get(0)));
 			}
 		} else if (name.equals(F_PASS)) {

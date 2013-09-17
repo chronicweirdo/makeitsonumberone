@@ -18,6 +18,7 @@ import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.TokenStream;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
+import com.chronicweirdo.makeitso.StructureUtils;
 import com.chronicweirdo.makeitso.grammar.Util;
 
 public class TestMapsInterpreter {
@@ -35,6 +36,7 @@ public class TestMapsInterpreter {
 	}
 	private static void readLoop() throws Exception {
 		Database database = new Database();
+		database.set(StructureUtils.list("temp","var1","value"), 12);
 		Functions functions = new BasicFunctions();
 		functions.setDatabase(database);
 		MapsListenerImpl listener = new MapsListenerImpl();

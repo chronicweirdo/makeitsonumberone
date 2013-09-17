@@ -58,23 +58,19 @@ public class Database {
 		return save();
 	}
 		
-	public boolean load() throws Exception {
+	public Object load(String path) throws Exception {
 		if (path == null) return false;
 		try {
 			byte[] bytes = FileUtils.readFile(path);
 			if (password != null) {
 				bytes = EncryptionUtils.decrypt(EncryptionUtils.key(password, SALT), bytes);
 			}
-			data = (Map) SerializationUtil.deserialize(bytes);
-			return true;
+			Object loaded = SerializationUtil.deserialize(bytes);
+			return loaded;
 		} catch (Throwable e) {
 			//e.printStackTrace();
 			throw new Exception("Failed to load.", e);
 		}
-	}
-	public boolean load(String path) throws Exception {
-		this.path = path;
-		return load();
 	}
 	
 	public static void main(String[] args) {

@@ -22,15 +22,26 @@ public interface MapsListener extends ParseTreeListener {
 	void exitStatement(@NotNull MapsParser.StatementContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link MapsParser#functionLong}.
+	 * Enter a parse tree produced by {@link MapsParser#get}.
 	 * @param ctx the parse tree
 	 */
-	void enterFunctionLong(@NotNull MapsParser.FunctionLongContext ctx);
+	void enterGet(@NotNull MapsParser.GetContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link MapsParser#functionLong}.
+	 * Exit a parse tree produced by {@link MapsParser#get}.
 	 * @param ctx the parse tree
 	 */
-	void exitFunctionLong(@NotNull MapsParser.FunctionLongContext ctx);
+	void exitGet(@NotNull MapsParser.GetContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link MapsParser#set}.
+	 * @param ctx the parse tree
+	 */
+	void enterSet(@NotNull MapsParser.SetContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#set}.
+	 * @param ctx the parse tree
+	 */
+	void exitSet(@NotNull MapsParser.SetContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MapsParser#program}.
@@ -55,17 +66,6 @@ public interface MapsListener extends ParseTreeListener {
 	void exitEntry(@NotNull MapsParser.EntryContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link MapsParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void enterValue(@NotNull MapsParser.ValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#value}.
-	 * @param ctx the parse tree
-	 */
-	void exitValue(@NotNull MapsParser.ValueContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link MapsParser#map}.
 	 * @param ctx the parse tree
 	 */
@@ -77,6 +77,28 @@ public interface MapsListener extends ParseTreeListener {
 	void exitMap(@NotNull MapsParser.MapContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link MapsParser#base}.
+	 * @param ctx the parse tree
+	 */
+	void enterBase(@NotNull MapsParser.BaseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#base}.
+	 * @param ctx the parse tree
+	 */
+	void exitBase(@NotNull MapsParser.BaseContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link MapsParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(@NotNull MapsParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MapsParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(@NotNull MapsParser.ValueContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link MapsParser#list}.
 	 * @param ctx the parse tree
 	 */
@@ -86,39 +108,6 @@ public interface MapsListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitList(@NotNull MapsParser.ListContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MapsParser#functionGet}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionGet(@NotNull MapsParser.FunctionGetContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#functionGet}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionGet(@NotNull MapsParser.FunctionGetContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MapsParser#functionShort}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionShort(@NotNull MapsParser.FunctionShortContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#functionShort}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionShort(@NotNull MapsParser.FunctionShortContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MapsParser#functionSet}.
-	 * @param ctx the parse tree
-	 */
-	void enterFunctionSet(@NotNull MapsParser.FunctionSetContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MapsParser#functionSet}.
-	 * @param ctx the parse tree
-	 */
-	void exitFunctionSet(@NotNull MapsParser.FunctionSetContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MapsParser#key}.
