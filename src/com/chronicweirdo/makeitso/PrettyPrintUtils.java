@@ -82,6 +82,10 @@ public class PrettyPrintUtils {
 		if (name != null) {
 			builder.append(name).append(SP);
 		}
-		builder.append(getString(object));
+		if (object instanceof Map) {
+			print(builder, (Map) object);
+		} else {
+			builder.append(getString(object));
+		}
 	}
 }
