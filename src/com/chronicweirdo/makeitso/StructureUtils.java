@@ -15,6 +15,16 @@ public class StructureUtils {
 		return list;
 	}
 	
+	public static Map map(Object... objects) {
+		if (objects.length % 2 != 0)
+			return null;
+		Map map = new HashMap();
+		for (int i = 0; i < objects.length; i += 2) {
+			map.put(objects[i], objects[i + 1]);
+		}
+		return map;
+	}
+	
 	public static List duplicate(List original) {
 		List list = new ArrayList();
 		for (Object object: original) {

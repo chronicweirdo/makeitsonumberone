@@ -35,10 +35,7 @@ public class TestMapsInterpreter {
 		ParserRuleContext tree = parser.program();
 	}
 	private static void readLoop() throws Exception {
-		Database database = new Database();
-		database.set(StructureUtils.list("temp","var1","value"), 12);
-		Functions functions = new BasicFunctions();
-		functions.setDatabase(database);
+		Functions functions = new FunctionsCentral();
 		MapsListenerImpl listener = new MapsListenerImpl();
 		listener.setFunctions(functions);
 		
