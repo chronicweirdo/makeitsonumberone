@@ -2,8 +2,9 @@ package com.chronicweirdo.makeitso.file;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import com.chronicweirdo.makeitso.StructureUtils;
 
 public class FilePathUtils {
 	
@@ -12,13 +13,16 @@ public class FilePathUtils {
 	private static String GO_BACK = "..";
 
 	public static List scan(File file, FileScannerProcessor processor) {
+		return scan(new ArrayList(), file, processor);
+	}
+	private static List scan(List<File> parents, File file, FileScannerProcessor processor) {
 		List result = new ArrayList();
 		if (file.isDirectory()) {
 			for (File f: file.listFiles()) {
-				result.addAll(scan(f, processor));
+				result.addAll(scan(StructureUtils.duplicate(parents, file), f, processor));
 			}
 		} else {
-			result.add(processor.process(file));
+			result.add(processor.process(parents, file));
 		}
 		return result;
 	}
