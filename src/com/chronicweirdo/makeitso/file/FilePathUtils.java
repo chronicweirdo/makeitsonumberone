@@ -12,17 +12,33 @@ public class FilePathUtils {
     		System.getProperties().getProperty("file.separator");
 	private static String GO_BACK = "..";
 
-	public static List scan(File file, FileScannerProcessor processor) {
-		return scan(new ArrayList(), file, processor);
-	}
-	private static List scan(List<File> parents, File file, FileScannerProcessor processor) {
+	/*public static List scan(File file, FileScannerProcessor processor) {
+		return scan(
+				new ArrayList(),
+				file,
+				processor
+			);
+	}*/
+	public static List scan(
+			//List<File> parents,
+			File file,
+			FileScannerProcessor processor
+		) {
 		List result = new ArrayList();
 		if (file.isDirectory()) {
+			result.add(processor.folder(file));
 			for (File f: file.listFiles()) {
-				result.addAll(scan(StructureUtils.duplicate(parents, file), f, processor));
+				result.addAll(scan(
+						//StructureUtils.duplicate(parents, file),
+						f,
+						processor
+					));
 			}
 		} else {
-			result.add(processor.process(parents, file));
+			result.add(processor.file(
+					//parents,
+					file
+				));
 		}
 		return result;
 	}

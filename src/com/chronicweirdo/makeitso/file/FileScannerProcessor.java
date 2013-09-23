@@ -5,5 +5,7 @@ import java.util.List;
 
 public interface FileScannerProcessor {
 
-	Object process(List<File> parents, File file);
+	Object folder(File folder);
+	
+	Object file(File file);
 }

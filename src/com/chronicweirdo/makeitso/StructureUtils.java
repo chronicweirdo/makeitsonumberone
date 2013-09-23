@@ -1,6 +1,7 @@
 package com.chronicweirdo.makeitso;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,6 +39,12 @@ public class StructureUtils {
 			list.add(object);
 		}
 		return list;
+	}
+	
+	
+	public static List path(Object key) {
+		String[] sPath = key.toString().split("\\\\.");
+		return new ArrayList(Arrays.asList(sPath));
 	}
 	
 	public static Object delete(Object source, List path) {
