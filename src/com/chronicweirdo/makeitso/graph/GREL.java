@@ -3,7 +3,7 @@ package com.chronicweirdo.makeitso.graph;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
+import java.util.Set;
 
 import com.chronicweirdo.makeitso.StructureUtils;
 
@@ -37,6 +37,10 @@ public class GREL implements Serializable {
 	
 	public Object get(String key) {
 		return StructureUtils.get(attributes, StructureUtils.path(key));
+	}
+	
+	public Set keys() {
+		return attributes.keySet();
 	}
 
 	@Override

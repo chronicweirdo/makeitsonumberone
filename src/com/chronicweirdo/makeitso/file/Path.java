@@ -1,9 +1,12 @@
 package com.chronicweirdo.makeitso.file;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Path {
+public class Path implements Serializable {
+
+	private static final long serialVersionUID = 3305434899684275213L;
 
 	private static String GO_BACK = "..";
 	
@@ -17,6 +20,14 @@ public class Path {
 	
 	public Path(List<String> path) {
 		this.path = path;
+	}
+	
+	public Path(Path path, String ... children) {
+		this.relative = path.relative;
+		this.path = new ArrayList<String>(path.path);
+		for (String p: children) {
+			this.path.add(p);
+		}
 	}
 	
 	public Path(String path) {
@@ -36,6 +47,40 @@ public class Path {
 		if (from.isRelative() || to.isRelative()) return null;
 		List rPath = relativePath(from.path, to.path);
 		return new Path(rPath, true);
+	}
+	
+	public String getWindowsPath() {
+		StringBuilder builder = new StringBuilder();
+		String prefix = "";
+		String sufix = "";
+		if (!relative) {
+			sufix = ":";
+		}
+		for (String p: path) {
+			builder.append(prefix).append(p).append(sufix);
+			prefix = "/";
+			sufix = "";
+		}
+		return builder.toString();
+	}
+	public String getLinuxPath() {
+		StringBuilder builder = new StringBuilder();
+		String prefix = "";
+		if (!relative) {
+			prefix = "/";
+		}
+		for (String p: path) {
+			builder.append(prefix).append(p);
+			prefix = "/";
+		}
+		return builder.toString();
+	}
+	public String getOSPath() {
+		if (isWindows()) {
+			return getWindowsPath();
+		} else {
+			return getLinuxPath();
+		}
 	}
 	
 	private static List relativePath(List pathFrom, List pathTo) {

@@ -1,11 +1,12 @@
 package com.chronicweirdo.makeitso.graph;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.chronicweirdo.makeitso.ConsoleUtils;
+public class Database implements Serializable {
 
-public class Database {
+	private static final long serialVersionUID = 3913843436109484902L;
 
 	public static final String K_ID = "id";
 	
@@ -27,6 +28,18 @@ public class Database {
 		nodes.add(node);
 	}
 	
+	public Object updateNode(Node node) {
+		Node existing = findNode(K_ID, node.get(K_ID));
+		if (existing == null) {
+			addNode(node);
+		} else {
+			for (Object key: node.keys()) {
+				existing.set(key.toString(), node.get(key.toString()));
+			}
+		}
+		return node.get(K_ID);
+	}
+	
 	public Node findNode(Object key, Object value) {
 		for (Node node: nodes) {
 			if (value.equals(node.get(key.toString()))) {
@@ -35,6 +48,8 @@ public class Database {
 		}
 		return null;
 	}
+	
+	public Link findLink()
 	
 	public void addLink(Link link) {
 		links.add(link);

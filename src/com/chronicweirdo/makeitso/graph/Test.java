@@ -21,18 +21,28 @@ public class Test {
 		this.db = database;
 	}
 
-	private List loadDb(String path) throws Exception {
+	private static Database loadDb(String path) throws Exception {
 		File file = new File(path);
-		return (List) SerializationUtil.deserialize(FileUtils.readFile(path));
+		return (Database) SerializationUtil.deserialize(FileUtils.readFile(path));
 	}
 	
-	private void saveDb(String path, List db) throws Exception {
+	private static void saveDb(String path, Database db) throws Exception {
 		FileUtils.writeFile(path, SerializationUtil.serialize(db));
 	}
 	
-	private void scanFiles(String path) {
+	
+	/*
+	 * IMPORTANT TO DECIDE HOW TO IDENTIFY DATA
+	 * NODES ARE IDENTIFIED BY IDS
+	 * LINKS ARE IDENTIFIED BY NODES THEY LINK AND TYPE AND DIRECTION/CLASS (DIRECTION ENCODED IN NODES
+	 * THEY LINK)
+	 * KEEY ATTRIBUTES FOR BOTH
+	 */
+	
+	private void update(String path) {
 		final Path absoluteDatabasePath = new Path(db.getPath());
-		FilePathUtils.scan(new File(path), new FileScannerProcessor() {
+		// rescan folder and update existing data
+		List updatedIDs = FilePathUtils.scan(new File(path), new FileScannerProcessor() {
 			@Override
 			public Object file(File file) {
 				try {
@@ -44,7 +54,7 @@ public class Test {
 							"id", id,
 							"lastModified", file.lastModified()
 						));
-					Test.this.db.addNode(fileNode);
+					Object updatedId = Test.this.db.updateNode(fileNode);
 					// look for parent
 					if (file.getParentFile() != null) {
 						Path absoluteParentPath = new Path(file.getParentFile().getAbsolutePath());
@@ -69,26 +79,45 @@ public class Test {
 				return file(folder);
 			}
 		});
+		// clear data that was not found on rescan
 	}
 	
-	public static void main(String[] args) throws Exception {
-		String path = "/Users/cacovean/Dropbox/mydata/travel";
-		//String path = "\\Users\\cacovean\\Dropbox\\documents";
-		//List lPath = FilePathUtils.path(path);
-		//System.out.println(FilePathUtils.path("/", lPath));
+	public void open(String path) throws Exception {
+		// check if folder contains db.exo file
+		Path root = new Path(path);
+		Path dbexo = new Path(root, "db.exo");
+		File dbexoFile = new File(dbexo.getOSPath());
+		if (dbexoFile.exists()) {
+			// load db
+			this.db = loadDb(dbexo.getOSPath());
+			// update db
+			// save db
+			saveDb(dbexo.getOSPath(), this.db);
+		} else {
+			// create db
+			// update db
+			// save db
+			saveDb(dbexo.getOSPath(), this.db);
+		}
+		System.out.println(dbexoFile.exists());
+	}
+	
+	public static void scanTest(String path) {
 		Test t = new Test();
 		t.setDatabase(new Database(UUID.randomUUID().toString(), path));
 		t.scanFiles(path);
 		t.db.print();
-
-		//List files = scanFiles(path);
-		//List files = loadDb(path);
-		
-		/*for (Object o: files) {
-			System.out.println(o.toString());
-		}*/
-		
-		//saveDb(path, files);
+		//saveDb(path + "/db.exo", t.db);
+	}
+	public static void openTest(String path) {
+		Test t = new Test();
+		t.open(path);
+	}
+	
+	public static void main(String[] args) throws Exception {
+		String path = "/Users/cacovean/Dropbox/mydata/travel";
+		//scanTest(path);
+		openTest(path);
 	}
 
 }
