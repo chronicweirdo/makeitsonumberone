@@ -88,7 +88,49 @@ public class Path {
 		}
 		return null;
 	}
-	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		if (path == null) {
+			result = prime * result;
+		} else {
+			for (String p: path) {
+				result = prime * result + ((p == null) ? 0 : p.hashCode());
+			}
+		}
+		result = prime * result + (relative ? 1231 : 1237);
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Path other = (Path) obj;
+		if (relative != other.relative)
+			return false;
+		if (path == null) {
+			if (other.path != null)
+				return false;
+		}
+		if (path.size() != other.path.size()) return false;
+		for (int i = 0; i < path.size(); i++) {
+			if (path.get(i) == null) {
+				if (other.path.get(i) != null) {
+					return false;
+				}
+			}
+			if (!path.get(i).equals(other.path.get(i))) return false;
+		}
+		return true;
+	}
+
 	public String toString() {
 		return "relative: " + relative + "; path: " + path.toString();
 	}

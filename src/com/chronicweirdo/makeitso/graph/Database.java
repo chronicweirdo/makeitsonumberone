@@ -9,8 +9,19 @@ public class Database {
 
 	public static final String K_ID = "id";
 	
+	private String path;
+	private String id;
 	private List<Node> nodes = new ArrayList<Node>();
 	private List<Link> links = new ArrayList<Link>();
+	
+	public Database(String id, String path) {
+		this.id = id;
+		this.path = path;
+	}
+	
+	public String getPath() {
+		return this.path;
+	}
 	
 	public void addNode(Node node) {
 		nodes.add(node);
