@@ -172,10 +172,11 @@ public class JenaEngine {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String url = "http://localhost:8000/sparql";
+		//String url = "http://localhost:8000/sparql";
+		String url = "http://192.168.56.56:8890/sparql";
 		
 		System.out.println("STARTING");
-		executeRemoteSelectQuery(url, "sparqlQuery", "sparqlResult");
+		executeRemoteSelectQuery(url, "sparqlQuery2", "sparqlResult2");
 		System.out.println("END");
 	}
 
