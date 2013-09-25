@@ -22,6 +22,15 @@ public class Link extends GREL {
 		this.a = a;
 		this.b = b;
 	}
+	
+	public Node a() {
+		return a;
+	}
+	
+	public Node b() {
+		return b;
+	}
+	
 	public Link(Node a, Node b, Map attributes) {
 		super(attributes);
 		this.a = a;

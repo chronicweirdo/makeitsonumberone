@@ -2,6 +2,7 @@ package com.chronicweirdo.makeitso.graph;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -31,12 +32,12 @@ public class GREL implements Serializable {
 		this.attributes.putAll(attributes);
 	}
 	
-	public void set(String key, Object value) {
-		StructureUtils.set(attributes, StructureUtils.path(key), value);
+	public void set(Object key, Object value) {
+		StructureUtils.set(attributes, StructureUtils.list(key), value);
 	}
 	
-	public Object get(String key) {
-		return StructureUtils.get(attributes, StructureUtils.path(key));
+	public Object get(Object key) {
+		return StructureUtils.get(attributes, StructureUtils.list(key));
 	}
 	
 	public Set keys() {

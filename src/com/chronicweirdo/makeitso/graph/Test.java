@@ -1,10 +1,10 @@
 package com.chronicweirdo.makeitso.graph;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-import com.chronicweirdo.makeitso.StructureUtils;
 import com.chronicweirdo.makeitso.file.FilePathUtils;
 import com.chronicweirdo.makeitso.file.FileScannerProcessor;
 import com.chronicweirdo.makeitso.file.FileUtils;
@@ -15,20 +15,30 @@ public class Test {
 	
 	private static final String DB_NAME = "exo.db";
 	
-	private Database db;
+	//private Database db;
+	private Graph graph;
 	
-	public void setDatabase(Database database) {
+	public Test() {
+		this.graph = new Graph();
+	}
+	
+	/*public void setDatabase(Database database) {
 		this.db = database;
+	}*/
+
+	private static Object loadObject(String path) throws Exception {
+		File file = new File(path);
+		if (file.exists()) {
+			return SerializationUtil.deserialize(FileUtils.readFile(path));
+		} else {
+			return null;
+		}
+	}
+	
+	private static void saveObject(String path, Object o) throws Exception {
+		FileUtils.writeFile(path, SerializationUtil.serialize(o));
 	}
 
-	private static Database loadDb(String path) throws Exception {
-		File file = new File(path);
-		return (Database) SerializationUtil.deserialize(FileUtils.readFile(path));
-	}
-	
-	private static void saveDb(String path, Database db) throws Exception {
-		FileUtils.writeFile(path, SerializationUtil.serialize(db));
-	}
 	
 	
 	/*
@@ -39,85 +49,116 @@ public class Test {
 	 * KEEY ATTRIBUTES FOR BOTH
 	 */
 	
-	private void update(String path) {
-		final Path absoluteDatabasePath = new Path(db.getPath());
-		// rescan folder and update existing data
-		List updatedIDs = FilePathUtils.scan(new File(path), new FileScannerProcessor() {
-			@Override
-			public Object file(File file) {
-				try {
-					Path absoluteFilePath = new Path(file.getAbsolutePath());//FileIDUtils.bytesToHex(FileIDUtils.createMessageDigest(file.getAbsolutePath()));
-					Path relativeFilePath = Path.relative(absoluteDatabasePath, absoluteFilePath);
-					Path id = relativeFilePath;
-					Node fileNode = new Node(StructureUtils.map(
-							"name", file.getName(),
-							"id", id,
-							"lastModified", file.lastModified()
-						));
-					Object updatedId = Test.this.db.updateNode(fileNode);
-					// look for parent
-					if (file.getParentFile() != null) {
-						Path absoluteParentPath = new Path(file.getParentFile().getAbsolutePath());
-						Path relativeParentPath = Path.relative(absoluteDatabasePath, absoluteParentPath);
-						Node parent = Test.this.db.findNode(Database.K_ID, relativeParentPath);
-						if (parent != null) {
-							Link parentLink = new Link(parent, fileNode, 
-									StructureUtils.map(Link.K_CLASS, Link.V_UNIDIRECTIONAL,
-											Link.K_TYPE, Link.V_PARENT));
-							Test.this.db.addLink(parentLink);
+	private static class GraphFileScannerProcessor implements FileScannerProcessor {
+		private Path root;
+		private Graph graph;
+		
+		public GraphFileScannerProcessor(String root, Graph graph) {
+			this.root = new Path(root);
+			this.graph = graph;
+		}
+		
+		@Override
+		public Object file(File file) {
+			try {
+				// HANDLING NODE
+				// obtain relevant data about this file
+				Path absoluteFilePath = new Path(file.getAbsolutePath());//FileIDUtils.bytesToHex(FileIDUtils.createMessageDigest(file.getAbsolutePath()));
+				Path relativeFilePath = Path.relative(root, absoluteFilePath);
+				String name = file.getName();
+				Long lastModified = file.lastModified();
+				
+				// put data into a filter
+				AndCondition and = new AndCondition()
+					.add(new TypeCondition(Node.class))
+					.add(new AttributeEqualsCondition("path", relativeFilePath));
+				
+				// get existing node, if any
+				Node node = (Node) graph.get(and);
+				
+				// create new node and add to graph, if none
+				if (node == null) {
+					node = new Node();
+					node.set("path", relativeFilePath);
+					graph.add(node);
+				}
+				
+				// update node data
+				node.set("name", name);
+				node.set("lastModified", lastModified);
+			
+				// HANDLING LINKS
+				if (file.getParentFile() != null) {
+					// get parent node
+					Path absoluteParentPath = new Path(file.getParentFile().getAbsolutePath());
+					Path relativeParentPath = Path.relative(root, absoluteParentPath);
+					Node parent = (Node) graph.get(new AndCondition()
+							.add(new TypeCondition(Node.class))
+							.add(new AttributeEqualsCondition("path", relativeParentPath))
+						);
+					if (parent != null) {
+						// find "parent" link
+						Condition linkCondition = new AndCondition()
+							.add(new LinkEndCondition(new AttributeEqualsCondition("path", relativeParentPath)))
+							.add(new LinkEndCondition(new AttributeEqualsCondition("path", relativeFilePath)))
+							.add(new AttributeEqualsCondition("type", "parent"));
+						Link link = (Link) graph.get(linkCondition);
+						// if it does not exist, create it
+						if (link == null) {
+							link = new Link(parent, node);
+							link.set("type", "parent");
+							graph.add(link);
 						}
 					}
-					return fileNode;
-				} catch (Exception e) {
-					e.printStackTrace();
 				}
-				return null;
+				return node.get("path");
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-
-			@Override
-			public Object folder(File folder) {
-				return file(folder);
-			}
-		});
-		// clear data that was not found on rescan
-	}
-	
-	public void open(String path) throws Exception {
-		// check if folder contains db.exo file
-		Path root = new Path(path);
-		Path dbexo = new Path(root, "db.exo");
-		File dbexoFile = new File(dbexo.getOSPath());
-		if (dbexoFile.exists()) {
-			// load db
-			this.db = loadDb(dbexo.getOSPath());
-			// update db
-			// save db
-			saveDb(dbexo.getOSPath(), this.db);
-		} else {
-			// create db
-			// update db
-			// save db
-			saveDb(dbexo.getOSPath(), this.db);
+			return null;
 		}
-		System.out.println(dbexoFile.exists());
+		
+		@Override
+		public Object folder(File folder) {
+			return file(folder);
+		}
 	}
 	
-	public static void scanTest(String path) {
-		Test t = new Test();
-		t.setDatabase(new Database(UUID.randomUUID().toString(), path));
-		t.scanFiles(path);
-		t.db.print();
-		//saveDb(path + "/db.exo", t.db);
+	private void update(String path) {
+		// rescan folder and update existing data
+		List updatedIDs = FilePathUtils.scan(new File(path), new GraphFileScannerProcessor(path, graph));
+		// clear data that was not found on rescan
+		Condition deleteCondition = new AndCondition()
+				.add(new TypeCondition(Node.class))
+				.add(new NotCondition(new AttributeInCondition("path", updatedIDs)));
+		List<GREL> nodes = graph.filter(deleteCondition);
+		List<GREL> deleted = new ArrayList<GREL>();
+		for (GREL grel: nodes) {
+			try {
+				deleted.addAll(graph.delete(grel));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		System.out.println("deleted " + deleted.size() + " elements");
 	}
-	public static void openTest(String path) {
+	
+	public static void updateTest(String path) throws Exception {
+		String gpath = path + "/g.exo";
+		Object o = loadObject(gpath);
 		Test t = new Test();
-		t.open(path);
+		if (o != null) {
+			t.graph = (Graph) o;
+		}
+		t.update(path);
+		t.graph.print();
+		saveObject(gpath, t.graph);
 	}
 	
 	public static void main(String[] args) throws Exception {
 		String path = "/Users/cacovean/Dropbox/mydata/travel";
 		//scanTest(path);
-		openTest(path);
+		updateTest(path);
 	}
 
 }
