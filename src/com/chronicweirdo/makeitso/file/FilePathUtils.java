@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 public class FilePathUtils {
 	

@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 public class MapSingleScreen extends JPanel implements MapNavigator {
 	
@@ -41,7 +41,7 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
 		this.path = path;
 		pathPanel.setPath(this.path);
 		// display object
-		Object value = StructureUtils.get(data, path);
+		Object value = Struct.get(data, path);
 		System.out.println(value.toString());
 		valuePanel.setValue(this.path, value);
 		//pathPanel.revalidate();
@@ -153,39 +153,39 @@ public class MapSingleScreen extends JPanel implements MapNavigator {
         
         // initial data
         Map map = new HashMap();
-        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder1", "file1"), 1);
-        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder1", "file2"), 2);
-        StructureUtils.set(map, StructureUtils.list("folder1", "subfolder2", "file3"), 3);
-        StructureUtils.set(map, StructureUtils.list("folder2", "subfolder3", "file4"), 4);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file5"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file6"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file7"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file8"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file9"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file10"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file11"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file12"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file13"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file14"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file15"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file16"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file17"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file18"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file19"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file20"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file21"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file22"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file23"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file24"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file25"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file26"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file27"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file28"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file29"), 5);
-        StructureUtils.set(map, StructureUtils.list("folder2", "file30"), 5);
-        StructureUtils.set(map, StructureUtils.list("deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep"), "deep");
+        Struct.set(map, Struct.list("folder1", "subfolder1", "file1"), 1);
+        Struct.set(map, Struct.list("folder1", "subfolder1", "file2"), 2);
+        Struct.set(map, Struct.list("folder1", "subfolder2", "file3"), 3);
+        Struct.set(map, Struct.list("folder2", "subfolder3", "file4"), 4);
+        Struct.set(map, Struct.list("folder2", "file5"), 5);
+        Struct.set(map, Struct.list("folder2", "file6"), 5);
+        Struct.set(map, Struct.list("folder2", "file7"), 5);
+        Struct.set(map, Struct.list("folder2", "file8"), 5);
+        Struct.set(map, Struct.list("folder2", "file9"), 5);
+        Struct.set(map, Struct.list("folder2", "file10"), 5);
+        Struct.set(map, Struct.list("folder2", "file11"), 5);
+        Struct.set(map, Struct.list("folder2", "file12"), 5);
+        Struct.set(map, Struct.list("folder2", "file13"), 5);
+        Struct.set(map, Struct.list("folder2", "file14"), 5);
+        Struct.set(map, Struct.list("folder2", "file15"), 5);
+        Struct.set(map, Struct.list("folder2", "file16"), 5);
+        Struct.set(map, Struct.list("folder2", "file17"), 5);
+        Struct.set(map, Struct.list("folder2", "file18"), 5);
+        Struct.set(map, Struct.list("folder2", "file19"), 5);
+        Struct.set(map, Struct.list("folder2", "file20"), 5);
+        Struct.set(map, Struct.list("folder2", "file21"), 5);
+        Struct.set(map, Struct.list("folder2", "file22"), 5);
+        Struct.set(map, Struct.list("folder2", "file23"), 5);
+        Struct.set(map, Struct.list("folder2", "file24"), 5);
+        Struct.set(map, Struct.list("folder2", "file25"), 5);
+        Struct.set(map, Struct.list("folder2", "file26"), 5);
+        Struct.set(map, Struct.list("folder2", "file27"), 5);
+        Struct.set(map, Struct.list("folder2", "file28"), 5);
+        Struct.set(map, Struct.list("folder2", "file29"), 5);
+        Struct.set(map, Struct.list("folder2", "file30"), 5);
+        Struct.set(map, Struct.list("deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep", "deep"), "deep");
         mss.setData(map);
-        mss.setPath(StructureUtils.list("folder1"));
+        mss.setPath(Struct.list("folder1"));
     }
 
 	public static void main(String[] args) {

@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StructureUtils {
+public class Struct {
 	
 	public static List list(Object ... objects) {
 		List list = new ArrayList();

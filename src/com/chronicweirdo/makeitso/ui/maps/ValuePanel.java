@@ -13,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 public class ValuePanel extends ScrollPane {
 
@@ -59,7 +59,7 @@ public class ValuePanel extends ScrollPane {
 			c.gridy = i;
 			c.weightx = 1;
 			JButton button = new PathButton(
-					StructureUtils.duplicate(path, entry.getKey()),
+					Struct.duplicate(path, entry.getKey()),
 					entry.getKey().toString(), navigator);
 			//button.setPreferredSize(new Dimension(-1, 26));
 			content.add(button, c);

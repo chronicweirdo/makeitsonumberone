@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 public class Graph extends GREL {
 
@@ -58,7 +58,7 @@ public class Graph extends GREL {
 			// simple, just remove the link
 			Link link = (Link) element;
 			this.links.remove(link);
-			return (List<GREL>) StructureUtils.list(link);
+			return (List<GREL>) Struct.list(link);
 		} else {
 			throw new Exception("unsuported delete operation");
 		}

@@ -4,7 +4,7 @@ import java.io.Console;
 import java.util.List;
 import java.util.Map;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 import com.chronicweirdo.makeitso.file.FileUtils;
 import com.chronicweirdo.protection.EncryptionUtils;
 import com.chronicweirdo.protection.SerializationUtil;
@@ -92,12 +92,12 @@ public class StorageFunctions implements Functions {
 	@Override
 	public Object function(String name, List parameters) throws Exception {
 		if (name.equals(F_SAVE) && parameters.size() == 2) {
-			return function(StructureUtils.map(P_FUNCTION, name, P_VALUE, parameters.get(0),
+			return function(Struct.map(P_FUNCTION, name, P_VALUE, parameters.get(0),
 					P_PATH, parameters.get(1)));
 		} else if (name.equals(F_LOAD) && parameters.size() == 1) {
-			return function(StructureUtils.map(P_FUNCTION, name, P_PATH, parameters.get(0)));
+			return function(Struct.map(P_FUNCTION, name, P_PATH, parameters.get(0)));
 		} else if (name.equals(F_PASS) && parameters.size() == 0) {
-			return function(StructureUtils.map(P_FUNCTION, name));
+			return function(Struct.map(P_FUNCTION, name));
 		}
 		throw new Exception(E_FUNCTION);
 	}

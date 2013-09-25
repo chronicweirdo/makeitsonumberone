@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 /**
  * A GRaph ELement.
@@ -33,11 +33,11 @@ public class GREL implements Serializable {
 	}
 	
 	public void set(Object key, Object value) {
-		StructureUtils.set(attributes, StructureUtils.list(key), value);
+		Struct.set(attributes, Struct.list(key), value);
 	}
 	
 	public Object get(Object key) {
-		return StructureUtils.get(attributes, StructureUtils.list(key));
+		return Struct.get(attributes, Struct.list(key));
 	}
 	
 	public Set keys() {

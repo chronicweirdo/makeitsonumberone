@@ -6,7 +6,7 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 
 public class PathPanel extends JPanel {
 
@@ -22,7 +22,7 @@ public class PathPanel extends JPanel {
 		//setLayout(new BoxLayout(this, BoxLayout.LINE_AXIS));
 		setLayout(new GridLayout(0, 5));
 		this.navigator = navigator;
-		this.path = StructureUtils.list();
+		this.path = Struct.list();
 		this.add(new PathButton(path, "/", navigator));
 	}
 	
@@ -50,12 +50,12 @@ public class PathPanel extends JPanel {
 	public void setPath(List path) {
 		this.path = path;
 		this.removeAll();
-		List list = StructureUtils.list();
+		List list = Struct.list();
 		{
 			this.add(new PathButton(list, "/", navigator));
 		}
 		for (Object object: path) {
-			list = StructureUtils.duplicate(list, object);
+			list = Struct.duplicate(list, object);
 			this.add(new PathButton(list, object.toString(), navigator));
 		}
 		this.initialized = true;

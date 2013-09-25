@@ -85,6 +85,7 @@ public class Test {
 				
 				// update node data
 				node.set("name", name);
+				node.set("type", "file");
 				node.set("lastModified", lastModified);
 			
 				// HANDLING LINKS
@@ -130,6 +131,7 @@ public class Test {
 		// clear data that was not found on rescan
 		Condition deleteCondition = new AndCondition()
 				.add(new TypeCondition(Node.class))
+				.add(new AttributeEqualsCondition("type", "file"))
 				.add(new NotCondition(new AttributeInCondition("path", updatedIDs)));
 		List<GREL> nodes = graph.filter(deleteCondition);
 		List<GREL> deleted = new ArrayList<GREL>();

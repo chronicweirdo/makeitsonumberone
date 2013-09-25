@@ -8,7 +8,7 @@ import java.util.Map;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import com.chronicweirdo.makeitso.ConsoleUtils;
-import com.chronicweirdo.makeitso.StructureUtils;
+import com.chronicweirdo.makeitso.Struct;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.BaseContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.EntryContext;
 import com.chronicweirdo.makeitso.grammar.maps.MapsParser.FunctionContext;
@@ -133,7 +133,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 		for (KeyContext kctx: ctx.key()) {
 			path.add(parse(kctx.value()));
 		}
-		return functions.function(BasicFunctions.F_GET, StructureUtils.list(path));
+		return functions.function(BasicFunctions.F_GET, Struct.list(path));
 	}
 	
 	private Object parse(@NotNull SetContext ctx) throws Exception {
@@ -147,7 +147,7 @@ public class MapsListenerImpl extends MapsBaseListener {
 		} else {
 			value = parse(ctx.function());
 		}
-		return functions.function(BasicFunctions.F_SET, StructureUtils.list(path, value));
+		return functions.function(BasicFunctions.F_SET, Struct.list(path, value));
 	}
 
 	private String removeQuotes(String s) {
