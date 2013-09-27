@@ -1,13 +1,17 @@
 package com.chronicweirdo.makeitso.lucene;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.IntField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexWriter;
@@ -24,6 +28,7 @@ import org.apache.lucene.util.Version;
 
 import com.chronicweirdo.makeitso.file.FilePathUtils;
 import com.chronicweirdo.makeitso.file.FileScannerProcessor;
+import com.chronicweirdo.makeitso.file.FileUtils;
 
 public class TestLucene {
 
@@ -70,12 +75,30 @@ public class TestLucene {
 	    directory.close();
 	}
 	
-	public static Document getDocument(File file) throws Exception {
-		Document document = new Document();
-		document.add(new TextField("title", file.getName(), Field.Store.YES));
-		FileReader reader = new FileReader(file);
-		document.add(new TextField("contents", reader));
-		return document;
+	public static String[] lines(File file) {
+		String contents = FileUtils.readTextFile(file.getAbsolutePath());
+		String[] lines = contents.split("[\n\r]");
+		return lines;
+	}
+	
+	public static List<Document> getDocuments(File file) throws Exception {
+		String path = file.getAbsolutePath();
+		String[] lines = lines(file);
+		List<Document> documents = new ArrayList<Document>();
+		int l = 1;
+		for (String line: lines) {
+			Document document = new Document();
+			document.add(new TextField("title", file.getName(), Field.Store.YES));
+			document.add(new TextField("path", file.getAbsolutePath(), Field.Store.YES));
+			document.add(new IntField("line", l, Field.Store.YES));
+			List<String> tags = tags(line);
+			for (String tag: tags) {
+				document.add(new TextField("tag", tag, Field.Store.YES));
+			}
+			documents.add(document);
+			l++;
+		}
+		return documents;
 	}
 	
 	public static Directory buildFolderIndex(String indexPath, String path) throws Exception {
@@ -97,8 +120,9 @@ public class TestLucene {
 			@Override
 			public Object file(File file) {
 				try {
-					Document document = getDocument(file);
-					iwriter.addDocument(document);
+					for (Document document: getDocuments(file)) {
+						iwriter.addDocument(document);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -119,17 +143,19 @@ public class TestLucene {
 
 	    QueryParser parser = new QueryParser(Version.LUCENE_44, field, analyzer);
 	    Query query = parser.parse(value);
+	    System.out.println(query.toString());
 	    ScoreDoc[] hits = isearcher.search(query, null, 1000).scoreDocs;
 
 	    System.out.println(hits.length);
 	    for (int i = 0; i < hits.length; i++) {
 	      Document hitDoc = isearcher.doc(hits[i].doc);
-	      System.out.println(hitDoc.get("title"));
+	      System.out.println(hitDoc.get("path") + " " + hitDoc.get("line") + "  ---  " + hitDoc.get("tag"));
 	    }
 	    ireader.close();
 	}
 	
-	public static void main(String[] args) throws Exception {
+	
+	public static void testIndex() throws Exception {
 		//testSimpleIndex(null);
 		String path = "/Users/cacovean/Dropbox/mydata/wiki";
 		String indexPath = "/Users/cacovean/Dropbox/mydata/wiki/.index";
@@ -137,9 +163,40 @@ public class TestLucene {
 		Directory index = FSDirectory.open(new File(indexPath));
 		//index.listAll();
 		//System.out.println(index);
-		searchIndex(index, "title", "apache_jena.txt");
-		searchIndex(index, "contents", "#bbp");
+		//searchIndex(index, "title", "apache_jena.txt");
+		//searchIndex(index, "tag", "#tech");
+		searchIndex(index, "tag", "\"#tech:lucene\"");
+		searchIndex(index, "tag", "#tech");
+		searchIndex(index, "tag", "lucene");
 		index.close();
+	}
+	
+	public static List<String> tags(String line) {
+		List<String> tags = new ArrayList<String>();
+		//Pattern pattern = Pattern.compile("((#[a-zA-Z][a-zA-Z_.0-9]*)([:][a-zA-Z_.0-9]+)?)");
+		Pattern pattern = Pattern.compile("((#[a-zA-Z][\\w.]*)([:]([\\w.]+))?)");
+		Matcher matcher = pattern.matcher(line);
+		while (matcher.find())
+		{
+		  tags.add(matcher.group(1));
+		  if (matcher.group(3) != null) {
+			  tags.add(matcher.group(2));
+		  }
+		}
+		return tags;
+	}
+	public static void testAuxiliary() throws Exception {
+		/*String path = "/Users/cacovean/Dropbox/mydata/wiki/tech/gradle.txt";
+		for (String line: lines(new File(path))) {
+			System.out.println(line);
+			System.out.println(tags(line).toString());
+			System.out.println();
+		}*/
+		System.out.println(tags("[] Apache Lucene http://lucene.apache.org/core/index.html #tech:lucene").toString());
+	}
+	public static void main(String[] args) throws Exception {
+		testIndex();
+		//testAuxiliary();
 	}
 
 }
