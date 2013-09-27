@@ -1,6 +1,7 @@
 package com.chronicweirdo.makeitso.lucene;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -17,6 +18,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.store.RAMDirectory;
 import org.apache.lucene.util.Version;
 
@@ -68,17 +70,19 @@ public class TestLucene {
 	    directory.close();
 	}
 	
-	public static Document getDocument(File file) {
+	public static Document getDocument(File file) throws Exception {
 		Document document = new Document();
 		document.add(new TextField("title", file.getName(), Field.Store.YES));
+		FileReader reader = new FileReader(file);
+		document.add(new TextField("contents", reader));
 		return document;
 	}
 	
-	public static Directory buildFolderIndex(String path) throws Exception {
+	public static Directory buildFolderIndex(String indexPath, String path) throws Exception {
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_44);
 		
 		// Store the index in memory:
-		Directory index = new RAMDirectory();
+		Directory index = FSDirectory.open(new File(indexPath));
 		
 		IndexWriterConfig config = new IndexWriterConfig(Version.LUCENE_44, analyzer);
 		final IndexWriter iwriter = new IndexWriter(index, config);
@@ -92,10 +96,10 @@ public class TestLucene {
 
 			@Override
 			public Object file(File file) {
-				Document document = getDocument(file);
 				try {
+					Document document = getDocument(file);
 					iwriter.addDocument(document);
-				} catch (IOException e) {
+				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				return null;
@@ -108,13 +112,13 @@ public class TestLucene {
 		return index;
 	}
 	
-	public static final void searchIndex(Directory index) throws IOException, ParseException {
+	public static final void searchIndex(Directory index, String field, String value) throws IOException, ParseException {
 		Analyzer analyzer = new StandardAnalyzer(Version.LUCENE_44);
 		DirectoryReader ireader = DirectoryReader.open(index);
 	    IndexSearcher isearcher = new IndexSearcher(ireader);
 
-	    QueryParser parser = new QueryParser(Version.LUCENE_44, "title", analyzer);
-	    Query query = parser.parse("apache_jena.txt");
+	    QueryParser parser = new QueryParser(Version.LUCENE_44, field, analyzer);
+	    Query query = parser.parse(value);
 	    ScoreDoc[] hits = isearcher.search(query, null, 1000).scoreDocs;
 
 	    System.out.println(hits.length);
@@ -128,10 +132,13 @@ public class TestLucene {
 	public static void main(String[] args) throws Exception {
 		//testSimpleIndex(null);
 		String path = "/Users/cacovean/Dropbox/mydata/wiki";
-		Directory index = buildFolderIndex(path);
+		String indexPath = "/Users/cacovean/Dropbox/mydata/wiki/.index";
+		//Directory index = buildFolderIndex(indexPath, path);
+		Directory index = FSDirectory.open(new File(indexPath));
 		//index.listAll();
 		//System.out.println(index);
-		searchIndex(index);
+		searchIndex(index, "title", "apache_jena.txt");
+		searchIndex(index, "contents", "#bbp");
 		index.close();
 	}
 
