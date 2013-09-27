@@ -1,0 +1,42 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+version = '1.0'
+jar {
+	manifest {
+		attributes 'Implementation-Title': 'makeitso laboratory', 'Implementation-Version': version
+	}
+}
+
+repositories {
+	mavenCentral()
+	maven {
+		url "http://source.db4o.com/maven"
+	}
+}
+
+
+dependencies {
+	ext.v = [:]
+	
+	ext.v.jena = '2.10.1'
+	compile "org.apache.jena:apache-jena-libs:$ext.v.jena"
+	
+	ext.v.lucene = '4.4.0'
+	compile "org.apache.lucene:lucene-analyzers-common:$ext.v.lucene"
+	compile "org.apache.lucene:lucene-core:$ext.v.lucene"
+	compile "org.apache.lucene:lucene-queries:$ext.v.lucene"
+	compile "org.apache.lucene:lucene-queryparser:$ext.v.lucene"
+	
+	ext.v.antlr = '4.1'
+	compile "org.antlr:antlr4:$ext.v.antlr"
+	
+	ext.v.db4o = '8.1-SNAPSHOT'
+	compile "com.db4o:db4o-full-java5:$ext.v.db4o"
+	compile "com.db4o:db4o-tools-java5:$ext.v.db4o"
+	compile "com.db4o:db4o-taj-java5:$ext.v.db4o"
+	compile "com.db4o:db4o-instrumentation-java5:$ext.v.db4o"
+	
+	ext.v.junit = '4.+'
+	testCompile "junit:junit:$ext.v.junit"
+}

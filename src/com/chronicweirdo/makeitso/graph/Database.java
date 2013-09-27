@@ -49,7 +49,7 @@ public class Database implements Serializable {
 		return null;
 	}
 	
-	public Link findLink()
+	//public Link findLink()
 	
 	public void addLink(Link link) {
 		links.add(link);

@@ -37,7 +37,7 @@ public class TextTest3 {
 		}
 	}
 	
-	public static class LinedText implements Text {
+	/*public static class LinedText implements Text {
 		List<List<Character>> data;
 		
 		public Character get(Point p) {
@@ -64,9 +64,9 @@ public class TextTest3 {
 			if (p.x < 0 || p.x > d.size() || p.x > wrap) return null;
 			return d.get(p.x);
 		}
-	}
+	}*/
 	
-	public static class WindowedText implements Text {
+	/*public static class WindowedText implements Text {
 		List<List<Character>> data;
 		
 		public Character get(Point p) {
@@ -75,20 +75,20 @@ public class TextTest3 {
 			if (p.x < 0 || p.x > d.size()) return null;
 			return d.get(p.x);
 		}
-	}
+	}*/
 	
 	public static interface Transformation {
 		Point map(Point p);
 		Point inverse(Point p);
 	}
 	
-	public static class LinedToOriginalTRansformation implements Transformation {
+	/*public static class LinedToOriginalTRansformation implements Transformation {
 		public Point map(Point p) {
 			//f(x) = sum(characters in all previous lines) + x
 			fx = 
 			//f(y) = 0
 		}
-	}
+	}*/
 
 	public static void main(String[] args) {
 
