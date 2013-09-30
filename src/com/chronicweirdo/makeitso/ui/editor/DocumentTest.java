@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.lang.reflect.InvocationTargetException;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
@@ -13,10 +16,11 @@ import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
 
-import com.chronicweirdo.makeitso.file.FileUtils;
+import com.chronicweirdo.makeitso.grammar.Util;
+import com.chronicweirdo.makeitso.grammar.wiki.WikiLexer;
+import com.chronicweirdo.makeitso.grammar.wiki.WikiListenerImpl;
+import com.chronicweirdo.makeitso.grammar.wiki.WikiParser;
 import com.chronicweirdo.makeitso.ui.Wrapper;
 
 public class DocumentTest {
@@ -51,6 +55,18 @@ public class DocumentTest {
 		//DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 		//builder.newDocument();
 		return doc;
+	}
+	private static Document initDocument(String path) {
+		String file = Util.readFile(path);
+		WikiListenerImpl wikil = new WikiListenerImpl();
+		try {
+			Util.test(WikiLexer.class, WikiParser.class, 
+					wikil, "page", 
+					file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return wikil.getDocument();
 	}
 	private static Document initDocument() {
 		DefaultStyledDocument doc = new DefaultStyledDocument();
@@ -105,9 +121,9 @@ public class DocumentTest {
 	private static void show1(String path) {
 		JPanel panel = new JPanel();
 		final JTextPane editor = new JTextPane();
-		editor.setPreferredSize(new Dimension(400, 400));
+		//editor.setPreferredSize(new Dimension(400, 400));
 		//editor.setText(FileUtils.readTextFile(path));
-		editor.setDocument(initDocument());
+		editor.setDocument(initDocument(path));
 		editor.addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -117,7 +133,9 @@ public class DocumentTest {
 			
 		});
 		printDocument(editor.getDocument());
-		panel.add(editor);
+		JScrollPane scroll = new JScrollPane(editor);
+		panel.add(scroll);
+		//panel.setPreferredSize(new Dimension(400, 400));
 		Wrapper.wrap("document testing area", panel);
 	}
 	
