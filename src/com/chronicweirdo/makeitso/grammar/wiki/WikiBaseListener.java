@@ -32,6 +32,19 @@ public class WikiBaseListener implements WikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterProtocol(@NotNull WikiParser.ProtocolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitProtocol(@NotNull WikiParser.ProtocolContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterPage(@NotNull WikiParser.PageContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -52,6 +65,32 @@ public class WikiBaseListener implements WikiListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitTag(@NotNull WikiParser.TagContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterLink(@NotNull WikiParser.LinkContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitLink(@NotNull WikiParser.LinkContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterValue(@NotNull WikiParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitValue(@NotNull WikiParser.ValueContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

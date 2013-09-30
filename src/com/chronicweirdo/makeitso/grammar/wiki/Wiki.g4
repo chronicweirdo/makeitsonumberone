@@ -8,17 +8,23 @@ page : (section)+;
 
 section
 	: tag
-//	| link
+	| link
 //	| block
 	| text;
 
-tag : '#' ID (':' ID)? ;
+tag : '#' ID (':' value)? WS;
+value : ID;
+link
+	: protocol ANY+ WS;
+protocol
+	: 'http'
+	| 'https';
 text : ANY+? ;
 
 // LEXER
 
 ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
-
 NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
 
+WS : [ \r\t\n]+;
 ANY : .;

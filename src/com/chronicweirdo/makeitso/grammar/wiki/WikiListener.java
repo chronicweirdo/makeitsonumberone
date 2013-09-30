@@ -22,6 +22,17 @@ public interface WikiListener extends ParseTreeListener {
 	void exitText(@NotNull WikiParser.TextContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link WikiParser#protocol}.
+	 * @param ctx the parse tree
+	 */
+	void enterProtocol(@NotNull WikiParser.ProtocolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#protocol}.
+	 * @param ctx the parse tree
+	 */
+	void exitProtocol(@NotNull WikiParser.ProtocolContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link WikiParser#page}.
 	 * @param ctx the parse tree
 	 */
@@ -42,6 +53,28 @@ public interface WikiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTag(@NotNull WikiParser.TagContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link WikiParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void enterLink(@NotNull WikiParser.LinkContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#link}.
+	 * @param ctx the parse tree
+	 */
+	void exitLink(@NotNull WikiParser.LinkContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link WikiParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void enterValue(@NotNull WikiParser.ValueContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#value}.
+	 * @param ctx the parse tree
+	 */
+	void exitValue(@NotNull WikiParser.ValueContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link WikiParser#section}.

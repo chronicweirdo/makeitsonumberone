@@ -10,6 +10,9 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
+import org.antlr.v4.runtime.tree.TerminalNode;
+
+import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.LinkContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.PageContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TagContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TextContext;
@@ -20,6 +23,7 @@ public class WikiListenerImpl extends WikiBaseListener {
 	private DefaultStyledDocument doc = new DefaultStyledDocument();
 	private SimpleAttributeSet normal;
 	private SimpleAttributeSet tag;
+	private SimpleAttributeSet link;
 	
 	public WikiListenerImpl() {
 		normal = new SimpleAttributeSet();
@@ -29,6 +33,9 @@ public class WikiListenerImpl extends WikiBaseListener {
         tag = new SimpleAttributeSet(normal);
         StyleConstants.setBold(tag, true);
         StyleConstants.setForeground(tag, Color.green);
+        
+        link = new SimpleAttributeSet(normal);
+        StyleConstants.setForeground(link, Color.blue);
 	}
 	
 	@Override
@@ -47,16 +54,33 @@ public class WikiListenerImpl extends WikiBaseListener {
 	@Override
 	public void exitTag(TagContext ctx) {
 		super.exitTag(ctx);
-		data.add(ctx.getText());
-		System.out.println(ctx.getText());
+		String tagString = ctx.ID().getText();
+		if (ctx.value() != null) {
+			tagString += ":" + ctx.value().ID().getText();
+		}
 		try {
-			doc.insertString(doc.getLength(), ctx.getText(),
-			        tag);
+			doc.insertString(doc.getLength(), tagString, tag);
+			doc.insertString(doc.getLength(), ctx.WS().getText(), normal);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
 	}
 	
+	@Override
+	public void exitLink(LinkContext ctx) {
+		super.exitLink(ctx);
+		String linkString = ctx.protocol().getText();
+		for (TerminalNode t: ctx.ANY()) {
+			linkString += t.getText();
+		}
+		try {
+			doc.insertString(doc.getLength(), linkString, link);
+			doc.insertString(doc.getLength(), ctx.WS().getText(), normal);
+		} catch (BadLocationException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public Document getDocument() {
 		return this.doc;
 	}
