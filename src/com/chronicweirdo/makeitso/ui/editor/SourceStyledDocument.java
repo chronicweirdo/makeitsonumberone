@@ -15,6 +15,8 @@ import javax.swing.text.StyledDocument;
 
 public class SourceStyledDocument implements StyledDocument {
 
+	private SourceElement root;
+	
 	@Override
 	public void addDocumentListener(DocumentListener listener) {
 		// TODO Auto-generated method stub
@@ -33,8 +35,7 @@ public class SourceStyledDocument implements StyledDocument {
 
 	@Override
 	public Element getDefaultRootElement() {
-		// TODO Auto-generated method stub
-		return null;
+		return this.root;
 	}
 
 	@Override
@@ -57,8 +58,7 @@ public class SourceStyledDocument implements StyledDocument {
 
 	@Override
 	public Element[] getRootElements() {
-		// TODO Auto-generated method stub
-		return null;
+		return new Element[] {this.root};
 	}
 
 	@Override
