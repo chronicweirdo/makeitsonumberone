@@ -16,6 +16,10 @@ public class CustomElement implements Element {
 		this.text = text;
 	}
 	
+	public void insert(int offset, String text) {
+		this.text = this.text.substring(0, offset) + text + this.text.substring(offset);
+	}
+	
 	public String getText(int offset, int length) {
 		return this.text.substring(offset, offset+length);
 	}

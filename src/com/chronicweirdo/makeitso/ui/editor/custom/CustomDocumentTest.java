@@ -17,7 +17,7 @@ import com.chronicweirdo.makeitso.ui.Wrapper;
 public class CustomDocumentTest {
 
 	private static Document initCustomDocument() {
-		return new CustomDocument("This is a custom document");
+		return new CustomDocument("This is a custom document!");
 	}
 	private static Document initDocument() {
 		DefaultStyledDocument doc = new DefaultStyledDocument();

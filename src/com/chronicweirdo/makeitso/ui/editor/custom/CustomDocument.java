@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.swing.event.DocumentListener;
 import javax.swing.event.UndoableEditListener;
+import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
@@ -24,11 +25,11 @@ public class CustomDocument implements StyledDocument {
 	private CustomElement root;
 	private Map<Object, Object> properties = new HashMap<Object, Object>();
 	private Map<String, Style> styles = new HashMap<String, Style>();
-	
+
 	public CustomDocument(String text) {
 		this.root = new CustomElement(this, text);
 	}
-	
+
 	@Override
 	public void addDocumentListener(DocumentListener listener) {
 		this.documentListeners.add(listener);
@@ -67,7 +68,7 @@ public class CustomDocument implements StyledDocument {
 
 	@Override
 	public Element[] getRootElements() {
-		return new Element[] {this.root};
+		return new Element[] { this.root };
 	}
 
 	@Override
@@ -99,6 +100,9 @@ public class CustomDocument implements StyledDocument {
 			throws BadLocationException {
 		// TODO Auto-generated method stub
 		// Inserts a string of content.
+		writeLock();
+		this.root.insert(offset, string);
+		writeUnlock();
 	}
 
 	@Override
@@ -122,13 +126,87 @@ public class CustomDocument implements StyledDocument {
 		this.undoableEditListeners.remove(listener);
 	}
 
-	@Override
-	public void render(Runnable arg0) {
-		// TODO Auto-generated method stub
+	private boolean notifyingListeners = false;
+	private int numWriters = 0;
+	
+	protected synchronized final void writeLock() {
+		try {
+			while ((numReaders > 0) || (currWriter != null)) {
+				if (Thread.currentThread() == currWriter) {
+					if (notifyingListeners) {
+						// Assuming one doesn't do something wrong in a
+						// subclass this should only happen if a
+						// DocumentListener tries to mutate the document.
+						throw new IllegalStateException(
+								"Attempt to mutate in notification");
+					}
+					numWriters++;
+					return;
+				}
+				wait();
+			}
+			currWriter = Thread.currentThread();
+			numWriters = 1;
+		} catch (InterruptedException e) {
+			throw new Error("Interrupted attempt to aquire write lock");
+		}
 	}
 
-	/////////////////////////////////////////////////////////////////////////////// STYLED DOCUMENT
-	
+	protected synchronized final void writeUnlock() {
+		if (--numWriters <= 0) {
+			numWriters = 0;
+			currWriter = null;
+			notifyAll();
+		}
+	}
+
+	@Override
+	public void render(Runnable r) {
+		// TODO Auto-generated method stub
+		readLock();
+		try {
+			r.run();
+		} finally {
+			readUnlock();
+		}
+	}
+
+	private Thread currWriter;
+	private int numReaders = 0;
+
+	public synchronized final void readLock() {
+		try {
+			while (currWriter != null) {
+				if (currWriter == Thread.currentThread()) {
+					// writer has full read access.... may try to acquire
+					// lock in notification
+					return;
+				}
+				wait();
+			}
+			numReaders += 1;
+		} catch (InterruptedException e) {
+			throw new Error("Interrupted attempt to aquire read lock");
+		}
+	}
+
+	public synchronized final void readUnlock() {
+		if (currWriter == Thread.currentThread()) {
+			// writer has full read access.... may try to acquire
+			// lock in notification
+			return;
+		}
+		if (numReaders <= 0) {
+			// throw new StateInvariantError(BAD_LOCK_STATE);
+			throw new RuntimeException("BAD_LOCK_STATE");
+		}
+		numReaders -= 1;
+		notify();
+	}
+
+	// /////////////////////////////////////////////////////////////////////////////
+	// STYLED DOCUMENT
+
 	@Override
 	public Style addStyle(String name, Style parent) {
 		CustomStyle style = new CustomStyle(name, parent);
@@ -183,8 +261,8 @@ public class CustomDocument implements StyledDocument {
 	}
 
 	@Override
-	public void setCharacterAttributes(int offset, int length, AttributeSet attributes,
-			boolean replace) {
+	public void setCharacterAttributes(int offset, int length,
+			AttributeSet attributes, boolean replace) {
 		// TODO Auto-generated method stub
 	}
 
@@ -194,8 +272,8 @@ public class CustomDocument implements StyledDocument {
 	}
 
 	@Override
-	public void setParagraphAttributes(int offset, int length, AttributeSet attributes,
-			boolean replace) {
+	public void setParagraphAttributes(int offset, int length,
+			AttributeSet attributes, boolean replace) {
 		// TODO Auto-generated method stub
 	}
 
