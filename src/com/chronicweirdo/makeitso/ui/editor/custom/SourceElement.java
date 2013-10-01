@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso.ui.editor;
+package com.chronicweirdo.makeitso.ui.editor.custom;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.List;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.Document;
 import javax.swing.text.Element;
+
+import com.chronicweirdo.makeitso.grammar.wiki.text.Section;
 
 public class SourceElement implements Element {
 	
@@ -17,12 +19,15 @@ public class SourceElement implements Element {
 	private int endOffset;
 	private int startOffset;
 	
-	public SourceElement(Document document, Element parent) {
+	private Section section;
+	
+	public SourceElement(Document document, Element parent, Section section) {
 		this.document = document;
 		this.parent = parent;
 		this.elements = new ArrayList<Element>();
 		this.endOffset = 0;
 		this.startOffset = 0;
+		this.section = section;
 	}
 
 	@Override

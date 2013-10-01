@@ -1,22 +1,35 @@
-package com.chronicweirdo.makeitso.ui.editor;
+package com.chronicweirdo.makeitso.ui.editor.custom;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.Element;
 import javax.swing.text.Style;
+import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 public class SourceStyledDocument extends AbstractDocument implements StyledDocument {
+	
+	private Map<String, Style> styles = new HashMap<String, Style>();
 
 	protected SourceStyledDocument(Content data) {
 		super(data);
+		// TODO Auto-generated constructor stub
+	}
+	
+	protected SourceStyledDocument(Content data, AttributeContext context) {
+		super(data, context);
+		// TODO Auto-generated constructor stub
 	}
 
+	private static final long serialVersionUID = -1074139566015976371L;
+
 	@Override
-	public Style addStyle(String arg0, Style arg1) {
+	public Style addStyle(String name, Style parent) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -90,10 +103,11 @@ public class SourceStyledDocument extends AbstractDocument implements StyledDocu
 	}
 
 	@Override
-	public Element getParagraphElement(int pos) {
+	public Element getParagraphElement(int arg0) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
+	
 
 }
