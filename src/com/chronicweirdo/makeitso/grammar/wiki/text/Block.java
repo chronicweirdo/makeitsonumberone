@@ -6,15 +6,20 @@ import java.util.List;
 public class Block implements Section {
 
 	private List<Section> open;
+	private List<Section> name;
 	private List<Section> contents;
 	
 	public Block(List<Section> open, List<Section> contents) throws Exception {
 		this.open = new ArrayList<Section>();
+		this.name = new ArrayList<Section>();
 		for (Section section: open) {
-			if (section instanceof Tag) {
+			if (section instanceof Tag
+					|| section instanceof Text
+					|| section instanceof Space) {
 				this.open.add(section);
-			} else if (section instanceof Text) {
-				this.open.add(section);
+				if (!(section instanceof Space)) {
+					this.name.add(section);
+				}
 			} else {
 				throw new Exception("Unaccepted section");
 			}
@@ -24,6 +29,10 @@ public class Block implements Section {
 	
 	public List<Section> getOpen() {
 		return this.open;
+	}
+	
+	public List<Section> getName() {
+		return this.name;
 	}
 	
 	public List<Section> getContents() {

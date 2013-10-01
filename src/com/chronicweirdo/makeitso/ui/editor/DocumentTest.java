@@ -24,6 +24,7 @@ import com.chronicweirdo.makeitso.grammar.wiki.WikiParser;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Block;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Link;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Section;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Space;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Tag;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Text;
 import com.chronicweirdo.makeitso.ui.Wrapper;
@@ -64,7 +65,7 @@ public class DocumentTest {
 		return doc;
 	}
 	private static void convertToDocument(DefaultStyledDocument doc, Section section, Map<String, SimpleAttributeSet> styles) {
-		if (section instanceof Text) {
+		if (section instanceof Text || section instanceof Space) {
 			try {
 				doc.insertString(doc.getLength(), section.toString(), styles.get("normal"));
 			} catch (BadLocationException e) {

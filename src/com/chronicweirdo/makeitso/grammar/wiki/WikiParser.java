@@ -17,10 +17,10 @@ public class WikiParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__2=1, T__1=2, T__0=3, HASH=4, COLON=5, HTTP=6, ID=7, NUMBER=8, SPACE=9, 
+		HASH=1, COLON=2, LT=3, GT=4, BEND=5, HTTP=6, ID=7, NUMBER=8, SPACE=9, 
 		WORD=10;
 	public static final String[] tokenNames = {
-		"<INVALID>", "'>'", "'<'", "'</>'", "'#'", "':'", "HTTP", "ID", "NUMBER", 
+		"<INVALID>", "'#'", "':'", "'<'", "'>'", "'</>'", "HTTP", "ID", "NUMBER", 
 		"SPACE", "WORD"
 	};
 	public static final int
@@ -88,7 +88,7 @@ public class WikiParser extends Parser {
 				setState(25); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << HASH) | (1L << COLON) | (1L << HTTP) | (1L << ID) | (1L << NUMBER) | (1L << SPACE) | (1L << WORD))) != 0) );
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << HASH) | (1L << COLON) | (1L << LT) | (1L << GT) | (1L << BEND) | (1L << HTTP) | (1L << ID) | (1L << NUMBER) | (1L << SPACE) | (1L << WORD))) != 0) );
 			}
 		}
 		catch (RecognitionException re) {
@@ -353,6 +353,8 @@ public class WikiParser extends Parser {
 		public List<BlockOpenContentsContext> blockOpenContents() {
 			return getRuleContexts(BlockOpenContentsContext.class);
 		}
+		public TerminalNode LT() { return getToken(WikiParser.LT, 0); }
+		public TerminalNode GT() { return getToken(WikiParser.GT, 0); }
 		public BlockOpenContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -370,25 +372,31 @@ public class WikiParser extends Parser {
 	public final BlockOpenContext blockOpen() throws RecognitionException {
 		BlockOpenContext _localctx = new BlockOpenContext(_ctx, getState());
 		enterRule(_localctx, 12, RULE_blockOpen);
-		int _la;
 		try {
+			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48); match(2);
+			setState(48); match(LT);
 			setState(50); 
 			_errHandler.sync(this);
-			_la = _input.LA(1);
+			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
 			do {
-				{
-				{
-				setState(49); blockOpenContents();
-				}
+				switch (_alt) {
+				case 1:
+					{
+					{
+					setState(49); blockOpenContents();
+					}
+					}
+					break;
+				default:
+					throw new NoViableAltException(this);
 				}
 				setState(52); 
 				_errHandler.sync(this);
-				_la = _input.LA(1);
-			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << HASH) | (1L << COLON) | (1L << ID) | (1L << NUMBER) | (1L << SPACE) | (1L << WORD))) != 0) );
-			setState(54); match(1);
+				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			} while ( _alt!=2 && _alt!=-1 );
+			setState(54); match(GT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -512,6 +520,7 @@ public class WikiParser extends Parser {
 	}
 
 	public static class BlockCloseContext extends ParserRuleContext {
+		public TerminalNode BEND() { return getToken(WikiParser.BEND, 0); }
 		public BlockCloseContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -532,7 +541,7 @@ public class WikiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(66); match(3);
+			setState(66); match(BEND);
 			}
 		}
 		catch (RecognitionException re) {
@@ -547,10 +556,13 @@ public class WikiParser extends Parser {
 	}
 
 	public static class TextContext extends ParserRuleContext {
+		public TerminalNode BEND() { return getToken(WikiParser.BEND, 0); }
 		public TerminalNode WORD() { return getToken(WikiParser.WORD, 0); }
 		public TerminalNode SPACE() { return getToken(WikiParser.SPACE, 0); }
+		public TerminalNode LT() { return getToken(WikiParser.LT, 0); }
 		public TerminalNode ID() { return getToken(WikiParser.ID, 0); }
 		public TerminalNode NUMBER() { return getToken(WikiParser.NUMBER, 0); }
+		public TerminalNode GT() { return getToken(WikiParser.GT, 0); }
 		public TerminalNode HASH() { return getToken(WikiParser.HASH, 0); }
 		public TerminalNode COLON() { return getToken(WikiParser.COLON, 0); }
 		public TextContext(ParserRuleContext parent, int invokingState) {
@@ -571,7 +583,7 @@ public class WikiParser extends Parser {
 		TextContext _localctx = new TextContext(_ctx, getState());
 		enterRule(_localctx, 20, RULE_text);
 		try {
-			setState(75);
+			setState(78);
 			switch (_input.LA(1)) {
 			case ID:
 				enterOuterAlt(_localctx, 1);
@@ -610,6 +622,24 @@ public class WikiParser extends Parser {
 				setState(74); match(COLON);
 				}
 				break;
+			case LT:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(75); match(LT);
+				}
+				break;
+			case GT:
+				enterOuterAlt(_localctx, 8);
+				{
+				setState(76); match(GT);
+				}
+				break;
+			case BEND:
+				enterOuterAlt(_localctx, 9);
+				{
+				setState(77); match(BEND);
+				}
+				break;
 			default:
 				throw new NoViableAltException(this);
 			}
@@ -626,26 +656,27 @@ public class WikiParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\fP\4\2\t\2\4\3\t"+
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\fS\4\2\t\2\4\3\t"+
 		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
 		"\f\t\f\3\2\6\2\32\n\2\r\2\16\2\33\3\3\3\3\3\3\3\3\5\3\"\n\3\3\4\3\4\3"+
 		"\4\3\4\5\4(\n\4\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\6\b\65\n\b"+
 		"\r\b\16\b\66\3\b\3\b\3\t\3\t\5\t=\n\t\3\n\7\n@\n\n\f\n\16\nC\13\n\3\13"+
-		"\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\fN\n\f\3\f\3A\r\2\4\6\b\n\f\16\20"+
-		"\22\24\26\2\2Q\2\31\3\2\2\2\4!\3\2\2\2\6#\3\2\2\2\b)\3\2\2\2\n+\3\2\2"+
-		"\2\f.\3\2\2\2\16\62\3\2\2\2\20<\3\2\2\2\22A\3\2\2\2\24D\3\2\2\2\26M\3"+
-		"\2\2\2\30\32\5\4\3\2\31\30\3\2\2\2\32\33\3\2\2\2\33\31\3\2\2\2\33\34\3"+
-		"\2\2\2\34\3\3\2\2\2\35\"\5\f\7\2\36\"\5\n\6\2\37\"\5\6\4\2 \"\5\26\f\2"+
-		"!\35\3\2\2\2!\36\3\2\2\2!\37\3\2\2\2! \3\2\2\2\"\5\3\2\2\2#$\7\6\2\2$"+
-		"\'\7\t\2\2%&\7\7\2\2&(\5\b\5\2\'%\3\2\2\2\'(\3\2\2\2(\7\3\2\2\2)*\7\t"+
-		"\2\2*\t\3\2\2\2+,\7\b\2\2,-\7\f\2\2-\13\3\2\2\2./\5\16\b\2/\60\5\22\n"+
-		"\2\60\61\5\24\13\2\61\r\3\2\2\2\62\64\7\4\2\2\63\65\5\20\t\2\64\63\3\2"+
-		"\2\2\65\66\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\678\3\2\2\289\7\3\2\29"+
-		"\17\3\2\2\2:=\5\6\4\2;=\5\26\f\2<:\3\2\2\2<;\3\2\2\2=\21\3\2\2\2>@\5\4"+
-		"\3\2?>\3\2\2\2@C\3\2\2\2AB\3\2\2\2A?\3\2\2\2B\23\3\2\2\2CA\3\2\2\2DE\7"+
-		"\5\2\2E\25\3\2\2\2FN\7\t\2\2GN\7\n\2\2HN\7\f\2\2IN\7\13\2\2JK\7\6\2\2"+
-		"KN\7\13\2\2LN\7\7\2\2MF\3\2\2\2MG\3\2\2\2MH\3\2\2\2MI\3\2\2\2MJ\3\2\2"+
-		"\2ML\3\2\2\2N\27\3\2\2\2\t\33!\'\66<AM";
+		"\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\fQ\n\f\3\f\3A\r\2\4\6"+
+		"\b\n\f\16\20\22\24\26\2\2W\2\31\3\2\2\2\4!\3\2\2\2\6#\3\2\2\2\b)\3\2\2"+
+		"\2\n+\3\2\2\2\f.\3\2\2\2\16\62\3\2\2\2\20<\3\2\2\2\22A\3\2\2\2\24D\3\2"+
+		"\2\2\26P\3\2\2\2\30\32\5\4\3\2\31\30\3\2\2\2\32\33\3\2\2\2\33\31\3\2\2"+
+		"\2\33\34\3\2\2\2\34\3\3\2\2\2\35\"\5\f\7\2\36\"\5\n\6\2\37\"\5\6\4\2 "+
+		"\"\5\26\f\2!\35\3\2\2\2!\36\3\2\2\2!\37\3\2\2\2! \3\2\2\2\"\5\3\2\2\2"+
+		"#$\7\3\2\2$\'\7\t\2\2%&\7\4\2\2&(\5\b\5\2\'%\3\2\2\2\'(\3\2\2\2(\7\3\2"+
+		"\2\2)*\7\t\2\2*\t\3\2\2\2+,\7\b\2\2,-\7\f\2\2-\13\3\2\2\2./\5\16\b\2/"+
+		"\60\5\22\n\2\60\61\5\24\13\2\61\r\3\2\2\2\62\64\7\5\2\2\63\65\5\20\t\2"+
+		"\64\63\3\2\2\2\65\66\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\678\3\2\2\28"+
+		"9\7\6\2\29\17\3\2\2\2:=\5\6\4\2;=\5\26\f\2<:\3\2\2\2<;\3\2\2\2=\21\3\2"+
+		"\2\2>@\5\4\3\2?>\3\2\2\2@C\3\2\2\2AB\3\2\2\2A?\3\2\2\2B\23\3\2\2\2CA\3"+
+		"\2\2\2DE\7\7\2\2E\25\3\2\2\2FQ\7\t\2\2GQ\7\n\2\2HQ\7\f\2\2IQ\7\13\2\2"+
+		"JK\7\3\2\2KQ\7\13\2\2LQ\7\4\2\2MQ\7\5\2\2NQ\7\6\2\2OQ\7\7\2\2PF\3\2\2"+
+		"\2PG\3\2\2\2PH\3\2\2\2PI\3\2\2\2PJ\3\2\2\2PL\3\2\2\2PM\3\2\2\2PN\3\2\2"+
+		"\2PO\3\2\2\2Q\27\3\2\2\2\t\33!\'\66<AP";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

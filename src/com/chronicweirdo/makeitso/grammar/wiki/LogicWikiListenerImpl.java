@@ -1,13 +1,7 @@
 package com.chronicweirdo.makeitso.grammar.wiki;
 
-import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.text.DefaultStyledDocument;
-import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
-import javax.swing.text.StyleConstants;
 
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.BlockContentsContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.BlockContext;
@@ -21,6 +15,7 @@ import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TextContext;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Block;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Link;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Section;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Space;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Tag;
 import com.chronicweirdo.makeitso.grammar.wiki.text.Text;
 
@@ -32,7 +27,11 @@ public class LogicWikiListenerImpl extends WikiBaseListener {
 	}
 	
 	public Section parse(TextContext ctx) {
-		return new Text(ctx.getText());
+		if (ctx.SPACE() != null) {
+			return new Space(ctx.SPACE().getText());
+		} else {
+			return new Text(ctx.getText());
+		}
 	}
 
 	public Section parse(TagContext ctx) {

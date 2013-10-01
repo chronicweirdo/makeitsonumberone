@@ -17,14 +17,14 @@ tag : HASH ID (COLON value)?;
 value : ID;
 link : HTTP WORD;
 block : blockOpen blockContents blockClose;
-blockOpen : '<' blockOpenContents+ '>';
+blockOpen : LT blockOpenContents+ GT;
 blockOpenContents
 	: tag
 	| text
 	;
 blockContents : section*? ;
-blockClose : '</>';
-text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON;
+blockClose : BEND;
+text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON | LT | GT | BEND;
 
 // LEXER
 
@@ -32,6 +32,9 @@ text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON;
 
 HASH : '#';
 COLON : ':';
+LT : '<';
+GT : '>';
+BEND : '</>';
 HTTP : 'http://' | 'https://';
 ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
 NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
