@@ -7,15 +7,16 @@ package com.chronicweirdo.makeitso.grammar.wiki;
 page : (section)+;
 
 section
-	: tag
+	: block
 	| link
-//	| block
+	| tag
 	| text
 	;
 
 tag : HASH ID (COLON value)?;
 value : ID;
 link : HTTP WORD;
+block : '<' tag '>' section*? '</>';
 text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON;
 
 // LEXER
@@ -28,4 +29,4 @@ HTTP : 'http://' | 'https://';
 ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
 NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
 SPACE : [ \r\t\n]+;
-WORD : ~(' '|'\r'|'\t'|'\n'|'#'|':')+;
+WORD : ~(' '|'\r'|'\t'|'\n'|'#'|':'|'>'|'<')+;

@@ -66,6 +66,17 @@ public interface WikiListener extends ParseTreeListener {
 	void exitValue(@NotNull WikiParser.ValueContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link WikiParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlock(@NotNull WikiParser.BlockContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#block}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlock(@NotNull WikiParser.BlockContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link WikiParser#section}.
 	 * @param ctx the parse tree
 	 */

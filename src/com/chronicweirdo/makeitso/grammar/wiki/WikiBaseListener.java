@@ -84,6 +84,19 @@ public class WikiBaseListener implements WikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterBlock(@NotNull WikiParser.BlockContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBlock(@NotNull WikiParser.BlockContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterSection(@NotNull WikiParser.SectionContext ctx) { }
 	/**
 	 * {@inheritDoc}

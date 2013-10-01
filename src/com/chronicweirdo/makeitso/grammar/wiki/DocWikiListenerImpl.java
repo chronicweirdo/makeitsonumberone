@@ -12,6 +12,7 @@ import javax.swing.text.StyleConstants;
 
 import org.antlr.v4.runtime.tree.TerminalNode;
 
+import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.BlockContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.LinkContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.PageContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TagContext;
@@ -24,6 +25,7 @@ public class DocWikiListenerImpl extends WikiBaseListener {
 	private SimpleAttributeSet normal;
 	private SimpleAttributeSet tag;
 	private SimpleAttributeSet link;
+	private SimpleAttributeSet block;
 	
 	public DocWikiListenerImpl() {
 		normal = new SimpleAttributeSet();
@@ -36,44 +38,68 @@ public class DocWikiListenerImpl extends WikiBaseListener {
         
         link = new SimpleAttributeSet(normal);
         StyleConstants.setForeground(link, Color.blue);
+        
+        block = new SimpleAttributeSet(normal);
+        StyleConstants.setForeground(block, Color.red);
 	}
 	
 	@Override
 	public void exitText(TextContext ctx) {
-		System.out.println("text: " + ctx.getText());
-		if (ctx.WORD() != null) {
-			System.out.println("WORD: " + ctx.WORD().getText());
-		} else if (ctx.SPACE() != null){
-			System.out.println("SPACE: " + ctx.SPACE().getText() + ".");
-		}
-		try {
-			doc.insertString(doc.getLength(), ctx.getText(),
-			        normal);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
+		if (ctx.getParent().getParent() instanceof PageContext) {
+			System.out.println("text: " + ctx.getText());
+			if (ctx.WORD() != null) {
+				System.out.println("WORD: " + ctx.WORD().getText());
+			} else if (ctx.SPACE() != null){
+				System.out.println("SPACE: " + ctx.SPACE().getText() + ".");
+			}
+			try {
+				doc.insertString(doc.getLength(), ctx.getText(),
+				        normal);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
 	@Override
 	public void exitTag(TagContext ctx) {
-		super.exitTag(ctx);
-		try {
-			doc.insertString(doc.getLength(), ctx.getText(), tag);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
+		if (ctx.getParent().getParent() instanceof PageContext) {
+			super.exitTag(ctx);
+			System.out.println("TAG: " + ctx.getText());
+			try {
+				doc.insertString(doc.getLength(), ctx.getText(), tag);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
 	@Override
 	public void exitLink(LinkContext ctx) {
-		super.exitLink(ctx);
-		
-		String linkString = ctx.getText();
-		System.out.println("linkString: " + linkString);
-		try {
-			doc.insertString(doc.getLength(), linkString, link);
-		} catch (BadLocationException e) {
-			e.printStackTrace();
+		if (ctx.getParent().getParent() instanceof PageContext) {
+			super.exitLink(ctx);
+			
+			String linkString = ctx.getText();
+			System.out.println("linkString: " + linkString);
+			try {
+				doc.insertString(doc.getLength(), linkString, link);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	
+
+	@Override
+	public void exitBlock(BlockContext ctx) {
+		if (ctx.getParent().getParent() instanceof PageContext) {
+			System.out.println("BLOCK: " + ctx.getText());
+			try {
+				doc.insertString(doc.getLength(), ctx.getText(), block);
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
