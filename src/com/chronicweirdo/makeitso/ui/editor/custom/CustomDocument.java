@@ -89,10 +89,9 @@ public class CustomDocument implements StyledDocument {
 		// Fetches the text contained within the given portion of the document.
 		// text - the Segment object to return the text in
 		String t = this.root.getText(offset, length);
-		System.out.println("Segment class: " + text.getClass().getCanonicalName());
 		text.array = t.toCharArray();
-		System.out.println("Offset: " + offset);
-		System.out.println("Length: " + length);
+		text.count = t.length();
+		text.offset = 0;
 	}
 
 	@Override
