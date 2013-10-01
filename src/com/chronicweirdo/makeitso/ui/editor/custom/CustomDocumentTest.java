@@ -31,6 +31,9 @@ import com.chronicweirdo.makeitso.ui.Wrapper;
 
 public class CustomDocumentTest {
 
+	private static Document initCustomDocument() {
+		return new CustomDocument("This is a custom document");
+	}
 	private static Document initDocument() {
 		DefaultStyledDocument doc = new DefaultStyledDocument();
         String initString[] =
@@ -84,7 +87,8 @@ public class CustomDocumentTest {
 	private static void show1() {
 		JPanel panel = new JPanel();
 		final JTextPane editor = new JTextPane();
-		editor.setDocument(initDocument());
+		//editor.setDocument(initDocument());
+		editor.setDocument(initCustomDocument());
 		JScrollPane scroll = new JScrollPane(editor);
 		panel.add(scroll);
 		Wrapper.wrap("custom document testing area", panel);
