@@ -7,11 +7,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentEvent.ElementChange;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.UndoableEditListener;
-import javax.swing.text.AbstractDocument;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.Position;
 import javax.swing.text.Segment;
@@ -103,7 +105,92 @@ public class CustomDocument implements StyledDocument {
 		writeLock();
 		this.root.insert(offset, string);
 		writeUnlock();
+		System.out.println(this.documentListeners.size());
+		DocumentEvent e =
+	            new CustomDocumentEvent(this, offset, string.length(), DocumentEvent.EventType.INSERT);
+		fireInsertUpdate(e);
 	}
+	
+	public static class CustomDocumentEvent implements DocumentEvent {
+
+		private int offset;
+		private int length;
+		private EventType type;
+		private Document document;
+		
+		public CustomDocumentEvent(Document document, int offset, 
+				int length, EventType type) {
+			this.document = document;
+			this.offset = offset;
+			this.length = length;
+			this.type = type;
+		}
+		@Override
+		public int getOffset() {
+			return this.offset;
+		}
+
+		@Override
+		public int getLength() {
+			return this.length;
+		}
+
+		@Override
+		public Document getDocument() {
+			return this.document;
+		}
+
+		@Override
+		public EventType getType() {
+			return this.type;
+		}
+
+		@Override
+		public ElementChange getChange(Element elem) {
+			return new CustomElementChange(elem);
+		}
+	}
+	
+	public static class CustomElementChange implements ElementChange {
+
+		private Element element;
+		
+		public CustomElementChange(Element element) {
+			this.element = element;
+		}
+		
+		@Override
+		public Element getElement() {
+			return this.element;
+		}
+
+		@Override
+		public int getIndex() {
+			return 0;
+		}
+
+		@Override
+		public Element[] getChildrenRemoved() {
+			return null;
+		}
+
+		@Override
+		public Element[] getChildrenAdded() {
+			return null;
+		}
+		
+	}
+	
+	protected void fireInsertUpdate(DocumentEvent e) {
+        notifyingListeners = true;
+        try {
+            for (DocumentListener listener: this.documentListeners) {
+            	listener.insertUpdate(e);
+            }
+        } finally {
+            notifyingListeners = false;
+        }
+    }
 
 	@Override
 	public void putProperty(Object key, Object value) {
@@ -165,6 +252,7 @@ public class CustomDocument implements StyledDocument {
 		// TODO Auto-generated method stub
 		readLock();
 		try {
+			System.out.println("rendering");
 			r.run();
 		} finally {
 			readUnlock();
