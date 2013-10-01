@@ -1,11 +1,11 @@
 package com.chronicweirdo.makeitso.ui.editor;
 
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.io.FileNotFoundException;
-import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -18,9 +18,14 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
 import com.chronicweirdo.makeitso.grammar.Util;
+import com.chronicweirdo.makeitso.grammar.wiki.LogicWikiListenerImpl;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiLexer;
-import com.chronicweirdo.makeitso.grammar.wiki.DocWikiListenerImpl;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Block;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Link;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Section;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Tag;
+import com.chronicweirdo.makeitso.grammar.wiki.text.Text;
 import com.chronicweirdo.makeitso.ui.Wrapper;
 
 public class DocumentTest {
@@ -33,6 +38,72 @@ public class DocumentTest {
 		Element el = doc.getDefaultRootElement();
 		printElement(el, 0);
 		//}
+	}
+	
+	private static Document convertToDocument(List<Section> sections) {
+		// initialize styles
+		Map<String, SimpleAttributeSet> styles = new HashMap<String, SimpleAttributeSet>();
+		styles.put("normal", new SimpleAttributeSet());
+		StyleConstants.setFontFamily(styles.get("normal"), "SansSerif");
+        StyleConstants.setFontSize(styles.get("normal"), 16);
+        
+        styles.put("tag", new SimpleAttributeSet(styles.get("normal")));
+        StyleConstants.setBold(styles.get("tag"), true);
+        StyleConstants.setForeground(styles.get("tag"), Color.green);
+        
+        styles.put("link", new SimpleAttributeSet(styles.get("normal")));
+        StyleConstants.setForeground(styles.get("link"), Color.blue);
+        
+        styles.put("block", new SimpleAttributeSet(styles.get("normal")));
+        StyleConstants.setForeground(styles.get("block"), Color.red);
+        
+        DefaultStyledDocument doc = new DefaultStyledDocument();
+        for (Section section: sections) {
+        	convertToDocument(doc, section, styles);
+        }
+		return doc;
+	}
+	private static void convertToDocument(DefaultStyledDocument doc, Section section, Map<String, SimpleAttributeSet> styles) {
+		if (section instanceof Text) {
+			try {
+				doc.insertString(doc.getLength(), section.toString(), styles.get("normal"));
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		} else if (section instanceof Tag) {
+			try {
+				doc.insertString(doc.getLength(), section.toString(), styles.get("tag"));
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		} else if (section instanceof Link) {
+			try {
+				doc.insertString(doc.getLength(), section.toString(), styles.get("link"));
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		} else if (section instanceof Block) {
+			Block block = (Block) section;
+			try {
+				doc.insertString(doc.getLength(), "<", styles.get("block"));
+				for (Section s: block.getOpen()) {
+					if (s instanceof Tag) {
+						doc.insertString(doc.getLength(), s.toString(), styles.get("tag"));
+					} else if (s instanceof Text) {
+						doc.insertString(doc.getLength(), s.toString(), styles.get("block"));
+					} else {
+						convertToDocument(doc, s, styles);
+					}
+				}
+				doc.insertString(doc.getLength(), ">", styles.get("block"));
+				for (Section s: block.getContents()) {
+					convertToDocument(doc, s, styles);
+				}
+				doc.insertString(doc.getLength(), "</>", styles.get("block"));
+			} catch (BadLocationException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	private static void printTabs(int tabs) {
@@ -56,17 +127,16 @@ public class DocumentTest {
 		//builder.newDocument();
 		return doc;
 	}
-	private static Document initDocument(String path) {
-		String file = Util.readFile(path);
-		DocWikiListenerImpl wikil = new DocWikiListenerImpl();
+	private static Document initDocument(String text) {
+		LogicWikiListenerImpl wikil = new LogicWikiListenerImpl();
 		try {
 			Util.test(WikiLexer.class, WikiParser.class, 
 					wikil, "page", 
-					file);
+					text);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return wikil.getDocument();
+		return convertToDocument(wikil.getSections());
 	}
 	private static Document initDocument() {
 		DefaultStyledDocument doc = new DefaultStyledDocument();
@@ -123,12 +193,13 @@ public class DocumentTest {
 		final JTextPane editor = new JTextPane();
 		//editor.setPreferredSize(new Dimension(400, 400));
 		//editor.setText(FileUtils.readTextFile(path));
-		editor.setDocument(initDocument(path));
+		editor.setDocument(initDocument(Util.readFile(path)));
 		editor.addKeyListener(new KeyAdapter() {
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				printDocument(editor.getDocument());
+				//printDocument(editor.getDocument());
+				//editor.setDocument(initDocument(editor.getText()));
 			}
 			
 		});

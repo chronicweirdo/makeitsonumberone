@@ -16,7 +16,14 @@ section
 tag : HASH ID (COLON value)?;
 value : ID;
 link : HTTP WORD;
-block : '<' tag '>' section*? '</>';
+block : blockOpen blockContents blockClose;
+blockOpen : '<' blockOpenContents+ '>';
+blockOpenContents
+	: tag
+	| text
+	;
+blockContents : section*? ;
+blockClose : '</>';
 text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON;
 
 // LEXER

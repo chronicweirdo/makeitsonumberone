@@ -1,6 +1,6 @@
 package com.chronicweirdo.makeitso.grammar.wiki.text;
 
-public class Tag {
+public class Tag implements Section {
 	
 	private String name;
 	private String value;
@@ -11,6 +11,11 @@ public class Tag {
 	}
 	
 	public String toString() {
-		return "#" + name + ":" + value;
+		StringBuilder builder = new StringBuilder();
+		builder.append("#").append(name);
+		if (value != null) {
+			builder.append(":").append(value);
+		}
+		return builder.toString();
 	}
 }

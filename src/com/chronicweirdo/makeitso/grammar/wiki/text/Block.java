@@ -5,18 +5,39 @@ import java.util.List;
 
 public class Block implements Section {
 
-	private Tag name;
-	private List<Section> sections;
+	private List<Section> open;
+	private List<Section> contents;
 	
-	public Block(Tag name, List<Section> sections) {
-		this.name = name;
-		this.sections = new ArrayList<Section>(sections);
+	public Block(List<Section> open, List<Section> contents) throws Exception {
+		this.open = new ArrayList<Section>();
+		for (Section section: open) {
+			if (section instanceof Tag) {
+				this.open.add(section);
+			} else if (section instanceof Text) {
+				this.open.add(section);
+			} else {
+				throw new Exception("Unaccepted section");
+			}
+		}
+		this.contents = new ArrayList<Section>(contents);
+	}
+	
+	public List<Section> getOpen() {
+		return this.open;
+	}
+	
+	public List<Section> getContents() {
+		return this.contents;
 	}
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("<").append(name.toString()).append(">");
-		for (Section section: sections) {
+		builder.append("<");
+		for (Section section: open) {
+			builder.append(section.toString());
+		}
+		builder.append(">");
+		for (Section section: contents) {
 			builder.append(section.toString());
 		}
 		builder.append("</>");

@@ -25,9 +25,11 @@ public class WikiParser extends Parser {
 	};
 	public static final int
 		RULE_page = 0, RULE_section = 1, RULE_tag = 2, RULE_value = 3, RULE_link = 4, 
-		RULE_block = 5, RULE_text = 6;
+		RULE_block = 5, RULE_blockOpen = 6, RULE_blockOpenContents = 7, RULE_blockContents = 8, 
+		RULE_blockClose = 9, RULE_text = 10;
 	public static final String[] ruleNames = {
-		"page", "section", "tag", "value", "link", "block", "text"
+		"page", "section", "tag", "value", "link", "block", "blockOpen", "blockOpenContents", 
+		"blockContents", "blockClose", "text"
 	};
 
 	@Override
@@ -74,16 +76,16 @@ public class WikiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(15); 
+			setState(23); 
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(14); section();
+				setState(22); section();
 				}
 				}
-				setState(17); 
+				setState(25); 
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << HASH) | (1L << COLON) | (1L << HTTP) | (1L << ID) | (1L << NUMBER) | (1L << SPACE) | (1L << WORD))) != 0) );
@@ -131,33 +133,33 @@ public class WikiParser extends Parser {
 		SectionContext _localctx = new SectionContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_section);
 		try {
-			setState(23);
+			setState(31);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(19); block();
+				setState(27); block();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(20); link();
+				setState(28); link();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(21); tag();
+				setState(29); tag();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(22); text();
+				setState(30); text();
 				}
 				break;
 			}
@@ -200,14 +202,14 @@ public class WikiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(25); match(HASH);
-			setState(26); match(ID);
-			setState(29);
+			setState(33); match(HASH);
+			setState(34); match(ID);
+			setState(37);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				{
-				setState(27); match(COLON);
-				setState(28); value();
+				setState(35); match(COLON);
+				setState(36); value();
 				}
 				break;
 			}
@@ -246,7 +248,7 @@ public class WikiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(31); match(ID);
+			setState(39); match(ID);
 			}
 		}
 		catch (RecognitionException re) {
@@ -283,8 +285,8 @@ public class WikiParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(33); match(HTTP);
-			setState(34); match(WORD);
+			setState(41); match(HTTP);
+			setState(42); match(WORD);
 			}
 		}
 		catch (RecognitionException re) {
@@ -299,14 +301,14 @@ public class WikiParser extends Parser {
 	}
 
 	public static class BlockContext extends ParserRuleContext {
-		public List<SectionContext> section() {
-			return getRuleContexts(SectionContext.class);
+		public BlockCloseContext blockClose() {
+			return getRuleContext(BlockCloseContext.class,0);
 		}
-		public TagContext tag() {
-			return getRuleContext(TagContext.class,0);
+		public BlockOpenContext blockOpen() {
+			return getRuleContext(BlockOpenContext.class,0);
 		}
-		public SectionContext section(int i) {
-			return getRuleContext(SectionContext.class,i);
+		public BlockContentsContext blockContents() {
+			return getRuleContext(BlockContentsContext.class,0);
 		}
 		public BlockContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -326,28 +328,211 @@ public class WikiParser extends Parser {
 		BlockContext _localctx = new BlockContext(_ctx, getState());
 		enterRule(_localctx, 10, RULE_block);
 		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(44); blockOpen();
+			setState(45); blockContents();
+			setState(46); blockClose();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlockOpenContext extends ParserRuleContext {
+		public BlockOpenContentsContext blockOpenContents(int i) {
+			return getRuleContext(BlockOpenContentsContext.class,i);
+		}
+		public List<BlockOpenContentsContext> blockOpenContents() {
+			return getRuleContexts(BlockOpenContentsContext.class);
+		}
+		public BlockOpenContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blockOpen; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).enterBlockOpen(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).exitBlockOpen(this);
+		}
+	}
+
+	public final BlockOpenContext blockOpen() throws RecognitionException {
+		BlockOpenContext _localctx = new BlockOpenContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_blockOpen);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(48); match(2);
+			setState(50); 
+			_errHandler.sync(this);
+			_la = _input.LA(1);
+			do {
+				{
+				{
+				setState(49); blockOpenContents();
+				}
+				}
+				setState(52); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << HASH) | (1L << COLON) | (1L << ID) | (1L << NUMBER) | (1L << SPACE) | (1L << WORD))) != 0) );
+			setState(54); match(1);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlockOpenContentsContext extends ParserRuleContext {
+		public TextContext text() {
+			return getRuleContext(TextContext.class,0);
+		}
+		public TagContext tag() {
+			return getRuleContext(TagContext.class,0);
+		}
+		public BlockOpenContentsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blockOpenContents; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).enterBlockOpenContents(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).exitBlockOpenContents(this);
+		}
+	}
+
+	public final BlockOpenContentsContext blockOpenContents() throws RecognitionException {
+		BlockOpenContentsContext _localctx = new BlockOpenContentsContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_blockOpenContents);
+		try {
+			setState(58);
+			switch ( getInterpreter().adaptivePredict(_input,4,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(56); tag();
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(57); text();
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlockContentsContext extends ParserRuleContext {
+		public List<SectionContext> section() {
+			return getRuleContexts(SectionContext.class);
+		}
+		public SectionContext section(int i) {
+			return getRuleContext(SectionContext.class,i);
+		}
+		public BlockContentsContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blockContents; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).enterBlockContents(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).exitBlockContents(this);
+		}
+	}
+
+	public final BlockContentsContext blockContents() throws RecognitionException {
+		BlockContentsContext _localctx = new BlockContentsContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_blockContents);
+		try {
 			int _alt;
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); match(2);
-			setState(37); tag();
-			setState(38); match(1);
-			setState(42);
+			setState(63);
 			_errHandler.sync(this);
-			_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+			_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			while ( _alt!=1 && _alt!=-1 ) {
 				if ( _alt==1+1 ) {
 					{
 					{
-					setState(39); section();
+					setState(60); section();
 					}
 					} 
 				}
-				setState(44);
+				setState(65);
 				_errHandler.sync(this);
-				_alt = getInterpreter().adaptivePredict(_input,3,_ctx);
+				_alt = getInterpreter().adaptivePredict(_input,5,_ctx);
 			}
-			setState(45); match(3);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BlockCloseContext extends ParserRuleContext {
+		public BlockCloseContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_blockClose; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).enterBlockClose(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof WikiListener ) ((WikiListener)listener).exitBlockClose(this);
+		}
+	}
+
+	public final BlockCloseContext blockClose() throws RecognitionException {
+		BlockCloseContext _localctx = new BlockCloseContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_blockClose);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(66); match(3);
 			}
 		}
 		catch (RecognitionException re) {
@@ -384,45 +569,45 @@ public class WikiParser extends Parser {
 
 	public final TextContext text() throws RecognitionException {
 		TextContext _localctx = new TextContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_text);
+		enterRule(_localctx, 20, RULE_text);
 		try {
-			setState(54);
+			setState(75);
 			switch (_input.LA(1)) {
 			case ID:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(47); match(ID);
+				setState(68); match(ID);
 				}
 				break;
 			case NUMBER:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(48); match(NUMBER);
+				setState(69); match(NUMBER);
 				}
 				break;
 			case WORD:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(49); match(WORD);
+				setState(70); match(WORD);
 				}
 				break;
 			case SPACE:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(50); match(SPACE);
+				setState(71); match(SPACE);
 				}
 				break;
 			case HASH:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(51); match(HASH);
-				setState(52); match(SPACE);
+				setState(72); match(HASH);
+				setState(73); match(SPACE);
 				}
 				break;
 			case COLON:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(53); match(COLON);
+				setState(74); match(COLON);
 				}
 				break;
 			default:
@@ -441,22 +626,26 @@ public class WikiParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\f;\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\6\2\22\n\2\r\2\16\2\23"+
-		"\3\3\3\3\3\3\3\3\5\3\32\n\3\3\4\3\4\3\4\3\4\5\4 \n\4\3\5\3\5\3\6\3\6\3"+
-		"\6\3\7\3\7\3\7\3\7\7\7+\n\7\f\7\16\7.\13\7\3\7\3\7\3\b\3\b\3\b\3\b\3\b"+
-		"\3\b\3\b\5\b9\n\b\3\b\3,\t\2\4\6\b\n\f\16\2\2>\2\21\3\2\2\2\4\31\3\2\2"+
-		"\2\6\33\3\2\2\2\b!\3\2\2\2\n#\3\2\2\2\f&\3\2\2\2\168\3\2\2\2\20\22\5\4"+
-		"\3\2\21\20\3\2\2\2\22\23\3\2\2\2\23\21\3\2\2\2\23\24\3\2\2\2\24\3\3\2"+
-		"\2\2\25\32\5\f\7\2\26\32\5\n\6\2\27\32\5\6\4\2\30\32\5\16\b\2\31\25\3"+
-		"\2\2\2\31\26\3\2\2\2\31\27\3\2\2\2\31\30\3\2\2\2\32\5\3\2\2\2\33\34\7"+
-		"\6\2\2\34\37\7\t\2\2\35\36\7\7\2\2\36 \5\b\5\2\37\35\3\2\2\2\37 \3\2\2"+
-		"\2 \7\3\2\2\2!\"\7\t\2\2\"\t\3\2\2\2#$\7\b\2\2$%\7\f\2\2%\13\3\2\2\2&"+
-		"\'\7\4\2\2\'(\5\6\4\2(,\7\3\2\2)+\5\4\3\2*)\3\2\2\2+.\3\2\2\2,-\3\2\2"+
-		"\2,*\3\2\2\2-/\3\2\2\2.,\3\2\2\2/\60\7\5\2\2\60\r\3\2\2\2\619\7\t\2\2"+
-		"\629\7\n\2\2\639\7\f\2\2\649\7\13\2\2\65\66\7\6\2\2\669\7\13\2\2\679\7"+
-		"\7\2\28\61\3\2\2\28\62\3\2\2\28\63\3\2\2\28\64\3\2\2\28\65\3\2\2\28\67"+
-		"\3\2\2\29\17\3\2\2\2\7\23\31\37,8";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\fP\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4"+
+		"\f\t\f\3\2\6\2\32\n\2\r\2\16\2\33\3\3\3\3\3\3\3\3\5\3\"\n\3\3\4\3\4\3"+
+		"\4\3\4\5\4(\n\4\3\5\3\5\3\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\6\b\65\n\b"+
+		"\r\b\16\b\66\3\b\3\b\3\t\3\t\5\t=\n\t\3\n\7\n@\n\n\f\n\16\nC\13\n\3\13"+
+		"\3\13\3\f\3\f\3\f\3\f\3\f\3\f\3\f\5\fN\n\f\3\f\3A\r\2\4\6\b\n\f\16\20"+
+		"\22\24\26\2\2Q\2\31\3\2\2\2\4!\3\2\2\2\6#\3\2\2\2\b)\3\2\2\2\n+\3\2\2"+
+		"\2\f.\3\2\2\2\16\62\3\2\2\2\20<\3\2\2\2\22A\3\2\2\2\24D\3\2\2\2\26M\3"+
+		"\2\2\2\30\32\5\4\3\2\31\30\3\2\2\2\32\33\3\2\2\2\33\31\3\2\2\2\33\34\3"+
+		"\2\2\2\34\3\3\2\2\2\35\"\5\f\7\2\36\"\5\n\6\2\37\"\5\6\4\2 \"\5\26\f\2"+
+		"!\35\3\2\2\2!\36\3\2\2\2!\37\3\2\2\2! \3\2\2\2\"\5\3\2\2\2#$\7\6\2\2$"+
+		"\'\7\t\2\2%&\7\7\2\2&(\5\b\5\2\'%\3\2\2\2\'(\3\2\2\2(\7\3\2\2\2)*\7\t"+
+		"\2\2*\t\3\2\2\2+,\7\b\2\2,-\7\f\2\2-\13\3\2\2\2./\5\16\b\2/\60\5\22\n"+
+		"\2\60\61\5\24\13\2\61\r\3\2\2\2\62\64\7\4\2\2\63\65\5\20\t\2\64\63\3\2"+
+		"\2\2\65\66\3\2\2\2\66\64\3\2\2\2\66\67\3\2\2\2\678\3\2\2\289\7\3\2\29"+
+		"\17\3\2\2\2:=\5\6\4\2;=\5\26\f\2<:\3\2\2\2<;\3\2\2\2=\21\3\2\2\2>@\5\4"+
+		"\3\2?>\3\2\2\2@C\3\2\2\2AB\3\2\2\2A?\3\2\2\2B\23\3\2\2\2CA\3\2\2\2DE\7"+
+		"\5\2\2E\25\3\2\2\2FN\7\t\2\2GN\7\n\2\2HN\7\f\2\2IN\7\13\2\2JK\7\6\2\2"+
+		"KN\7\13\2\2LN\7\7\2\2MF\3\2\2\2MG\3\2\2\2MH\3\2\2\2MI\3\2\2\2MJ\3\2\2"+
+		"\2ML\3\2\2\2N\27\3\2\2\2\t\33!\'\66<AM";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

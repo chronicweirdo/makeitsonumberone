@@ -32,6 +32,19 @@ public class WikiBaseListener implements WikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterBlockClose(@NotNull WikiParser.BlockCloseContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBlockClose(@NotNull WikiParser.BlockCloseContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterPage(@NotNull WikiParser.PageContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -71,6 +84,19 @@ public class WikiBaseListener implements WikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterBlockOpenContents(@NotNull WikiParser.BlockOpenContentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBlockOpenContents(@NotNull WikiParser.BlockOpenContentsContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterValue(@NotNull WikiParser.ValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -91,6 +117,32 @@ public class WikiBaseListener implements WikiListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitBlock(@NotNull WikiParser.BlockContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterBlockContents(@NotNull WikiParser.BlockContentsContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBlockContents(@NotNull WikiParser.BlockContentsContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterBlockOpen(@NotNull WikiParser.BlockOpenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBlockOpen(@NotNull WikiParser.BlockOpenContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

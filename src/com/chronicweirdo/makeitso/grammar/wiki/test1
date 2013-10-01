@@ -13,6 +13,9 @@
 [] https://terracotta.org/
 [] some info abut http: can be found:everywhere!
 [] vim <#code>some code</>
+< #good #tag oldy>he he he</>
+<tag>this thing <tag2> is </> cool</>
+<bad #tag>
 
 [] http://octopress.org/
 [] groovy

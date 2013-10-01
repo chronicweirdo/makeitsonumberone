@@ -22,6 +22,17 @@ public interface WikiListener extends ParseTreeListener {
 	void exitText(@NotNull WikiParser.TextContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link WikiParser#blockClose}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlockClose(@NotNull WikiParser.BlockCloseContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#blockClose}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlockClose(@NotNull WikiParser.BlockCloseContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link WikiParser#page}.
 	 * @param ctx the parse tree
 	 */
@@ -55,6 +66,17 @@ public interface WikiListener extends ParseTreeListener {
 	void exitLink(@NotNull WikiParser.LinkContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link WikiParser#blockOpenContents}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlockOpenContents(@NotNull WikiParser.BlockOpenContentsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#blockOpenContents}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlockOpenContents(@NotNull WikiParser.BlockOpenContentsContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link WikiParser#value}.
 	 * @param ctx the parse tree
 	 */
@@ -75,6 +97,28 @@ public interface WikiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBlock(@NotNull WikiParser.BlockContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link WikiParser#blockContents}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlockContents(@NotNull WikiParser.BlockContentsContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#blockContents}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlockContents(@NotNull WikiParser.BlockContentsContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link WikiParser#blockOpen}.
+	 * @param ctx the parse tree
+	 */
+	void enterBlockOpen(@NotNull WikiParser.BlockOpenContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link WikiParser#blockOpen}.
+	 * @param ctx the parse tree
+	 */
+	void exitBlockOpen(@NotNull WikiParser.BlockOpenContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link WikiParser#section}.
