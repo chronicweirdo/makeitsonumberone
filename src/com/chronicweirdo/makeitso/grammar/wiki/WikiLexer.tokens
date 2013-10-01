@@ -1,8 +1,9 @@
-WORD=5
-COLON=4
-HASH=3
-SPACE=2
-T__0=1
-'http'=1
-'#'=3
-':'=4
+WORD=7
+COLON=2
+HASH=1
+HTTP=3
+ID=4
+SPACE=6
+NUMBER=5
+'#'=1
+':'=2

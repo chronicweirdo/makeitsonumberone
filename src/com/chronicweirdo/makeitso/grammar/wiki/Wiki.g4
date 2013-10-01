@@ -13,17 +13,19 @@ section
 	| text
 	;
 
-tag : HASH WORD (COLON value)?;
-value : WORD;
-link : 'http' WORD;
-text : WORD | SPACE | HASH SPACE | COLON SPACE;
+tag : HASH ID (COLON value)?;
+value : ID;
+link : HTTP WORD;
+text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON;
 
 // LEXER
 
-//ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
-//NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
 
-SPACE : [ \r\t\n]+;
+
 HASH : '#';
 COLON : ':';
+HTTP : 'http://' | 'https://';
+ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
+NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
+SPACE : [ \r\t\n]+;
 WORD : ~(' '|'\r'|'\t'|'\n'|'#'|':')+;

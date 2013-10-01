@@ -140,7 +140,8 @@ public class DocumentTest {
 	}
 	
 	public static void main(String[] args) {
-		String path = "/Users/cacovean/Dropbox/mydata/wiki/todo_tech.txt";
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test1");
 		show1(path);
 	}
 
