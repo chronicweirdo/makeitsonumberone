@@ -32,19 +32,6 @@ public class WikiBaseListener implements WikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterProtocol(@NotNull WikiParser.ProtocolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitProtocol(@NotNull WikiParser.ProtocolContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterPage(@NotNull WikiParser.PageContext ctx) { }
 	/**
 	 * {@inheritDoc}

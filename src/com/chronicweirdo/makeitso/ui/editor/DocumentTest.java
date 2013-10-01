@@ -19,7 +19,7 @@ import javax.swing.text.StyleConstants;
 
 import com.chronicweirdo.makeitso.grammar.Util;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiLexer;
-import com.chronicweirdo.makeitso.grammar.wiki.WikiListenerImpl;
+import com.chronicweirdo.makeitso.grammar.wiki.DocWikiListenerImpl;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser;
 import com.chronicweirdo.makeitso.ui.Wrapper;
 
@@ -58,7 +58,7 @@ public class DocumentTest {
 	}
 	private static Document initDocument(String path) {
 		String file = Util.readFile(path);
-		WikiListenerImpl wikil = new WikiListenerImpl();
+		DocWikiListenerImpl wikil = new DocWikiListenerImpl();
 		try {
 			Util.test(WikiLexer.class, WikiParser.class, 
 					wikil, "page", 

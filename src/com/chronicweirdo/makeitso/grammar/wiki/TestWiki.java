@@ -12,7 +12,7 @@ public class TestWiki {
 				"grammar", "wiki", "test1");
 		String file = Util.readFile(path);
 		Util.test(WikiLexer.class, WikiParser.class, 
-				new WikiListenerImpl(), "page", 
+				new DocWikiListenerImpl(), "page", 
 				file);
 	}
 	public static void main(String[] args) throws Exception {

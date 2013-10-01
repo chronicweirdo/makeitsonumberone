@@ -17,7 +17,7 @@ import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.PageContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TagContext;
 import com.chronicweirdo.makeitso.grammar.wiki.WikiParser.TextContext;
 
-public class WikiListenerImpl extends WikiBaseListener {
+public class DocWikiListenerImpl extends WikiBaseListener {
 
 	private List<String> data = new ArrayList<String>();
 	private DefaultStyledDocument doc = new DefaultStyledDocument();
@@ -25,7 +25,7 @@ public class WikiListenerImpl extends WikiBaseListener {
 	private SimpleAttributeSet tag;
 	private SimpleAttributeSet link;
 	
-	public WikiListenerImpl() {
+	public DocWikiListenerImpl() {
 		normal = new SimpleAttributeSet();
 		StyleConstants.setFontFamily(normal, "SansSerif");
         StyleConstants.setFontSize(normal, 16);
@@ -40,9 +40,12 @@ public class WikiListenerImpl extends WikiBaseListener {
 	
 	@Override
 	public void exitText(TextContext ctx) {
-		super.exitText(ctx);
-		data.add(ctx.getText());
-		System.out.println(ctx.getText());
+		System.out.println("text: " + ctx.getText());
+		if (ctx.WORD() != null) {
+			System.out.println("WORD: " + ctx.WORD().getText());
+		} else if (ctx.SPACE() != null){
+			System.out.println("SPACE: " + ctx.SPACE().getText() + ".");
+		}
 		try {
 			doc.insertString(doc.getLength(), ctx.getText(),
 			        normal);
@@ -54,13 +57,8 @@ public class WikiListenerImpl extends WikiBaseListener {
 	@Override
 	public void exitTag(TagContext ctx) {
 		super.exitTag(ctx);
-		String tagString = ctx.ID().getText();
-		if (ctx.value() != null) {
-			tagString += ":" + ctx.value().ID().getText();
-		}
 		try {
-			doc.insertString(doc.getLength(), tagString, tag);
-			doc.insertString(doc.getLength(), ctx.WS().getText(), normal);
+			doc.insertString(doc.getLength(), ctx.getText(), tag);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
@@ -69,13 +67,11 @@ public class WikiListenerImpl extends WikiBaseListener {
 	@Override
 	public void exitLink(LinkContext ctx) {
 		super.exitLink(ctx);
-		String linkString = ctx.protocol().getText();
-		for (TerminalNode t: ctx.ANY()) {
-			linkString += t.getText();
-		}
+		
+		String linkString = ctx.getText();
+		System.out.println("linkString: " + linkString);
 		try {
 			doc.insertString(doc.getLength(), linkString, link);
-			doc.insertString(doc.getLength(), ctx.WS().getText(), normal);
 		} catch (BadLocationException e) {
 			e.printStackTrace();
 		}
@@ -88,15 +84,15 @@ public class WikiListenerImpl extends WikiBaseListener {
 	@Override
 	public void exitPage(PageContext ctx) {
 		super.exitPage(ctx);
-		System.out.println("////////////////////");
+		//System.out.println("////////////////////");
 		/*for (String s: data) {
 			System.out.print(s);
 		}*/
-		try {
+		/*try {
 			System.out.println(doc.getText(0, doc.getLength()));
 		} catch (BadLocationException e) {
 			e.printStackTrace();
-		}
+		}*/
 	}
 
 	

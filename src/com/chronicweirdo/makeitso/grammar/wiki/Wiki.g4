@@ -10,21 +10,20 @@ section
 	: tag
 	| link
 //	| block
-	| text;
+	| text
+	;
 
-tag : '#' ID (':' value)? WS;
-value : ID;
-link
-	: protocol ANY+ WS;
-protocol
-	: 'http'
-	| 'https';
-text : ANY+? ;
+tag : HASH WORD (COLON value)?;
+value : WORD;
+link : 'http' WORD;
+text : WORD | SPACE | HASH SPACE | COLON SPACE;
 
 // LEXER
 
-ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
-NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
+//ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9'|'.')*;
+//NUMBER : ('0'..'9')+ ('.'('0'..'9')+)?;
 
-WS : [ \r\t\n]+;
-ANY : .;
+SPACE : [ \r\t\n]+;
+HASH : '#';
+COLON : ':';
+WORD : ~(' '|'\r'|'\t'|'\n'|'#'|':')+;
