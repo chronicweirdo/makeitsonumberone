@@ -1,5 +1,7 @@
 package com.chronicweirdo.makeitso.ui.editor.custom;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,17 +11,19 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.UndoableEditListener;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.Position;
 import javax.swing.text.Segment;
+import javax.swing.text.Style;
+import javax.swing.text.StyledDocument;
 
-public class CustomDocument implements Document {
+public class CustomDocument implements StyledDocument {
 
 	private List<DocumentListener> documentListeners = new ArrayList<DocumentListener>();
 	private List<UndoableEditListener> undoableEditListeners = new ArrayList<UndoableEditListener>();
 	private CustomElement root;
 	private Map<Object, Object> properties = new HashMap<Object, Object>();
+	private Map<String, Style> styles = new HashMap<String, Style>();
 	
 	public CustomDocument(String text) {
 		this.root = new CustomElement(this, text);
@@ -86,6 +90,9 @@ public class CustomDocument implements Document {
 		// text - the Segment object to return the text in
 		String t = this.root.getText(offset, length);
 		System.out.println("Segment class: " + text.getClass().getCanonicalName());
+		text.array = t.toCharArray();
+		System.out.println("Offset: " + offset);
+		System.out.println("Length: " + length);
 	}
 
 	@Override
@@ -119,7 +126,78 @@ public class CustomDocument implements Document {
 	@Override
 	public void render(Runnable arg0) {
 		// TODO Auto-generated method stub
+	}
 
+	/////////////////////////////////////////////////////////////////////////////// STYLED DOCUMENT
+	
+	@Override
+	public Style addStyle(String name, Style parent) {
+		CustomStyle style = new CustomStyle(name, parent);
+		this.styles.put(name, style);
+		return style;
+	}
+
+	@Override
+	public Color getBackground(AttributeSet attributes) {
+		// TODO Auto-generated method stub
+		return Color.white;
+	}
+
+	@Override
+	public Element getCharacterElement(int position) {
+		// TODO Auto-generated method stub
+		return this.root;
+	}
+
+	@Override
+	public Font getFont(AttributeSet attributes) {
+		// TODO Auto-generated method stub
+		return new Font(null, Font.PLAIN, 14);
+	}
+
+	@Override
+	public Color getForeground(AttributeSet attributes) {
+		// TODO Auto-generated method stub
+		return Color.black;
+	}
+
+	@Override
+	public Style getLogicalStyle(int position) {
+		// TODO Auto-generated method stub
+		return new CustomStyle(null, null);
+	}
+
+	@Override
+	public Element getParagraphElement(int position) {
+		// TODO Auto-generated method stub
+		return this.root;
+	}
+
+	@Override
+	public Style getStyle(String name) {
+		return this.styles.get(name);
+	}
+
+	@Override
+	public void removeStyle(String name) {
+		this.styles.remove(name);
+	}
+
+	@Override
+	public void setCharacterAttributes(int offset, int length, AttributeSet attributes,
+			boolean replace) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setLogicalStyle(int position, Style style) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void setParagraphAttributes(int offset, int length, AttributeSet attributes,
+			boolean replace) {
+		// TODO Auto-generated method stub
 	}
 
 }

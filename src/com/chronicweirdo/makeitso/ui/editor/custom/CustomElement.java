@@ -3,11 +3,12 @@ package com.chronicweirdo.makeitso.ui.editor.custom;
 import javax.swing.text.AttributeSet;
 import javax.swing.text.Document;
 import javax.swing.text.Element;
+import javax.swing.text.SimpleAttributeSet;
 
 public class CustomElement implements Element {
 
 	private Document document;
-	private AttributeSet attributes;
+	private AttributeSet attributes = new SimpleAttributeSet();
 	private String text;
 	
 	public CustomElement(Document document, String text) {

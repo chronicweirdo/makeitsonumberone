@@ -1,11 +1,7 @@
 package com.chronicweirdo.makeitso.ui.editor.custom;
 
 import java.awt.Color;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -13,20 +9,9 @@ import javax.swing.JTextPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultStyledDocument;
 import javax.swing.text.Document;
-import javax.swing.text.Element;
 import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 
-import com.chronicweirdo.makeitso.grammar.Util;
-import com.chronicweirdo.makeitso.grammar.wiki.LogicWikiListenerImpl;
-import com.chronicweirdo.makeitso.grammar.wiki.WikiLexer;
-import com.chronicweirdo.makeitso.grammar.wiki.WikiParser;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Block;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Link;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Section;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Space;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Tag;
-import com.chronicweirdo.makeitso.grammar.wiki.text.Text;
 import com.chronicweirdo.makeitso.ui.Wrapper;
 
 public class CustomDocumentTest {
@@ -89,6 +74,7 @@ public class CustomDocumentTest {
 		final JTextPane editor = new JTextPane();
 		//editor.setDocument(initDocument());
 		editor.setDocument(initCustomDocument());
+		editor.setPreferredSize(new Dimension(400, 400));
 		JScrollPane scroll = new JScrollPane(editor);
 		panel.add(scroll);
 		Wrapper.wrap("custom document testing area", panel);
