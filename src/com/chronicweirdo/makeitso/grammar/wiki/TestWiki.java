@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.Token;
 
 import com.chronicweirdo.makeitso.grammar.Util;
 import com.chronicweirdo.makeitso.grammar.wiki.text3.Telement;
+import com.chronicweirdo.makeitso.grammar.wiki.text4.Elem;
 
 public class TestWiki {
 
@@ -72,6 +73,14 @@ public class TestWiki {
 		return result;
 	}
 	
+	public static void updateOffset(List<Elem> els) {
+		int offset = 0;
+		for (Elem el: els) {
+			el.offset(offset);
+			offset += el.length();
+		}
+	}
+
 	private static void testGrammar4() throws Exception {
 		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
 				"grammar", "wiki", "test2");
@@ -87,8 +96,30 @@ public class TestWiki {
 		print(page);
 	}
 	
+	private static void testGrammar5() throws Exception {
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test2");
+		String file = Util.readFile(path);
+		ElemWikiListenerImpl listener = new ElemWikiListenerImpl();
+		Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  file);
+		List<Elem> page = listener.getPage();
+		updateOffset(page);
+		for(Elem el: page) {
+			System.out.println(el.detail(0));
+		}
+		
+		/*
+		 * everything is in a page block
+		 * when editing something:
+		 * 	using offset and end, find place of insert/delete/update (can be the whole place)
+		 * 	collapse that place to text (if it is a block)
+		 * 	edit the text
+		 * 	parse the text to obtain structure 
+		 */
+	}
+	
 	public static void main(String[] args) throws Exception {
-		testGrammar2();
+		testGrammar5();
 	}
 
 }
