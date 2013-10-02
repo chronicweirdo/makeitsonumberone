@@ -43,6 +43,28 @@ public class Telement {
 		}
 	}
 	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		if (value != null) builder.append(this.value);
+		Telement child = firstChild;
+		while (child != null) {
+			builder.append(child.toString());
+			child = child.next;
+		}
+		return builder.toString();
+	}
+	
+	public int length() {
+		int length = 0;
+		if (value != null) length += value.length();
+		Telement child = firstChild;
+		while (child != null) {
+			length += child.length();
+			child = child.next;
+		}
+		return length;
+	}
+	
 	public Telement(String name, List<Telement> children) {
 		this.type = Type.GROUP;
 		this.name = name;

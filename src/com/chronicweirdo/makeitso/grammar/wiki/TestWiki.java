@@ -24,6 +24,8 @@ public class TestWiki {
 		StringBuilder builder = new StringBuilder();
 		listener.getPage().print(builder);
 		System.out.println(builder.toString());
+		System.out.println(listener.getPage().toString());
+		System.out.println(listener.getPage().length());
 	}
 	public static void main(String[] args) throws Exception {
 		testGrammar2();
