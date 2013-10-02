@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.chronicweirdo.makeitso.grammar.Util;
+import com.chronicweirdo.makeitso.grammar.wiki.text3.Telement;
 
 public class TestWiki {
 
@@ -15,17 +16,29 @@ public class TestWiki {
 				new DocWikiListenerImpl(), "page", 
 				file);
 	}
+	
+	private static void print(Telement page) {
+		StringBuilder builder = new StringBuilder();
+		page.print(builder);
+		System.out.println(builder.toString());
+		System.out.println(page.toString());
+		System.out.println();
+	}
+	
 	private static void testGrammar2() throws Exception {
 		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
-				"grammar", "wiki", "test1");
+				"grammar", "wiki", "test2");
 		String file = Util.readFile(path);
-		TelementWikiListenerImpl listener = new TelementWikiListenerImpl();
+		Telement2WikiListenerImpl listener = new Telement2WikiListenerImpl();
 		Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  file);
-		StringBuilder builder = new StringBuilder();
-		listener.getPage().print(builder);
-		System.out.println(builder.toString());
-		System.out.println(listener.getPage().toString());
-		System.out.println(listener.getPage().length());
+		Telement page = listener.getPage();
+		
+		print(page);
+
+		//page.delete(13, 9);
+		//page.delete(13, 5);
+		page.delete(40, 50);
+		print(page);
 	}
 	public static void main(String[] args) throws Exception {
 		testGrammar2();
