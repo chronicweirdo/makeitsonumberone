@@ -15,8 +15,18 @@ public class TestWiki {
 				new DocWikiListenerImpl(), "page", 
 				file);
 	}
+	private static void testGrammar2() throws Exception {
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test1");
+		String file = Util.readFile(path);
+		TelementWikiListenerImpl listener = new TelementWikiListenerImpl();
+		Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  file);
+		StringBuilder builder = new StringBuilder();
+		listener.getPage().print(builder);
+		System.out.println(builder.toString());
+	}
 	public static void main(String[] args) throws Exception {
-		testGrammar();
+		testGrammar2();
 	}
 
 }
