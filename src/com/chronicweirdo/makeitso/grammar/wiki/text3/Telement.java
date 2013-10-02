@@ -119,9 +119,11 @@ public class Telement {
 		Telement after = node.next;
 		// parse node data to new Telement
 		try {
-			Telement page = TestWiki.split(node.value.toString());
-			System.out.println("value: " + node.value + "; split: '" + page.toString() + "'");
-			//Telement pageLast = page.last(); System.out.println(pageLast.elementToString());
+			Telement2WikiListenerImpl listener = new Telement2WikiListenerImpl();
+			Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  node.value.toString());
+			Telement page = listener.getPage();
+			//Telement page = TestWiki.split(node.value.toString());
+			
 			// replace node with first element of result
 			node.value = page.value;
 			node.name = page.name;

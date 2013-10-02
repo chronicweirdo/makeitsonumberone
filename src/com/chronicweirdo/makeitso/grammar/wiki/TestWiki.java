@@ -88,7 +88,7 @@ public class TestWiki {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		testGrammar4();
+		testGrammar2();
 	}
 
 }

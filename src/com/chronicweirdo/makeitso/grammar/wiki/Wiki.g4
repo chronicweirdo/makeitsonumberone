@@ -24,7 +24,7 @@ blockOpenContents
 	;
 blockContents : section*? ;
 blockClose : BEND;
-text : ID | NUMBER | WORD | SPACE | HASH SPACE | COLON | LT | GT | BEND;
+text : ID | NUMBER | WORD | SPACE | HASH | COLON | LT | GT | BEND;
 
 // LEXER
 
