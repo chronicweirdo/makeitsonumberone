@@ -52,4 +52,8 @@ public class Block implements Section {
 		builder.append("</>");
 		return builder.toString();
 	}
+	
+	public int length() {
+		return toString().length();
+	}
 }

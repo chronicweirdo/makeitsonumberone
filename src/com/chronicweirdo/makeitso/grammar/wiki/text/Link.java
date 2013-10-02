@@ -11,4 +11,8 @@ public class Link implements Section {
 	public String toString() {
 		return value;
 	}
+	
+	public int length() {
+		return value.length();
+	}
 }

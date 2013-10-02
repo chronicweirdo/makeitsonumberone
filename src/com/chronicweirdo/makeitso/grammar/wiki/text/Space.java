@@ -11,4 +11,8 @@ public class Space implements Section {
 	public String toString() {
 		return this.value;
 	}
+	
+	public int length() {
+		return value.length();
+	}
 }
