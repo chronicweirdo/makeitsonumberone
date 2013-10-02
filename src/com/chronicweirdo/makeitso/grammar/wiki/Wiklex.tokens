@@ -1,0 +1,15 @@
+WORD=10
+COLON=2
+HASH=1
+GT=4
+LT=3
+HTTP=5
+ID=7
+SPACE=9
+NS=6
+NUMBER=8
+'#'=1
+'/'=6
+'<'=3
+':'=2
+'>'=4

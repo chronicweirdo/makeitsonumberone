@@ -1,7 +1,10 @@
 package com.chronicweirdo.makeitso.grammar.wiki;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.Token;
 
 import com.chronicweirdo.makeitso.grammar.Util;
 import com.chronicweirdo.makeitso.grammar.wiki.text3.Telement;
@@ -37,11 +40,55 @@ public class TestWiki {
 
 		//page.delete(13, 9);
 		//page.delete(13, 5);
-		page.delete(40, 50);
+		//page.delete(40, 50);
+		page.insert(0, "this is a welcome addition ");
 		print(page);
 	}
+	private static void testGrammar3() throws Exception {
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test2");
+		String file = Util.readFile(path);
+		Wiklex lex = new Wiklex(new ANTLRInputStream(file));
+		Token token = lex.nextToken();
+		System.out.println(Wiklex.ruleNames.length);
+		while (token.getType() != Token.EOF) {
+			
+			System.out.println(token.getText()
+					+ " " + Wiklex.tokenNames[token.getType()]
+					+ " " + Wiklex.ruleNames[token.getType()-1]);
+			token = lex.nextToken();
+		}
+	}
+	
+	public static Telement split(String input) {
+		List<Telement> list = new ArrayList<Telement>();
+		Wiklex lex = new Wiklex(new ANTLRInputStream(input));
+		Token token = lex.nextToken();
+		while (token.getType() != Token.EOF) {
+			list.add(new Telement(Wiklex.ruleNames[token.getType()-1], token.getText()));
+			token = lex.nextToken();
+		}
+		Telement result = Telement.link(list);
+		return result;
+	}
+	
+	private static void testGrammar4() throws Exception {
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test2");
+		String file = Util.readFile(path);
+		Telement page = split(file);
+		
+		print(page);
+
+		//page.delete(13, 9);
+		//page.delete(13, 5);
+		//page.delete(40, 50);
+		page.insert(0, "this is a welcome addition ");
+		print(page);
+	}
+	
 	public static void main(String[] args) throws Exception {
-		testGrammar2();
+		testGrammar4();
 	}
 
 }
