@@ -93,6 +93,29 @@ public class TT {
 		}
 	}
 	
+	public TT nodeAt(int offset) {
+		TT x = this;
+		while (x != null && offset > x.value.length()) {
+			x = x.next;
+			offset -= x.value.length();
+		}
+		return x;
+	}
+	
+	public int offset() {
+		int o = 0;
+		TT x = this.previous;
+		while (x != null) {
+			o += x.value.length();
+			x = x.previous;
+		}
+		return o;
+	}
+	
+	public StringBuffer value() {
+		return value;
+	}
+	
 	public String toString() {
 		return value.toString();
 	}

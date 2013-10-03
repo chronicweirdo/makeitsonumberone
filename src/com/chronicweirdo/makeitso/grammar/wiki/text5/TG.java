@@ -10,6 +10,10 @@ public class TG {
 	public TG() {
 	}
 	
+	public boolean contains(TT c) {
+		return tokens.contains(c);
+	}
+	
 	public void add(TT token) {
 		this.tokens.add(token);
 	}

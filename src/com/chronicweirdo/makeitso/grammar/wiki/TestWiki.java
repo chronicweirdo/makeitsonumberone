@@ -128,6 +128,9 @@ public class TestWiki {
 		Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  file);
 		listener.get().print();
 
+		listener.get().delete(3, 4);
+		listener.get().toString();
+		listener.get().print();
 	}
 	
 	public static void main(String[] args) throws Exception {
