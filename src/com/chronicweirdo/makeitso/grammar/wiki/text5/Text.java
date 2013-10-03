@@ -41,9 +41,9 @@ public class Text {
 	}
 	
 	// add new token to group
-	public TT add(String text, TG group, boolean sensitive) {
+	public TT add(String text, TG group) {
 		TT t = add(text);
-		group.add(t, sensitive);
+		group.add(t);
 		return t;
 	}
 	

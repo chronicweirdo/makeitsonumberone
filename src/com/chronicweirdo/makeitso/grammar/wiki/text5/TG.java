@@ -6,37 +6,45 @@ import java.util.List;
 public class TG {
 
 	public List<TT> tokens = new ArrayList<TT>();
-	// tokens whose change will collapse the whole group
-	public List<TT> sensitiveTokens = new ArrayList<TT>();
 	
 	public TG() {
-		
 	}
 	
-	public void add(TT token, boolean sensitive) {
+	public void add(TT token) {
 		this.tokens.add(token);
-		if (sensitive) {
-			this.sensitiveTokens.add(token);
-		}
 	}
 	
-	public void add(TT from, TT to, boolean sensitive) {
-		TT x = from;
-		while (x != to) {
-			add(x, sensitive);
-			x = x.next();
+	public TT first() {
+		TT f = null;
+		for (TT t: tokens) {
+			if (f == null || t.before(f)) {
+				f = t;
+			}
 		}
-		add(x, sensitive);
+		return f;
+	}
+	
+	public TT last() {
+		TT l = null;
+		for (TT t: tokens) {
+			if (l == null || l.before(t)) {
+				l = t;
+			}
+		}
+		return l;
 	}
 	
 	public void print() {
-		System.out.println("tokens");
+		System.out.println("important");
 		for (TT t: tokens) {
 			System.out.println(t.toString());
 		}
-		System.out.println("important tokens");
-		for (TT t: sensitiveTokens) {
-			System.out.println(t.toString());
+		System.out.println("all");
+		TT x = first();
+		while (x != last()) {
+			System.out.println(x.toString());
+			x = x.next();
 		}
+		System.out.println(x.toString());
 	}
 }

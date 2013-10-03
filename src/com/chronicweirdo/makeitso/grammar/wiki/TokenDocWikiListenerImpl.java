@@ -33,11 +33,11 @@ public class TokenDocWikiListenerImpl extends WikiBaseListener {
 		System.out.println("parsing tag");
 		Text t = new Text();
 		TG g = t.group();
-		t.add("#", g, true);
-		t.add(ctx.ID().getText(), g, true);
+		t.add("#", g);
+		t.add(ctx.ID().getText(), g);
 		if (ctx.value() != null) {
-			t.add(":", g, true);
-			t.add(ctx.value().getText(), g, true);
+			t.add(":", g);
+			t.add(ctx.value().getText(), g);
 		}
 		t.print();
 		return t;
@@ -87,25 +87,22 @@ public class TokenDocWikiListenerImpl extends WikiBaseListener {
 		System.out.println("parsing block");
 		Text t = new Text();
 		TG g = t.group();
-		t.add("<", g, true);
+		t.add("<", g);
 		for (BlockOpenContentsContext boctx: ctx.blockOpen().blockOpenContents()) {
 			if (boctx.tag() != null) {
 				Text tt = parse(boctx.tag());
-				g.add(tt.first(), tt.last(), false);
 				t.append(tt);
 			} else if (boctx.text() != null) {
 				Text tt = parse(boctx.text());
-				g.add(tt.first(), tt.last(), false);
 				t.append(tt);
 			}
 		}
-		t.add(">", g, true);
+		t.add(">", g);
 		for (SectionContext sctx: ctx.blockContents().section()) {
 			Text tt = parse(sctx);
-			g.add(tt.first(), tt.last(), false);
 			t.append(tt);
 		}
-		t.add("</>", g, true);
+		t.add("</>", g);
 		return t;
 	}
 	
