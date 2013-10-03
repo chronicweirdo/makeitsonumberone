@@ -5,33 +5,73 @@ import java.util.List;
 
 public class Text {
 
-	private List<TToken> tokens;
-	private List<TGroup> groups;
+	private TT first;
+	private TT last;
+	private List<TG> groups;
+	
+	public TT first() {
+		return first;
+	}
+	
+	public TT last() {
+		return last;
+	}
 	
 	public Text() {
-		tokens = new ArrayList<TToken>();
-		groups = new ArrayList<TGroup>();
+		groups = new ArrayList<TG>();
+	}
+	
+	public Text(String token) {
+		groups = new ArrayList<TG>();
+		first = new TT(token);
+		last = first;
 	}
 	
 	// add a token
-	public TToken add(String text) {
-		TToken t = new TToken(text);
-		tokens.add(t);
+	public TT add(String text) {
+		TT t = new TT(text);
+		if (first == null) {
+			first = t;
+			last = t;
+		} else {
+			last.append(t);
+			last = t;
+		}
 		return t;
 	}
 	
 	// add new token to group
-	public TToken add(String text, TGroup group, boolean sensitive) {
-		TToken t = new TToken(text);
-		tokens.add(t);
+	public TT add(String text, TG group, boolean sensitive) {
+		TT t = add(text);
 		group.add(t, sensitive);
 		return t;
 	}
 	
 	// add a group
-	public TGroup group() {
-		TGroup g = new TGroup();
+	public TG group() {
+		TG g = new TG();
 		groups.add(g);
 		return g;
+	}
+	
+	public Text append(Text t) {
+		if (first == null) {
+			first = t.first;
+			last = t.last;
+		} else {
+			last.append(t.first);
+			last = t.last;
+		}
+		groups.addAll(t.groups);
+		return this;
+	}
+	
+	public void print() {
+		first.print();
+		System.out.println("groups: " + groups.size());
+		for (TG g: groups) {
+			g.print();
+			System.out.println();
+		}
 	}
 }

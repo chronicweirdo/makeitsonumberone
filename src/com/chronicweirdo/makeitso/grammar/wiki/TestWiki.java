@@ -9,6 +9,7 @@ import org.antlr.v4.runtime.Token;
 import com.chronicweirdo.makeitso.grammar.Util;
 import com.chronicweirdo.makeitso.grammar.wiki.text3.Telement;
 import com.chronicweirdo.makeitso.grammar.wiki.text4.Elem;
+import com.chronicweirdo.makeitso.grammar.wiki.text5.Text;
 
 public class TestWiki {
 
@@ -118,8 +119,19 @@ public class TestWiki {
 		 */
 	}
 	
+	private static void testGrammar6() throws Exception {
+		String path = Util.getPath("src", "com", "chronicweirdo", "makeitso",
+				"grammar", "wiki", "test2");
+		String file = Util.readFile(path);
+		System.out.println(file);
+		TokenDocWikiListenerImpl listener = new TokenDocWikiListenerImpl();
+		Util.test(WikiLexer.class, WikiParser.class,  listener, "page",  file);
+		listener.get().print();
+
+	}
+	
 	public static void main(String[] args) throws Exception {
-		testGrammar5();
+		testGrammar6();
 	}
 
 }
