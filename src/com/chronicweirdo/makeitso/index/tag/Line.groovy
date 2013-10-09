@@ -1,8 +1,9 @@
 package com.chronicweirdo.makeitso.index.tag
 
-import java.io.File;
+import java.nio.file.Path
+import java.nio.file.Paths
 
-import com.chronicweirdo.makeitso.file.FileUtils;
+import com.chronicweirdo.makeitso.file.FileUtils
 
 class Line {
 
@@ -11,8 +12,10 @@ class Line {
 	int line;
 	int offset;
 	
-	static List<Line> lines(String file) {
-		String contents = FileUtils.readTextFile(new File(file).getAbsolutePath());
+	static List<Line> lines(Path root, Path file) {
+		Path full = root.resolve(file);
+		
+		String contents = FileUtils.readTextFile(full.toString());
 		String[] lines = contents.split("[\n\r]");
 		List<Line> result = new ArrayList<Line>();
 		int offset = 0;
@@ -32,10 +35,13 @@ class Line {
 	}
 	
 	static main(args) {
-		String path = 'C:\\Users\\Silviu\\Dropbox\\mydata\\wiki\\todo_tech.txt';
-		List<Line> lines = lines(path);
+		//Path root = Paths.get("/Users/cacovean/Dropbox/mydata/wiki");
+		Path root = Paths.get(System.getProperty("user.home"), "Dropbox", "mydata", "wiki");
+		Path path = Paths.get("bbp", "apache_jena.txt");
+		
+		List<Line> lines = lines(root, path);
 		lines.each {
-			print "$it.line,$it.offset: $it.text\n";
+			println "$it.line,$it.offset: $it.text";
 		}
 	}
 
