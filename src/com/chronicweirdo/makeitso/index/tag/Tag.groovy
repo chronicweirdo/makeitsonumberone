@@ -3,6 +3,7 @@ package com.chronicweirdo.makeitso.index.tag
 class Tag {
 	String name;
 	String value;
+	Set<Position> positions = new HashSet<Position>();
 	
 	@Override
 	public String toString() {

@@ -8,6 +8,7 @@ class Position {
 
 	Path path; // a relative path
 	int line;
+	Set<Tag> tags = new HashSet<Tag>();
 	
 	Position(path, line) {
 		this.path = path;
