@@ -9,7 +9,8 @@ class Tag {
 	
 	public Tag(String name, String value) {
 		this.name = name;
-		this.value = value;
+		if (value) this.value = value;
+		else this.value = "";
 	}
 	
 	@Override

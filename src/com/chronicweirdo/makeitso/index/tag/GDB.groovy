@@ -13,10 +13,7 @@ class GDB {
 	Set links = new HashSet();
 	
 	Tag tag(String name, String value) {
-		if (tagToLinkIndex[name] == null) tagToLinkIndex[name] = [:];
-		if (tagToLinkIndex[name][value] == null) tagToLinkIndex[name][value] = new HashSet();
-		Tag tag = getOrAdd(tags, new Tag(name, value));
-		
+		return getOrAdd(tags, new Tag(name, value));		
 	}
 	
 	void removeTag(Tag tag) {
@@ -32,41 +29,56 @@ class GDB {
 	}
 	
 	Link link(Tag tag, Position position) {
-		return getOrAdd(links, new Link(tag, position));
+		Link n = new Link(tag, position);
+		Link r = links.find {it == n};
+		if (r) return r; // all is well, we have the link
+		links.add(n);
+		// add to indexes
+		if (tagToLinkIndex[tag.name] == null) tagToLinkIndex[tag.name] = [:]
+		if (tagToLinkIndex[tag.name][tag.value] == null)
+			tagToLinkIndex[tag.name][tag.value] = new HashSet();
+		tagToLinkIndex[tag.name][tag.value].add(n);
+		if (positionToLinkIndex[position.path] == null) positionToLinkIndex[position.path] = [:];
+		if (positionToLinkIndex[position.path][position.line] == null)
+			positionToLinkIndex[position.path][position.line] = new HashSet();
+		positionToLinkIndex[position.path][position.line].add(n);
+		return n;
 	}
 	
 	void removeLink(Link link) {
 		links.remove(link);
+		// remove from indexes
+		tagToLinkIndex[link.tag.name][link.tag.value].remove(link);
+		positionToLinkIndex[link.position.path][link.position.line].remove(link);
 	}
 	
 	void removeLinks(Set links) {
-		this.links.removeAll(links);
+		links.each {
+			removeLink(it)
+		}
 	}
 	
 	Set findLinksByTag(Tag tag) {
-		Set r = new HashSet();
-		for (Link l: links) {
-			if (l.tag.equals(tag)) r.add(l);
+		if (tagToLinkIndex[tag.name] && tagToLinkIndex[tag.name][tag.value]) {
+			return tagToLinkIndex[tag.name][tag.value];
 		}
-		return r;
+		return new HashSet();
 	}
 	
 	Set findLinksByPosition(Position position) {
-		Set r = new HashSet();
-		for (Link l: links) {
-			if (l.position == position) return r.add(l);
+		if (positionToLinkIndex[position.path] 
+			&& positionToLinkIndex[position.path][position.line]) {
+			return positionToLinkIndex[position.path][position.line];
 		}
-		return r;
+		return new HashSet();
 	}
 	
 	/**
 	 * Find equivalent object in a set.
 	 */
 	Object getOrAdd(Set set, Object o) {
-		for (Object e: set) {
-			if (o.equals(e)) return e;
-		}
-		// add the object
+		Object f = set.find {it == o};
+		if (f) return f;
 		set.add(o);
 		return o;
 	}
