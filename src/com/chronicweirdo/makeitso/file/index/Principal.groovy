@@ -11,6 +11,8 @@ package com.chronicweirdo.makeitso.file.index
  * 5. Support pluggable accessors, that allow opening files based based on index data - one
  * accessor for each index.
  * 6. An API + CLI (command line interface).
+ * 7. Index from file to each indexing data we have.
+ * 8. Support for checking and rebuilding of index for new files and changed and deleted files.
  * 
  * @author cacovean
  *
