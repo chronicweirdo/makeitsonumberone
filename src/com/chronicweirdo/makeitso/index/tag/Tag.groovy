@@ -5,6 +5,13 @@ class Tag {
 	String value;
 	Set<Position> positions = new HashSet<Position>();
 	
+	public Tag() {}
+	
+	public Tag(String name, String value) {
+		this.name = name;
+		this.value = value;
+	}
+	
 	@Override
 	public String toString() {
 		if (value) return "#$name:$value"
@@ -21,7 +28,7 @@ class Tag {
 	public boolean equals(Object obj) {
 		if (obj instanceof Tag) {
 			if (value) return name.equals(obj.name) && value.equals(obj.value)
-			return name.equals(obj.name)
+			return name.equals(obj.name) && obj.value == null
 		} else return false
 	}
 
