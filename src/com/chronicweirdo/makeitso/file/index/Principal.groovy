@@ -1,5 +1,8 @@
 package com.chronicweirdo.makeitso.file.index
 
+import java.nio.file.Path
+import java.nio.file.Paths
+
 /**
  * We need a general index "director" that can handle all indexing functionality for a group of
  * files.
@@ -19,5 +22,76 @@ package com.chronicweirdo.makeitso.file.index
  */
 class Principal {
 
-	Map<String, Map<Object, List>> indexes;
+	Path root;
+	
+	Map<String, Index> indexes = new HashMap();
+	Map<Path, Date> indexed = new HashMap();
+	
+	File file(Path path) {
+		return new File(root.resolve(path).toString());
+	}
+	
+	/**
+	 * For each file in the root folder:
+	 * 	- if the file has changed since the last indexing, update the indexes
+	 *  - if the file is not in the indexed list, the file does not exist and we must add it
+	 *  - if none of the above, just update the indexed date
+	 * At the end, all files whose indexed date was not updated must be deleted since they no
+	 * longer exist
+	 */
+	void index() {
+		Date now = new Date();
+		// build/update index
+		index(now, root);
+		// clean index
+		clean(now);
+	}
+	void clean(Date now) {
+		
+	}
+	
+	void index(Date now, Path current) {
+		println "processing $current"
+		File file = file(current);
+		if (file.isDirectory()) {
+			file.list().each{
+				index(now, Paths.get(current.toString(), it));
+			}
+		} else {
+			// add file to indexes
+			Date old = indexed[current];
+			if (old) {
+				// check if file has been updated since old index
+				if (old.time < file.lastModified()) {
+					// update the index
+					reindex(current);
+					// update the date
+					indexed[current] = now;
+				} else {
+					// index is still valid
+					indexed[current] = now;
+				}
+			} else {
+				// new file add to index
+				reindex(current);
+				// update the date
+				indexed[current] = now;
+			}
+		}
+	}
+	
+	void reindex(Path current) {
+		for (Index index: indexes.values()) {
+			index.process(current);
+		}
+	}
+	
+	static main(args) {
+		Path root = Paths.get(System.getProperty("user.home"), "Dropbox", "mydata", "wiki");
+		Principal principal = new Principal(root: root)
+		principal.indexes["tag"] = new BasicIndex();
+		principal.indexes["tag"].processor = new TagProcessor(root);
+		principal.index();
+		println principal.indexes["tag"].data
+	}
 }
