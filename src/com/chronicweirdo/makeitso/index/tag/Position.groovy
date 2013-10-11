@@ -1,13 +1,15 @@
 package com.chronicweirdo.makeitso.index.tag
 
+import groovy.transform.EqualsAndHashCode;
 import groovy.transform.ToString;
 
 import java.nio.file.Path
 
+@EqualsAndHashCode
 class Position {
 
 	Path path; // a relative path
-	int line;
+	Integer line;
 	Set<Tag> tags = new HashSet<Tag>();
 	
 	Position(path, line) {
@@ -16,19 +18,11 @@ class Position {
 	}
 	
 	@Override
-	public int hashCode() {
-		return path.hashCode() * 31 + line.hashCode();
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (obj instanceof Position) {
-			return path.equals(obj.path) && line.equals(obj.line)
-		} else return false 
-	}
-	
-	@Override
 	public String toString() {
-		return "($path,$line)"
+		return "($path, $line)"
+	}
+	
+	Position filePosition() {
+		return new Position(this.path, null);
 	}
 }

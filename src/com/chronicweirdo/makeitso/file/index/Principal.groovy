@@ -28,7 +28,8 @@ class Principal {
 	Map<Path, Date> indexed = new HashMap();
 	
 	File file(Path path) {
-		return new File(root.resolve(path).toString());
+		if (path) return new File(root.resolve(path).toString());
+		return new File(root.toString());
 	}
 	
 	/**
@@ -42,7 +43,7 @@ class Principal {
 	void index() {
 		Date now = new Date();
 		// build/update index
-		index(now, root);
+		index(now, null);
 		// clean index
 		clean(now);
 	}
@@ -55,7 +56,8 @@ class Principal {
 		File file = file(current);
 		if (file.isDirectory()) {
 			file.list().each{
-				index(now, Paths.get(current.toString(), it));
+				if (current) index(now, Paths.get(current.toString(), it));
+				else index(now, Paths.get(it));
 			}
 		} else {
 			// add file to indexes
@@ -93,5 +95,30 @@ class Principal {
 		principal.indexes["tag"].processor = new TagProcessor(root);
 		principal.index();
 		println principal.indexes["tag"].data
+		//println principal.terms;
+		println principal.indexes["tag"].terms["tag"]["writing"]
+		/*
+		 * The problem now is that we get a file+line where a tag was found. This is great if we
+		 * are looking for the line that contains #code #writing and #tech, but if we want the file
+		 * containing all those lines, we won't get what we want.
+		 */
+		Set a = new HashSet(principal.indexes["tag"].terms["tag"]["overview"])
+		Set b = new HashSet(principal.indexes["tag"].terms["tag"]["jena"])
+		Set c = new HashSet(principal.indexes["tag"].terms["tag"]["code"])
+		println a
+		println b
+		a.retainAll(b)
+		println a
+		a.retainAll(c)
+		println a
+		/*
+		 * Maybe should only keep the tag and value as search terms!
+		 */
+		Set d = new HashSet(principal.indexes["tag"].terms["tag"]["tech"])
+		Set e = new HashSet(principal.indexes["tag"].terms["value"]["xtext"])
+		println "d: $d"
+		println "e: $e"
+		d.retainAll(e);
+		println "d final: $d"
 	}
 }
