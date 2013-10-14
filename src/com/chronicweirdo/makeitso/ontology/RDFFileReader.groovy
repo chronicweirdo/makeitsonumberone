@@ -30,13 +30,13 @@ class RDFFileReader {
 		} finally {
 			qexec.close();
 		}
-		println result.size();
 		
 		return result;
 	}
 	
 	static List convertResultSet(ResultSet results) {
 		List converted = new ArrayList();
+		println "names: " + results.getResultVars()
 		results.each {
 			Map c = [:]
 			for (var in results.getResultVars()) {
@@ -80,6 +80,32 @@ class RDFFileReader {
 		}
 	}
 	
+	static String buildQuery(String subject, String predicate, String object) {
+		StringBuilder builder = new StringBuilder();
+		builder.append("select *").append('\n');
+		builder.append("where {").append('\n');
+		if (subject) {
+			builder.append(subject)
+		} else {
+			builder.append("?subject")
+		}
+		builder.append(" ");
+		if (predicate) {
+			builder.append(predicate)
+		} else {
+			builder.append("?predicate");
+		}
+		builder.append(" ");
+		if (object) {
+			builder.append(object);
+		} else {
+			builder.append("?object")
+		}
+		//builder.append('\n');
+		builder.append("}");
+		return builder.toString();
+	}
+	
 	static main(args) {
 		String remoteQuery = """\
 			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
@@ -91,12 +117,17 @@ class RDFFileReader {
 				?s <http://example.org/mediawiki/index.php/Special:URIResolver/Property-3ATestproperty> ?o
 			} LIMIT 100
 		"""
-		String query = """\
+		/*String query = """\
 				select *
 				where {
 					?s ?p ?o
 				}
-				"""
+				"""*/
+		//String query = buildQuery(null, null, null);
+		String query = buildQuery("<http://example.org/mediawiki/index.php/Special:URIResolver/Dummypage>"
+			, "<http://www.w3.org/2000/01/rdf-schema#label>", "'Dummypage'");
+		
+		println query;
 		
 		//Path path = Paths.get("/", "Volumes", "rdfdump", "2013.10.14.10.24.37");
 		Path path = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "2013.10.14.10.24.37");
