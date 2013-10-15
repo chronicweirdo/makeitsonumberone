@@ -5,6 +5,11 @@ class Link {
 	Node from;
 	Node to;
 	
+	Link(Node from, Node to) {
+		this.from = from;
+		this.to = to;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -36,5 +41,12 @@ class Link {
 		return true;
 	}
 
-	
+	@Override
+	public String toString() {
+		StringBuilder b = new StringBuilder();
+		b.append(from.toString());
+		b.append("-");
+		b.append(to.toString());
+		return b.toString();
+	}
 }

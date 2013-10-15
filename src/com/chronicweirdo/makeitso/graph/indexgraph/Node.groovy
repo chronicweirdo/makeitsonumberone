@@ -3,6 +3,13 @@ package com.chronicweirdo.makeitso.graph.indexgraph
 class Node {
 
 	List<String> value;
+	
+	Node(String ... s) {
+		value = new ArrayList();
+		s.each {
+			value.add(it);
+		}
+	}
 
 	@Override
 	public int hashCode() {
@@ -35,5 +42,19 @@ class Node {
 			}
 		}
 		return true;
+	}
+	
+	@Override
+	public String toString() {
+		StringBuilder b = new StringBuilder();
+		b.append('(');
+		String prefix = "";
+		value.each {
+			b.append(prefix)
+			b.append(it.toString());
+			prefix = ",";
+		}
+		b.append(')');
+		return b.toString();
 	}
 }
