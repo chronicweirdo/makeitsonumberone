@@ -10,6 +10,14 @@ class Node {
 			value.add(it);
 		}
 	}
+	
+	boolean matches(List<String> regex) {
+		if (regex.size() > value.size()) return false;
+		for (i in 0..regex.size()-1) {
+			if (!(value.get(i) ==~ regex.get(i))) return false;
+		}
+		return true;
+	}
 
 	@Override
 	public int hashCode() {
@@ -23,7 +31,7 @@ class Node {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		if (this.is(obj))
 			return true;
 		if (obj == null)
 			return false;
@@ -35,7 +43,7 @@ class Node {
 				return false;
 		} else {
 			if (!value.size().equals(other.value.size())) return false;
-			for (i in 0..value.size()) {
+			for (i in 0..value.size()-1) {
 				if (value.get(i) == null) {
 					if (other.value.get(i) != null) return false;
 				} else if (!value.get(i).equals(other.value.get(i))) return false;

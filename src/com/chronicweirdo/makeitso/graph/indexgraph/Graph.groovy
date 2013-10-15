@@ -43,7 +43,21 @@ class Graph {
 	}
 	
 	Set<Node> findNodesLike(List<String> regex) {
-		return null;
+		Set<Node> checked = new HashSet();
+		Set<Node> result = new HashSet();
+		links.each {
+			Node node = it.from;
+			if (!checked.contains(node)) {
+				checked.add(node);
+				if (node.matches(regex)) result.add(node); 
+			}
+			node = it.to;
+			if (!checked.contains(node)) {
+				checked.add(node);
+				if (node.matches(regex)) result.add(node);
+			}
+		}
+		return result;
 	}
 	
 	Set<Link> findLinksFrom(Node from) {
@@ -60,6 +74,11 @@ class Graph {
 			if (it.to == to) result.add(it);
 		}
 		return result;
+	}
+	
+	void delete(Node node) {
+		links.removeAll(findLinksFrom(node));
+		links.removeAll(findLinksTo(node));
 	}
 	
 	@Override
@@ -87,6 +106,10 @@ class Graph {
 		(tag,tech,lucene)-(file,file3,2)
 		(tag,tech,solr)-(file,file3,3)
 		 */
+		def a = new Node("tag","tech","apache")
+		def b = new Node("tag","tech","apache")
+		print a == b;
+		
 		Graph g = new Graph();
 		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
@@ -103,5 +126,8 @@ class Graph {
 		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
 		
 		print g.toString();
+		
+		print g.findNodesLike(["tag","tech"]);
+		print g.findNodesLike(["tag","t.*"]);
 	}
 }
