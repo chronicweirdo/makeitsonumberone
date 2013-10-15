@@ -41,20 +41,23 @@ class Graph {
 		Graph result = new Graph(links);
 		return result;
 	}
-	
 	Set<Node> findNodesLike(List<String> regex) {
+		return findNodesLike(regex, false);
+	}
+	Set<Node> findNodesLike(List<String> regex, boolean strict) {
+	
 		Set<Node> checked = new HashSet();
 		Set<Node> result = new HashSet();
 		links.each {
 			Node node = it.from;
 			if (!checked.contains(node)) {
 				checked.add(node);
-				if (node.matches(regex)) result.add(node); 
+				if (node.matches(regex, strict)) result.add(node); 
 			}
 			node = it.to;
 			if (!checked.contains(node)) {
 				checked.add(node);
-				if (node.matches(regex)) result.add(node);
+				if (node.matches(regex, strict)) result.add(node);
 			}
 		}
 		return result;
@@ -111,6 +114,7 @@ class Graph {
 		print a == b;
 		
 		Graph g = new Graph();
+		g.add(new Link(new Node("tag","tech"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
 		g.add(new Link(new Node("tag","date","2013.10.14"), new Node("file","file1","3")));
@@ -127,7 +131,8 @@ class Graph {
 		
 		print g.toString();
 		
-		print g.findNodesLike(["tag","tech"]);
-		print g.findNodesLike(["tag","t.*"]);
+		println g.findNodesLike(["tag","tech"]);
+		println g.findNodesLike(["tag","t.*"]);
+		println g.findNodesLike(["tag","t.*"], true);
 	}
 }

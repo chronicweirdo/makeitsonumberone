@@ -12,7 +12,14 @@ class Node {
 	}
 	
 	boolean matches(List<String> regex) {
-		if (regex.size() > value.size()) return false;
+		return matches(regex, false);
+	}
+	boolean matches(List<String> regex, boolean strict) {
+		if (strict) {
+			if (regex.size() != value.size()) return false;
+		} else {
+			if (regex.size() > value.size()) return false;
+		}
 		for (i in 0..regex.size()-1) {
 			if (!(value.get(i) ==~ regex.get(i))) return false;
 		}
