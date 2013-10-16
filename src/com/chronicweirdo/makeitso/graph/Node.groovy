@@ -4,6 +4,10 @@ class Node {
 
 	List<String> value;
 	
+	Node() {
+		value = new ArrayList();
+	}
+	
 	Node(String ... s) {
 		value = new ArrayList();
 		s.each {
