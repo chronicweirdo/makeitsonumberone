@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso.graph.indexgraph
+package com.chronicweirdo.makeitso.graph
 
 class Node {
 

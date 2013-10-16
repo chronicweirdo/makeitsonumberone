@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso.graph;
+package com.chronicweirdo.makeitso.graph.old20131016;
 
 public interface Condition {
 
