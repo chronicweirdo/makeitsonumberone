@@ -44,7 +44,14 @@ class Main {
 			}
 		}
 		println index.toString()
-		println index.findNodesLike(["tag","tech"]);
+		long start = System.currentTimeMillis(); 
+		def result = index.findNodesLike(["tag","tech","linux"]);
+		long end = System.currentTimeMillis();
+		long duration = end - start;
+		println "found in $duration millis"
+		result.each {
+			println it.toString()
+		}
 		// test: search for some tags and obtain positions
 		// test: display all tags in a file
 	}
