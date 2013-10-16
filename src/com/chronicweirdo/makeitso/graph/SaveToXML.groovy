@@ -1,18 +1,19 @@
 package com.chronicweirdo.makeitso.graph
 
-import com.sun.org.apache.xerces.internal.util.XML11Char;
-
 import groovy.xml.MarkupBuilder
+
+import java.nio.file.Path
+import java.nio.file.Paths
 
 class SaveToXML {
 
-	static String graphToXml(Graph g) {
-		def writer = new StringWriter()
+	static void graphToXml(Graph graph, Path path) {
+		def writer = new FileWriter(path.toFile());
 		def xml = new MarkupBuilder(writer)
 		
 		xml.graph() {
 			links() {
-				g.links.each { xLink ->
+				graph.links.each { xLink ->
 					link() {
 						from() {
 							xLink.from.value.each { xValue ->
@@ -28,8 +29,25 @@ class SaveToXML {
 				}
 			}
 		}
-		
-		return writer.toString();
+	}
+	
+	static Graph xmlToGraph(Path path) {
+		def grp = new XmlSlurper().parse(path.toFile())
+		Graph gg = new Graph();
+		println grp.links.link.size()
+		grp.links.link.each { grpLink ->
+			Link link = new Link();
+			link.from = new Node();
+			grpLink.from.value.each { grpValue ->
+				link.from.value.add(grpValue)
+			}
+			link.to = new Node();
+			grpLink.to.value.each { grpValue ->
+				link.to.value.add(grpValue)
+			}
+			gg.add(link);
+		}
+		return gg;
 	}
 	
 	static main(args) {
@@ -50,24 +68,11 @@ class SaveToXML {
 		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file3","2")));
 		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
 
-		String xml = graphToXml(g);
-		println xml
+		Path path = Paths.get("testGraphXML.xml");
+		//String xml = graphToXml(g, );
+		//println xml
 		
-		def grp = new XmlSlurper().parseText(xml);
-		Graph gg = new Graph();
-		println grp.links.link.size()
-		grp.links.link.each { grpLink ->
-			Link link = new Link();
-			link.from = new Node();
-			grpLink.from.value.each { grpValue ->
-				link.from.value.add(grpValue)
-			}
-			link.to = new Node();
-			grpLink.to.value.each { grpValue ->
-				link.to.value.add(grpValue)
-			}
-			gg.add(link);
-		}
+		Graph gg = readGraph(path);
 		
 		println gg.toString()
 	}
