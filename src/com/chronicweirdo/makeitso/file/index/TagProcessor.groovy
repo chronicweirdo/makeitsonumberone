@@ -3,8 +3,8 @@ package com.chronicweirdo.makeitso.file.index
 import java.nio.file.Files
 import java.nio.file.Path
 
-import com.chronicweirdo.makeitso.index.tag.Position
-import com.chronicweirdo.makeitso.index.tag.Tag
+import com.chronicweirdo.makeitso.index.tag.old20131016.Position
+import com.chronicweirdo.makeitso.index.tag.old20131016.Tag
 
 class TagProcessor implements Processor {
 

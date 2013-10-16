@@ -1,10 +1,10 @@
 package com.chronicweirdo.makeitso.file.index
 
 import groovy.transform.EqualsAndHashCode
-import groovy.transform.ToString;
+import groovy.transform.ToString
 
-import com.chronicweirdo.makeitso.index.tag.Position
-import com.chronicweirdo.makeitso.index.tag.Tag
+import com.chronicweirdo.makeitso.index.tag.old20131016.Position
+import com.chronicweirdo.makeitso.index.tag.old20131016.Tag
 
 @EqualsAndHashCode
 @ToString
