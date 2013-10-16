@@ -6,6 +6,8 @@ class Link {
 	Node from;
 	Node to;
 	
+	Link() {}
+	
 	Link(Node from, Node to) {
 		this.from = from;
 		this.to = to;

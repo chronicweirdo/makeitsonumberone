@@ -6,6 +6,31 @@ import groovy.xml.MarkupBuilder
 
 class SaveToXML {
 
+	static String graphToXml(Graph g) {
+		def writer = new StringWriter()
+		def xml = new MarkupBuilder(writer)
+		
+		xml.graph() {
+			links() {
+				g.links.each { xLink ->
+					link() {
+						from() {
+							xLink.from.value.each { xValue ->
+								value(xValue)
+							}
+						}
+						to() {
+							xLink.to.value.each { xValue ->
+								value(xValue)
+							}
+						}
+					}
+				}
+			}
+		}
+		
+		return writer.toString();
+	}
 	
 	static main(args) {
 		
@@ -25,28 +50,25 @@ class SaveToXML {
 		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file3","2")));
 		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
 
-		def writer = new StringWriter()
-		def xml = new MarkupBuilder(writer)
+		String xml = graphToXml(g);
+		println xml
 		
-		xml.graph() {
-			links() {
-				g.links.each { xLink ->
-					link() {
-						from() {
-							xLink.from.value.each { xValue ->
-								value(type:"string",xValue)
-							}
-						}
-						to() {
-							xLink.to.value.each { xValue ->
-								value(type:"string",xValue)
-							}
-						}
-					}
-				}
+		def grp = new XmlSlurper().parseText(xml);
+		Graph gg = new Graph();
+		println grp.links.link.size()
+		grp.links.link.each { grpLink ->
+			Link link = new Link();
+			link.from = new Node();
+			grpLink.from.value.each { grpValue ->
+				link.from.value.add(grpValue)
 			}
+			link.to = new Node();
+			grpLink.to.value.each { grpValue ->
+				link.to.value.add(grpValue)
+			}
+			gg.add(link);
 		}
 		
-		println writer.toString();
+		println gg.toString()
 	}
 }
