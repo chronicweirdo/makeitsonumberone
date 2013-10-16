@@ -121,9 +121,22 @@ class PathProcessor {
 		
 		pathProcessor.run();
 		
+		println "ALL RESULTS"
 		println pathProcessor.results
 		pathProcessor.results.each { path, result ->
 			println "$path: $result";
+		}
+		println "FOLDER RESULTS"
+		pathProcessor.folderResults.each { processor, value ->
+			value.each { path, result ->
+				println "$path: $result";
+			}
+		}
+		println "FILE RESULTS"
+		pathProcessor.fileResults.each { processor, value ->
+			value.each { path, result ->
+				println "$path: $result";
+			}
 		}
 	}
 
