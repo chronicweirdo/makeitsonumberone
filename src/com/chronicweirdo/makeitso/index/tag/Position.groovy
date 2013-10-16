@@ -4,6 +4,11 @@ import java.nio.file.Path
 
 class Position {
 
-	Path file;
+	Path path;
 	Integer line;
+	
+	@Override
+	public String toString() {
+		return "($path,$line)";
+	}
 }

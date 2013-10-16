@@ -15,6 +15,12 @@ class PathProcessor {
 		this.root = root;
 	}
 	
+	PathProcessor(Path root, Date after, boolean processRoot) {
+		this.root = root;
+		this.after = after;
+		this.processRoot = processRoot;
+	}
+	
 	Set<FolderProcessor> folderProcessors = new HashSet();
 	Set<FileProcessor> fileProcessors = new HashSet();
 	
