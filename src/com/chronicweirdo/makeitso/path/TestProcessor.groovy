@@ -6,7 +6,9 @@ class TestProcessor implements FolderProcessor<String>, FileProcessor<String> {
 
 	@Override
 	public String processFile(Path root, Path relative) {
-		return "processed file ($root) $relative";
+		File file = root.resolve(relative).toFile();
+		Date date = new Date(file.lastModified());
+		return "processed file ($root) $relative ($date)";
 	}
 
 	@Override

@@ -7,7 +7,9 @@ import com.sun.corba.se.spi.orbutil.fsm.Guard.Result;
 
 class PathProcessor {
 	
+	Date after;
 	Path root;
+	boolean processRoot = true;
 	
 	PathProcessor(Path root) {
 		this.root = root;
@@ -73,6 +75,18 @@ class PathProcessor {
 		}
 	}
 	
+	boolean isRoot(Path current) {
+		return current.toString().length() == 0;
+	}
+	long lastModified(Path current) {
+		return root.resolve(current).toFile().lastModified();
+	}
+	boolean shouldProcess(Path current) {
+		if (processRoot == false && isRoot(current)) return false;
+		if (after != null && after.time > lastModified(current)) return false;
+		return true;
+	}
+	
 	void run() {
 		processPath(Paths.get(""));
 	}
@@ -80,20 +94,28 @@ class PathProcessor {
 	private void processPath(Path current) {
 		File file = fullPath(current).toFile();
 		if (file.isDirectory()) {
-			processFolder(current);
+			if (shouldProcess(current)) processFolder(current);
 			file.list().each{
 				processPath(newPath(current, it));
 			}
 		} else {
-			processFile(current);
+			if (shouldProcess(current)) processFile(current);
 		}
 	}
 	
 	static main(args) {
 		Path root = Paths.get(System.getProperty("user.home"), "Dropbox", "mydata", "wiki");
 		
+		Calendar today = Calendar.getInstance();
+		today.set(Calendar.HOUR_OF_DAY, 0);
+		today.set(Calendar.MINUTE, 0);
+		today.set(Calendar.SECOND, 0)
+		
 		TestProcessor testProcessor = new TestProcessor();
 		PathProcessor pathProcessor = new PathProcessor(root);
+		pathProcessor.processRoot = false;
+		pathProcessor.after = today.time;
+		println today.time
 		pathProcessor.addFileProcessor(testProcessor);
 		pathProcessor.addFolderProcessor(testProcessor);
 		
