@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso.index.tag
+package com.chronicweirdo.makeitso.index.tag.old20131016
 
 class Link {
 	Tag tag;

@@ -1,4 +1,4 @@
-package com.chronicweirdo.makeitso.index.tag
+package com.chronicweirdo.makeitso.index.tag.old20131016
 
 import java.nio.file.Path
 import java.nio.file.Paths
