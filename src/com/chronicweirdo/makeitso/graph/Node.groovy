@@ -8,6 +8,10 @@ class Node implements Serializable {
 		value = new ArrayList();
 	}
 	
+	Node(List<String> s) {
+		value = new ArrayList(s);
+	}
+	
 	Node(String ... s) {
 		value = new ArrayList();
 		s.each {
