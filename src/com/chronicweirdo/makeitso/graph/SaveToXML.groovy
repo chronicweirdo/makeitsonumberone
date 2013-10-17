@@ -7,13 +7,18 @@ import java.nio.file.Paths
 
 class SaveToXML {
 
-	static void graphToXml(Graph graph, Path path) {
+	static void graphToXml(Graph xGraph, Path path) {
 		def writer = new FileWriter(path.toFile());
 		def xml = new MarkupBuilder(writer)
 		
+		println xGraph.toString()
+		
 		xml.graph() {
+			/*graph.properties.each { xPropertyName, sPropertyValue ->
+				property(name: xPropertyName, sPropertyValue)
+			}*/
 			links() {
-				graph.links.each { xLink ->
+				xGraph.links.each { xLink ->
 					link() {
 						from() {
 							xLink.from.value.each { xValue ->
@@ -29,12 +34,17 @@ class SaveToXML {
 				}
 			}
 		}
+		println xGraph
+		writer.close();
 	}
 	
 	static Graph xmlToGraph(Path path) {
 		def grp = new XmlSlurper().parse(path.toFile())
 		Graph gg = new Graph();
-		println grp.links.link.size()
+		//println grp.links.link.size()
+		grp.property.each { grpProperty ->
+			gg.properties[grpProperty.name] = grpProperty
+		}
 		grp.links.link.each { grpLink ->
 			Link link = new Link();
 			link.from = new Node();
@@ -53,6 +63,7 @@ class SaveToXML {
 	static main(args) {
 		
 		Graph g = new Graph();
+		//g.updated = "yesterday";
 		g.add(new Link(new Node("tag","tech"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
@@ -67,13 +78,15 @@ class SaveToXML {
 		g.add(new Link(new Node("tag","todo","tech"), new Node("file","file3","1")));
 		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file3","2")));
 		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
+		
+		println g.toString()
 
 		Path path = Paths.get("testGraphXML.xml");
-		//String xml = graphToXml(g, );
+		graphToXml(g, path);
 		//println xml
 		
-		Graph gg = readGraph(path);
+		//Graph gg = readGraph(path);
 		
-		println gg.toString()
+		//println gg.toString()
 	}
 }

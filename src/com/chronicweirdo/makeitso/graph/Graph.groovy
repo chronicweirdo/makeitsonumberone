@@ -6,6 +6,7 @@ class Graph {
 
 	//Set<Node> nodes;
 	Set<Link> links;
+	Map<String, Object> properties = [:];
 	
 	Graph() {
 		links = new HashSet();
@@ -26,6 +27,15 @@ class Graph {
 	void delete(Graph graph) {
 		this.links.removeAll(graph.links);
 	}
+	
+	/*void setProperty (String property, Object o) {
+		properties[property] = o;
+	}
+	
+	Object getProperty (String property) {
+		return properties[property];
+	}*/
+	
 	
 	/**
 	 * Will extract the specified nodes from the graph. All existing nodes and links linked to the
@@ -88,6 +98,9 @@ class Graph {
 	@Override
 	public String toString() {
 		StringBuilder b = new StringBuilder();
+		properties.each { name, value ->
+			b.append(name).append(" = ").append(value.toString()).append("\n");
+		}
 		links.each {
 			b.append(it.toString()).append("\n");
 		}
@@ -112,9 +125,10 @@ class Graph {
 		 */
 		def a = new Node("tag","tech","apache")
 		def b = new Node("tag","tech","apache")
-		print a == b;
+		println a == b;
 		
 		Graph g = new Graph();
+		g.updated = "yesterday";
 		g.add(new Link(new Node("tag","tech"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
 		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
