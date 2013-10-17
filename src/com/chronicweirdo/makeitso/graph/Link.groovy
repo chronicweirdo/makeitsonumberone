@@ -1,7 +1,7 @@
 package com.chronicweirdo.makeitso.graph
 
 
-class Link {
+class Link implements Serializable {
 
 	Node from;
 	Node to;

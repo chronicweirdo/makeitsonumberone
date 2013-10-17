@@ -1,6 +1,6 @@
 package com.chronicweirdo.makeitso.graph
 
-class Node {
+class Node implements Serializable {
 
 	List<String> value;
 	

@@ -2,7 +2,7 @@ package com.chronicweirdo.makeitso.graph
 
 
 
-class Graph {
+class Graph implements Serializable {
 
 	//Set<Node> nodes;
 	Set<Link> links;
@@ -28,13 +28,13 @@ class Graph {
 		this.links.removeAll(graph.links);
 	}
 	
-	/*void setProperty (String property, Object o) {
+	void setProperty (String property, Object o) {
 		properties[property] = o;
 	}
 	
 	Object getProperty (String property) {
 		return properties[property];
-	}*/
+	}
 	
 	
 	/**
@@ -107,6 +107,27 @@ class Graph {
 		return b.toString();
 	}
 	
+	static Graph testGraph() {
+		Graph g = new Graph();
+		g.updated = "yesterday";
+		g.add(new Link(new Node("tag","tech"), new Node("file","file1","1")));
+		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
+		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
+		g.add(new Link(new Node("tag","date","2013.10.14"), new Node("file","file1","3")));
+		g.add(new Link(new Node("link","http://jgrapht.org/"), new Node("file","file1","8")));
+		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file2","1")));
+		g.add(new Link(new Node("tag","overview"), new Node("file","file2","1")));
+		g.add(new Link(new Node("disk","pretty_image.png"), new Node("file","file2","3")));
+		g.add(new Link(new Node("tag","apache"), new Node("file","file2","1")));
+		g.add(new Link(new Node("tag","index"), new Node("file","file2","1")));
+		g.add(new Link(new Node("tag","code"), new Node("file","file2","2")));
+		g.add(new Link(new Node("tag","todo","tech"), new Node("file","file3","1")));
+		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file3","2")));
+		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
+		
+		return g;
+	}
+	
 	static main(args) {
 		/*
 		(tag,tech,apache)-(file,file1,1)
@@ -127,22 +148,7 @@ class Graph {
 		def b = new Node("tag","tech","apache")
 		println a == b;
 		
-		Graph g = new Graph();
-		g.updated = "yesterday";
-		g.add(new Link(new Node("tag","tech"), new Node("file","file1","1")));
-		g.add(new Link(new Node("tag","tech","apache"), new Node("file","file1","1")));
-		g.add(new Link(new Node("tag","overview"), new Node("file","file1","2")));
-		g.add(new Link(new Node("tag","date","2013.10.14"), new Node("file","file1","3")));
-		g.add(new Link(new Node("link","http://jgrapht.org/"), new Node("file","file1","8")));
-		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file2","1")));
-		g.add(new Link(new Node("tag","overview"), new Node("file","file2","1")));
-		g.add(new Link(new Node("disk","pretty_image.png"), new Node("file","file2","3")));
-		g.add(new Link(new Node("tag","apache"), new Node("file","file2","1")));
-		g.add(new Link(new Node("tag","index"), new Node("file","file2","1")));
-		g.add(new Link(new Node("tag","code"), new Node("file","file2","2")));
-		g.add(new Link(new Node("tag","todo","tech"), new Node("file","file3","1")));
-		g.add(new Link(new Node("tag","tech","lucene"), new Node("file","file3","2")));
-		g.add(new Link(new Node("tag","tech","solr"), new Node("file","file3","3")));
+		Graph g = testGraph();
 		
 		print g.toString();
 		
