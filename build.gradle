@@ -22,11 +22,11 @@ dependencies {
 	ext.v.jena = '2.10.1'
 	compile "org.apache.jena:apache-jena-libs:$ext.v.jena"
 	
-	ext.v.lucene = '4.4.0'
-	compile "org.apache.lucene:lucene-analyzers-common:$ext.v.lucene"
-	compile "org.apache.lucene:lucene-core:$ext.v.lucene"
-	compile "org.apache.lucene:lucene-queries:$ext.v.lucene"
-	compile "org.apache.lucene:lucene-queryparser:$ext.v.lucene"
+	//ext.v.lucene = '4.4.0'
+	//compile "org.apache.lucene:lucene-analyzers-common:$ext.v.lucene"
+	//compile "org.apache.lucene:lucene-core:$ext.v.lucene"
+	//compile "org.apache.lucene:lucene-queries:$ext.v.lucene"
+	//compile "org.apache.lucene:lucene-queryparser:$ext.v.lucene"
 	
 	ext.v.antlr = '4.1'
 	compile "org.antlr:antlr4:$ext.v.antlr"
@@ -37,6 +37,12 @@ dependencies {
 	compile "com.db4o:db4o-taj-java5:$ext.v.db4o"
 	compile "com.db4o:db4o-instrumentation-java5:$ext.v.db4o"
 	
+	ext.v.neo4j = '2.0.0-M06'
+	compile "org.neo4j:neo4j:$ext.v.neo4j"
+	
 	ext.v.junit = '4.+'
 	testCompile "junit:junit:$ext.v.junit"
+	
+	
+	
 }
