@@ -69,7 +69,7 @@ class TestNeo4j {
 		 "array_block_size": "300",
 		 ])
 		 .newGraphDatabase();*/
-		if (!exists) createIndex(graphDb, "Node", "value");
+		if (!exists) createIndex(graphDb, "Node", "id");
 		registerShutdownHook(graphDb);
 		return graphDb;
 	}
@@ -82,16 +82,24 @@ class TestNeo4j {
 			//IndexManager index = graph.index().forNodes("uniques");
 			// Database operations go here
 			Node node1 = graph.createNode(label);
-			node1M.each { k, v -> node1.setProperty(k, v) }
+			node1M.each { k, v -> 
+				println "setting property $k :: $v"
+				node1.setProperty(k, v) 
+			}
+			
 			//index.add(node1, "id", node1M["id"]);
 			Node node2 = graph.createNode(label);
-			node2M.each { k, v -> node2.setProperty(k, v) }
+			node2M.each { k, v ->
+				println "setting property $k :: $v"
+				node2.setProperty(k, v)
+			}
 			//index.add(node2, "id", node2M["id"]);
 			Relationship link = node1.createRelationshipTo(node2, linkType);
 			linkM.each { k, v -> link.setProperty(k, v) }
 			tx.success();
 			tx.close();
 		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
@@ -99,18 +107,19 @@ class TestNeo4j {
 		// find node by index
 		try {
 			Transaction tx = graph.beginTx()
-			ResourceIterator<Node> users = graph.findNodesByLabelAndProperty( DynamicLabel.label("Node"), "value", value )
+			ResourceIterator<Node> users = graph.findNodesByLabelAndProperty( DynamicLabel.label("Node"), "id", value )
 			.iterator();
 			ArrayList<Node> userNodes = new ArrayList<>();
 			while ( users.hasNext() )
 			{
 				userNodes.add( users.next() );
 			}
-			println "found $userNodes.size() nodes"
+			println "found $userNodes.size nodes"
 			for ( Node node : userNodes )
 			{
-				System.out.println(node.getProperty( "value" ) );
-				System.out.println(node.getProperty( "id" ) );
+				node.getProperties().each { k, v ->
+					println "$k :: $v"
+				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -122,10 +131,10 @@ class TestNeo4j {
 		def graph = open(path);
 
 		addLink(graph, ["id":"1", "value":["file", "home", "test.txt"]],
-		["id":"1", "value":["tag", "tech", "test"]]
+		["id":"2", "value":["tag", "tech", "test"]]
 		, [:], RelTypes.TAGGED);
 
-		findNodeByIndex(graph, ["file","home","test.txt"]);
+		findNodeByIndex(graph, "1");
 	}
 
 }
