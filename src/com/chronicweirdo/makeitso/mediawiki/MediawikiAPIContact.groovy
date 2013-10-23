@@ -40,15 +40,12 @@ class MediawikiAPIContact {
 	}
 	
 	static Map convertCookie(String cookie) {
-		//println "#####    " + cookie
 		Map result = [:]
 		String actual = cookie.substring(0, cookie.indexOf(";"));
 		String[] data = actual.split("=");
 		if (data.length == 2) {
 			result[data[0]] = data[1]
 		}
-		//print "##### ## "
-		//println result
 		return result
 	}
 	
@@ -92,7 +89,6 @@ class MediawikiAPIContact {
 				prefix = ";"
 			}
 			connection.setRequestProperty("Cookie", builder.toString());
-			println "#####  " + connection.getRequestProperty("Cookie");
 		}
 		
 		if (postParams) {
@@ -102,7 +98,6 @@ class MediawikiAPIContact {
 			output.writeBytes(query);
 		}
 		
-		println "###" + connection.toString()
 		connection.connect();
 		
 		Response response = new Response();
@@ -120,66 +115,27 @@ class MediawikiAPIContact {
 		return response;
 	}
 	
-	static String xpathFromXml(String xml, String expression) {
-		InputSource inputSource = new InputSource(new ByteArrayInputStream(xml.getBytes("UTF-8")))
-		
-		def xpath = XPathFactory.newInstance().newXPath()
-		
-		//DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-		//DocumentBuilder builder = factory.newDocumentBuilder();
-		//Document doc = builder.parse(inputSource);
-		//XPathFactory xPathfactory = XPathFactory.newInstance();
-		//XPath xpath = xPathfactory.newXPath();
-		//XPathExpression expr = xpath.compile(/api/login@result);
-		//println xpath.evaluate("api/login/@result", inputSource);
-		return xpath.evaluate(expression, inputSource);
-	}
-	
-	static auth() {
+	// authenticates and returns cookies to be used in future requests
+	static Map auth() {
+		// authenticate
 		def postParams = ["action": "login", "lgname": "silviu.cacoveanu@epfl.ch", "lgpassword": "T4ppitikar455", "format": "xml"]
 		Response response = request(MEDIAWIKI_API, null, postParams, "POST", null);
-		println response.cookies
-		println response.content
-		
 		String token = XmlUtil.extract(response.content.trim(), ["token": ["login", "@token"]])["token"];
 		postParams["lgtoken"] = token
-		println postParams
+		
+		// confirm token
 		def sessionCookie = ["labspace_session":response.cookies["labspace_session"]];
 		response = request(MEDIAWIKI_API, null, postParams, "POST", 
 			sessionCookie);
+
+		return response.cookies;
+	}
+	
+	static get(cookies, getParams) {
+		def response = request(MEDIAWIKI_API, getParams, null, "GET",
+			cookies);
 		println response.cookies
 		println response.content
-		
-		/*def getParams = [
-			"action": "parse",
-			"titles": "Mt080224a1-1",
-			];*/
-		def getParams = [
-			"action": "query",
-			"prop": "revisions",
-			"rvprop": "content",
-			"format": "xml",
-			//"titles": "Main Page"
-			"titles": "Mt080224a1-1"
-			]
-/*		postParams = [
-		              "action": "query",
-		              "titles": "Mt080224a1-1",
-		              "prop": "revisions",
-		              "format": "xml"
-		            	  ];
-*/		
-		sessionCookie.putAll(response.cookies)
-		response = request(MEDIAWIKI_API, getParams, null, "GET",
-			sessionCookie);
-		println response.cookies
-		println response.content
-		//String cookie = 'labspace_session=c47b35a65a6dc49a615fee823b7610ae; is_returning=1'
-		//connection.setRequestProperty("Cookie", cookie)
-				
-		//connection.setRequestProperty("Content-Type","application/x-www-form-urlencoded");
-		//BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-		
 	}
 	
 	static read(URL url) {
@@ -200,7 +156,20 @@ class MediawikiAPIContact {
 	}
 	
 	static main(args) {
-		auth();
+		Map cookies = auth();
+		def getParams = [
+			"action": "query",
+			"prop": "revisions",
+			"rvprop": "content",
+			"format": "xml",
+			"titles": "Mt080224a1-1"
+			]
+		get(cookies, getParams);
+		
+		//api.php?action=query&prop=revisions&titles=API|Main%20Page&rvprop=timestamp|user|comment|content
+		getParams["rvprop"] = "timestamp|user|content";
+		getParams["rvlimit"] = "100";
+		get(cookies, getParams);
 	}
 
 }
