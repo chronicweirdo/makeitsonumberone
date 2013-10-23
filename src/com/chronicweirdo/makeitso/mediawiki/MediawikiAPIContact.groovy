@@ -1,13 +1,11 @@
 package com.chronicweirdo.makeitso.mediawiki
 
 import javax.net.ssl.HttpsURLConnection
-import javax.xml.parsers.DocumentBuilder
-import javax.xml.parsers.DocumentBuilderFactory
-import javax.xml.xpath.XPath
 import javax.xml.xpath.XPathFactory
 
-import org.w3c.dom.Document
 import org.xml.sax.InputSource
+
+import com.chronicweirdo.makeitso.xml.XmlUtil
 
 class MediawikiAPIContact {
 	
@@ -42,17 +40,15 @@ class MediawikiAPIContact {
 	}
 	
 	static Map convertCookie(String cookie) {
-		def result = [:]
-		String[] cookies = cookie.split(";");
-		cookies.each { cook ->
-			String[] data = cook.split("=");
-			//String[] res = data.collect{it.trim()}
-			if (data.length == 2) {
-				result[data[0]] = data[1]
-			} else {
-				result[data[0]] = ""
-			}
+		//println "#####    " + cookie
+		Map result = [:]
+		String actual = cookie.substring(0, cookie.indexOf(";"));
+		String[] data = actual.split("=");
+		if (data.length == 2) {
+			result[data[0]] = data[1]
 		}
+		//print "##### ## "
+		//println result
 		return result
 	}
 	
@@ -89,11 +85,14 @@ class MediawikiAPIContact {
 			cookies.each { key, value ->
 				builder.append(prefix)
 					.append(key)
-					.append("=")
-					.append(value)
+				if (value != null && value != "") {
+					builder.append("=")
+						.append(value)
+				}
 				prefix = ";"
 			}
 			connection.setRequestProperty("Cookie", builder.toString());
+			println "#####  " + connection.getRequestProperty("Cookie");
 		}
 		
 		if (postParams) {
@@ -103,6 +102,7 @@ class MediawikiAPIContact {
 			output.writeBytes(query);
 		}
 		
+		println "###" + connection.toString()
 		connection.connect();
 		
 		Response response = new Response();
@@ -141,7 +141,7 @@ class MediawikiAPIContact {
 		println response.cookies
 		println response.content
 		
-		String token = xpathFromXml(response.content.trim(), "/api/login/@token");
+		String token = XmlUtil.extract(response.content.trim(), ["token": ["login", "@token"]])["token"];
 		postParams["lgtoken"] = token
 		println postParams
 		def sessionCookie = ["labspace_session":response.cookies["labspace_session"]];
@@ -150,10 +150,18 @@ class MediawikiAPIContact {
 		println response.cookies
 		println response.content
 		
-		def getParams = [
+		/*def getParams = [
 			"action": "parse",
 			"titles": "Mt080224a1-1",
-			];
+			];*/
+		def getParams = [
+			"action": "query",
+			"prop": "revisions",
+			"rvprop": "content",
+			"format": "xml",
+			//"titles": "Main Page"
+			"titles": "Mt080224a1-1"
+			]
 /*		postParams = [
 		              "action": "query",
 		              "titles": "Mt080224a1-1",
