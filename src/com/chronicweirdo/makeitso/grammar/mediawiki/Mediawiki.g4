@@ -5,17 +5,13 @@ package com.chronicweirdo.makeitso.grammar.mediawiki;
 }
 
 
-page : section+;
-
-section
-	: template
-	;
-
 template : '{{' templateName templateProperty+ '}}' ;
-templateName : TEXT ;
+templateName : text ;
 templateProperty : '|' templatePropertyName '=' templatePropertyValue ;
-templatePropertyName : TEXT ;
-templatePropertyValue : TEXT ;
+templatePropertyName : text ;
+templatePropertyValue : text ;
 
-TEXT : ~[\r\n|={]+ ;
-WS : [\r\n]+ -> channel(HIDDEN);
+text : (SPACE | WORD)+ ;
+
+SPACE : [ \r\t\n]+;
+WORD : ~(' '|'\r'|'\t'|'\n'|'{'|'}'|'|'|'=')+;

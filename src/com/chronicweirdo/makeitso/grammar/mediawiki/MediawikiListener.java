@@ -22,6 +22,17 @@ public interface MediawikiListener extends ParseTreeListener {
 	void exitTemplate(@NotNull MediawikiParser.TemplateContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link MediawikiParser#text}.
+	 * @param ctx the parse tree
+	 */
+	void enterText(@NotNull MediawikiParser.TextContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link MediawikiParser#text}.
+	 * @param ctx the parse tree
+	 */
+	void exitText(@NotNull MediawikiParser.TextContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link MediawikiParser#templatePropertyValue}.
 	 * @param ctx the parse tree
 	 */
@@ -31,17 +42,6 @@ public interface MediawikiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTemplatePropertyValue(@NotNull MediawikiParser.TemplatePropertyValueContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MediawikiParser#page}.
-	 * @param ctx the parse tree
-	 */
-	void enterPage(@NotNull MediawikiParser.PageContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MediawikiParser#page}.
-	 * @param ctx the parse tree
-	 */
-	void exitPage(@NotNull MediawikiParser.PageContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MediawikiParser#templateProperty}.
@@ -64,17 +64,6 @@ public interface MediawikiListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitTemplatePropertyName(@NotNull MediawikiParser.TemplatePropertyNameContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link MediawikiParser#section}.
-	 * @param ctx the parse tree
-	 */
-	void enterSection(@NotNull MediawikiParser.SectionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link MediawikiParser#section}.
-	 * @param ctx the parse tree
-	 */
-	void exitSection(@NotNull MediawikiParser.SectionContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link MediawikiParser#templateName}.

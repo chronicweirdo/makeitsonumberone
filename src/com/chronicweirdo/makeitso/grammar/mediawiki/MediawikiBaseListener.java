@@ -32,6 +32,19 @@ public class MediawikiBaseListener implements MediawikiListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterText(@NotNull MediawikiParser.TextContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitText(@NotNull MediawikiParser.TextContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterTemplatePropertyValue(@NotNull MediawikiParser.TemplatePropertyValueContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -39,19 +52,6 @@ public class MediawikiBaseListener implements MediawikiListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitTemplatePropertyValue(@NotNull MediawikiParser.TemplatePropertyValueContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterPage(@NotNull MediawikiParser.PageContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitPage(@NotNull MediawikiParser.PageContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -78,19 +78,6 @@ public class MediawikiBaseListener implements MediawikiListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitTemplatePropertyName(@NotNull MediawikiParser.TemplatePropertyNameContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterSection(@NotNull MediawikiParser.SectionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitSection(@NotNull MediawikiParser.SectionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

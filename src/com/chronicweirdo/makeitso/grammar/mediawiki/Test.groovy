@@ -14,7 +14,7 @@ class Test {
 		for (match in matcher) {
 			println match
 			Util.test(MediawikiLexer.class, MediawikiParser.class,
-				new MediawikiListenerImpl(), "page",
+				new MediawikiListenerImpl(), "template",
 				match);
 		}
 		/*Util.test(MediawikiLexer.class, MediawikiParser.class,
