@@ -29,24 +29,24 @@ def buildSmartCache():
     site = mwclient.Site('bbpfe01.epfl.ch', path='/project/labspace/')
     user = 'bbpdaniboy@epfl.ch'
     password = '9nHZ%6RD6d'
-    site.login(user, password )
+    site.login(user, password ) # logging in to mediawiki
 
     rtn = dict()
     the_classes = [
         'Electrophysiological Cell Class',
         'Morphological Cell Class',
         'Molecular Cell Class',
-        'Location Class']
-    for x in the_classes: rtn[x] = list()
+        'Location Class'] # this is what we are looking for
+    for x in the_classes: rtn[x] = list() # create a list for each class
 
     for page in site.pages:
         title = page.name
         text = page.edit()
-        rtn[title] = getSubobjects(text)
+        rtn[title] = getSubobjects(text) # extracting objects from text and adding them to the correct dictionary entry
         the_class = getClass(text,the_classes)
         if the_class != '':rtn[the_class].append(title)
 
     import pickle
     f = open('new_cache.pkl','w');pickle.dump(rtn,f);f.close()
 
-buildSmartCache()
+buildSmartCache() # start the script

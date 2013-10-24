@@ -44,6 +44,7 @@ class ScriptRunner {
 		//def();
 		//jsr223();
 		jsr223(Paths.get("src", "com", "chronicweirdo", "makeitso", "python", "test.py"));
+		//jsr223(Paths.get("src", "com", "chronicweirdo", "makeitso", "python", "buildCache.py"));
 	}
 
 }

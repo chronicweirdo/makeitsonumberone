@@ -43,6 +43,8 @@ dependencies {
 	ext.v.jython = '2.5.3';
 	compile "org.python:jython:$ext.v.jython"
 	
+	compile "org.parboiled:parboiled-java:1.1.6"
+	
 	ext.v.junit = '4.+'
 	testCompile "junit:junit:$ext.v.junit"
 	
