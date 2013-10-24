@@ -40,6 +40,9 @@ dependencies {
 	ext.v.neo4j = '2.0.0-M06'
 	compile "org.neo4j:neo4j:$ext.v.neo4j"
 	
+	ext.v.jython = '2.5.3';
+	compile "org.python:jython:$ext.v.jython"
+	
 	ext.v.junit = '4.+'
 	testCompile "junit:junit:$ext.v.junit"
 	
