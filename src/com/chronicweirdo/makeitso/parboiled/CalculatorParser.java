@@ -38,7 +38,7 @@ class CalculatorParser extends BaseParser<Object> {
 
 	public static void main(String[] args) {
 		// https://github.com/sirthias/parboiled/wiki/Installation
-		String input = "test 1+2";
+		String input = "1+2";
 		CalculatorParser parser = Parboiled.createParser(CalculatorParser.class);
 		ParsingResult<?> result = ReportingParseRunner.run(parser.Expression(), input);
 		String parseTreePrintOut = ParseTreeUtils.printNodeTree(result);
