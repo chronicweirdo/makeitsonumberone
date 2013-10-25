@@ -38,16 +38,12 @@ class ListMatcherTest {
 			if (currentMatcher.min) {
 				// automatically jump the minimum number of jumps allowed
 				currentListIndex += currentMatcher.min
-			} else {
-				// try to skip matcher altogether, since no minimum limit
-				if (test) println "skipping matcher"
-				if (matches(list, currentListIndex, matcher, matcherIndex+1)) return true;
 			}
 			if (test) println "current index: " + currentListIndex
 			
-			while (currentListIndex < list.size() && ((currentMatcher.max == null) || (currentListIndex < listIndex + currentMatcher.max))) {
-				if (test) println "engulfing " + list[currentListIndex]
-				if (matches(list, currentListIndex+1, matcher, matcherIndex+1)) return true;
+			while (currentListIndex <= list.size() && ((currentMatcher.max == null) || (currentListIndex <= listIndex + currentMatcher.max))) {
+				if (test && currentListIndex > listIndex) println "engulfing " + list[currentListIndex-1]
+				if (matches(list, currentListIndex, matcher, matcherIndex+1)) return true;
 				if (test) println "must engulf more"
 				currentListIndex++;
 			}
@@ -72,19 +68,27 @@ class ListMatcherTest {
 				[new JM(max:2), new RM(regex: "token"), new JM(max:3)], 0
 				) // true
 		*/
-		test = true;		
-		/*println matches(
+		//test = true;		
+		println matches(
 				["token", "of", "my", "appreciation"], 0,
 				[new JM(max:2), new RM(regex: "token"), new JM(max:3)], 0
 				) // true
 		println matches(
 				["token", "of", "my", "appreciation"], 0,
 				[new JM(min: 1, max:2), new RM(regex: "token"), new JM(max:3)], 0
-				)*/ // false, first jump match has min
+				) // false, first jump match has min
 		println matches(
 				["one", "token", "of", "my", "appreciation"], 0,
-				[new JM(min: 1, max:2), new RM(regex: "token"), new JM(max:3)], 0
+				[new JM(min: 1, max:2), new RM(regex: "token"), new JM(max: 3)], 0
 				) // true
+		println matches(
+				["one", "token", "of", "my", "appreciation"], 0,
+				[new JM(), new RM(regex: "token"), new JM(), new RM(regex: "app.*"), new JM()], 0
+				) // true
+		println matches(
+				["one", "token", "of", "my", "appreciation"], 0,
+				[new JM(), new RM(regex: "token"), new JM(min:3), new RM(regex: "app.*"), new JM()], 0
+				) // false
 	}
 
 }
