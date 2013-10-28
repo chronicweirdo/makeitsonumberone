@@ -27,8 +27,9 @@ import org.neo4j.graphdb.schema.Schema
  */
 class TestNeo4j {
 
-	private static enum RelTypes implements RelationshipType {
-		TAGGED
+	public static enum RelTypes implements RelationshipType {
+		TAGGED,
+		ONTOLOGY
 	}
 
 	static void registerShutdownHook( final GraphDatabaseService graphDb ) {
@@ -130,9 +131,11 @@ class TestNeo4j {
 		Path path = Paths.get("/Users/cacovean/Documents/workspace/makeitso", "testNeo4jDB");
 		def graph = open(path);
 
-		addLink(graph, ["id":"1", "value":["file", "home", "test.txt"]],
-		["id":"2", "value":["tag", "tech", "test"]]
-		, [:], RelTypes.TAGGED);
+		long now = System.currentTimeMillis();
+		
+		addLink(graph, ["id":"1", "type": "file", "value": "home/test.txt"],
+		["id":"2", "value":"#tech:test", "type": "tag"]
+		, ["from": now], RelTypes.TAGGED);
 
 		findNodeByIndex(graph, "1");
 	}

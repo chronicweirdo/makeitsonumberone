@@ -21,6 +21,12 @@ class RDFFileReader {
 		model.read(input, null);
 	}
 	
+	static void writeToFile(Path path, Model model) {
+		path.toFile().withWriter { out ->
+			model.write(out);
+		}
+	}
+	
 	static List executeSelectQuery(Model model,  String queryString) {
 		Query query = QueryFactory.create(queryString);
 		QueryExecution qexec = QueryExecutionFactory.create(query, model);
@@ -106,7 +112,7 @@ class RDFFileReader {
 		return builder.toString();
 	}
 	
-	static main(args) {
+	static test1() {
 		String remoteQuery = """\
 			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 			PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -143,6 +149,73 @@ class RDFFileReader {
 		}
 		
 		model.close();
+	}
+	
+	static test2() {
+		// load and list all triplets
+		Path path = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "2013.10.14.10.24.37");
+		Model model = openFile(path);
+		int line = 1;
+		model.listStatements().each {
+			println line + " :: " + it.getSubject().toString() + " :: " + it.getPredicate().toString() + " :: " + it.getObject().toString();
+			line++;
+		}
+		model.close();
+	}
+	
+	static test3() {
+		// run query to list all triplets
+		Path path = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "2013.10.14.10.24.37");
+		Model model = openFile(path);
+		
+		String query = """\
+			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+			PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+			select *
+			from <http://example.org/mediawikigraph>
+			where {
+				?s ?p ?o
+			}
+		"""
+		List r = executeSelectQuery(model, query);
+		println r.size()
+		int line = 1;
+		r.each{
+			it.each { key, value ->
+				println "$line :: $key :: $value"
+			}
+			print "\n";
+			line++;
+		}
+		model.close();
+	}
+	
+	static test4() {
+		Path dbPath = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "db.rdf");
+		Path path = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "2013.10.14.10.24.37");
+		Model model = openFile(path);
+		// add version to every part of a statement
+		int line = 1;
+		model.listStatements().each {
+			println line + " :: " + it.getSubject().toString() + " :: " + it.getPredicate().toString() + " :: " + it.getObject().toString();
+			line++;
+		}
+		writeToFile(dbPath, model);
+		model.close()
+	}
+	
+	static importTest() {
+		// load the db
+		// load model from file
+		// add all triplets from file but link each triplet to a new version value (date)
+	}
+	
+	static main(args) {
+		//test1();
+		//test2();
+		//test3();
+		test4();
 	}
 
 }
