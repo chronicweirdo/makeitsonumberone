@@ -78,7 +78,7 @@ class RDFToNeo4J {
 		// close model
 		model.close();
 		
-		GlobalGraphOperations ggo
+		GlobalGraphOperations ggo.
 	}
 	
 	
