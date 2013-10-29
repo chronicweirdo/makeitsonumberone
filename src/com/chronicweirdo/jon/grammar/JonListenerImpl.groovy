@@ -48,14 +48,20 @@ class JonListenerImpl extends JonBaseListener {
 	}
 	
 	String parse(TypeContext ctx) {
-		return ctx.typeString().getText();
+		StringBuilder b = new StringBuilder();
+		String prefix = "";
+		ctx.ID().each{
+			b.append(prefix).append(it);
+			prefix = "."
+		}
+		return b.toString();
 	}
 	
 	Object parse(MapContext ctx) {
 		Map map = [:]
-		ctx.mapEntry().each { mapEntry ->
-			Object key = parse(mapEntry.mapEntryKey().object());
-			Object value = parse(mapEntry.mapEntryValue().object());
+		ctx.entry().each { entry ->
+			Object key = parse(entry.object(0));
+			Object value = parse(entry.object(1));
 			map[key] = value;
 		}
 		return map;
@@ -63,8 +69,8 @@ class JonListenerImpl extends JonBaseListener {
 	
 	Object parse(ListContext ctx) {
 		List list = [];
-		ctx.listEntry().each {
-			list.add(parse(it.object()))
+		ctx.object().each {
+			list.add(parse(it))
 		}
 		return list;
 	}
@@ -73,6 +79,12 @@ class JonListenerImpl extends JonBaseListener {
 		if (ctx.STRING()) {
 			// this is a string
 			return removeQuotes(ctx.getText())
+		} else if (ctx.bool()) {
+		    if (ctx.bool().TRUE()) {
+				return new Boolean(true);
+			} else if (ctx.bool().FALSE()) {
+				return new Boolean(false);
+			}
 		} else if (ctx.NUMBER()) {
 			// find out what kind of number it is
 			try {

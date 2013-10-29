@@ -11,26 +11,15 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface JonListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link JonParser#typeString}.
+	 * Enter a parse tree produced by {@link JonParser#entry}.
 	 * @param ctx the parse tree
 	 */
-	void enterTypeString(@NotNull JonParser.TypeStringContext ctx);
+	void enterEntry(@NotNull JonParser.EntryContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JonParser#typeString}.
+	 * Exit a parse tree produced by {@link JonParser#entry}.
 	 * @param ctx the parse tree
 	 */
-	void exitTypeString(@NotNull JonParser.TypeStringContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link JonParser#listEntry}.
-	 * @param ctx the parse tree
-	 */
-	void enterListEntry(@NotNull JonParser.ListEntryContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JonParser#listEntry}.
-	 * @param ctx the parse tree
-	 */
-	void exitListEntry(@NotNull JonParser.ListEntryContext ctx);
+	void exitEntry(@NotNull JonParser.EntryContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JonParser#value}.
@@ -44,17 +33,6 @@ public interface JonListener extends ParseTreeListener {
 	void exitValue(@NotNull JonParser.ValueContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JonParser#mapEntry}.
-	 * @param ctx the parse tree
-	 */
-	void enterMapEntry(@NotNull JonParser.MapEntryContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JonParser#mapEntry}.
-	 * @param ctx the parse tree
-	 */
-	void exitMapEntry(@NotNull JonParser.MapEntryContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link JonParser#map}.
 	 * @param ctx the parse tree
 	 */
@@ -66,17 +44,6 @@ public interface JonListener extends ParseTreeListener {
 	void exitMap(@NotNull JonParser.MapContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JonParser#mapEntryValue}.
-	 * @param ctx the parse tree
-	 */
-	void enterMapEntryValue(@NotNull JonParser.MapEntryValueContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JonParser#mapEntryValue}.
-	 * @param ctx the parse tree
-	 */
-	void exitMapEntryValue(@NotNull JonParser.MapEntryValueContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link JonParser#list}.
 	 * @param ctx the parse tree
 	 */
@@ -86,6 +53,17 @@ public interface JonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitList(@NotNull JonParser.ListContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JonParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void enterBool(@NotNull JonParser.BoolContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JonParser#bool}.
+	 * @param ctx the parse tree
+	 */
+	void exitBool(@NotNull JonParser.BoolContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JonParser#object}.
@@ -108,15 +86,4 @@ public interface JonListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitType(@NotNull JonParser.TypeContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link JonParser#mapEntryKey}.
-	 * @param ctx the parse tree
-	 */
-	void enterMapEntryKey(@NotNull JonParser.MapEntryKeyContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JonParser#mapEntryKey}.
-	 * @param ctx the parse tree
-	 */
-	void exitMapEntryKey(@NotNull JonParser.MapEntryKeyContext ctx);
 }

@@ -8,6 +8,11 @@ import com.chronicweirdo.makeitso.grammar.Util
 class Test1 {
 
 	static main(args) {
+		Class cls = Class.forName("com.chronicweirdo.graph.element.Node");
+		println cls.getCanonicalName();
+		grammarTest();
+	}
+	static grammarTest() {
 	String text = """\
 (com.chronicweirdo.graph.element.Link) {
 	"from": (com.chronicweirdo.graph.element.Node) {

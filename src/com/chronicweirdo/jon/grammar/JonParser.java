@@ -18,18 +18,16 @@ public class JonParser extends Parser {
 		new PredictionContextCache();
 	public static final int
 		T__8=1, T__7=2, T__6=3, T__5=4, T__4=5, T__3=6, T__2=7, T__1=8, T__0=9, 
-		STRING=10, ID=11, NUMBER=12, WS=13;
+		TRUE=10, FALSE=11, STRING=12, ID=13, NUMBER=14, WS=15;
 	public static final String[] tokenNames = {
-		"<INVALID>", "']'", "'{'", "')'", "'.'", "','", "'['", "'('", "':'", "'}'", 
-		"STRING", "ID", "NUMBER", "WS"
+		"<INVALID>", "']'", "'{'", "'.'", "')'", "','", "'['", "'('", "':'", "'}'", 
+		"'true'", "'false'", "STRING", "ID", "NUMBER", "WS"
 	};
 	public static final int
-		RULE_object = 0, RULE_type = 1, RULE_typeString = 2, RULE_map = 3, RULE_mapEntry = 4, 
-		RULE_mapEntryKey = 5, RULE_mapEntryValue = 6, RULE_list = 7, RULE_listEntry = 8, 
-		RULE_value = 9;
+		RULE_object = 0, RULE_type = 1, RULE_map = 2, RULE_entry = 3, RULE_list = 4, 
+		RULE_value = 5, RULE_bool = 6;
 	public static final String[] ruleNames = {
-		"object", "type", "typeString", "map", "mapEntry", "mapEntryKey", "mapEntryValue", 
-		"list", "listEntry", "value"
+		"object", "type", "map", "entry", "list", "value", "bool"
 	};
 
 	@Override
@@ -79,42 +77,42 @@ public class JonParser extends Parser {
 		ObjectContext _localctx = new ObjectContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_object);
 		try {
-			setState(29);
+			setState(23);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(20); type();
-				setState(21); map();
+				setState(14); type();
+				setState(15); map();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(23); map();
+				setState(17); map();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(24); type();
-				setState(25); list();
+				setState(18); type();
+				setState(19); list();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(27); list();
+				setState(21); list();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(28); value();
+				setState(22); value();
 				}
 				break;
 			}
@@ -131,8 +129,9 @@ public class JonParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
-		public TypeStringContext typeString() {
-			return getRuleContext(TypeStringContext.class,0);
+		public List<TerminalNode> ID() { return getTokens(JonParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(JonParser.ID, i);
 		}
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -151,66 +150,27 @@ public class JonParser extends Parser {
 	public final TypeContext type() throws RecognitionException {
 		TypeContext _localctx = new TypeContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_type);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(31); match(7);
-			setState(32); typeString();
-			setState(33); match(3);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class TypeStringContext extends ParserRuleContext {
-		public List<TerminalNode> ID() { return getTokens(JonParser.ID); }
-		public TerminalNode ID(int i) {
-			return getToken(JonParser.ID, i);
-		}
-		public TypeStringContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_typeString; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterTypeString(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitTypeString(this);
-		}
-	}
-
-	public final TypeStringContext typeString() throws RecognitionException {
-		TypeStringContext _localctx = new TypeStringContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_typeString);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(35); match(ID);
-			setState(40);
+			setState(25); match(7);
+			setState(26); match(ID);
+			setState(31);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==4) {
+			while (_la==3) {
 				{
 				{
-				setState(36); match(4);
-				setState(37); match(ID);
+				setState(27); match(3);
+				setState(28); match(ID);
 				}
 				}
-				setState(42);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
+			setState(34); match(4);
 			}
 		}
 		catch (RecognitionException re) {
@@ -225,11 +185,11 @@ public class JonParser extends Parser {
 	}
 
 	public static class MapContext extends ParserRuleContext {
-		public MapEntryContext mapEntry(int i) {
-			return getRuleContext(MapEntryContext.class,i);
+		public EntryContext entry(int i) {
+			return getRuleContext(EntryContext.class,i);
 		}
-		public List<MapEntryContext> mapEntry() {
-			return getRuleContexts(MapEntryContext.class);
+		public List<EntryContext> entry() {
+			return getRuleContexts(EntryContext.class);
 		}
 		public MapContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -247,35 +207,35 @@ public class JonParser extends Parser {
 
 	public final MapContext map() throws RecognitionException {
 		MapContext _localctx = new MapContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_map);
+		enterRule(_localctx, 4, RULE_map);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(43); match(2);
-			setState(45);
+			setState(36); match(2);
+			setState(38);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << STRING) | (1L << NUMBER))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << NUMBER))) != 0)) {
 				{
-				setState(44); mapEntry();
+				setState(37); entry();
 				}
 			}
 
-			setState(51);
+			setState(44);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==5) {
 				{
 				{
-				setState(47); match(5);
-				setState(48); mapEntry();
+				setState(40); match(5);
+				setState(41); entry();
 				}
 				}
-				setState(53);
+				setState(46);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(54); match(9);
+			setState(47); match(9);
 			}
 		}
 		catch (RecognitionException re) {
@@ -289,112 +249,36 @@ public class JonParser extends Parser {
 		return _localctx;
 	}
 
-	public static class MapEntryContext extends ParserRuleContext {
-		public MapEntryValueContext mapEntryValue() {
-			return getRuleContext(MapEntryValueContext.class,0);
+	public static class EntryContext extends ParserRuleContext {
+		public ObjectContext object(int i) {
+			return getRuleContext(ObjectContext.class,i);
 		}
-		public MapEntryKeyContext mapEntryKey() {
-			return getRuleContext(MapEntryKeyContext.class,0);
+		public List<ObjectContext> object() {
+			return getRuleContexts(ObjectContext.class);
 		}
-		public MapEntryContext(ParserRuleContext parent, int invokingState) {
+		public EntryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_mapEntry; }
+		@Override public int getRuleIndex() { return RULE_entry; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterMapEntry(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterEntry(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitMapEntry(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitEntry(this);
 		}
 	}
 
-	public final MapEntryContext mapEntry() throws RecognitionException {
-		MapEntryContext _localctx = new MapEntryContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_mapEntry);
+	public final EntryContext entry() throws RecognitionException {
+		EntryContext _localctx = new EntryContext(_ctx, getState());
+		enterRule(_localctx, 6, RULE_entry);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56); mapEntryKey();
-			setState(57); match(8);
-			setState(58); mapEntryValue();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class MapEntryKeyContext extends ParserRuleContext {
-		public ObjectContext object() {
-			return getRuleContext(ObjectContext.class,0);
-		}
-		public MapEntryKeyContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_mapEntryKey; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterMapEntryKey(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitMapEntryKey(this);
-		}
-	}
-
-	public final MapEntryKeyContext mapEntryKey() throws RecognitionException {
-		MapEntryKeyContext _localctx = new MapEntryKeyContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_mapEntryKey);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(60); object();
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class MapEntryValueContext extends ParserRuleContext {
-		public ObjectContext object() {
-			return getRuleContext(ObjectContext.class,0);
-		}
-		public MapEntryValueContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_mapEntryValue; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterMapEntryValue(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitMapEntryValue(this);
-		}
-	}
-
-	public final MapEntryValueContext mapEntryValue() throws RecognitionException {
-		MapEntryValueContext _localctx = new MapEntryValueContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_mapEntryValue);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(62); object();
+			setState(49); object();
+			setState(50); match(8);
+			setState(51); object();
 			}
 		}
 		catch (RecognitionException re) {
@@ -409,11 +293,11 @@ public class JonParser extends Parser {
 	}
 
 	public static class ListContext extends ParserRuleContext {
-		public List<ListEntryContext> listEntry() {
-			return getRuleContexts(ListEntryContext.class);
+		public ObjectContext object(int i) {
+			return getRuleContext(ObjectContext.class,i);
 		}
-		public ListEntryContext listEntry(int i) {
-			return getRuleContext(ListEntryContext.class,i);
+		public List<ObjectContext> object() {
+			return getRuleContexts(ObjectContext.class);
 		}
 		public ListContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -431,73 +315,35 @@ public class JonParser extends Parser {
 
 	public final ListContext list() throws RecognitionException {
 		ListContext _localctx = new ListContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_list);
+		enterRule(_localctx, 8, RULE_list);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(64); match(6);
-			setState(66);
+			setState(53); match(6);
+			setState(55);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << STRING) | (1L << NUMBER))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << NUMBER))) != 0)) {
 				{
-				setState(65); listEntry();
+				setState(54); object();
 				}
 			}
 
-			setState(72);
+			setState(61);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while (_la==5) {
 				{
 				{
-				setState(68); match(5);
-				setState(69); listEntry();
+				setState(57); match(5);
+				setState(58); object();
 				}
 				}
-				setState(74);
+				setState(63);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(75); match(1);
-			}
-		}
-		catch (RecognitionException re) {
-			_localctx.exception = re;
-			_errHandler.reportError(this, re);
-			_errHandler.recover(this, re);
-		}
-		finally {
-			exitRule();
-		}
-		return _localctx;
-	}
-
-	public static class ListEntryContext extends ParserRuleContext {
-		public ObjectContext object() {
-			return getRuleContext(ObjectContext.class,0);
-		}
-		public ListEntryContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
-		}
-		@Override public int getRuleIndex() { return RULE_listEntry; }
-		@Override
-		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterListEntry(this);
-		}
-		@Override
-		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitListEntry(this);
-		}
-	}
-
-	public final ListEntryContext listEntry() throws RecognitionException {
-		ListEntryContext _localctx = new ListEntryContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_listEntry);
-		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(77); object();
+			setState(64); match(1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -512,6 +358,9 @@ public class JonParser extends Parser {
 	}
 
 	public static class ValueContext extends ParserRuleContext {
+		public BoolContext bool() {
+			return getRuleContext(BoolContext.class,0);
+		}
 		public TerminalNode NUMBER() { return getToken(JonParser.NUMBER, 0); }
 		public TerminalNode STRING() { return getToken(JonParser.STRING, 0); }
 		public ValueContext(ParserRuleContext parent, int invokingState) {
@@ -530,14 +379,71 @@ public class JonParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_value);
+		enterRule(_localctx, 10, RULE_value);
+		try {
+			setState(69);
+			switch (_input.LA(1)) {
+			case TRUE:
+			case FALSE:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(66); bool();
+				}
+				break;
+			case STRING:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(67); match(STRING);
+				}
+				break;
+			case NUMBER:
+				enterOuterAlt(_localctx, 3);
+				{
+				setState(68); match(NUMBER);
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class BoolContext extends ParserRuleContext {
+		public TerminalNode TRUE() { return getToken(JonParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(JonParser.FALSE, 0); }
+		public BoolContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_bool; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterBool(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitBool(this);
+		}
+	}
+
+	public final BoolContext bool() throws RecognitionException {
+		BoolContext _localctx = new BoolContext(_ctx, getState());
+		enterRule(_localctx, 12, RULE_bool);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(79);
+			setState(71);
 			_la = _input.LA(1);
-			if ( !(_la==STRING || _la==NUMBER) ) {
+			if ( !(_la==TRUE || _la==FALSE) ) {
 			_errHandler.recoverInline(this);
 			}
 			consume();
@@ -555,27 +461,26 @@ public class JonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\17T\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\3"+
-		"\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\5\2 \n\2\3\3\3\3\3\3\3\3\3\4\3\4\3"+
-		"\4\7\4)\n\4\f\4\16\4,\13\4\3\5\3\5\5\5\60\n\5\3\5\3\5\7\5\64\n\5\f\5\16"+
-		"\5\67\13\5\3\5\3\5\3\6\3\6\3\6\3\6\3\7\3\7\3\b\3\b\3\t\3\t\5\tE\n\t\3"+
-		"\t\3\t\7\tI\n\t\f\t\16\tL\13\t\3\t\3\t\3\n\3\n\3\13\3\13\3\13\2\f\2\4"+
-		"\6\b\n\f\16\20\22\24\2\3\4\2\f\f\16\16R\2\37\3\2\2\2\4!\3\2\2\2\6%\3\2"+
-		"\2\2\b-\3\2\2\2\n:\3\2\2\2\f>\3\2\2\2\16@\3\2\2\2\20B\3\2\2\2\22O\3\2"+
-		"\2\2\24Q\3\2\2\2\26\27\5\4\3\2\27\30\5\b\5\2\30 \3\2\2\2\31 \5\b\5\2\32"+
-		"\33\5\4\3\2\33\34\5\20\t\2\34 \3\2\2\2\35 \5\20\t\2\36 \5\24\13\2\37\26"+
-		"\3\2\2\2\37\31\3\2\2\2\37\32\3\2\2\2\37\35\3\2\2\2\37\36\3\2\2\2 \3\3"+
-		"\2\2\2!\"\7\t\2\2\"#\5\6\4\2#$\7\5\2\2$\5\3\2\2\2%*\7\r\2\2&\'\7\6\2\2"+
-		"\')\7\r\2\2(&\3\2\2\2),\3\2\2\2*(\3\2\2\2*+\3\2\2\2+\7\3\2\2\2,*\3\2\2"+
-		"\2-/\7\4\2\2.\60\5\n\6\2/.\3\2\2\2/\60\3\2\2\2\60\65\3\2\2\2\61\62\7\7"+
-		"\2\2\62\64\5\n\6\2\63\61\3\2\2\2\64\67\3\2\2\2\65\63\3\2\2\2\65\66\3\2"+
-		"\2\2\668\3\2\2\2\67\65\3\2\2\289\7\13\2\29\t\3\2\2\2:;\5\f\7\2;<\7\n\2"+
-		"\2<=\5\16\b\2=\13\3\2\2\2>?\5\2\2\2?\r\3\2\2\2@A\5\2\2\2A\17\3\2\2\2B"+
-		"D\7\b\2\2CE\5\22\n\2DC\3\2\2\2DE\3\2\2\2EJ\3\2\2\2FG\7\7\2\2GI\5\22\n"+
-		"\2HF\3\2\2\2IL\3\2\2\2JH\3\2\2\2JK\3\2\2\2KM\3\2\2\2LJ\3\2\2\2MN\7\3\2"+
-		"\2N\21\3\2\2\2OP\5\2\2\2P\23\3\2\2\2QR\t\2\2\2R\25\3\2\2\2\b\37*/\65D"+
-		"J";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\21L\4\2\t\2\4\3\t"+
+		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
+		"\3\2\3\2\5\2\32\n\2\3\3\3\3\3\3\3\3\7\3 \n\3\f\3\16\3#\13\3\3\3\3\3\3"+
+		"\4\3\4\5\4)\n\4\3\4\3\4\7\4-\n\4\f\4\16\4\60\13\4\3\4\3\4\3\5\3\5\3\5"+
+		"\3\5\3\6\3\6\5\6:\n\6\3\6\3\6\7\6>\n\6\f\6\16\6A\13\6\3\6\3\6\3\7\3\7"+
+		"\3\7\5\7H\n\7\3\b\3\b\3\b\2\t\2\4\6\b\n\f\16\2\3\3\2\f\rO\2\31\3\2\2\2"+
+		"\4\33\3\2\2\2\6&\3\2\2\2\b\63\3\2\2\2\n\67\3\2\2\2\fG\3\2\2\2\16I\3\2"+
+		"\2\2\20\21\5\4\3\2\21\22\5\6\4\2\22\32\3\2\2\2\23\32\5\6\4\2\24\25\5\4"+
+		"\3\2\25\26\5\n\6\2\26\32\3\2\2\2\27\32\5\n\6\2\30\32\5\f\7\2\31\20\3\2"+
+		"\2\2\31\23\3\2\2\2\31\24\3\2\2\2\31\27\3\2\2\2\31\30\3\2\2\2\32\3\3\2"+
+		"\2\2\33\34\7\t\2\2\34!\7\17\2\2\35\36\7\5\2\2\36 \7\17\2\2\37\35\3\2\2"+
+		"\2 #\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"$\3\2\2\2#!\3\2\2\2$%\7\6\2\2%\5"+
+		"\3\2\2\2&(\7\4\2\2\')\5\b\5\2(\'\3\2\2\2()\3\2\2\2).\3\2\2\2*+\7\7\2\2"+
+		"+-\5\b\5\2,*\3\2\2\2-\60\3\2\2\2.,\3\2\2\2./\3\2\2\2/\61\3\2\2\2\60.\3"+
+		"\2\2\2\61\62\7\13\2\2\62\7\3\2\2\2\63\64\5\2\2\2\64\65\7\n\2\2\65\66\5"+
+		"\2\2\2\66\t\3\2\2\2\679\7\b\2\28:\5\2\2\298\3\2\2\29:\3\2\2\2:?\3\2\2"+
+		"\2;<\7\7\2\2<>\5\2\2\2=;\3\2\2\2>A\3\2\2\2?=\3\2\2\2?@\3\2\2\2@B\3\2\2"+
+		"\2A?\3\2\2\2BC\7\3\2\2C\13\3\2\2\2DH\5\16\b\2EH\7\16\2\2FH\7\20\2\2GD"+
+		"\3\2\2\2GE\3\2\2\2GF\3\2\2\2H\r\3\2\2\2IJ\t\2\2\2J\17\3\2\2\2\t\31!(."+
+		"9?G";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

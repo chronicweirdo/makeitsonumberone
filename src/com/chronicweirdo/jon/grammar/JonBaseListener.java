@@ -19,26 +19,13 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterTypeString(@NotNull JonParser.TypeStringContext ctx) { }
+	@Override public void enterEntry(@NotNull JonParser.EntryContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitTypeString(@NotNull JonParser.TypeStringContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterListEntry(@NotNull JonParser.ListEntryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitListEntry(@NotNull JonParser.ListEntryContext ctx) { }
+	@Override public void exitEntry(@NotNull JonParser.EntryContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -58,19 +45,6 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterMapEntry(@NotNull JonParser.MapEntryContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitMapEntry(@NotNull JonParser.MapEntryContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterMap(@NotNull JonParser.MapContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -84,19 +58,6 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterMapEntryValue(@NotNull JonParser.MapEntryValueContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitMapEntryValue(@NotNull JonParser.MapEntryValueContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterList(@NotNull JonParser.ListContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -104,6 +65,19 @@ public class JonBaseListener implements JonListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitList(@NotNull JonParser.ListContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterBool(@NotNull JonParser.BoolContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitBool(@NotNull JonParser.BoolContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -130,19 +104,6 @@ public class JonBaseListener implements JonListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitType(@NotNull JonParser.TypeContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterMapEntryKey(@NotNull JonParser.MapEntryKeyContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitMapEntryKey(@NotNull JonParser.MapEntryKeyContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

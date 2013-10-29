@@ -18,21 +18,24 @@ object
 	| value // denotes a basic object
 	;
 
-type : '(' typeString ')' ;
-typeString :  ;
-map : '{' mapEntry? (',' mapEntry)* '}' ;
-mapEntry : mapEntryKey ':' mapEntryValue ;
-mapEntryKey : object ;
-mapEntryValue : object ;
-list : '[' listEntry? (',' listEntry)* ']' ;
-listEntry : object ;
+type : '(' ID ('.' ID)* ')' ;
+map : '{' entry? (',' entry)* '}' ;
+entry : object ':' object ;
+list : '[' object? (',' object)* ']' ;
 
+// TODO: handle all java primitive data types http://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html
 value
-	: STRING
+	: bool
+	| STRING
 	| NUMBER
 	;
+bool : TRUE | FALSE ;
 
 // LEXER
+
+TRUE : 'true' ;
+
+FALSE : 'false' ;
 
 STRING
 	: '"' ~[\"]* '"'
