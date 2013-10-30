@@ -19,39 +19,52 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterEntry(@NotNull JonParser.EntryContext ctx) { }
+	@Override public void enterP_long(@NotNull JonParser.P_longContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitEntry(@NotNull JonParser.EntryContext ctx) { }
+	@Override public void exitP_long(@NotNull JonParser.P_longContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterValue(@NotNull JonParser.ValueContext ctx) { }
+	@Override public void enterP_boolean(@NotNull JonParser.P_booleanContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitValue(@NotNull JonParser.ValueContext ctx) { }
+	@Override public void exitP_boolean(@NotNull JonParser.P_booleanContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterMap(@NotNull JonParser.MapContext ctx) { }
+	@Override public void enterP_string(@NotNull JonParser.P_stringContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitMap(@NotNull JonParser.MapContext ctx) { }
+	@Override public void exitP_string(@NotNull JonParser.P_stringContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterP_double(@NotNull JonParser.P_doubleContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_double(@NotNull JonParser.P_doubleContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -71,19 +84,6 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterBool(@NotNull JonParser.BoolContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitBool(@NotNull JonParser.BoolContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterObject(@NotNull JonParser.ObjectContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -97,6 +97,19 @@ public class JonBaseListener implements JonListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterP_int(@NotNull JonParser.P_intContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_int(@NotNull JonParser.P_intContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterType(@NotNull JonParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -104,6 +117,97 @@ public class JonBaseListener implements JonListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitType(@NotNull JonParser.TypeContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterP_char(@NotNull JonParser.P_charContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_char(@NotNull JonParser.P_charContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterEntry(@NotNull JonParser.EntryContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitEntry(@NotNull JonParser.EntryContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterMap(@NotNull JonParser.MapContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitMap(@NotNull JonParser.MapContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterValue(@NotNull JonParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitValue(@NotNull JonParser.ValueContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterP_float(@NotNull JonParser.P_floatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_float(@NotNull JonParser.P_floatContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterPrimitive(@NotNull JonParser.PrimitiveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitPrimitive(@NotNull JonParser.PrimitiveContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterKey(@NotNull JonParser.KeyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitKey(@NotNull JonParser.KeyContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

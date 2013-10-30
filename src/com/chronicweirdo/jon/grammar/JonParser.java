@@ -17,17 +17,23 @@ public class JonParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		T__8=1, T__7=2, T__6=3, T__5=4, T__4=5, T__3=6, T__2=7, T__1=8, T__0=9, 
-		TRUE=10, FALSE=11, STRING=12, ID=13, NUMBER=14, WS=15;
+		T__14=1, T__13=2, T__12=3, T__11=4, T__10=5, T__9=6, T__8=7, T__7=8, T__6=9, 
+		T__5=10, T__4=11, T__3=12, T__2=13, T__1=14, T__0=15, NULL=16, TRUE=17, 
+		FALSE=18, STRING=19, CHAR=20, ID=21, FLOAT=22, INTEGER=23, HEXADECIMAL=24, 
+		BINARY=25, WS=26;
 	public static final String[] tokenNames = {
-		"<INVALID>", "']'", "'{'", "'.'", "')'", "','", "'['", "'('", "':'", "'}'", 
-		"'true'", "'false'", "STRING", "ID", "NUMBER", "WS"
+		"<INVALID>", "']'", "')'", "'.'", "','", "'D'", "'['", "':'", "'('", "'d'", 
+		"'f'", "'l'", "'{'", "'F'", "'}'", "'L'", "'null'", "'true'", "'false'", 
+		"STRING", "CHAR", "ID", "FLOAT", "INTEGER", "HEXADECIMAL", "BINARY", "WS"
 	};
 	public static final int
-		RULE_object = 0, RULE_type = 1, RULE_map = 2, RULE_entry = 3, RULE_list = 4, 
-		RULE_value = 5, RULE_bool = 6;
+		RULE_object = 0, RULE_type = 1, RULE_map = 2, RULE_entry = 3, RULE_key = 4, 
+		RULE_value = 5, RULE_list = 6, RULE_primitive = 7, RULE_p_int = 8, RULE_p_long = 9, 
+		RULE_p_float = 10, RULE_p_double = 11, RULE_p_char = 12, RULE_p_string = 13, 
+		RULE_p_boolean = 14;
 	public static final String[] ruleNames = {
-		"object", "type", "map", "entry", "list", "value", "bool"
+		"object", "type", "map", "entry", "key", "value", "list", "primitive", 
+		"p_int", "p_long", "p_float", "p_double", "p_char", "p_string", "p_boolean"
 	};
 
 	@Override
@@ -47,14 +53,14 @@ public class JonParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 	public static class ObjectContext extends ParserRuleContext {
-		public ValueContext value() {
-			return getRuleContext(ValueContext.class,0);
-		}
 		public ListContext list() {
 			return getRuleContext(ListContext.class,0);
 		}
 		public MapContext map() {
 			return getRuleContext(MapContext.class,0);
+		}
+		public PrimitiveContext primitive() {
+			return getRuleContext(PrimitiveContext.class,0);
 		}
 		public TypeContext type() {
 			return getRuleContext(TypeContext.class,0);
@@ -77,42 +83,42 @@ public class JonParser extends Parser {
 		ObjectContext _localctx = new ObjectContext(_ctx, getState());
 		enterRule(_localctx, 0, RULE_object);
 		try {
-			setState(23);
+			setState(39);
 			switch ( getInterpreter().adaptivePredict(_input,0,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(14); type();
-				setState(15); map();
+				setState(30); type();
+				setState(31); map();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(17); map();
+				setState(33); map();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(18); type();
-				setState(19); list();
+				setState(34); type();
+				setState(35); list();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(21); list();
+				setState(37); list();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(22); value();
+				setState(38); primitive();
 				}
 				break;
 			}
@@ -152,25 +158,52 @@ public class JonParser extends Parser {
 		enterRule(_localctx, 2, RULE_type);
 		int _la;
 		try {
-			enterOuterAlt(_localctx, 1);
-			{
-			setState(25); match(7);
-			setState(26); match(ID);
-			setState(31);
-			_errHandler.sync(this);
-			_la = _input.LA(1);
-			while (_la==3) {
+			setState(59);
+			switch (_input.LA(1)) {
+			case 8:
+				enterOuterAlt(_localctx, 1);
 				{
-				{
-				setState(27); match(3);
-				setState(28); match(ID);
-				}
-				}
-				setState(33);
+				setState(41); match(8);
+				setState(42); match(ID);
+				setState(47);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
-			}
-			setState(34); match(4);
+				while (_la==3) {
+					{
+					{
+					setState(43); match(3);
+					setState(44); match(ID);
+					}
+					}
+					setState(49);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				setState(50); match(2);
+				}
+				break;
+			case ID:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(51); match(ID);
+				setState(56);
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+				while (_la==3) {
+					{
+					{
+					setState(52); match(3);
+					setState(53); match(ID);
+					}
+					}
+					setState(58);
+					_errHandler.sync(this);
+					_la = _input.LA(1);
+				}
+				}
+				break;
+			default:
+				throw new NoViableAltException(this);
 			}
 		}
 		catch (RecognitionException re) {
@@ -212,30 +245,30 @@ public class JonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(36); match(2);
-			setState(38);
+			setState(61); match(12);
+			setState(63);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << NUMBER))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 8) | (1L << 12) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << CHAR) | (1L << ID) | (1L << FLOAT) | (1L << INTEGER) | (1L << HEXADECIMAL) | (1L << BINARY))) != 0)) {
 				{
-				setState(37); entry();
+				setState(62); entry();
 				}
 			}
 
-			setState(44);
+			setState(69);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==5) {
+			while (_la==4) {
 				{
 				{
-				setState(40); match(5);
-				setState(41); entry();
+				setState(65); match(4);
+				setState(66); entry();
 				}
 				}
-				setState(46);
+				setState(71);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(47); match(9);
+			setState(72); match(14);
 			}
 		}
 		catch (RecognitionException re) {
@@ -250,11 +283,11 @@ public class JonParser extends Parser {
 	}
 
 	public static class EntryContext extends ParserRuleContext {
-		public ObjectContext object(int i) {
-			return getRuleContext(ObjectContext.class,i);
+		public ValueContext value() {
+			return getRuleContext(ValueContext.class,0);
 		}
-		public List<ObjectContext> object() {
-			return getRuleContexts(ObjectContext.class);
+		public KeyContext key() {
+			return getRuleContext(KeyContext.class,0);
 		}
 		public EntryContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -276,9 +309,98 @@ public class JonParser extends Parser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(49); object();
-			setState(50); match(8);
-			setState(51); object();
+			setState(74); key();
+			setState(75); match(7);
+			setState(76); value();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class KeyContext extends ParserRuleContext {
+		public ObjectContext object() {
+			return getRuleContext(ObjectContext.class,0);
+		}
+		public TerminalNode ID() { return getToken(JonParser.ID, 0); }
+		public KeyContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_key; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterKey(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitKey(this);
+		}
+	}
+
+	public final KeyContext key() throws RecognitionException {
+		KeyContext _localctx = new KeyContext(_ctx, getState());
+		enterRule(_localctx, 8, RULE_key);
+		try {
+			setState(80);
+			switch ( getInterpreter().adaptivePredict(_input,6,_ctx) ) {
+			case 1:
+				enterOuterAlt(_localctx, 1);
+				{
+				setState(78); object();
+				}
+				break;
+
+			case 2:
+				enterOuterAlt(_localctx, 2);
+				{
+				setState(79); match(ID);
+				}
+				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class ValueContext extends ParserRuleContext {
+		public ObjectContext object() {
+			return getRuleContext(ObjectContext.class,0);
+		}
+		public ValueContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_value; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitValue(this);
+		}
+	}
+
+	public final ValueContext value() throws RecognitionException {
+		ValueContext _localctx = new ValueContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_value);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(82); object();
 			}
 		}
 		catch (RecognitionException re) {
@@ -315,35 +437,35 @@ public class JonParser extends Parser {
 
 	public final ListContext list() throws RecognitionException {
 		ListContext _localctx = new ListContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_list);
+		enterRule(_localctx, 12, RULE_list);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(53); match(6);
-			setState(55);
+			setState(84); match(6);
+			setState(86);
 			_la = _input.LA(1);
-			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 2) | (1L << 6) | (1L << 7) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << NUMBER))) != 0)) {
+			if ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << 6) | (1L << 8) | (1L << 12) | (1L << TRUE) | (1L << FALSE) | (1L << STRING) | (1L << CHAR) | (1L << ID) | (1L << FLOAT) | (1L << INTEGER) | (1L << HEXADECIMAL) | (1L << BINARY))) != 0)) {
 				{
-				setState(54); object();
+				setState(85); object();
 				}
 			}
 
-			setState(61);
+			setState(92);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while (_la==5) {
+			while (_la==4) {
 				{
 				{
-				setState(57); match(5);
-				setState(58); object();
+				setState(88); match(4);
+				setState(89); object();
 				}
 				}
-				setState(63);
+				setState(94);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(64); match(1);
+			setState(95); match(1);
 			}
 		}
 		catch (RecognitionException re) {
@@ -357,53 +479,96 @@ public class JonParser extends Parser {
 		return _localctx;
 	}
 
-	public static class ValueContext extends ParserRuleContext {
-		public BoolContext bool() {
-			return getRuleContext(BoolContext.class,0);
+	public static class PrimitiveContext extends ParserRuleContext {
+		public P_stringContext p_string() {
+			return getRuleContext(P_stringContext.class,0);
 		}
-		public TerminalNode NUMBER() { return getToken(JonParser.NUMBER, 0); }
-		public TerminalNode STRING() { return getToken(JonParser.STRING, 0); }
-		public ValueContext(ParserRuleContext parent, int invokingState) {
+		public P_intContext p_int() {
+			return getRuleContext(P_intContext.class,0);
+		}
+		public P_floatContext p_float() {
+			return getRuleContext(P_floatContext.class,0);
+		}
+		public P_doubleContext p_double() {
+			return getRuleContext(P_doubleContext.class,0);
+		}
+		public P_booleanContext p_boolean() {
+			return getRuleContext(P_booleanContext.class,0);
+		}
+		public P_charContext p_char() {
+			return getRuleContext(P_charContext.class,0);
+		}
+		public P_longContext p_long() {
+			return getRuleContext(P_longContext.class,0);
+		}
+		public PrimitiveContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_value; }
+		@Override public int getRuleIndex() { return RULE_primitive; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterValue(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterPrimitive(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitValue(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitPrimitive(this);
 		}
 	}
 
-	public final ValueContext value() throws RecognitionException {
-		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_value);
+	public final PrimitiveContext primitive() throws RecognitionException {
+		PrimitiveContext _localctx = new PrimitiveContext(_ctx, getState());
+		enterRule(_localctx, 14, RULE_primitive);
 		try {
-			setState(69);
-			switch (_input.LA(1)) {
-			case TRUE:
-			case FALSE:
+			setState(104);
+			switch ( getInterpreter().adaptivePredict(_input,9,_ctx) ) {
+			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(66); bool();
+				setState(97); p_int();
 				}
 				break;
-			case STRING:
+
+			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(67); match(STRING);
+				setState(98); p_long();
 				}
 				break;
-			case NUMBER:
+
+			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(68); match(NUMBER);
+				setState(99); p_float();
 				}
 				break;
-			default:
-				throw new NoViableAltException(this);
+
+			case 4:
+				enterOuterAlt(_localctx, 4);
+				{
+				setState(100); p_double();
+				}
+				break;
+
+			case 5:
+				enterOuterAlt(_localctx, 5);
+				{
+				setState(101); p_string();
+				}
+				break;
+
+			case 6:
+				enterOuterAlt(_localctx, 6);
+				{
+				setState(102); p_char();
+				}
+				break;
+
+			case 7:
+				enterOuterAlt(_localctx, 7);
+				{
+				setState(103); p_boolean();
+				}
+				break;
 			}
 		}
 		catch (RecognitionException re) {
@@ -417,31 +582,283 @@ public class JonParser extends Parser {
 		return _localctx;
 	}
 
-	public static class BoolContext extends ParserRuleContext {
-		public TerminalNode TRUE() { return getToken(JonParser.TRUE, 0); }
-		public TerminalNode FALSE() { return getToken(JonParser.FALSE, 0); }
-		public BoolContext(ParserRuleContext parent, int invokingState) {
+	public static class P_intContext extends ParserRuleContext {
+		public TerminalNode HEXADECIMAL() { return getToken(JonParser.HEXADECIMAL, 0); }
+		public TerminalNode BINARY() { return getToken(JonParser.BINARY, 0); }
+		public TerminalNode INTEGER() { return getToken(JonParser.INTEGER, 0); }
+		public P_intContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_bool; }
+		@Override public int getRuleIndex() { return RULE_p_int; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterBool(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_int(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitBool(this);
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_int(this);
 		}
 	}
 
-	public final BoolContext bool() throws RecognitionException {
-		BoolContext _localctx = new BoolContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_bool);
+	public final P_intContext p_int() throws RecognitionException {
+		P_intContext _localctx = new P_intContext(_ctx, getState());
+		enterRule(_localctx, 16, RULE_p_int);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(71);
+			setState(106);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INTEGER) | (1L << HEXADECIMAL) | (1L << BINARY))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_longContext extends ParserRuleContext {
+		public TerminalNode INTEGER() { return getToken(JonParser.INTEGER, 0); }
+		public P_longContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_long; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_long(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_long(this);
+		}
+	}
+
+	public final P_longContext p_long() throws RecognitionException {
+		P_longContext _localctx = new P_longContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_p_long);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(108); match(INTEGER);
+			setState(109);
+			_la = _input.LA(1);
+			if ( !(_la==11 || _la==15) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_floatContext extends ParserRuleContext {
+		public TerminalNode FLOAT() { return getToken(JonParser.FLOAT, 0); }
+		public P_floatContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_float; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_float(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_float(this);
+		}
+	}
+
+	public final P_floatContext p_float() throws RecognitionException {
+		P_floatContext _localctx = new P_floatContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_p_float);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(111); match(FLOAT);
+			setState(112);
+			_la = _input.LA(1);
+			if ( !(_la==10 || _la==13) ) {
+			_errHandler.recoverInline(this);
+			}
+			consume();
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_doubleContext extends ParserRuleContext {
+		public TerminalNode FLOAT() { return getToken(JonParser.FLOAT, 0); }
+		public P_doubleContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_double; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_double(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_double(this);
+		}
+	}
+
+	public final P_doubleContext p_double() throws RecognitionException {
+		P_doubleContext _localctx = new P_doubleContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_p_double);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(114); match(FLOAT);
+			setState(116);
+			_la = _input.LA(1);
+			if (_la==5 || _la==9) {
+				{
+				setState(115);
+				_la = _input.LA(1);
+				if ( !(_la==5 || _la==9) ) {
+				_errHandler.recoverInline(this);
+				}
+				consume();
+				}
+			}
+
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_charContext extends ParserRuleContext {
+		public TerminalNode CHAR() { return getToken(JonParser.CHAR, 0); }
+		public P_charContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_char; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_char(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_char(this);
+		}
+	}
+
+	public final P_charContext p_char() throws RecognitionException {
+		P_charContext _localctx = new P_charContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_p_char);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(118); match(CHAR);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_stringContext extends ParserRuleContext {
+		public TerminalNode STRING() { return getToken(JonParser.STRING, 0); }
+		public P_stringContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_string; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_string(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_string(this);
+		}
+	}
+
+	public final P_stringContext p_string() throws RecognitionException {
+		P_stringContext _localctx = new P_stringContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_p_string);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(120); match(STRING);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class P_booleanContext extends ParserRuleContext {
+		public TerminalNode TRUE() { return getToken(JonParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(JonParser.FALSE, 0); }
+		public P_booleanContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_p_boolean; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_boolean(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_boolean(this);
+		}
+	}
+
+	public final P_booleanContext p_boolean() throws RecognitionException {
+		P_booleanContext _localctx = new P_booleanContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_p_boolean);
+		int _la;
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(122);
 			_la = _input.LA(1);
 			if ( !(_la==TRUE || _la==FALSE) ) {
 			_errHandler.recoverInline(this);
@@ -461,26 +878,37 @@ public class JonParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\21L\4\2\t\2\4\3\t"+
-		"\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\3\2\3\2\3\2\3\2\3\2\3\2\3\2"+
-		"\3\2\3\2\5\2\32\n\2\3\3\3\3\3\3\3\3\7\3 \n\3\f\3\16\3#\13\3\3\3\3\3\3"+
-		"\4\3\4\5\4)\n\4\3\4\3\4\7\4-\n\4\f\4\16\4\60\13\4\3\4\3\4\3\5\3\5\3\5"+
-		"\3\5\3\6\3\6\5\6:\n\6\3\6\3\6\7\6>\n\6\f\6\16\6A\13\6\3\6\3\6\3\7\3\7"+
-		"\3\7\5\7H\n\7\3\b\3\b\3\b\2\t\2\4\6\b\n\f\16\2\3\3\2\f\rO\2\31\3\2\2\2"+
-		"\4\33\3\2\2\2\6&\3\2\2\2\b\63\3\2\2\2\n\67\3\2\2\2\fG\3\2\2\2\16I\3\2"+
-		"\2\2\20\21\5\4\3\2\21\22\5\6\4\2\22\32\3\2\2\2\23\32\5\6\4\2\24\25\5\4"+
-		"\3\2\25\26\5\n\6\2\26\32\3\2\2\2\27\32\5\n\6\2\30\32\5\f\7\2\31\20\3\2"+
-		"\2\2\31\23\3\2\2\2\31\24\3\2\2\2\31\27\3\2\2\2\31\30\3\2\2\2\32\3\3\2"+
-		"\2\2\33\34\7\t\2\2\34!\7\17\2\2\35\36\7\5\2\2\36 \7\17\2\2\37\35\3\2\2"+
-		"\2 #\3\2\2\2!\37\3\2\2\2!\"\3\2\2\2\"$\3\2\2\2#!\3\2\2\2$%\7\6\2\2%\5"+
-		"\3\2\2\2&(\7\4\2\2\')\5\b\5\2(\'\3\2\2\2()\3\2\2\2).\3\2\2\2*+\7\7\2\2"+
-		"+-\5\b\5\2,*\3\2\2\2-\60\3\2\2\2.,\3\2\2\2./\3\2\2\2/\61\3\2\2\2\60.\3"+
-		"\2\2\2\61\62\7\13\2\2\62\7\3\2\2\2\63\64\5\2\2\2\64\65\7\n\2\2\65\66\5"+
-		"\2\2\2\66\t\3\2\2\2\679\7\b\2\28:\5\2\2\298\3\2\2\29:\3\2\2\2:?\3\2\2"+
-		"\2;<\7\7\2\2<>\5\2\2\2=;\3\2\2\2>A\3\2\2\2?=\3\2\2\2?@\3\2\2\2@B\3\2\2"+
-		"\2A?\3\2\2\2BC\7\3\2\2C\13\3\2\2\2DH\5\16\b\2EH\7\16\2\2FH\7\20\2\2GD"+
-		"\3\2\2\2GE\3\2\2\2GF\3\2\2\2H\r\3\2\2\2IJ\t\2\2\2J\17\3\2\2\2\t\31!(."+
-		"9?G";
+		"\3\uacf5\uee8c\u4f5d\u8b0d\u4a45\u78bd\u1b2f\u3378\3\34\177\4\2\t\2\4"+
+		"\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t"+
+		"\13\4\f\t\f\4\r\t\r\4\16\t\16\4\17\t\17\4\20\t\20\3\2\3\2\3\2\3\2\3\2"+
+		"\3\2\3\2\3\2\3\2\5\2*\n\2\3\3\3\3\3\3\3\3\7\3\60\n\3\f\3\16\3\63\13\3"+
+		"\3\3\3\3\3\3\3\3\7\39\n\3\f\3\16\3<\13\3\5\3>\n\3\3\4\3\4\5\4B\n\4\3\4"+
+		"\3\4\7\4F\n\4\f\4\16\4I\13\4\3\4\3\4\3\5\3\5\3\5\3\5\3\6\3\6\5\6S\n\6"+
+		"\3\7\3\7\3\b\3\b\5\bY\n\b\3\b\3\b\7\b]\n\b\f\b\16\b`\13\b\3\b\3\b\3\t"+
+		"\3\t\3\t\3\t\3\t\3\t\3\t\5\tk\n\t\3\n\3\n\3\13\3\13\3\13\3\f\3\f\3\f\3"+
+		"\r\3\r\5\rw\n\r\3\16\3\16\3\17\3\17\3\20\3\20\3\20\2\21\2\4\6\b\n\f\16"+
+		"\20\22\24\26\30\32\34\36\2\7\3\2\31\33\4\2\r\r\21\21\4\2\f\f\17\17\4\2"+
+		"\7\7\13\13\3\2\23\24\u0082\2)\3\2\2\2\4=\3\2\2\2\6?\3\2\2\2\bL\3\2\2\2"+
+		"\nR\3\2\2\2\fT\3\2\2\2\16V\3\2\2\2\20j\3\2\2\2\22l\3\2\2\2\24n\3\2\2\2"+
+		"\26q\3\2\2\2\30t\3\2\2\2\32x\3\2\2\2\34z\3\2\2\2\36|\3\2\2\2 !\5\4\3\2"+
+		"!\"\5\6\4\2\"*\3\2\2\2#*\5\6\4\2$%\5\4\3\2%&\5\16\b\2&*\3\2\2\2\'*\5\16"+
+		"\b\2(*\5\20\t\2) \3\2\2\2)#\3\2\2\2)$\3\2\2\2)\'\3\2\2\2)(\3\2\2\2*\3"+
+		"\3\2\2\2+,\7\n\2\2,\61\7\27\2\2-.\7\5\2\2.\60\7\27\2\2/-\3\2\2\2\60\63"+
+		"\3\2\2\2\61/\3\2\2\2\61\62\3\2\2\2\62\64\3\2\2\2\63\61\3\2\2\2\64>\7\4"+
+		"\2\2\65:\7\27\2\2\66\67\7\5\2\2\679\7\27\2\28\66\3\2\2\29<\3\2\2\2:8\3"+
+		"\2\2\2:;\3\2\2\2;>\3\2\2\2<:\3\2\2\2=+\3\2\2\2=\65\3\2\2\2>\5\3\2\2\2"+
+		"?A\7\16\2\2@B\5\b\5\2A@\3\2\2\2AB\3\2\2\2BG\3\2\2\2CD\7\6\2\2DF\5\b\5"+
+		"\2EC\3\2\2\2FI\3\2\2\2GE\3\2\2\2GH\3\2\2\2HJ\3\2\2\2IG\3\2\2\2JK\7\20"+
+		"\2\2K\7\3\2\2\2LM\5\n\6\2MN\7\t\2\2NO\5\f\7\2O\t\3\2\2\2PS\5\2\2\2QS\7"+
+		"\27\2\2RP\3\2\2\2RQ\3\2\2\2S\13\3\2\2\2TU\5\2\2\2U\r\3\2\2\2VX\7\b\2\2"+
+		"WY\5\2\2\2XW\3\2\2\2XY\3\2\2\2Y^\3\2\2\2Z[\7\6\2\2[]\5\2\2\2\\Z\3\2\2"+
+		"\2]`\3\2\2\2^\\\3\2\2\2^_\3\2\2\2_a\3\2\2\2`^\3\2\2\2ab\7\3\2\2b\17\3"+
+		"\2\2\2ck\5\22\n\2dk\5\24\13\2ek\5\26\f\2fk\5\30\r\2gk\5\34\17\2hk\5\32"+
+		"\16\2ik\5\36\20\2jc\3\2\2\2jd\3\2\2\2je\3\2\2\2jf\3\2\2\2jg\3\2\2\2jh"+
+		"\3\2\2\2ji\3\2\2\2k\21\3\2\2\2lm\t\2\2\2m\23\3\2\2\2no\7\31\2\2op\t\3"+
+		"\2\2p\25\3\2\2\2qr\7\30\2\2rs\t\4\2\2s\27\3\2\2\2tv\7\30\2\2uw\t\5\2\2"+
+		"vu\3\2\2\2vw\3\2\2\2w\31\3\2\2\2xy\7\26\2\2y\33\3\2\2\2z{\7\25\2\2{\35"+
+		"\3\2\2\2|}\t\6\2\2}\37\3\2\2\2\r)\61:=AGRX^jv";
 	public static final ATN _ATN =
 		ATNSimulator.deserialize(_serializedATN.toCharArray());
 	static {

@@ -2,11 +2,19 @@ package com.chronicweirdo.jon.grammar
 
 import java.lang.reflect.Constructor
 
+import com.chronicweirdo.jon.grammar.JonParser.KeyContext
 import com.chronicweirdo.jon.grammar.JonParser.ListContext
 import com.chronicweirdo.jon.grammar.JonParser.MapContext
 import com.chronicweirdo.jon.grammar.JonParser.ObjectContext
+import com.chronicweirdo.jon.grammar.JonParser.P_booleanContext
+import com.chronicweirdo.jon.grammar.JonParser.P_charContext
+import com.chronicweirdo.jon.grammar.JonParser.P_doubleContext
+import com.chronicweirdo.jon.grammar.JonParser.P_floatContext
+import com.chronicweirdo.jon.grammar.JonParser.P_intContext
+import com.chronicweirdo.jon.grammar.JonParser.P_longContext
+import com.chronicweirdo.jon.grammar.JonParser.P_stringContext
+import com.chronicweirdo.jon.grammar.JonParser.PrimitiveContext
 import com.chronicweirdo.jon.grammar.JonParser.TypeContext
-import com.chronicweirdo.jon.grammar.JonParser.ValueContext
 
 class JonListenerImpl extends JonBaseListener {
 
@@ -40,9 +48,9 @@ class JonListenerImpl extends JonBaseListener {
 		} else if (ctx.list()) {
 			// simple java list
 			return parse(ctx.list())
-		} else if (ctx.value()) {
+		} else if (ctx.primitive()) {
 			// java basic value
-			return parse(ctx.value())
+			return parse(ctx.primitive())
 		}
 		return null;
 	}
@@ -57,11 +65,22 @@ class JonListenerImpl extends JonBaseListener {
 		return b.toString();
 	}
 	
+	Object parse(KeyContext ctx) {
+		if (ctx.object()) {
+			return parse(ctx.object());
+		} else {
+			return ctx.ID().getText();
+		}
+	}
+	Object parse(TypeContext tctx, MapContext ctx) {
+		// TODO: implement to directly create object
+		return null;
+	}
 	Object parse(MapContext ctx) {
 		Map map = [:]
 		ctx.entry().each { entry ->
-			Object key = parse(entry.object(0));
-			Object value = parse(entry.object(1));
+			Object key = parse(entry.key());
+			Object value = parse(entry.value().object());
 			map[key] = value;
 		}
 		return map;
@@ -75,35 +94,58 @@ class JonListenerImpl extends JonBaseListener {
 		return list;
 	}
 
-	Object parse(ValueContext ctx) {
-		if (ctx.STRING()) {
-			// this is a string
-			return removeQuotes(ctx.getText())
-		} else if (ctx.bool()) {
-		    if (ctx.bool().TRUE()) {
-				return new Boolean(true);
-			} else if (ctx.bool().FALSE()) {
-				return new Boolean(false);
-			}
-		} else if (ctx.NUMBER()) {
-			// find out what kind of number it is
-			try {
-				Integer n = Integer.parseInt(ctx.getText());
-				return n;
-			} catch (NumberFormatException e) {}
-			try {
-				Long n = Long.parseLong(ctx.getText());
-				return n;
-			} catch (NumberFormatException e) {}
-			try {
-				Float n = Float.parseFloat(ctx.getText());
-				return n;
-			} catch (NumberFormatException e) {}
-			try {
-				Double n = Double.parseDouble(ctx.getText());
-				return n;
-			} catch (NumberFormatException e) {}
-		}
+	Integer parse(P_intContext ctx) {
+		return Integer.decode(ctx.getText());
+	}
+	Long parse(P_longContext ctx) {
+		return Long.parseLong(ctx.INTEGER().getText());
+	}
+	Float parse(P_floatContext ctx) {
+		return Float.parseFloar(ctx.FLOAT().getText());
+	}
+	Double parse(P_doubleContext ctx) {
+		return Double.parseDouble(ctx.FLOAT().getText());
+	}
+	Character parse(P_charContext ctx) {
+		return new Character(removeQuotes(ctx.getText()).charAt(0));
+	}
+	String parse(P_stringContext ctx) {
+		return removeQuotes(ctx.getText());
+	}
+	Boolean parse(P_booleanContext ctx) {
+		return Boolean.parseBoolean(ctx.getText());
+	}
+/*
+primitive
+	: p_int
+	| p_long
+	| p_float
+	| p_double
+	| p_string
+	| p_char
+	| p_boolean
+	;
+
+p_int
+	: INTEGER
+	| HEXADECIMAL
+	| BINARY
+	;
+p_long : INTEGER ('l'|'L') ;
+p_float : FLOAT ('f'|'F') ;
+p_double : FLOAT ('d'|'D')? ;
+p_char : CHAR ;
+p_string : STRING ;
+p_boolean : TRUE | FALSE ;
+*/
+	Object parse(PrimitiveContext ctx) {
+		if (ctx.p_int() != null) return parse(ctx.p_int());
+		if (ctx.p_long() != null) return parse(ctx.p_long());
+		if (ctx.p_float() != null) return parse(ctx.p_float());
+		if (ctx.p_double() != null) return parse(ctx.p_double());
+		if (ctx.p_string() != null) return parse(ctx.p_string());
+		if (ctx.p_char() != null) return parse(ctx.p_char());
+		if (ctx.p_boolean() != null) return parse(ctx.p_boolean());
 		return null;
 	}
 	
