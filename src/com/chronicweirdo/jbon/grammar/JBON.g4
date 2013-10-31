@@ -40,8 +40,10 @@ primitive
 	| p_string
 	| p_char
 	| p_boolean
+	| p_null
 	;
 
+p_null : NULL ;
 p_int
 	: INTEGER
 	| HEXADECIMAL

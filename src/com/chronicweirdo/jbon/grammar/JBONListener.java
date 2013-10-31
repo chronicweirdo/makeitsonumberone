@@ -99,6 +99,17 @@ public interface JBONListener extends ParseTreeListener {
 	void exitType(@NotNull JBONParser.TypeContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JBONParser#p_null}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_null(@NotNull JBONParser.P_nullContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JBONParser#p_null}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_null(@NotNull JBONParser.P_nullContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JBONParser#p_char}.
 	 * @param ctx the parse tree
 	 */
@@ -132,6 +143,17 @@ public interface JBONListener extends ParseTreeListener {
 	void exitEntry(@NotNull JBONParser.EntryContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JBONParser#p_float}.
+	 * @param ctx the parse tree
+	 */
+	void enterP_float(@NotNull JBONParser.P_floatContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JBONParser#p_float}.
+	 * @param ctx the parse tree
+	 */
+	void exitP_float(@NotNull JBONParser.P_floatContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JBONParser#map}.
 	 * @param ctx the parse tree
 	 */
@@ -152,17 +174,6 @@ public interface JBONListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValue(@NotNull JBONParser.ValueContext ctx);
-
-	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_float}.
-	 * @param ctx the parse tree
-	 */
-	void enterP_float(@NotNull JBONParser.P_floatContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_float}.
-	 * @param ctx the parse tree
-	 */
-	void exitP_float(@NotNull JBONParser.P_floatContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JBONParser#primitive}.

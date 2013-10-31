@@ -123,6 +123,19 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterP_null(@NotNull JBONParser.P_nullContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_null(@NotNull JBONParser.P_nullContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterP_char(@NotNull JBONParser.P_charContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -162,6 +175,19 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterP_float(@NotNull JBONParser.P_floatContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitP_float(@NotNull JBONParser.P_floatContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterMap(@NotNull JBONParser.MapContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -182,19 +208,6 @@ public class JBONBaseListener implements JBONListener {
 	 * The default implementation does nothing.
 	 */
 	@Override public void exitValue(@NotNull JBONParser.ValueContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void enterP_float(@NotNull JBONParser.P_floatContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitP_float(@NotNull JBONParser.P_floatContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

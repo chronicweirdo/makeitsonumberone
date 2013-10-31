@@ -31,7 +31,10 @@ class JBONWriter {
 		return t.toString()
 	}
 	static private niceWrite(StringBuilder b, int level, boolean doTabs, Object o) {
-		if (o instanceof Byte) {
+		if (o == null) {
+			if (doTabs) b.append(tabs(level))
+			b.append("null");
+		} else if (o instanceof Byte) {
 			if (doTabs) b.append(tabs(level))
 			b.append(o)
 		} else if (o instanceof Short) {
