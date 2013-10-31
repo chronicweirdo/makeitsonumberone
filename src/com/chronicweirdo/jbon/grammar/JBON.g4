@@ -33,28 +33,28 @@ list : '[' object? (',' object)* ']' ;
 
 
 primitive
-	: p_int
-	| p_long
-	| p_float
-	| p_double
-	| p_string
-	| p_char
-	| p_boolean
-	| p_null
+	: pInt
+	| pLong
+	| pFloat
+	| pDouble
+	| pString
+	| pChar
+	| pBoolean
+	| pNull
 	;
 
-p_null : NULL ;
-p_int
+pNull : NULL ;
+pInt
 	: INTEGER
 	| HEXADECIMAL
 	| BINARY
 	;
-p_long : INTEGER ('l'|'L') ;
-p_float : FLOAT ('f'|'F') ;
-p_double : FLOAT ('d'|'D')? ;
-p_char : CHAR ;
-p_string : STRING ;
-p_boolean : TRUE | FALSE ;
+pLong : INTEGER ('l'|'L') ;
+pFloat : FLOAT ('f'|'F') ;
+pDouble : FLOAT ('d'|'D')? ;
+pChar : CHAR ;
+pString : STRING ;
+pBoolean : TRUE | FALSE ;
 
 // LEXER
 

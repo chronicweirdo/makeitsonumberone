@@ -1,9 +1,6 @@
 package com.chronicweirdo.jbon.test
 
-import com.chronicweirdo.jbon.grammar.JBONLexer
-import com.chronicweirdo.jbon.grammar.JBONListenerImpl
-import com.chronicweirdo.jbon.grammar.JBONParser
-import com.chronicweirdo.makeitso.grammar.Util
+import com.chronicweirdo.jbon.reader.JBONReader
 
 class Test2 {
 
@@ -29,8 +26,7 @@ class Test2 {
 			"hashMap": (java.util.HashMap) {}
 		}
 		"""
-	Util.test(JBONLexer.class, JBONParser.class,
-			new JBONListenerImpl(), "object",
-			text);
+		Object o = JBONReader.read(text);
+		println o;
 	}
 }

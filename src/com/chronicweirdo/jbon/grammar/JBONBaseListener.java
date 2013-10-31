@@ -19,52 +19,52 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_long(@NotNull JBONParser.P_longContext ctx) { }
+	@Override public void enterPChar(@NotNull JBONParser.PCharContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_long(@NotNull JBONParser.P_longContext ctx) { }
+	@Override public void exitPChar(@NotNull JBONParser.PCharContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_boolean(@NotNull JBONParser.P_booleanContext ctx) { }
+	@Override public void enterPDouble(@NotNull JBONParser.PDoubleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_boolean(@NotNull JBONParser.P_booleanContext ctx) { }
+	@Override public void exitPDouble(@NotNull JBONParser.PDoubleContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_string(@NotNull JBONParser.P_stringContext ctx) { }
+	@Override public void enterPFloat(@NotNull JBONParser.PFloatContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_string(@NotNull JBONParser.P_stringContext ctx) { }
+	@Override public void exitPFloat(@NotNull JBONParser.PFloatContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_double(@NotNull JBONParser.P_doubleContext ctx) { }
+	@Override public void enterPInt(@NotNull JBONParser.PIntContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_double(@NotNull JBONParser.P_doubleContext ctx) { }
+	@Override public void exitPInt(@NotNull JBONParser.PIntContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -97,19 +97,6 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_int(@NotNull JBONParser.P_intContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
-	@Override public void exitP_int(@NotNull JBONParser.P_intContext ctx) { }
-
-	/**
-	 * {@inheritDoc}
-	 * <p/>
-	 * The default implementation does nothing.
-	 */
 	@Override public void enterType(@NotNull JBONParser.TypeContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -123,26 +110,39 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_null(@NotNull JBONParser.P_nullContext ctx) { }
+	@Override public void enterPBoolean(@NotNull JBONParser.PBooleanContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_null(@NotNull JBONParser.P_nullContext ctx) { }
+	@Override public void exitPBoolean(@NotNull JBONParser.PBooleanContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_char(@NotNull JBONParser.P_charContext ctx) { }
+	@Override public void enterPNull(@NotNull JBONParser.PNullContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_char(@NotNull JBONParser.P_charContext ctx) { }
+	@Override public void exitPNull(@NotNull JBONParser.PNullContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void enterPString(@NotNull JBONParser.PStringContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitPString(@NotNull JBONParser.PStringContext ctx) { }
 
 	/**
 	 * {@inheritDoc}
@@ -175,13 +175,13 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void enterP_float(@NotNull JBONParser.P_floatContext ctx) { }
+	@Override public void enterPLong(@NotNull JBONParser.PLongContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
-	@Override public void exitP_float(@NotNull JBONParser.P_floatContext ctx) { }
+	@Override public void exitPLong(@NotNull JBONParser.PLongContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

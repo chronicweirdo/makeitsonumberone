@@ -28,13 +28,12 @@ public class JBONParser extends Parser {
 	};
 	public static final int
 		RULE_file = 0, RULE_object = 1, RULE_type = 2, RULE_map = 3, RULE_entry = 4, 
-		RULE_key = 5, RULE_value = 6, RULE_list = 7, RULE_primitive = 8, RULE_p_null = 9, 
-		RULE_p_int = 10, RULE_p_long = 11, RULE_p_float = 12, RULE_p_double = 13, 
-		RULE_p_char = 14, RULE_p_string = 15, RULE_p_boolean = 16;
+		RULE_key = 5, RULE_value = 6, RULE_list = 7, RULE_primitive = 8, RULE_pNull = 9, 
+		RULE_pInt = 10, RULE_pLong = 11, RULE_pFloat = 12, RULE_pDouble = 13, 
+		RULE_pChar = 14, RULE_pString = 15, RULE_pBoolean = 16;
 	public static final String[] ruleNames = {
 		"file", "object", "type", "map", "entry", "key", "value", "list", "primitive", 
-		"p_null", "p_int", "p_long", "p_float", "p_double", "p_char", "p_string", 
-		"p_boolean"
+		"pNull", "pInt", "pLong", "pFloat", "pDouble", "pChar", "pString", "pBoolean"
 	};
 
 	@Override
@@ -519,29 +518,29 @@ public class JBONParser extends Parser {
 	}
 
 	public static class PrimitiveContext extends ParserRuleContext {
-		public P_nullContext p_null() {
-			return getRuleContext(P_nullContext.class,0);
+		public PStringContext pString() {
+			return getRuleContext(PStringContext.class,0);
 		}
-		public P_stringContext p_string() {
-			return getRuleContext(P_stringContext.class,0);
+		public PBooleanContext pBoolean() {
+			return getRuleContext(PBooleanContext.class,0);
 		}
-		public P_intContext p_int() {
-			return getRuleContext(P_intContext.class,0);
+		public PIntContext pInt() {
+			return getRuleContext(PIntContext.class,0);
 		}
-		public P_floatContext p_float() {
-			return getRuleContext(P_floatContext.class,0);
+		public PNullContext pNull() {
+			return getRuleContext(PNullContext.class,0);
 		}
-		public P_doubleContext p_double() {
-			return getRuleContext(P_doubleContext.class,0);
+		public PDoubleContext pDouble() {
+			return getRuleContext(PDoubleContext.class,0);
 		}
-		public P_booleanContext p_boolean() {
-			return getRuleContext(P_booleanContext.class,0);
+		public PCharContext pChar() {
+			return getRuleContext(PCharContext.class,0);
 		}
-		public P_charContext p_char() {
-			return getRuleContext(P_charContext.class,0);
+		public PLongContext pLong() {
+			return getRuleContext(PLongContext.class,0);
 		}
-		public P_longContext p_long() {
-			return getRuleContext(P_longContext.class,0);
+		public PFloatContext pFloat() {
+			return getRuleContext(PFloatContext.class,0);
 		}
 		public PrimitiveContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -566,56 +565,56 @@ public class JBONParser extends Parser {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(103); p_int();
+				setState(103); pInt();
 				}
 				break;
 
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(104); p_long();
+				setState(104); pLong();
 				}
 				break;
 
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(105); p_float();
+				setState(105); pFloat();
 				}
 				break;
 
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(106); p_double();
+				setState(106); pDouble();
 				}
 				break;
 
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(107); p_string();
+				setState(107); pString();
 				}
 				break;
 
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(108); p_char();
+				setState(108); pChar();
 				}
 				break;
 
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(109); p_boolean();
+				setState(109); pBoolean();
 				}
 				break;
 
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(110); p_null();
+				setState(110); pNull();
 				}
 				break;
 			}
@@ -631,25 +630,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_nullContext extends ParserRuleContext {
+	public static class PNullContext extends ParserRuleContext {
 		public TerminalNode NULL() { return getToken(JBONParser.NULL, 0); }
-		public P_nullContext(ParserRuleContext parent, int invokingState) {
+		public PNullContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_null; }
+		@Override public int getRuleIndex() { return RULE_pNull; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_null(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPNull(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_null(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPNull(this);
 		}
 	}
 
-	public final P_nullContext p_null() throws RecognitionException {
-		P_nullContext _localctx = new P_nullContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_p_null);
+	public final PNullContext pNull() throws RecognitionException {
+		PNullContext _localctx = new PNullContext(_ctx, getState());
+		enterRule(_localctx, 18, RULE_pNull);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -667,27 +666,27 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_intContext extends ParserRuleContext {
+	public static class PIntContext extends ParserRuleContext {
 		public TerminalNode HEXADECIMAL() { return getToken(JBONParser.HEXADECIMAL, 0); }
 		public TerminalNode BINARY() { return getToken(JBONParser.BINARY, 0); }
 		public TerminalNode INTEGER() { return getToken(JBONParser.INTEGER, 0); }
-		public P_intContext(ParserRuleContext parent, int invokingState) {
+		public PIntContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_int; }
+		@Override public int getRuleIndex() { return RULE_pInt; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_int(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPInt(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_int(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPInt(this);
 		}
 	}
 
-	public final P_intContext p_int() throws RecognitionException {
-		P_intContext _localctx = new P_intContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_p_int);
+	public final PIntContext pInt() throws RecognitionException {
+		PIntContext _localctx = new PIntContext(_ctx, getState());
+		enterRule(_localctx, 20, RULE_pInt);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -711,25 +710,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_longContext extends ParserRuleContext {
+	public static class PLongContext extends ParserRuleContext {
 		public TerminalNode INTEGER() { return getToken(JBONParser.INTEGER, 0); }
-		public P_longContext(ParserRuleContext parent, int invokingState) {
+		public PLongContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_long; }
+		@Override public int getRuleIndex() { return RULE_pLong; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_long(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPLong(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_long(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPLong(this);
 		}
 	}
 
-	public final P_longContext p_long() throws RecognitionException {
-		P_longContext _localctx = new P_longContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_p_long);
+	public final PLongContext pLong() throws RecognitionException {
+		PLongContext _localctx = new PLongContext(_ctx, getState());
+		enterRule(_localctx, 22, RULE_pLong);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -754,25 +753,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_floatContext extends ParserRuleContext {
+	public static class PFloatContext extends ParserRuleContext {
 		public TerminalNode FLOAT() { return getToken(JBONParser.FLOAT, 0); }
-		public P_floatContext(ParserRuleContext parent, int invokingState) {
+		public PFloatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_float; }
+		@Override public int getRuleIndex() { return RULE_pFloat; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_float(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPFloat(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_float(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPFloat(this);
 		}
 	}
 
-	public final P_floatContext p_float() throws RecognitionException {
-		P_floatContext _localctx = new P_floatContext(_ctx, getState());
-		enterRule(_localctx, 24, RULE_p_float);
+	public final PFloatContext pFloat() throws RecognitionException {
+		PFloatContext _localctx = new PFloatContext(_ctx, getState());
+		enterRule(_localctx, 24, RULE_pFloat);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -797,25 +796,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_doubleContext extends ParserRuleContext {
+	public static class PDoubleContext extends ParserRuleContext {
 		public TerminalNode FLOAT() { return getToken(JBONParser.FLOAT, 0); }
-		public P_doubleContext(ParserRuleContext parent, int invokingState) {
+		public PDoubleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_double; }
+		@Override public int getRuleIndex() { return RULE_pDouble; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_double(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPDouble(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_double(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPDouble(this);
 		}
 	}
 
-	public final P_doubleContext p_double() throws RecognitionException {
-		P_doubleContext _localctx = new P_doubleContext(_ctx, getState());
-		enterRule(_localctx, 26, RULE_p_double);
+	public final PDoubleContext pDouble() throws RecognitionException {
+		PDoubleContext _localctx = new PDoubleContext(_ctx, getState());
+		enterRule(_localctx, 26, RULE_pDouble);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
@@ -847,25 +846,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_charContext extends ParserRuleContext {
+	public static class PCharContext extends ParserRuleContext {
 		public TerminalNode CHAR() { return getToken(JBONParser.CHAR, 0); }
-		public P_charContext(ParserRuleContext parent, int invokingState) {
+		public PCharContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_char; }
+		@Override public int getRuleIndex() { return RULE_pChar; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_char(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPChar(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_char(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPChar(this);
 		}
 	}
 
-	public final P_charContext p_char() throws RecognitionException {
-		P_charContext _localctx = new P_charContext(_ctx, getState());
-		enterRule(_localctx, 28, RULE_p_char);
+	public final PCharContext pChar() throws RecognitionException {
+		PCharContext _localctx = new PCharContext(_ctx, getState());
+		enterRule(_localctx, 28, RULE_pChar);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -883,25 +882,25 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_stringContext extends ParserRuleContext {
+	public static class PStringContext extends ParserRuleContext {
 		public TerminalNode STRING() { return getToken(JBONParser.STRING, 0); }
-		public P_stringContext(ParserRuleContext parent, int invokingState) {
+		public PStringContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_string; }
+		@Override public int getRuleIndex() { return RULE_pString; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_string(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPString(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_string(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPString(this);
 		}
 	}
 
-	public final P_stringContext p_string() throws RecognitionException {
-		P_stringContext _localctx = new P_stringContext(_ctx, getState());
-		enterRule(_localctx, 30, RULE_p_string);
+	public final PStringContext pString() throws RecognitionException {
+		PStringContext _localctx = new PStringContext(_ctx, getState());
+		enterRule(_localctx, 30, RULE_pString);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
@@ -919,26 +918,26 @@ public class JBONParser extends Parser {
 		return _localctx;
 	}
 
-	public static class P_booleanContext extends ParserRuleContext {
+	public static class PBooleanContext extends ParserRuleContext {
 		public TerminalNode TRUE() { return getToken(JBONParser.TRUE, 0); }
 		public TerminalNode FALSE() { return getToken(JBONParser.FALSE, 0); }
-		public P_booleanContext(ParserRuleContext parent, int invokingState) {
+		public PBooleanContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_p_boolean; }
+		@Override public int getRuleIndex() { return RULE_pBoolean; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_boolean(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPBoolean(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_boolean(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPBoolean(this);
 		}
 	}
 
-	public final P_booleanContext p_boolean() throws RecognitionException {
-		P_booleanContext _localctx = new P_booleanContext(_ctx, getState());
-		enterRule(_localctx, 32, RULE_p_boolean);
+	public final PBooleanContext pBoolean() throws RecognitionException {
+		PBooleanContext _localctx = new PBooleanContext(_ctx, getState());
+		enterRule(_localctx, 32, RULE_pBoolean);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);

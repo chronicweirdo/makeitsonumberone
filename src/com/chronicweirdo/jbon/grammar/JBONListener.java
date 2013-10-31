@@ -11,48 +11,48 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface JBONListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_long}.
+	 * Enter a parse tree produced by {@link JBONParser#pChar}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_long(@NotNull JBONParser.P_longContext ctx);
+	void enterPChar(@NotNull JBONParser.PCharContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_long}.
+	 * Exit a parse tree produced by {@link JBONParser#pChar}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_long(@NotNull JBONParser.P_longContext ctx);
+	void exitPChar(@NotNull JBONParser.PCharContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_boolean}.
+	 * Enter a parse tree produced by {@link JBONParser#pDouble}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_boolean(@NotNull JBONParser.P_booleanContext ctx);
+	void enterPDouble(@NotNull JBONParser.PDoubleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_boolean}.
+	 * Exit a parse tree produced by {@link JBONParser#pDouble}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_boolean(@NotNull JBONParser.P_booleanContext ctx);
+	void exitPDouble(@NotNull JBONParser.PDoubleContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_string}.
+	 * Enter a parse tree produced by {@link JBONParser#pFloat}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_string(@NotNull JBONParser.P_stringContext ctx);
+	void enterPFloat(@NotNull JBONParser.PFloatContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_string}.
+	 * Exit a parse tree produced by {@link JBONParser#pFloat}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_string(@NotNull JBONParser.P_stringContext ctx);
+	void exitPFloat(@NotNull JBONParser.PFloatContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_double}.
+	 * Enter a parse tree produced by {@link JBONParser#pInt}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_double(@NotNull JBONParser.P_doubleContext ctx);
+	void enterPInt(@NotNull JBONParser.PIntContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_double}.
+	 * Exit a parse tree produced by {@link JBONParser#pInt}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_double(@NotNull JBONParser.P_doubleContext ctx);
+	void exitPInt(@NotNull JBONParser.PIntContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JBONParser#list}.
@@ -77,17 +77,6 @@ public interface JBONListener extends ParseTreeListener {
 	void exitObject(@NotNull JBONParser.ObjectContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_int}.
-	 * @param ctx the parse tree
-	 */
-	void enterP_int(@NotNull JBONParser.P_intContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_int}.
-	 * @param ctx the parse tree
-	 */
-	void exitP_int(@NotNull JBONParser.P_intContext ctx);
-
-	/**
 	 * Enter a parse tree produced by {@link JBONParser#type}.
 	 * @param ctx the parse tree
 	 */
@@ -99,26 +88,37 @@ public interface JBONListener extends ParseTreeListener {
 	void exitType(@NotNull JBONParser.TypeContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_null}.
+	 * Enter a parse tree produced by {@link JBONParser#pBoolean}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_null(@NotNull JBONParser.P_nullContext ctx);
+	void enterPBoolean(@NotNull JBONParser.PBooleanContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_null}.
+	 * Exit a parse tree produced by {@link JBONParser#pBoolean}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_null(@NotNull JBONParser.P_nullContext ctx);
+	void exitPBoolean(@NotNull JBONParser.PBooleanContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_char}.
+	 * Enter a parse tree produced by {@link JBONParser#pNull}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_char(@NotNull JBONParser.P_charContext ctx);
+	void enterPNull(@NotNull JBONParser.PNullContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_char}.
+	 * Exit a parse tree produced by {@link JBONParser#pNull}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_char(@NotNull JBONParser.P_charContext ctx);
+	void exitPNull(@NotNull JBONParser.PNullContext ctx);
+
+	/**
+	 * Enter a parse tree produced by {@link JBONParser#pString}.
+	 * @param ctx the parse tree
+	 */
+	void enterPString(@NotNull JBONParser.PStringContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JBONParser#pString}.
+	 * @param ctx the parse tree
+	 */
+	void exitPString(@NotNull JBONParser.PStringContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JBONParser#file}.
@@ -143,15 +143,15 @@ public interface JBONListener extends ParseTreeListener {
 	void exitEntry(@NotNull JBONParser.EntryContext ctx);
 
 	/**
-	 * Enter a parse tree produced by {@link JBONParser#p_float}.
+	 * Enter a parse tree produced by {@link JBONParser#pLong}.
 	 * @param ctx the parse tree
 	 */
-	void enterP_float(@NotNull JBONParser.P_floatContext ctx);
+	void enterPLong(@NotNull JBONParser.PLongContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link JBONParser#p_float}.
+	 * Exit a parse tree produced by {@link JBONParser#pLong}.
 	 * @param ctx the parse tree
 	 */
-	void exitP_float(@NotNull JBONParser.P_floatContext ctx);
+	void exitPLong(@NotNull JBONParser.PLongContext ctx);
 
 	/**
 	 * Enter a parse tree produced by {@link JBONParser#map}.

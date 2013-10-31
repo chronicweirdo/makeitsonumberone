@@ -7,13 +7,13 @@ import com.chronicweirdo.jbon.grammar.JBONParser.KeyContext
 import com.chronicweirdo.jbon.grammar.JBONParser.ListContext
 import com.chronicweirdo.jbon.grammar.JBONParser.MapContext
 import com.chronicweirdo.jbon.grammar.JBONParser.ObjectContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_booleanContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_charContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_doubleContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_floatContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_intContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_longContext
-import com.chronicweirdo.jbon.grammar.JBONParser.P_stringContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PBooleanContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PCharContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PDoubleContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PFloatContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PIntContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PLongContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PStringContext
 import com.chronicweirdo.jbon.grammar.JBONParser.PrimitiveContext
 import com.chronicweirdo.jbon.grammar.JBONParser.TypeContext
 
@@ -28,22 +28,10 @@ class JBONListenerImpl extends JBONBaseListener {
 	
 	Object parse(ObjectContext ctx) {
 		if (ctx.type() && ctx.map()) {
-			// we are parsing a java object
-			Map map = parse(ctx.map());
-			Class cls = Class.forName(parse(ctx.type()));
-			Constructor constructor = cls.getConstructor();
-			Object o = constructor.newInstance();
-			map.each { property, value ->
-				o[property] = value
-			}
-			return o;
+			return parse(ctx.type(), ctx.map());
 		} else if (ctx.type() && ctx.list()) {
 			// we are parsing a java collection other than list
-			List list = parse(ctx.list())
-			Class cls = Class.forName(parse(ctx.type()));
-			if (!Collection.class.isAssignableFrom(cls)) throw new Exception("Not a collection")
-			Constructor constructor = cls.getConstructor(Collection.class);
-			return constructor.newInstance(list);
+			return parse(ctx.type(), ctx.list())
 		} else if (ctx.map()) {
 			// simple java map
 			return parse(ctx.map())
@@ -75,8 +63,18 @@ class JBONListenerImpl extends JBONBaseListener {
 		}
 	}
 	Object parse(TypeContext tctx, MapContext ctx) {
-		// TODO: implement to directly create object
-		return null;
+		// we are parsing a java object
+		Class cls = Class.forName(parse(tctx));
+		Constructor constructor = cls.getConstructor();
+		Object o = constructor.newInstance();
+		
+		ctx.entry().each { entry ->
+			Object key = parse(entry.key());
+			Object value = parse(entry.value().object());
+			o[key] = value;
+		}
+		
+		return o;
 	}
 	Object parse(MapContext ctx) {
 		Map map = [:]
@@ -88,6 +86,17 @@ class JBONListenerImpl extends JBONBaseListener {
 		return map;
 	}
 	
+	Object parse(TypeContext tctx, ListContext ctx) {
+		Class cls = Class.forName(parse(tctx));
+		if (!Collection.class.isAssignableFrom(cls)) throw new Exception("Not a collection")
+		Constructor constructor = cls.getConstructor();
+		Collection collection = constructor.newInstance()
+		ctx.object().each {
+			collection.add(parse(it))
+		}
+		return collection;
+	}
+	
 	Object parse(ListContext ctx) {
 		List list = [];
 		ctx.object().each {
@@ -96,58 +105,37 @@ class JBONListenerImpl extends JBONBaseListener {
 		return list;
 	}
 
-	Integer parse(P_intContext ctx) {
+	Integer parse(PIntContext ctx) {
 		return Integer.decode(ctx.getText());
 	}
-	Long parse(P_longContext ctx) {
+	Long parse(PLongContext ctx) {
 		return Long.parseLong(ctx.INTEGER().getText());
 	}
-	Float parse(P_floatContext ctx) {
+	Float parse(PFloatContext ctx) {
 		return Float.parseFloat(ctx.FLOAT().getText());
 	}
-	Double parse(P_doubleContext ctx) {
+	Double parse(PDoubleContext ctx) {
 		return Double.parseDouble(ctx.FLOAT().getText());
 	}
-	Character parse(P_charContext ctx) {
+	Character parse(PCharContext ctx) {
 		return new Character(removeQuotes(ctx.getText()).charAt(0));
 	}
-	String parse(P_stringContext ctx) {
+	String parse(PStringContext ctx) {
 		return treatString(ctx.getText());
 	}
-	Boolean parse(P_booleanContext ctx) {
+	Boolean parse(PBooleanContext ctx) {
 		return Boolean.parseBoolean(ctx.getText());
 	}
-/*
-primitive
-	: p_int
-	| p_long
-	| p_float
-	| p_double
-	| p_string
-	| p_char
-	| p_boolean
-	;
 
-p_int
-	: INTEGER
-	| HEXADECIMAL
-	| BINARY
-	;
-p_long : INTEGER ('l'|'L') ;
-p_float : FLOAT ('f'|'F') ;
-p_double : FLOAT ('d'|'D')? ;
-p_char : CHAR ;
-p_string : STRING ;
-p_boolean : TRUE | FALSE ;
-*/
 	Object parse(PrimitiveContext ctx) {
-		if (ctx.p_int() != null) return parse(ctx.p_int());
-		if (ctx.p_long() != null) return parse(ctx.p_long());
-		if (ctx.p_float() != null) return parse(ctx.p_float());
-		if (ctx.p_double() != null) return parse(ctx.p_double());
-		if (ctx.p_string() != null) return parse(ctx.p_string());
-		if (ctx.p_char() != null) return parse(ctx.p_char());
-		if (ctx.p_boolean() != null) return parse(ctx.p_boolean());
+		if (ctx.pInt() != null) return parse(ctx.pInt());
+		if (ctx.pLong() != null) return parse(ctx.pLong());
+		if (ctx.pFloat() != null) return parse(ctx.pFloat());
+		if (ctx.pDouble() != null) return parse(ctx.pDouble());
+		if (ctx.pString() != null) return parse(ctx.pString());
+		if (ctx.pChar() != null) return parse(ctx.pChar());
+		if (ctx.pBoolean() != null) return parse(ctx.pBoolean());
+		if (ctx.pNull() != null) return null;
 		return null;
 	}
 	
