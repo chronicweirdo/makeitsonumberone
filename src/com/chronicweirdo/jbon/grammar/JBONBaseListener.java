@@ -136,6 +136,19 @@ public class JBONBaseListener implements JBONListener {
 	 * <p/>
 	 * The default implementation does nothing.
 	 */
+	@Override public void enterFile(@NotNull JBONParser.FileContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
+	@Override public void exitFile(@NotNull JBONParser.FileContext ctx) { }
+
+	/**
+	 * {@inheritDoc}
+	 * <p/>
+	 * The default implementation does nothing.
+	 */
 	@Override public void enterEntry(@NotNull JBONParser.EntryContext ctx) { }
 	/**
 	 * {@inheritDoc}

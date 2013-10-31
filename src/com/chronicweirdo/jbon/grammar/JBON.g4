@@ -10,6 +10,8 @@ grammar JBON;
 package com.chronicweirdo.jbon.grammar;
 }
 
+file : object ;
+
 object
 	: type map // denotes an object
 	| map // denotes a map
@@ -60,7 +62,7 @@ FALSE : 'false' ;
 
 //STRING : '"' ~[\"]* '"' ;
 STRING : '"' (ESC | ~["\\])* '"' ;
-fragment ESC : '\\' (["\\/bfnrt] | UNICODE) ;
+fragment ESC : '\\' (["\\/bfnrt\'] | UNICODE) ;
 fragment UNICODE : 'u' HEX HEX HEX HEX ;
 fragment HEX : [0-9a-fA-F] ;
 

@@ -110,6 +110,17 @@ public interface JBONListener extends ParseTreeListener {
 	void exitP_char(@NotNull JBONParser.P_charContext ctx);
 
 	/**
+	 * Enter a parse tree produced by {@link JBONParser#file}.
+	 * @param ctx the parse tree
+	 */
+	void enterFile(@NotNull JBONParser.FileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link JBONParser#file}.
+	 * @param ctx the parse tree
+	 */
+	void exitFile(@NotNull JBONParser.FileContext ctx);
+
+	/**
 	 * Enter a parse tree produced by {@link JBONParser#entry}.
 	 * @param ctx the parse tree
 	 */

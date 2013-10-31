@@ -2,6 +2,7 @@ package com.chronicweirdo.jbon.grammar
 
 import java.lang.reflect.Constructor
 
+import com.chronicweirdo.jbon.grammar.JBONParser.FileContext
 import com.chronicweirdo.jbon.grammar.JBONParser.KeyContext
 import com.chronicweirdo.jbon.grammar.JBONParser.ListContext
 import com.chronicweirdo.jbon.grammar.JBONParser.MapContext
@@ -18,10 +19,11 @@ import com.chronicweirdo.jbon.grammar.JBONParser.TypeContext
 
 class JBONListenerImpl extends JBONBaseListener {
 
+	Object object;
+	
 	@Override
-	public void exitObject(ObjectContext ctx) {
-		Object o = parse(ctx);
-		println o.toString() + " " + o.getClass().getCanonicalName()
+	public void exitFile(FileContext ctx) {
+		object = parse(ctx.object());
 	}
 	
 	Object parse(ObjectContext ctx) {
@@ -165,7 +167,16 @@ p_boolean : TRUE | FALSE ;
 	}
 	
 	private String replaceQuotes(String s) {
-		// TODO: handle all escape characters
-		return s.replaceAll("\\Q\\\"\\E", "\"");
+		// TODO: handle all escape characters		
+		String n = s;
+		n = n.replace("\\t", "\t");
+		n = n.replace("\\b", "\b");
+		n = n.replace("\\n", "\n");
+		n = n.replace("\\r", "\r");
+		n = n.replace("\\f", "\f");
+		n = n.replace("\\'", "\'");
+		n = n.replace("\\\"", "\"");
+		n = n.replace("\\\\", "\\");
+		return n;
 	}
 }
