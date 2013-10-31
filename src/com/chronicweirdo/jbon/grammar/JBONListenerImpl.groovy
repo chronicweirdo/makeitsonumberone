@@ -101,7 +101,7 @@ class JBONListenerImpl extends JBONBaseListener {
 		return Long.parseLong(ctx.INTEGER().getText());
 	}
 	Float parse(P_floatContext ctx) {
-		return Float.parseFloar(ctx.FLOAT().getText());
+		return Float.parseFloat(ctx.FLOAT().getText());
 	}
 	Double parse(P_doubleContext ctx) {
 		return Double.parseDouble(ctx.FLOAT().getText());
@@ -110,7 +110,7 @@ class JBONListenerImpl extends JBONBaseListener {
 		return new Character(removeQuotes(ctx.getText()).charAt(0));
 	}
 	String parse(P_stringContext ctx) {
-		return removeQuotes(ctx.getText());
+		return treatString(ctx.getText());
 	}
 	Boolean parse(P_booleanContext ctx) {
 		return Boolean.parseBoolean(ctx.getText());
@@ -149,6 +149,12 @@ p_boolean : TRUE | FALSE ;
 		return null;
 	}
 	
+	private String treatString(String s) {
+		String n = removeQuotes(s);
+		n = replaceQuotes(n);
+		return n;
+	}
+	
 	private String removeQuotes(String s) {
 		if (s.startsWith("\"") && s.endsWith("\"")) {
 			return s.substring(1, s.length() - 1);
@@ -158,4 +164,8 @@ p_boolean : TRUE | FALSE ;
 		return s;
 	}
 	
+	private String replaceQuotes(String s) {
+		// TODO: handle all escape characters
+		return s.replaceAll("\\Q\\\"\\E", "\"");
+	}
 }

@@ -58,14 +58,19 @@ NULL : 'null';
 TRUE : 'true' ;
 FALSE : 'false' ;
 
-STRING : '"' ~[\"]* '"' ;
+//STRING : '"' ~[\"]* '"' ;
+STRING : '"' (ESC | ~["\\])* '"' ;
+fragment ESC : '\\' (["\\/bfnrt] | UNICODE) ;
+fragment UNICODE : 'u' HEX HEX HEX HEX ;
+fragment HEX : [0-9a-fA-F] ;
+
 CHAR : '\''  ~[\\']* '\'' ;
 
 ID : ('a'..'z'|'A'..'Z')('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 FLOAT : ('-'|'+')? ('0'..'9')+ '.' ('0'..'9')+ ('e' ('0'..'9')+)?;
 INTEGER : ('-'|'+')? ('0'..'9')+ ;
-HEXADECIMAL : ('-'|'+')? '0x' ('0'..'9'|'a'..'f'|'A'..'F')+ ;
+HEXADECIMAL : ('-'|'+')? '0x' HEX+ ;
 BINARY : ('-'|'+')? '0b' ('0'|'1')+ ;
 
 WS : [ \r\t\n]+ -> channel(HIDDEN);

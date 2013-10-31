@@ -1,8 +1,11 @@
 package com.chronicweirdo.jbon.test
 
+import java.nio.file.Paths
+
 import com.chronicweirdo.jbon.grammar.JBONLexer
 import com.chronicweirdo.jbon.grammar.JBONListenerImpl
 import com.chronicweirdo.jbon.grammar.JBONParser
+import com.chronicweirdo.makeitso.file.FileUtils
 import com.chronicweirdo.makeitso.grammar.Util
 
 class Test4 {
@@ -11,19 +14,8 @@ class Test4 {
 		grammarTest();
 	}
 	static grammarTest() {
-	String text = """\
-		com.chronicweirdo.jbon.test.PrimitiveBean {
-			vBoolean: true,
-			"vByte": 2,
-			"vShort": 4,
-			"vInteger": 0x123,
-			"vLong": 12345l,
-			"vDouble": 112.4,
-			"vFloat": 12.3,
-			"vString": "test string",
-			"vCharacter": 'c'
-		}
-		"""
+	String text = FileUtils.readTextFile(Paths.get("src","com","chronicweirdo","jbon","test","test4.jbon").toString());
+	println text
 	Util.test(JBONLexer.class, JBONParser.class,
 			new JBONListenerImpl(), "object",
 			text);

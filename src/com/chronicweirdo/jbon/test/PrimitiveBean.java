@@ -1,16 +1,42 @@
 package com.chronicweirdo.jbon.test;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 public class PrimitiveBean {
 
 	private Boolean vBoolean;
 	private Byte vByte;
 	private Short vShort;
-	private Integer vInteger;
+	private int vInteger;
 	private Long vLong;
 	private Double vDouble;
 	private Float vFloat;
 	private String vString;
 	private Character vCharacter;
+	private Map vMap;
+	private List vList;
+	private Set vSet;
+	
+	public Map getvMap() {
+		return vMap;
+	}
+	public void setvMap(Map vMap) {
+		this.vMap = vMap;
+	}
+	public List getvList() {
+		return vList;
+	}
+	public void setvList(List vList) {
+		this.vList = vList;
+	}
+	public Set getvSet() {
+		return vSet;
+	}
+	public void setvSet(Set vSet) {
+		this.vSet = vSet;
+	}
 	public Boolean getvBoolean() {
 		return vBoolean;
 	}
@@ -29,10 +55,10 @@ public class PrimitiveBean {
 	public void setvShort(Short vShort) {
 		this.vShort = vShort;
 	}
-	public Integer getvInteger() {
+	public int getvInteger() {
 		return vInteger;
 	}
-	public void setvInteger(Integer vInteger) {
+	public void setvInteger(int vInteger) {
 		this.vInteger = vInteger;
 	}
 	public Long getvLong() {
@@ -65,12 +91,21 @@ public class PrimitiveBean {
 	public void setvCharacter(Character vCharacter) {
 		this.vCharacter = vCharacter;
 	}
-	@Override
+	/*@Override
 	public String toString() {
 		return "PrimitiveBean [vBoolean=" + vBoolean + ", vByte=" + vByte
 				+ ", vShort=" + vShort + ", vInteger=" + vInteger + ", vLong="
 				+ vLong + ", vDouble=" + vDouble + ", vFloat=" + vFloat
 				+ ", vString=" + vString + ", vCharacter=" + vCharacter + "]";
+	}*/
+	@Override
+	public String toString() {
+		return "PrimitiveBean [vBoolean=" + vBoolean + ", vByte=" + vByte
+				+ ", vShort=" + vShort + ", vInteger=" + vInteger + ", vLong="
+				+ vLong + ", vDouble=" + vDouble + ", vFloat=" + vFloat
+				+ ", vString=" + vString + ", vCharacter=" + vCharacter
+				+ ", vMap=" + vMap + ", vList=" + vList + ", vSet=" + vSet
+				+ "]";
 	}
 	
 	

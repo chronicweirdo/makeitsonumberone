@@ -1,0 +1,11 @@
+com.chronicweirdo.jbon.test.PrimitiveBean {
+	vBoolean: true,
+	"vByte": 2,
+	"vShort": 4,
+	"vInteger": 0x123,
+	"vLong": 12345l,
+	"vDouble": 112.4,
+	"vFloat": 12.3,
+	"vString": "test \"string\"",
+	"vCharacter": 'c'
+}
