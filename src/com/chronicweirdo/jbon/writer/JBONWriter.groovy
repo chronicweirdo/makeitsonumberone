@@ -8,15 +8,29 @@ import com.chronicweirdo.jbon.test.PrimitiveBean
 import com.chronicweirdo.makeitso.grammar.Util
 
 class JBONWriter {
+	
+	static String write(Object object) {
+		return write(object, false)
+	}
+	
+	static String write(Object object, boolean pretty) {
+		StringBuilder builder = new StringBuilder();
+		if (pretty) {
+			niceWrite(builder, 0, true, object)
+		} else {
+			uglyWrite(builder, object)
+		}
+		return builder.toString();
+	}
 
-	static String tabs(int level) {
+	static private String tabs(int level) {
 		StringBuilder t = new StringBuilder();
 		for (int i = 0; i < level; i++) {
 			t.append('\t')
 		}
 		return t.toString()
 	}
-	static niceWrite(StringBuilder b, int level, boolean doTabs, Object o) {
+	static private niceWrite(StringBuilder b, int level, boolean doTabs, Object o) {
 		if (o instanceof Byte) {
 			if (doTabs) b.append(tabs(level))
 			b.append(o)
@@ -88,7 +102,7 @@ class JBONWriter {
 			b.append('}')
 		}
 	}
-	static write(StringBuilder b, Object o) {
+	static private uglyWrite(StringBuilder b, Object o) {
 		if (o instanceof Byte) {
 			b.append(o)
 		} else if (o instanceof Short) {
@@ -112,9 +126,9 @@ class JBONWriter {
 			def prefix = null
 			o.each { key, val ->
 				if (prefix) b.append(prefix)
-				write(b, key)
+				uglyWrite(b, key)
 				b.append(':')
-				write(b, val)
+				uglyWrite(b, val)
 				prefix = ','
 			}
 			b.append('}')
@@ -123,7 +137,7 @@ class JBONWriter {
 			def prefix = null
 			o.each {
 				if (prefix) b.append(prefix)
-				write(b, it)
+				uglyWrite(b, it)
 				prefix = ','
 			}
 			b.append(']')
@@ -134,7 +148,7 @@ class JBONWriter {
 				if (!(it.name == "class")) {
 					if (prefix) b.append(prefix)
 					b.append(it.name).append(':')
-					write(b, o[it.name])
+					uglyWrite(b, o[it.name])
 					prefix = ','
 				}
 			}
@@ -142,19 +156,8 @@ class JBONWriter {
 		}
 	}
 	
-	static String escape(String original) {
+	static private String escape(String original) {
 		String n = original;
-		//String n = original.replaceAll("\"", "\\\\\"");
-		/*
-		 * \t 	Insert a tab in the text at this point.
-\b 	Insert a backspace in the text at this point.
-\n 	Insert a newline in the text at this point.
-\r 	Insert a carriage return in the text at this point.
-\f 	Insert a formfeed in the text at this point.
-\' 	Insert a single quote character in the text at this point.
-\" 	Insert a double quote character in the text at this point.
-\\
-		 */
 		n = n.replace("\\", "\\\\");
 		n = n.replace("\t", "\\t");
 		n = n.replace("\b", "\\b");
@@ -178,8 +181,6 @@ class JBONWriter {
 		}
 	}
 	static main(args) {
-		/*int x = 3;
-		println x.class*/
 		PrimitiveBean bean = new PrimitiveBean();
 		bean.vByte = 2
 		bean.vInteger = 4
