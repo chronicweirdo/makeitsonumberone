@@ -1,8 +1,8 @@
-package com.chronicweirdo.jon.grammar.test
+package com.chronicweirdo.jbon.test
 
-import com.chronicweirdo.jon.grammar.JonLexer
-import com.chronicweirdo.jon.grammar.JonListenerImpl
-import com.chronicweirdo.jon.grammar.JonParser
+import com.chronicweirdo.jbon.grammar.JBONLexer
+import com.chronicweirdo.jbon.grammar.JBONListenerImpl
+import com.chronicweirdo.jbon.grammar.JBONParser
 import com.chronicweirdo.makeitso.grammar.Util
 
 class Test1 {
@@ -12,6 +12,7 @@ class Test1 {
 		println cls.getCanonicalName();
 		grammarTest();
 	}
+	
 	static grammarTest() {
 	String text = """\
 (com.chronicweirdo.graph.element.Link) {
@@ -33,8 +34,8 @@ class Test1 {
 		}
 }
 		"""
-	Util.test(JonLexer.class, JonParser.class,
-			new JonListenerImpl(), "object",
+	Util.test(JBONLexer.class, JBONParser.class,
+			new JBONListenerImpl(), "object",
 			text);
 	}
 }

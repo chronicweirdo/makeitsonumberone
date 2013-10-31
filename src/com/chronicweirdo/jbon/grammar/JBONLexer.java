@@ -1,6 +1,6 @@
-// Generated from src/com/chronicweirdo/jon/grammar/Jon.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/jbon/grammar/JBON.g4 by ANTLR 4.1
 
-package com.chronicweirdo.jon.grammar;
+package com.chronicweirdo.jbon.grammar;
 
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -12,7 +12,7 @@ import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.misc.*;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class JonLexer extends Lexer {
+public class JBONLexer extends Lexer {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
@@ -38,13 +38,13 @@ public class JonLexer extends Lexer {
 	};
 
 
-	public JonLexer(CharStream input) {
+	public JBONLexer(CharStream input) {
 		super(input);
 		_interp = new LexerATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
 	@Override
-	public String getGrammarFileName() { return "Jon.g4"; }
+	public String getGrammarFileName() { return "JBON.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }

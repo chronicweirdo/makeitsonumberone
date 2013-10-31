@@ -1,4 +1,4 @@
-grammar Jon;
+grammar JBON;
 
 /*
 	JON = Java Object Notation
@@ -7,7 +7,7 @@ grammar Jon;
 */
 @header
 {
-package com.chronicweirdo.jon.grammar;
+package com.chronicweirdo.jbon.grammar;
 }
 
 object

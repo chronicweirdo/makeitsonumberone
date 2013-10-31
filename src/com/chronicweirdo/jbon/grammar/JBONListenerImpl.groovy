@@ -1,22 +1,22 @@
-package com.chronicweirdo.jon.grammar
+package com.chronicweirdo.jbon.grammar
 
 import java.lang.reflect.Constructor
 
-import com.chronicweirdo.jon.grammar.JonParser.KeyContext
-import com.chronicweirdo.jon.grammar.JonParser.ListContext
-import com.chronicweirdo.jon.grammar.JonParser.MapContext
-import com.chronicweirdo.jon.grammar.JonParser.ObjectContext
-import com.chronicweirdo.jon.grammar.JonParser.P_booleanContext
-import com.chronicweirdo.jon.grammar.JonParser.P_charContext
-import com.chronicweirdo.jon.grammar.JonParser.P_doubleContext
-import com.chronicweirdo.jon.grammar.JonParser.P_floatContext
-import com.chronicweirdo.jon.grammar.JonParser.P_intContext
-import com.chronicweirdo.jon.grammar.JonParser.P_longContext
-import com.chronicweirdo.jon.grammar.JonParser.P_stringContext
-import com.chronicweirdo.jon.grammar.JonParser.PrimitiveContext
-import com.chronicweirdo.jon.grammar.JonParser.TypeContext
+import com.chronicweirdo.jbon.grammar.JBONParser.KeyContext
+import com.chronicweirdo.jbon.grammar.JBONParser.ListContext
+import com.chronicweirdo.jbon.grammar.JBONParser.MapContext
+import com.chronicweirdo.jbon.grammar.JBONParser.ObjectContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_booleanContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_charContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_doubleContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_floatContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_intContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_longContext
+import com.chronicweirdo.jbon.grammar.JBONParser.P_stringContext
+import com.chronicweirdo.jbon.grammar.JBONParser.PrimitiveContext
+import com.chronicweirdo.jbon.grammar.JBONParser.TypeContext
 
-class JonListenerImpl extends JonBaseListener {
+class JBONListenerImpl extends JBONBaseListener {
 
 	@Override
 	public void exitObject(ObjectContext ctx) {

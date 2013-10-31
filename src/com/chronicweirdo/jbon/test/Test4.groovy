@@ -1,8 +1,8 @@
-package com.chronicweirdo.jon.grammar.test
+package com.chronicweirdo.jbon.test
 
-import com.chronicweirdo.jon.grammar.JonLexer
-import com.chronicweirdo.jon.grammar.JonListenerImpl
-import com.chronicweirdo.jon.grammar.JonParser
+import com.chronicweirdo.jbon.grammar.JBONLexer
+import com.chronicweirdo.jbon.grammar.JBONListenerImpl
+import com.chronicweirdo.jbon.grammar.JBONParser
 import com.chronicweirdo.makeitso.grammar.Util
 
 class Test4 {
@@ -12,7 +12,7 @@ class Test4 {
 	}
 	static grammarTest() {
 	String text = """\
-		com.chronicweirdo.jon.grammar.test.PrimitiveBean {
+		com.chronicweirdo.jbon.test.PrimitiveBean {
 			vBoolean: true,
 			"vByte": 2,
 			"vShort": 4,
@@ -24,8 +24,8 @@ class Test4 {
 			"vCharacter": 'c'
 		}
 		"""
-	Util.test(JonLexer.class, JonParser.class,
-			new JonListenerImpl(), "object",
+	Util.test(JBONLexer.class, JBONParser.class,
+			new JBONListenerImpl(), "object",
 			text);
 	}
 }

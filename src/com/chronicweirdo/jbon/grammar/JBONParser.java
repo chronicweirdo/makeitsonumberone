@@ -1,6 +1,6 @@
-// Generated from src/com/chronicweirdo/jon/grammar/Jon.g4 by ANTLR 4.1
+// Generated from src/com/chronicweirdo/jbon/grammar/JBON.g4 by ANTLR 4.1
 
-package com.chronicweirdo.jon.grammar;
+package com.chronicweirdo.jbon.grammar;
 
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
-public class JonParser extends Parser {
+public class JBONParser extends Parser {
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
@@ -37,7 +37,7 @@ public class JonParser extends Parser {
 	};
 
 	@Override
-	public String getGrammarFileName() { return "Jon.g4"; }
+	public String getGrammarFileName() { return "JBON.g4"; }
 
 	@Override
 	public String[] getTokenNames() { return tokenNames; }
@@ -48,7 +48,7 @@ public class JonParser extends Parser {
 	@Override
 	public ATN getATN() { return _ATN; }
 
-	public JonParser(TokenStream input) {
+	public JBONParser(TokenStream input) {
 		super(input);
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
@@ -71,11 +71,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_object; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterObject(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterObject(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitObject(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitObject(this);
 		}
 	}
 
@@ -135,9 +135,9 @@ public class JonParser extends Parser {
 	}
 
 	public static class TypeContext extends ParserRuleContext {
-		public List<TerminalNode> ID() { return getTokens(JonParser.ID); }
+		public List<TerminalNode> ID() { return getTokens(JBONParser.ID); }
 		public TerminalNode ID(int i) {
-			return getToken(JonParser.ID, i);
+			return getToken(JBONParser.ID, i);
 		}
 		public TypeContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -145,11 +145,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterType(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterType(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitType(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitType(this);
 		}
 	}
 
@@ -230,11 +230,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_map; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterMap(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterMap(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitMap(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitMap(this);
 		}
 	}
 
@@ -295,11 +295,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_entry; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterEntry(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterEntry(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitEntry(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitEntry(this);
 		}
 	}
 
@@ -329,18 +329,18 @@ public class JonParser extends Parser {
 		public ObjectContext object() {
 			return getRuleContext(ObjectContext.class,0);
 		}
-		public TerminalNode ID() { return getToken(JonParser.ID, 0); }
+		public TerminalNode ID() { return getToken(JBONParser.ID, 0); }
 		public KeyContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_key; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterKey(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterKey(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitKey(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitKey(this);
 		}
 	}
 
@@ -386,11 +386,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterValue(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterValue(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitValue(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitValue(this);
 		}
 	}
 
@@ -427,11 +427,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_list; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterList(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterList(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitList(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitList(this);
 		}
 	}
 
@@ -507,11 +507,11 @@ public class JonParser extends Parser {
 		@Override public int getRuleIndex() { return RULE_primitive; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterPrimitive(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterPrimitive(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitPrimitive(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitPrimitive(this);
 		}
 	}
 
@@ -583,20 +583,20 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_intContext extends ParserRuleContext {
-		public TerminalNode HEXADECIMAL() { return getToken(JonParser.HEXADECIMAL, 0); }
-		public TerminalNode BINARY() { return getToken(JonParser.BINARY, 0); }
-		public TerminalNode INTEGER() { return getToken(JonParser.INTEGER, 0); }
+		public TerminalNode HEXADECIMAL() { return getToken(JBONParser.HEXADECIMAL, 0); }
+		public TerminalNode BINARY() { return getToken(JBONParser.BINARY, 0); }
+		public TerminalNode INTEGER() { return getToken(JBONParser.INTEGER, 0); }
 		public P_intContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_int; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_int(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_int(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_int(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_int(this);
 		}
 	}
 
@@ -627,18 +627,18 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_longContext extends ParserRuleContext {
-		public TerminalNode INTEGER() { return getToken(JonParser.INTEGER, 0); }
+		public TerminalNode INTEGER() { return getToken(JBONParser.INTEGER, 0); }
 		public P_longContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_long; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_long(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_long(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_long(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_long(this);
 		}
 	}
 
@@ -670,18 +670,18 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_floatContext extends ParserRuleContext {
-		public TerminalNode FLOAT() { return getToken(JonParser.FLOAT, 0); }
+		public TerminalNode FLOAT() { return getToken(JBONParser.FLOAT, 0); }
 		public P_floatContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_float; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_float(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_float(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_float(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_float(this);
 		}
 	}
 
@@ -713,18 +713,18 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_doubleContext extends ParserRuleContext {
-		public TerminalNode FLOAT() { return getToken(JonParser.FLOAT, 0); }
+		public TerminalNode FLOAT() { return getToken(JBONParser.FLOAT, 0); }
 		public P_doubleContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_double; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_double(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_double(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_double(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_double(this);
 		}
 	}
 
@@ -763,18 +763,18 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_charContext extends ParserRuleContext {
-		public TerminalNode CHAR() { return getToken(JonParser.CHAR, 0); }
+		public TerminalNode CHAR() { return getToken(JBONParser.CHAR, 0); }
 		public P_charContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_char; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_char(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_char(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_char(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_char(this);
 		}
 	}
 
@@ -799,18 +799,18 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_stringContext extends ParserRuleContext {
-		public TerminalNode STRING() { return getToken(JonParser.STRING, 0); }
+		public TerminalNode STRING() { return getToken(JBONParser.STRING, 0); }
 		public P_stringContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_string; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_string(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_string(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_string(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_string(this);
 		}
 	}
 
@@ -835,19 +835,19 @@ public class JonParser extends Parser {
 	}
 
 	public static class P_booleanContext extends ParserRuleContext {
-		public TerminalNode TRUE() { return getToken(JonParser.TRUE, 0); }
-		public TerminalNode FALSE() { return getToken(JonParser.FALSE, 0); }
+		public TerminalNode TRUE() { return getToken(JBONParser.TRUE, 0); }
+		public TerminalNode FALSE() { return getToken(JBONParser.FALSE, 0); }
 		public P_booleanContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
 		@Override public int getRuleIndex() { return RULE_p_boolean; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).enterP_boolean(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).enterP_boolean(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof JonListener ) ((JonListener)listener).exitP_boolean(this);
+			if ( listener instanceof JBONListener ) ((JBONListener)listener).exitP_boolean(this);
 		}
 	}
 

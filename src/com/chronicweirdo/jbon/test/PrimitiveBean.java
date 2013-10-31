@@ -1,4 +1,4 @@
-package com.chronicweirdo.jon.grammar.test;
+package com.chronicweirdo.jbon.test;
 
 public class PrimitiveBean {
 
