@@ -7,6 +7,7 @@ import com.hp.hpl.jena.rdf.model.Model
 import com.hp.hpl.jena.rdf.model.ModelFactory
 import com.hp.hpl.jena.util.FileManager
 
+
 class RDFDifference {
 	
 	static Model getModel(Path path) {
@@ -138,8 +139,31 @@ class RDFDifference {
 			Pair pair = difference(models[index-1], models[index])
 			saveModel(diff.resolve(archives[index] + "p"), pair.plus)
 			saveModel(diff.resolve(archives[index] + "m"), pair.minus)
+		}	
+	}
+	
+	static Integer getIntForDecode(String[] list, int index, Integer defaultValue) {
+		if (list.size() <= index) return defaultValue;
+		try {
+			return Integer.parseInt(list[index]);
+		} catch (NumberFormatException e) {
+			return defaultValue;
 		}
-		
+	}
+	static Date decode(String fileName) {
+		// 2013.10.14.10.24.37
+		// year.month.day.hour.minute.second
+		String[] tokens = fileName.split("[.]");
+		println tokens
+		Calendar calendar = Calendar.getInstance()
+		calendar.set(Calendar.YEAR, getIntForDecode(tokens, 0, 0))
+		calendar.set(Calendar.MONTH, getIntForDecode(tokens, 1, 0))
+		calendar.set(Calendar.DAY_OF_MONTH, getIntForDecode(tokens, 2, 0))
+		calendar.set(Calendar.HOUR_OF_DAY, getIntForDecode(tokens, 3, 0))
+		calendar.set(Calendar.MINUTE, getIntForDecode(tokens, 4, 0))
+		calendar.set(Calendar.SECOND, getIntForDecode(tokens, 5, 0))
+		calendar.set(Calendar.MILLISECOND, 0);
+		return calendar.getTime()
 	}
 	
 	static main(args) {
@@ -152,7 +176,10 @@ class RDFDifference {
 		saveModel(root.resolve(pathPlus), result.plus)
 		saveModel(root.resolve(pathMinus), result.minus)*/
 		//buildPairs()
-		buildFile()
+		//buildFile()
+		println decode("2013.10.14.10.24.37")
+		println decode("2013.10.14.10")
+		println decode("2013.10.14.10.m")
 	}
 
 }
