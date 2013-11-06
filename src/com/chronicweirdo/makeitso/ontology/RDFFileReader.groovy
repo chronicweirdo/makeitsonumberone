@@ -166,6 +166,7 @@ class RDFFileReader {
 	static test3() {
 		// run query to list all triplets
 		Path path = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump", "2013.10.14.10.24.37");
+		//Path path = Paths.get(System.getProperty("user.home"), "2013.10.28.rdf");
 		Model model = openFile(path);
 		
 		String query = """\
@@ -205,6 +206,32 @@ class RDFFileReader {
 		model.close()
 	}
 	
+	static test5() {
+		Path path = Paths.get(System.getProperty("user.home"), "2013.10.28.rdf");
+		Model model = openFile(path);
+		
+		String query = """\
+			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+			PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+			select *
+			where {
+				?s ?p "SilviuTestCell"
+			} limit 100
+		"""
+		List r = executeSelectQuery(model, query);
+		println r.size()
+		int line = 1;
+		r.each{
+			it.each { key, value ->
+				println "$line :: $key :: $value"
+			}
+			print "\n";
+			line++;
+		}
+		model.close();
+	}
+	
 	static importTest() {
 		// load the db
 		// load model from file
@@ -215,7 +242,8 @@ class RDFFileReader {
 		//test1();
 		//test2();
 		//test3();
-		test4();
+		//test4();
+		test5();
 	}
 
 }

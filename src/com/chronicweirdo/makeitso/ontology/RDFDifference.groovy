@@ -166,6 +166,26 @@ class RDFDifference {
 		return calendar.getTime()
 	}
 	
+	static String removeTrailing(String fileName) {
+		if (fileName.endsWith(".p") || fileName.endsWith(".m"))
+			return 
+	}
+	
+	static Model buildRDF(Path diff, Date date) {
+		// load all files in the diff folder
+		// extract file names and remove trailing .p or .r, if they have that
+		// select all file names less than date
+		Set names = new HashSet();
+		diff.toFile().listFiles().each { file ->
+			Date d = decode(file.getName())
+			if (d < date) dates.add()
+		}
+		// order selected files by date
+		List dates
+		// build pairs
+		// builc model
+	}
+	
 	static main(args) {
 		/*Path root = Paths.get(System.getProperty("user.home"), "Documents", "workspace", "rdfdump")
 		Path pathOld = Paths.get("2013.10.14.10.24.37")
