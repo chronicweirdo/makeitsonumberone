@@ -118,7 +118,7 @@ class MediawikiAPIContact {
 	// authenticates and returns cookies to be used in future requests
 	static Map auth() {
 		// authenticate
-		def postParams = ["action": "login", "lgname": "silviu.cacoveanu@epfl.ch", "lgpassword": "T4ppitikar455", "format": "xml"]
+		def postParams = ["action": "login", "lgname": "silviu.cacoveanu@epfl.ch", "lgpassword": "YZpc4k8M2rEy", "format": "xml"]
 		Response response = request(MEDIAWIKI_API, null, postParams, "POST", null);
 		String token = XmlUtil.extract(response.content.trim(), ["token": ["login", "@token"]])["token"];
 		postParams["lgtoken"] = token
@@ -164,7 +164,7 @@ class MediawikiAPIContact {
 			"format": "xml",
 			"titles": "Mt080224a1-1"
 			]
-		get(cookies, getParams);
+		//get(cookies, getParams);
 		
 		//api.php?action=query&prop=revisions&titles=API|Main%20Page&rvprop=timestamp|user|comment|content
 		getParams["rvprop"] = "timestamp|user|content";

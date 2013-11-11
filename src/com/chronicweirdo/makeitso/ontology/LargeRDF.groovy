@@ -23,15 +23,21 @@ class LargeRDF {
 		//TDBQuery.
 		Dataset dataset = TDBFactory.createDataset(path)
 		
-		String queryString = """\
-			PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-			PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-
-			select *
+				String queryString = """\
+				PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+				PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+				
+				select *
+				where {
+				?s ?p <http://bbp.epfl.ch/project/smwtesting/Special:URIResolver/C080400A3_analysis-23_a4179425081afefb8f605ae2a6f2fbad>
+				} limit 100
+				"""
+/*		String queryString = """\
+			select DISTINCT ?p, ?o
 			where {
-				<http://bbp.epfl.ch/project/smwtesting/Special:URIResolver/SilviuTestCell> ?p ?o
-			} limit 100
-		"""
+   			<http://bbp.epfl.ch/project/smwtesting/Special:URIResolver/C080400A3_analysis> ?p ?o
+			} LIMIT 1000
+		"""*/
 		/*List r = executeSelectQuery(model, query);
 		println r.size()
 		int line = 1;
@@ -67,8 +73,8 @@ class LargeRDF {
 		Path file = Paths.get(System.getProperty("user.home"), "2013.10.28.rdf");
 		Path copy = Paths.get(System.getProperty("user.home"), "2013.10.28.bkp.rdf");
 		//updateDB(database.toString(), file.toString())
-		//query(database.toString());
-		copyDataset(database, copy)
+		query(database.toString());
+		//copyDataset(database, copy)
 	}
 
 }
