@@ -3,6 +3,7 @@ package com.ingenuity.temp.apiupload;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.log4j.Logger;
 
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,12 +56,25 @@ public class Main {
 
         log.info("uploading the dataset");
         String uploadAPIPath = "/pa/api/v1/dataupload";
-        String filePath = "src/main/resources/LPSHepatotoxicityInRats.txt";
+        String filePath = Main.class.getClassLoader().getResource("LPSHepatotoxicityInRats.txt").getFile();
+        //log.info("@@@@@ : " + Main.class.getResource("LPSHepatotoxicityInRats.txt").toString());
+        log.info("----- toString: " + Main.class.getClassLoader().getResource("LPSHepatotoxicityInRats.txt").toString());
+        try {
+            log.info("----- toURI: " + Main.class.getClassLoader().getResource("LPSHepatotoxicityInRats.txt").toURI().toString());
+        } catch (URISyntaxException e) {
+            log.error(e, e);
+        }
+        log.info("----- getFile: " + Main.class.getClassLoader().getResource("LPSHepatotoxicityInRats.txt").getFile());
+        log.info("----- getPath: " + Main.class.getClassLoader().getResource("LPSHepatotoxicityInRats.txt").getPath());
+        log.info("file path: " + filePath);
         String projectName = "Training Project";
-        String datasetName = "MyTestDataset4";
-        List<Pair> data = extractFormData(filePath, projectName, datasetName);
+        String datasetName = "MyTestDataset" + System.currentTimeMillis();
+        log.info("dataset name: " + datasetName);
+
+
+        /*List<Pair> data = extractFormData(filePath, projectName, datasetName);
         if (data.size() > 4) {
             genericApi.executePost(uploadAPIPath, data, "output.txt");
-        }
+        }*/
     }
 }
