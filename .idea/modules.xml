@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/apiupload/apiupload.iml" filepath="$PROJECT_DIR$/apiupload/apiupload.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bmo/bmo.iml" filepath="$PROJECT_DIR$/bmo/bmo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fitnesse/fitnesse.iml" filepath="$PROJECT_DIR$/fitnesse/fitnesse.iml" />
+      <module fileurl="file://$PROJECT_DIR$/makeitso.iml" filepath="$PROJECT_DIR$/makeitso.iml" />
+      <module fileurl="file://$PROJECT_DIR$/naframa/naframa.iml" filepath="$PROJECT_DIR$/naframa/naframa.iml" />
+    </modules>
+  </component>
+</project>
+
