@@ -1,0 +1,6 @@
+2014-04-28 16:23:35,674 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.DefaultCaret$Handler@996b65
+2014-04-28 16:23:35,674 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.DefaultCaret$Handler@996b65
+2014-04-28 16:23:35,677 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.plaf.basic.BasicTextUI$UpdateHandler@10e820
+2014-04-28 16:23:35,677 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.plaf.basic.BasicTextUI$UpdateHandler@10e820
+2014-04-28 16:23:35,956 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.JTextComponent$InputMethodRequestsHandler@a50916
+2014-04-28 16:23:35,956 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.JTextComponent$InputMethodRequestsHandler@a50916

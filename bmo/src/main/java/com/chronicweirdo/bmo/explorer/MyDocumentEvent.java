@@ -1,4 +1,4 @@
-package com.chronicweirdo.bmo.com.chronicweirdo.bmo.explorer;
+package com.chronicweirdo.bmo.explorer;
 
 import javax.swing.event.DocumentEvent;
 import javax.swing.text.Document;

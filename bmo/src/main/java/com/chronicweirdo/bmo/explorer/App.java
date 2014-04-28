@@ -1,7 +1,6 @@
-package com.chronicweirdo.bmo.com.chronicweirdo.bmo.explorer;
+package com.chronicweirdo.bmo.explorer;
 
 import javax.swing.*;
-import javax.swing.text.*;
 import javax.swing.text.html.HTMLEditorKit;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;

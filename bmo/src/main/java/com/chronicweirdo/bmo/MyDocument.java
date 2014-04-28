@@ -1,6 +1,6 @@
 package com.chronicweirdo.bmo;
 
-import com.chronicweirdo.bmo.com.chronicweirdo.bmo.explorer.MyDocumentEvent;
+import com.chronicweirdo.bmo.explorer.MyDocumentEvent;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
