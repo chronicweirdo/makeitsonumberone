@@ -1,0 +1,124 @@
+package com.ingenuity.temp.apiupload;
+
+import org.apache.log4j.Logger;
+
+import javax.swing.*;
+import javax.swing.plaf.DimensionUIResource;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+
+/**
+ * Created by scacoveanu on 4/29/2014.
+ */
+public class MainUI {
+
+    private static final Logger log = Logger.getLogger(MainUI.class);
+
+    private static final String DEFAULT_SERVER_URL = "https://analysis-stable.ingenuity.com";
+    private static final String DEFAULT_API_PATH = "/pa/api/v1/dataupload";
+    private static final String DEFAULT_USERNAME = "scacoveanu@ingenuity.com";
+    private static final String DEFAULT_PASSWORD = "test1234";
+
+    private JTextField filePath;
+    private JButton selectFile;
+    private JTextField serverPath;
+    private JTextField apiPath;
+    private JTextField userName;
+    private JPasswordField password;
+    private JButton submit;
+
+    private JPanel panel;
+
+    public MainUI() {
+        init();
+    }
+
+    public JPanel getPanel() {
+        return panel;
+    }
+
+    private void pickFile() {
+        // show file chooser
+        JFileChooser datasetChooser = new JFileChooser();
+        int returnVal = datasetChooser.showDialog(selectFile, "Load");
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File file = datasetChooser.getSelectedFile();
+            System.out.println(file.getAbsolutePath());
+            // set filePath
+            filePath.setText(file.getAbsolutePath());
+        } else {
+            // nothing
+        }
+    }
+
+    private void init() {
+        // create components
+        panel = new JPanel(new GridBagLayout());
+        //panel.setPreferredSize(new Dimension(500, 500));
+        filePath = new JTextField("<select file>");
+        filePath.setEditable(false);
+        selectFile = new JButton("...");
+        serverPath = new JTextField(DEFAULT_SERVER_URL);
+        apiPath = new JTextField(DEFAULT_API_PATH);
+        userName = new JTextField(DEFAULT_USERNAME);
+        password = new JPasswordField(DEFAULT_PASSWORD);
+        submit = new JButton("Submit");
+        JTextArea logArea = new JTextArea();
+        //logArea.setPreferredSize(new Dimension(500, 200));
+        logArea.setEditable(false);
+        logArea.setAutoscrolls(true);
+        new TextAreaAppender(logArea, true);
+        JScrollPane scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollLogArea.setPreferredSize(new Dimension(500, 200));
+
+
+        // add listeners
+        selectFile.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pickFile();
+            }
+        });
+
+        // build UI - row 1
+        panel.add(new JLabel("File to upload:"), UIUtil.constraints(0, 0));
+        panel.add(filePath, UIUtil.constraints(1, 0, 2, 1));
+        panel.add(selectFile, UIUtil.constraints(3, 0));
+
+        // build UI - row 2
+        panel.add(new JLabel("Server URL:"), UIUtil.constraints(0, 1));
+        panel.add(serverPath, UIUtil.constraints(1, 1, 3, 1));
+
+        // build UI - row 3
+        panel.add(new JLabel("API path:"), UIUtil.constraints(0, 2));
+        panel.add(apiPath, UIUtil.constraints(1, 2, 3, 1));
+
+        // build UI - row 4
+        panel.add(new JLabel("User name:"), UIUtil.constraints(0, 3));
+        panel.add(userName, UIUtil.constraints(1, 3, 3, 1));
+
+        // build UI - row 5
+        panel.add(new JLabel("Password:"), UIUtil.constraints(0, 4));
+        panel.add(password, UIUtil.constraints(1, 4, 3, 1));
+
+        // build UI - row 6
+        panel.add(submit, UIUtil.constraints(3, 5));
+
+        // build UI - row 7 and beyond
+        panel.add(scrollLogArea,
+                UIUtil.constraints(0, 6, 4, 4));
+
+
+
+        log.info("UI init done");
+        log.info("Now you can play");
+    }
+
+    public static void main(String[] args) {
+        MainUI main = new MainUI();
+        UIUtil.createAndShowGUI("IPA API Upload", null, main.getPanel());
+    }
+}

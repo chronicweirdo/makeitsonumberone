@@ -4,3 +4,131 @@
 2014-04-28 16:23:35,677 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.plaf.basic.BasicTextUI$UpdateHandler@10e820
 2014-04-28 16:23:35,956 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.JTextComponent$InputMethodRequestsHandler@a50916
 2014-04-28 16:23:35,956 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.MyDocument.addDocumentListener(MyDocument.java:39) - adding document listener javax.swing.text.JTextComponent$InputMethodRequestsHandler@a50916
+2014-04-29 15:01:05,891 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:01:05,891 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:02:46,898 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:02:46,898 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:09:39,009 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:09:39,009 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:11:30,866 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:11:30,866 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:99) - UI init done
+2014-04-29 15:12:52,409 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:12:52,409 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:12:52,416 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:12:52,416 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:13:30,958 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:13:30,958 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:13:30,965 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:13:30,965 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:14:17,252 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:14:17,252 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:14:17,259 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:14:17,259 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:17:06,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:17:06,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:17:06,744 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:17:06,744 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:18:30,075 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:18:30,075 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:18:30,081 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:18:30,081 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:21:02,081 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:21:02,081 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:21:02,084 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:21:02,084 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:14,388 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:14,388 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:14,390 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:14,390 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:31,481 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:31,481 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:31,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:31,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:55,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:55,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:100) - UI init done
+2014-04-29 15:29:55,688 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:29:55,688 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:101) - Now you can play
+2014-04-29 15:37:37,047 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:37:37,047 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:37:37,052 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:37:37,052 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:37:52,048 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:37:52,048 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:37:52,053 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:37:52,053 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:38:32,554 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:38:32,554 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:38:32,559 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:38:32,559 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:39:10,529 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:39:10,529 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:39:10,534 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:39:10,534 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:39:32,311 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:39:32,311 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:39:32,315 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:39:32,315 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:41:28,993 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:41:28,993 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:110) - UI init done
+2014-04-29 15:41:28,998 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:41:28,998 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - Now you can play
+2014-04-29 15:41:54,736 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:41:54,736 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:41:54,742 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:41:54,742 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:43:53,634 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:43:53,634 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:43:53,639 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:43:53,639 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:44:27,229 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:44:27,229 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:44:27,234 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:44:27,234 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:44:51,276 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:44:51,276 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:44:51,282 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:44:51,282 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:45:04,941 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:45:04,941 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:45:04,946 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:45:04,946 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:45:23,616 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:45:23,616 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:45:23,621 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:45:23,621 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:46:28,832 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:46:28,832 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:46:28,838 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:46:28,838 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:47:09,049 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:47:09,049 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:111) - UI init done
+2014-04-29 15:47:09,054 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:47:09,054 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:112) - Now you can play
+2014-04-29 15:48:24,645 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:113) - UI init done
+2014-04-29 15:48:24,645 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:113) - UI init done
+2014-04-29 15:48:24,650 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:114) - Now you can play
+2014-04-29 15:48:24,650 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:114) - Now you can play
+2014-04-29 15:49:27,817 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:113) - UI init done
+2014-04-29 15:49:27,817 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:113) - UI init done
+2014-04-29 15:49:27,822 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:114) - Now you can play
+2014-04-29 15:49:27,822 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:114) - Now you can play
+2014-04-29 15:50:34,013 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:34,013 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:34,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:50:34,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:50:45,770 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:45,770 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:45,775 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:50:45,775 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:50:55,378 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:55,378 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:50:55,383 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:50:55,383 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:51:26,942 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:51:26,942 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:51:26,947 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:51:26,947 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:51:47,694 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:51:47,694 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:116) - UI init done
+2014-04-29 15:51:47,699 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
+2014-04-29 15:51:47,699 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:117) - Now you can play
