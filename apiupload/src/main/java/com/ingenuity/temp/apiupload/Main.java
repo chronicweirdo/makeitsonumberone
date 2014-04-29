@@ -14,7 +14,7 @@ public class Main {
 
     private static final Logger log = Logger.getLogger(Main.class);
 
-    private static List<Pair> extractFormData(String filePath, String projectName, String datasetName) {
+    public static List<Pair> extractFormData(String filePath, String projectName, String datasetName) {
         // read dataset
         List<List<String>> dataset = DatasetReader.getTable(filePath);
 

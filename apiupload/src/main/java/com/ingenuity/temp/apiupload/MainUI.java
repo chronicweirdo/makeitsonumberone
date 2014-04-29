@@ -1,13 +1,14 @@
 package com.ingenuity.temp.apiupload;
 
+import org.apache.commons.httpclient.HttpClient;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
-import javax.swing.plaf.DimensionUIResource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.util.List;
 
 /**
  * Created by scacoveanu on 4/29/2014.
@@ -20,12 +21,16 @@ public class MainUI {
     private static final String DEFAULT_API_PATH = "/pa/api/v1/dataupload";
     private static final String DEFAULT_USERNAME = "scacoveanu@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "test1234";
+    private static final String DEFAULT_PROJECT_NAME = "Training Project";
+    private static final String DEFAULT_DATASET_NAME = "MyTestDataset";
 
     private JTextField filePath;
     private JButton selectFile;
     private JTextField serverPath;
     private JTextField apiPath;
     private JTextField userName;
+    private JTextField projectName;
+    private JTextField datasetName;
     private JPasswordField password;
     private JButton submit;
 
@@ -64,6 +69,8 @@ public class MainUI {
         apiPath = new JTextField(DEFAULT_API_PATH);
         userName = new JTextField(DEFAULT_USERNAME);
         password = new JPasswordField(DEFAULT_PASSWORD);
+        projectName = new JTextField(DEFAULT_PROJECT_NAME);
+        datasetName = new JTextField(DEFAULT_DATASET_NAME);
         submit = new JButton("Submit");
         JTextArea logArea = new JTextArea();
         //logArea.setPreferredSize(new Dimension(500, 200));
@@ -80,6 +87,12 @@ public class MainUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 pickFile();
+            }
+        });
+        submit.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                executeUpload();
             }
         });
 
@@ -105,16 +118,51 @@ public class MainUI {
         panel.add(password, UIUtil.constraints(1, 4, 3, 1));
 
         // build UI - row 6
-        panel.add(submit, UIUtil.constraints(3, 5));
+        panel.add(new JLabel("Project name:"), UIUtil.constraints(0, 5));
+        panel.add(projectName, UIUtil.constraints(1, 5, 3, 1));
 
-        // build UI - row 7 and beyond
+        // build UI - row 7
+        panel.add(new JLabel("Dataset name:"), UIUtil.constraints(0, 6));
+        panel.add(datasetName, UIUtil.constraints(1, 6, 3, 1));
+
+        // build UI - row 8
+        panel.add(submit, UIUtil.constraints(3, 7));
+
+        // build UI - row 9 and beyond
         panel.add(scrollLogArea,
-                UIUtil.constraints(0, 6, 4, 4));
-
+                UIUtil.constraints(0, 8, 4, 4));
 
 
         log.info("UI init done");
         log.info("Now you can play");
+    }
+
+    private void executeUpload() {
+        String server = serverPath.getText();
+
+        log.info("logging in");
+        String username = this.userName.getText();
+        String password = new String(this.password.getPassword());
+        ApiLogin login = new ApiLogin(username, password, server);
+        HttpClient client = login.getClient();
+        log.info("was login executed? " + login.isLoginExecuted());
+        log.info("was login successful? " + login.isLoginSuccessful());
+
+        log.info("initializing generic api");
+        GenericApi genericApi = new GenericApi(client, server);
+
+        log.info("uploading the dataset");
+        String uploadAPIPath = this.apiPath.getText();
+        String filePath = this.filePath.getText();
+
+        String projectName = this.projectName.getText();
+        String datasetName = this.datasetName.getText();
+        log.info("dataset name: " + datasetName);
+
+        List<Pair> data = Main.extractFormData(filePath, projectName, datasetName);
+        if (data.size() > 4) {
+            genericApi.executePost(uploadAPIPath, data, "output.txt");
+        }
     }
 
     public static void main(String[] args) {
