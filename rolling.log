@@ -922,3 +922,57 @@
 2014-04-29 16:16:42,034 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:80) - parameter: obs5expval = #NUM!
 2014-04-29 16:16:42,034 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:80) - parameter: obs6expval = #NUM!
 2014-04-29 16:16:42,034 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:80) - parameter: obs6expval = #NUM!
+2014-04-29 16:37:16,284 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - UI init done
+2014-04-29 16:37:16,284 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - UI init done
+2014-04-29 16:37:16,289 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:142) - Now you can play
+2014-04-29 16:37:16,289 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:142) - Now you can play
+2014-04-29 16:37:44,038 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:142) - UI init done
+2014-04-29 16:37:44,038 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:142) - UI init done
+2014-04-29 16:37:44,043 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:143) - Now you can play
+2014-04-29 16:37:44,043 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:143) - Now you can play
+2014-04-29 16:37:49,726 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:161) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:37:49,726 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:161) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:45:48,356 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:45:48,356 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:45:51,838 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:45:51,838 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:45:51,845 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:45:51,845 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:46:02,609 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:46:02,609 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:46:45,442 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:46:45,442 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:46:45,448 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:46:45,448 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:46:52,087 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:46:52,087 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:47:19,878 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:47:19,878 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:148) - UI init done
+2014-04-29 16:47:19,883 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:47:19,883 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - Now you can play
+2014-04-29 16:47:25,368 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:47:25,368 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:167) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:48:20,635 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:48:20,635 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:48:20,640 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:48:20,640 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:48:25,910 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:48:25,910 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:48:50,309 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:48:50,309 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:48:50,312 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:48:50,312 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:48:55,542 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:48:55,542 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:49:02,890 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:49:02,890 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:49:36,059 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:49:36,059 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:149) - UI init done
+2014-04-29 16:49:36,062 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:49:36,062 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:150) - Now you can play
+2014-04-29 16:49:44,013 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:49:44,013 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:49:55,543 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B]
+2014-04-29 16:49:55,543 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B]
+2014-04-29 16:50:08,513 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-04-29 16:50:08,513 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:168) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]

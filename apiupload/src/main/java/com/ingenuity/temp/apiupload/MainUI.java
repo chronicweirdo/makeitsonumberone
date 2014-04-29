@@ -7,7 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -35,6 +37,10 @@ public class MainUI {
     private JButton submit;
 
     private JPanel panel;
+    private JPanel mappingPanel;
+
+    private List<String> columns;
+    private List<JTextField> fields;
 
     public MainUI() {
         init();
@@ -50,9 +56,11 @@ public class MainUI {
         int returnVal = datasetChooser.showDialog(selectFile, "Load");
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File file = datasetChooser.getSelectedFile();
-            System.out.println(file.getAbsolutePath());
+            log.info("selected file: " + file.getAbsolutePath());
             // set filePath
             filePath.setText(file.getAbsolutePath());
+            loadHeader();
+            buildColumnMappingPanel();
         } else {
             // nothing
         }
@@ -71,12 +79,14 @@ public class MainUI {
         password = new JPasswordField(DEFAULT_PASSWORD);
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
+        mappingPanel = new JPanel(new GridBagLayout());
+        mappingPanel.setBackground(Color.lightGray);
         submit = new JButton("Submit");
         JTextArea logArea = new JTextArea();
         //logArea.setPreferredSize(new Dimension(500, 200));
         logArea.setEditable(false);
         logArea.setAutoscrolls(true);
-        new TextAreaAppender(logArea, true);
+        new TextAreaAppender(logArea);
         JScrollPane scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
         scrollLogArea.setPreferredSize(new Dimension(500, 200));
@@ -126,15 +136,52 @@ public class MainUI {
         panel.add(datasetName, UIUtil.constraints(1, 6, 3, 1));
 
         // build UI - row 8
-        panel.add(submit, UIUtil.constraints(3, 7));
+        panel.add(mappingPanel, UIUtil.constraints(0, 7, 4, 1));
 
-        // build UI - row 9 and beyond
+        // build UI - row 9
+        panel.add(submit, UIUtil.constraints(3, 8));
+
+        // build UI - row 10 and beyond
         panel.add(scrollLogArea,
-                UIUtil.constraints(0, 8, 4, 4));
+                UIUtil.constraints(0, 9, 4, 4));
 
 
         log.info("UI init done");
         log.info("Now you can play");
+    }
+
+    private void loadHeader() {
+        String path = filePath.getText();
+        if (path != null && path.length() > 0) {
+            columns = new ArrayList<String>();
+            try {
+                BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
+                String line = r.readLine();
+                if (line != null) {
+                    String[] tokens = line.split("\t");
+                    for (String token: tokens) {
+                        columns.add(token);
+                    }
+                }
+                r.close();
+
+                log.info("loaded columns: " + columns.toString());
+            } catch (IOException e) {
+                log.error(e, e);
+            }
+        }
+    }
+
+    private void buildColumnMappingPanel() {
+        mappingPanel.removeAll();
+        fields = new ArrayList<JTextField>(columns.size());
+        for (int row = 0; row < columns.size(); row++) {
+            mappingPanel.add(new JLabel(columns.get(row) + ":"), UIUtil.constraints(0, row));
+            JTextField field = new JTextField(columns.get(row));
+            fields.add(field);
+            mappingPanel.add(field, UIUtil.constraints(1, row));
+        }
+        mappingPanel.updateUI();
     }
 
     private void executeUpload() {
