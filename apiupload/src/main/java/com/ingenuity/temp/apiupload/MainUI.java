@@ -29,7 +29,6 @@ public class MainUI {
     private static final String DEFAULT_PASSWORD = "";
     private static final String DEFAULT_PROJECT_NAME = "Training Project";
     private static final String DEFAULT_DATASET_NAME = "MyTestDataset";
-    private static final String DEFAULT_GENE_ID_TYPE = "affymetrix";
 
     private static final ComboOption[] COLUMN_MAPPING_OPTIONS = {
             new ComboOption("geneid", "the gene or protein IDs to be uploaded to IPA"),
@@ -69,26 +68,26 @@ public class MainUI {
             new ComboOption("dbsnp", "dbSNP"),
             new ComboOption("mirbasemature", "miRBase (mature)")
     };
-    public static final String TEXT_FILE_CHOOSER_BUTTON = "...";
-    public static final String TEXT_SELECT_FILE = "<select file>";
-    public static final String TEXT_SUBMIT_BUTTON = "Submit";
-    public static final String TEXT_LABEL_FILE_PATH = "File to upload:";
-    public static final String TEXT_LABEL_SERVER_PATH = "Server URL:";
-    public static final String TEXT_LABEL_API_PATH = "API path:";
-    public static final String TEXT_LABEL_USER_NAME = "User name:";
-    public static final String TEXT_LABEL_PASSWORD = "Password:";
-    public static final String TEXT_LABEL_PROJECT_NAME = "Project name:";
-    public static final String TEXT_LABEL_DATASET_NAME = "Dataset name:";
-    public static final String TEXT_LABEL_GENE_ID_TYPE = "Gene ID type:";
-    public static final String TEXT_LABEL_FILE_COLUMN_MAPPING = "File column mapping to API inputs:";
-    public static final String TEXT_LABEL_FILE_COLUMN_MAPPING_EMPTY = "File column mapping to API inputs: load a file!";
-    public static final int SIZE_EDIT_PANE_WIDTH = 500;
-    public static final int SIZE_EDIT_PANE_HEIGHT = 600;
-    public static final int SIZE_LOG_PANE_WIDTH = 300;
-    public static final int SIZE_LOG_PANE_HEIGHT = 600;
-    public static final String TEXT_PANEL_LOG_PANE_TITLE = "Log output";
-    public static final String TEXT_DATASET_CHOOSER_LOAD_BUTTON = "Load";
-    public static final String LOG_INDENTATION = "\t";
+    private static final String TEXT_FILE_CHOOSER_BUTTON = "...";
+    private static final String TEXT_SELECT_FILE = "<select file>";
+    private static final String TEXT_SUBMIT_BUTTON = "Submit";
+    private static final String TEXT_LABEL_FILE_PATH = "File to upload:";
+    private static final String TEXT_LABEL_SERVER_PATH = "Server URL:";
+    private static final String TEXT_LABEL_API_PATH = "API path:";
+    private static final String TEXT_LABEL_USER_NAME = "User name:";
+    private static final String TEXT_LABEL_PASSWORD = "Password:";
+    private static final String TEXT_LABEL_PROJECT_NAME = "Project name:";
+    private static final String TEXT_LABEL_DATASET_NAME = "Dataset name:";
+    private static final String TEXT_LABEL_GENE_ID_TYPE = "Gene ID type:";
+    private static final String TEXT_LABEL_FILE_COLUMN_MAPPING = "File column mapping to API inputs:";
+    private static final String TEXT_LABEL_FILE_COLUMN_MAPPING_EMPTY = "File column mapping to API inputs: load a file!";
+    private static final int SIZE_EDIT_PANE_WIDTH = 500;
+    private static final int SIZE_EDIT_PANE_HEIGHT = 600;
+    private static final int SIZE_LOG_PANE_WIDTH = 300;
+    private static final int SIZE_LOG_PANE_HEIGHT = 600;
+    private static final String TEXT_PANEL_LOG_PANE_TITLE = "Log output";
+    private static final String TEXT_DATASET_CHOOSER_LOAD_BUTTON = "Load";
+    private static final String LOG_INDENTATION = "\t";
 
 
     private JSplitPane mainPanel;
@@ -104,12 +103,12 @@ public class MainUI {
     private JTextField userName;
     private JTextField projectName;
     private JTextField datasetName;
-    private JComboBox<ComboOption> geneIDType;
-    private JComboBox<ComboOption> logLevel;
+    private JComboBox geneIDType;
+    private JComboBox logLevel;
     private JPasswordField password;
     private JButton submit;
     // fields holding the mapping between file columns and API input fields
-    private List<JComboBox<ComboOption>> fields;
+    private List<JComboBox> fields;
 
     // the file columns
     private List<String> columns;
@@ -278,7 +277,7 @@ public class MainUI {
         if (columns != null) {
             // we only add file column mapping fields if we have loaded a file and have columns
             editPanel.add(new JLabel(TEXT_LABEL_FILE_COLUMN_MAPPING), UIUtil.constraints(0, ++panelRow, 4, 1));
-            fields = new ArrayList<JComboBox<ComboOption>>(columns.size());
+            fields = new ArrayList<JComboBox>(columns.size());
             for (int row = 0; row < columns.size(); row++) {
                 editPanel.add(new JLabel(columns.get(row) + ":"), UIUtil.constraints(0, ++panelRow));
                 JComboBox field = new JComboBox(COLUMN_MAPPING_OPTIONS);
@@ -316,9 +315,9 @@ public class MainUI {
         password = new JPasswordField(DEFAULT_PASSWORD);
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
-        geneIDType = new JComboBox<ComboOption>(GENE_ID_TYPES);
+        geneIDType = new JComboBox(GENE_ID_TYPES);
         geneIDType.setSelectedIndex(1);
-        logLevel = new JComboBox<ComboOption>(LOG_LEVELS);
+        logLevel = new JComboBox(LOG_LEVELS);
         submit = new JButton(TEXT_SUBMIT_BUTTON);
         submit.setEnabled(false);
     }

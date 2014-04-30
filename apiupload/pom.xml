@@ -59,11 +59,23 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.ingenuity.temp.apiupload.Main</mainClass>
+                            <mainClass>com.ingenuity.temp.apiupload.MainUI</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>
