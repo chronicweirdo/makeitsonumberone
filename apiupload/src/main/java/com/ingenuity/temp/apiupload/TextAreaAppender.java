@@ -41,7 +41,13 @@ public class TextAreaAppender extends AppenderSkeleton {
             builder.append(loggingEvent.getLocationInformation().fullInfo).append(" - ");
         }
         builder.append(loggingEvent.getMessage()).append(NEW_LINE);
-        textArea.append(builder.toString());
+        final String logMessage = builder.toString();
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                textArea.append(logMessage);
+            }
+        });
     }
 
     @Override
