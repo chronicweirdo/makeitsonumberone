@@ -1,5 +1,7 @@
 package com.ingenuity.temp.apiupload;
 
+import org.apache.log4j.Logger;
+
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -10,7 +12,10 @@ import java.util.List;
  */
 public class DatasetReader {
 
+    private static final Logger log = Logger.getLogger(DatasetReader.class);
+
     public static List<List<String>> getTable(String path) {
+        log.info("reading file " + path);
         List<List<String>> data = new ArrayList<List<String>>();
         try {
             BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
@@ -28,6 +33,7 @@ public class DatasetReader {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        log.info("read " + data.size() + " lines (including header)");
         return data;
     }
 }

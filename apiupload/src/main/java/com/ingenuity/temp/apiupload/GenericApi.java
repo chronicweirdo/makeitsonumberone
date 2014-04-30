@@ -14,6 +14,7 @@ import java.util.List;
 public class GenericApi {
 
     private static final Logger log = Logger.getLogger(GenericApi.class);
+    public static final String LOG_INDENTATION = "\t";
 
     private HttpClient client;
     private String server;
@@ -73,11 +74,12 @@ public class GenericApi {
     }
 
     public String executePost(String path, List<Pair> parameters) {
-        log.info("executing POST request");
-        log.info("path: " + path);
-        if (log.isInfoEnabled()) {
+        log.info("executing POST request at address: " + server + path);
+        log.info("sending " + parameters.size() + " parameters");
+        if (log.isDebugEnabled()) {
+            log.debug("listing POST parameters (order is important):");
             for (Pair parameter: parameters) {
-                log.info("parameter: " + parameter.getKey() + " = " + parameter.getValue());
+                log.debug(LOG_INDENTATION + parameter.getKey() + " = " + parameter.getValue());
             }
         }
 
@@ -86,13 +88,14 @@ public class GenericApi {
         for (Pair parameter: parameters) {
             post.addParameter(parameter.getKey(), parameter.getValue());
         }
-        try {
+        /*try {
             client.executeMethod(post);
         } catch (IOException e) {
             log.error(e);
         }
         String result = Util.getResponseBody(post);
-        return result;
+        return result;*/
+        return null;
     }
 
 
