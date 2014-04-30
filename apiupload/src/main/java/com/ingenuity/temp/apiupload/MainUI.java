@@ -9,7 +9,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -50,17 +49,18 @@ public class MainUI {
     private JPasswordField password;
     private JButton submit;
 
-    private JPanel panel;
+    private JSplitPane panel;
     private JPanel mappingPanel;
 
     private List<String> columns;
     private List<JComboBox<ComboOption>> fields;
+    private JScrollPane scrollLogArea;
 
     public MainUI() {
         init();
     }
 
-    public JPanel getPanel() {
+    public JComponent getPanel() {
         return panel;
     }
 
@@ -81,33 +81,9 @@ public class MainUI {
     }
 
     private void init() {
-        // create components
-        panel = new JPanel(new GridBagLayout());
-        //panel.setPreferredSize(new Dimension(500, 500));
-        filePath = new JTextField("<select file>");
-        filePath.setEditable(false);
-        selectFile = new JButton("...");
-        serverPath = new JTextField(DEFAULT_SERVER_URL);
-        apiPath = new JTextField(DEFAULT_API_PATH);
-        userName = new JTextField(DEFAULT_USERNAME);
-        password = new JPasswordField(DEFAULT_PASSWORD);
-        projectName = new JTextField(DEFAULT_PROJECT_NAME);
-        datasetName = new JTextField(DEFAULT_DATASET_NAME);
-        geneIDType = new JTextField(DEFAULT_GENE_ID_TYPE);
-        mappingPanel = new JPanel(new GridBagLayout());
-        mappingPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder("File column mapping"),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
-        submit = new JButton("Submit");
-        JTextArea logArea = new JTextArea();
-        //logArea.setPreferredSize(new Dimension(500, 200));
-        logArea.setEditable(false);
-        logArea.setAutoscrolls(true);
-        new TextAreaAppender(logArea);
-        JScrollPane scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
-                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-        scrollLogArea.setPreferredSize(new Dimension(500, 200));
+        panel = new JSplitPane();
 
+        createEditComponents();
 
         // add listeners
         selectFile.addActionListener(new ActionListener() {
@@ -138,41 +114,74 @@ public class MainUI {
         });
 
         // build UI
-        panel.add(new JLabel("File to upload:"), UIUtil.constraints(0, 0));
-        panel.add(filePath, UIUtil.constraints(1, 0, 2, 1));
-        panel.add(selectFile, UIUtil.constraints(3, 0));
+        JPanel editPanel = buildEditPanel();
 
-        panel.add(new JLabel("Server URL:"), UIUtil.constraints(0, 1));
-        panel.add(serverPath, UIUtil.constraints(1, 1, 3, 1));
+        panel.setLeftComponent(editPanel);
 
-        panel.add(new JLabel("API path:"), UIUtil.constraints(0, 2));
-        panel.add(apiPath, UIUtil.constraints(1, 2, 3, 1));
+        JTextArea logArea = new JTextArea();
+        logArea.setEditable(false);
+        logArea.setAutoscrolls(true);
+        new TextAreaAppender(logArea);
+        scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
-        panel.add(new JLabel("User name:"), UIUtil.constraints(0, 3));
-        panel.add(userName, UIUtil.constraints(1, 3, 3, 1));
-
-        panel.add(new JLabel("Password:"), UIUtil.constraints(0, 4));
-        panel.add(password, UIUtil.constraints(1, 4, 3, 1));
-
-        panel.add(new JLabel("Project name:"), UIUtil.constraints(0, 5));
-        panel.add(projectName, UIUtil.constraints(1, 5, 3, 1));
-
-        panel.add(new JLabel("Dataset name:"), UIUtil.constraints(0, 6));
-        panel.add(datasetName, UIUtil.constraints(1, 6, 3, 1));
-
-        panel.add(new JLabel("Gene ID type:"), UIUtil.constraints(0, 7));
-        panel.add(geneIDType, UIUtil.constraints(1, 7, 3, 1));
-
-        panel.add(mappingPanel, UIUtil.constraints(0, 8, 4, 1));
-
-        panel.add(submit, UIUtil.constraints(3, 9));
-
-        panel.add(scrollLogArea,
-                UIUtil.constraints(0, 10, 4, 4));
+        panel.setRightComponent(scrollLogArea);
 
 
         log.info("UI init done");
         log.info("Now you can play");
+    }
+
+    private JPanel buildEditPanel() {
+        int row = 0;
+        JPanel editPanel = new JPanel(new GridBagLayout());
+        editPanel.add(new JLabel("File to upload:"), UIUtil.constraints(0, row));
+        editPanel.add(filePath, UIUtil.constraints(1, row, 2, 1));
+        editPanel.add(selectFile, UIUtil.constraints(3, row));
+
+        editPanel.add(new JLabel("Server URL:"), UIUtil.constraints(0, ++row));
+        editPanel.add(serverPath, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("API path:"), UIUtil.constraints(0, ++row));
+        editPanel.add(apiPath, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("User name:"), UIUtil.constraints(0, ++row));
+        editPanel.add(userName, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("Password:"), UIUtil.constraints(0, ++row));
+        editPanel.add(password, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("Project name:"), UIUtil.constraints(0, ++row));
+        editPanel.add(projectName, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("Dataset name:"), UIUtil.constraints(0, ++row));
+        editPanel.add(datasetName, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(new JLabel("Gene ID type:"), UIUtil.constraints(0, ++row));
+        editPanel.add(geneIDType, UIUtil.constraints(1, row, 3, 1));
+
+        editPanel.add(mappingPanel, UIUtil.constraints(0, ++row, 4, 1));
+
+        editPanel.add(submit, UIUtil.constraints(3, ++row));
+        return editPanel;
+    }
+
+    private void createEditComponents() {
+        filePath = new JTextField("<select file>");
+        filePath.setEditable(false);
+        selectFile = new JButton("...");
+        serverPath = new JTextField(DEFAULT_SERVER_URL);
+        apiPath = new JTextField(DEFAULT_API_PATH);
+        userName = new JTextField(DEFAULT_USERNAME);
+        password = new JPasswordField(DEFAULT_PASSWORD);
+        projectName = new JTextField(DEFAULT_PROJECT_NAME);
+        datasetName = new JTextField(DEFAULT_DATASET_NAME);
+        geneIDType = new JTextField(DEFAULT_GENE_ID_TYPE);
+        mappingPanel = new JPanel(new GridBagLayout());
+        mappingPanel.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("File column mapping"),
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        submit = new JButton("Submit");
     }
 
     private void loadHeader() {
