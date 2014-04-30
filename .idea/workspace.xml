@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lc.svg" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java" afterPath="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/BandsTranscoder.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/PortionTranscoder.java" />
+      <change type="DELETED" beforePath="C:\workspace\makeitso\naframa\out.jpg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out.jpg" afterPath="$PROJECT_DIR$/out.jpg" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="makeitso.iws" />
@@ -28,13 +29,52 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DoImage.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DoImage.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.58181816" vertical-offset="0" max-vertical-offset="858">
-              <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="858">
+              <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
               <folding />
             </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PortionTranscoder.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/PortionTranscoder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="990">
+              <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BandsTranscoder.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/BandsTranscoder.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.09090909" vertical-offset="429" max-vertical-offset="2068">
+              <caret line="22" column="111" selection-start-line="22" selection-start-column="111" selection-end-line="22" selection-end-column="111" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SVGAbstractTranscoder.class" pinned="false" current="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/batik/batik-transcoder/1.6-1/batik-transcoder-1.6-1.jar!/org/apache/batik/transcoder/SVGAbstractTranscoder.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.88" vertical-offset="705" max-vertical-offset="2068">
+              <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="out.jpg" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/out.jpg">
+          <provider selected="true" editor-type-id="images">
+            <state />
           </provider>
         </entry>
       </file>
@@ -83,6 +123,10 @@
         <option value="$PROJECT_DIR$/apiupload/rolling.log" />
         <option value="$PROJECT_DIR$/naframa/pom.xml" />
         <option value="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java" />
+        <option value="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/TiledTranscoder.java" />
+        <option value="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/PortionTranscoder.java" />
+        <option value="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/BadsTranscoder.java" />
+        <option value="$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/BandsTranscoder.java" />
       </list>
     </option>
   </component>
@@ -253,13 +297,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.chronicweirdo.naframa" />
       <recent name="com.chronicweirdo.bmo.progressive" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\workspace\makeitso" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.DoImage">
+  <component name="RunManager" selected="Application.BandsTranscoder">
     <configuration default="false" name="HTMLEditor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -318,6 +363,50 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="com.chronicweirdo.naframa.DoImage" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="naframa" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="PortionTranscoder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chronicweirdo.naframa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.chronicweirdo.naframa.PortionTranscoder" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="naframa" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="BandsTranscoder" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.chronicweirdo.naframa.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="com.chronicweirdo.naframa.BandsTranscoder" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -545,16 +634,20 @@
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
       <method />
     </configuration>
-    <list size="3">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Application.HTMLEditor" />
       <item index="1" class="java.lang.String" itemvalue="Application.MainUI" />
       <item index="2" class="java.lang.String" itemvalue="Application.DoImage" />
+      <item index="3" class="java.lang.String" itemvalue="Application.PortionTranscoder" />
+      <item index="4" class="java.lang.String" itemvalue="Application.BandsTranscoder" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.DoImage" />
-        <item index="1" class="java.lang.String" itemvalue="Application.MainUI" />
-        <item index="2" class="java.lang.String" itemvalue="Application.HTMLEditor" />
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.BandsTranscoder" />
+        <item index="1" class="java.lang.String" itemvalue="Application.PortionTranscoder" />
+        <item index="2" class="java.lang.String" itemvalue="Application.DoImage" />
+        <item index="3" class="java.lang.String" itemvalue="Application.MainUI" />
+        <item index="4" class="java.lang.String" itemvalue="Application.HTMLEditor" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -580,12 +673,12 @@
       <workItem from="1398766241010" duration="12912000" />
       <workItem from="1398837363268" duration="18183000" />
       <workItem from="1398866191152" duration="259000" />
-      <workItem from="1398866451296" duration="607000" />
+      <workItem from="1398866451296" duration="1632000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35887000" />
+    <option name="totallyTimeSpent" value="36912000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -611,7 +704,7 @@
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.26865673" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31567568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31567568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -664,30 +757,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/apiupload/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="396" max-vertical-offset="2266">
-          <caret line="86" column="38" selection-start-line="86" selection-start-column="38" selection-end-line="86" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/ApiLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2310" max-vertical-offset="3058">
-          <caret line="105" column="13" selection-start-line="105" selection-start-column="13" selection-end-line="105" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1210" max-vertical-offset="1892">
-          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apiupload/src/main/resources/log4j.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="244" max-vertical-offset="836">
@@ -1023,6 +1092,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="253" max-vertical-offset="858">
+          <caret line="28" column="63" selection-start-line="28" selection-start-column="63" selection-end-line="28" selection-end-column="63" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/naframa/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1573" max-vertical-offset="2574">
@@ -1031,21 +1113,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/naframa/out.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/out.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/DoImage.java">
+    <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/PortionTranscoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.58181816" vertical-offset="0" max-vertical-offset="858">
-          <caret line="25" column="35" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="93" max-vertical-offset="990">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/out2.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/batik/batik-transcoder/1.6-1/batik-transcoder-1.6-1.jar!/org/apache/batik/transcoder/SVGAbstractTranscoder.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.88" vertical-offset="705" max-vertical-offset="2068">
+          <caret line="42" column="16" selection-start-line="42" selection-start-column="16" selection-end-line="42" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/BandsTranscoder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09090909" vertical-offset="429" max-vertical-offset="2068">
+          <caret line="22" column="111" selection-start-line="22" selection-start-column="111" selection-end-line="22" selection-end-column="111" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
