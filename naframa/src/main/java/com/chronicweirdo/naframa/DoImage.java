@@ -20,7 +20,8 @@ public class DoImage {
 
     public static void main(String[] args) throws IOException, TranscoderException {
 
-        String fileName = "%USERPROFILE%\\Dropbox\\mydata\\drawing\\povesti degeaba\\capra.svg";
+        //String fileName = "%USERPROFILE%\\Dropbox\\mydata\\drawing\\povesti degeaba\\capra.svg";
+        String fileName = "C:\\Users\\scacoveanu\\Documents\\lc.svg";
 
         // create a JPEG transcoder
         JPEGTranscoder t = new JPEGTranscoder();

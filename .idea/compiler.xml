@@ -28,6 +28,9 @@
         <module name="naframa" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="naframa" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 
