@@ -5754,3 +5754,15 @@
 2014-04-30 14:22:05,094 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:397) - POST request sent
 2014-04-30 14:22:05,094 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:398) - ------------------------------------------------------------------------------
 2014-04-30 14:22:05,094 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:398) - ------------------------------------------------------------------------------
+2014-04-30 14:26:11,985 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:138) - creating main panel
+2014-04-30 14:26:11,985 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:138) - creating main panel
+2014-04-30 14:26:12,019 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:308) - creating edit components
+2014-04-30 14:26:12,019 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:308) - creating edit components
+2014-04-30 14:26:12,078 INFO [main] com.ingenuity.temp.apiupload.MainUI.initListeners(MainUI.java:173) - initializing listeners
+2014-04-30 14:26:12,078 INFO [main] com.ingenuity.temp.apiupload.MainUI.initListeners(MainUI.java:173) - initializing listeners
+2014-04-30 14:26:12,090 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:249) - building edit panel
+2014-04-30 14:26:12,090 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:249) - building edit panel
+2014-04-30 14:26:12,092 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:303) - updating main panel UI
+2014-04-30 14:26:12,092 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:303) - updating main panel UI
+2014-04-30 14:26:12,100 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:169) - UI init done
+2014-04-30 14:26:12,100 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:169) - UI init done
