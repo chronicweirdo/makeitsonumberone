@@ -1,6 +1,7 @@
 package com.ingenuity.temp.apiupload;
 
 import org.apache.commons.httpclient.HttpClient;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
@@ -9,6 +10,8 @@ import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +25,8 @@ public class MainUI {
 
     private static final String DEFAULT_SERVER_URL = "https://analysis-stable.ingenuity.com";
     private static final String DEFAULT_API_PATH = "/pa/api/v1/dataupload";
-    private static final String DEFAULT_USERNAME = "scacoveanu@ingenuity.com";
-    private static final String DEFAULT_PASSWORD = "test1234";
+    private static final String DEFAULT_USERNAME = "@ingenuity.com";
+    private static final String DEFAULT_PASSWORD = "";
     private static final String DEFAULT_PROJECT_NAME = "Training Project";
     private static final String DEFAULT_DATASET_NAME = "MyTestDataset";
     private static final String DEFAULT_GENE_ID_TYPE = "affymetrix";
@@ -38,6 +41,33 @@ public class MainUI {
             new ComboOption("obs6expval", "the first set of expression values for the sixth observation"),
             new ComboOption("expval2", "the second set of expression values for the uploaded genes"),
             new ComboOption("expval3", "the thirs set of expression values for the uploaded genes")
+    };
+    private static final ComboOption[] LOG_LEVELS = {
+            new ComboOption("INFO", null),
+            new ComboOption("DEBUG", "lists all the fields in the POST request to log output")
+    };
+    private static final ComboOption[] GENE_ID_TYPES = {
+            new ComboOption("abi", "Applied Biosystems"),
+            new ComboOption("affymetrix", "Affymetrix"),
+            new ComboOption("affymetrixsnp", "Affymetrix SNP ID"),
+            new ComboOption("agilent", "Agilent"),
+            new ComboOption("cas", "CAS Registry"),
+            new ComboOption("codelink", "CodeLink"),
+            new ComboOption("entrezgene", "Entrez Gene"),
+            new ComboOption("genbank", "GenBank"),
+            new ComboOption("genpept", "GenPept"),
+            new ComboOption("ginumber", "GI Number"),
+            new ComboOption("hugo", "HUGO Gene Symbol"),
+            new ComboOption("illumina", "Illumina"),
+            new ComboOption("ipi", "International Protein Index"),
+            new ComboOption("kegg", "KEGG ID"),
+            new ComboOption("locuslink", "Locus Link"),
+            new ComboOption("pubchem", "PubChem CID"),
+            new ComboOption("refseq", "RefSeq"),
+            new ComboOption("swissprot", "UniProt/SwissProt Accession"),
+            new ComboOption("unigene", "UniGene"),
+            new ComboOption("dbsnp", "dbSNP"),
+            new ComboOption("mirbasemature", "miRBase (mature)")
     };
     public static final String TEXT_FILE_CHOOSER_BUTTON = "...";
     public static final String TEXT_SELECT_FILE = "<select file>";
@@ -74,7 +104,8 @@ public class MainUI {
     private JTextField userName;
     private JTextField projectName;
     private JTextField datasetName;
-    private JTextField geneIDType;
+    private JComboBox<ComboOption> geneIDType;
+    private JComboBox<ComboOption> logLevel;
     private JPasswordField password;
     private JButton submit;
     // fields holding the mapping between file columns and API input fields
@@ -167,6 +198,7 @@ public class MainUI {
                     @Override
                     protected void done() {
                         buildEditPanel();
+                        submit.setEnabled(true);
                     }
                 };
                 worker.execute();
@@ -196,6 +228,19 @@ public class MainUI {
                 };
                 submit.setEnabled(false);
                 worker.execute();
+            }
+        });
+        logLevel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String level = ((ComboOption)logLevel.getSelectedItem()).getValue();
+                if (level.equals("DEBUG")) {
+                    Logger.getLogger(GenericApi.class).setLevel(Level.DEBUG);
+                    //Logger.getRootLogger().setLevel(Level.DEBUG);
+                } else {
+                    Logger.getLogger(GenericApi.class).setLevel(Level.INFO);
+                    //Logger.getRootLogger().setLevel(Level.INFO);
+                }
             }
         });
     }
@@ -238,13 +283,20 @@ public class MainUI {
                 editPanel.add(new JLabel(columns.get(row) + ":"), UIUtil.constraints(0, ++panelRow));
                 JComboBox field = new JComboBox(COLUMN_MAPPING_OPTIONS);
                 field.setEditable(true);
-                field.setSelectedIndex(row);
+                if (row < COLUMN_MAPPING_OPTIONS.length) {
+                    field.setSelectedIndex(row);
+                } else {
+                    field.setSelectedIndex(COLUMN_MAPPING_OPTIONS.length-1);
+                }
                 fields.add(field);
                 editPanel.add(field, UIUtil.constraints(1, panelRow, 3, 1));
             }
         } else {
-            editPanel.add(new JLabel(TEXT_LABEL_FILE_COLUMN_MAPPING_EMPTY), UIUtil.constraints(0, ++panelRow, 1, 4));
+            editPanel.add(new JLabel(TEXT_LABEL_FILE_COLUMN_MAPPING_EMPTY), UIUtil.constraints(0, ++panelRow, 4, 1));
         }
+
+        editPanel.add(new JLabel("Log level:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(logLevel, UIUtil.constraints(1, panelRow, 3, 1));
 
         editPanel.add(submit, UIUtil.constraints(3, ++panelRow));
 
@@ -264,8 +316,11 @@ public class MainUI {
         password = new JPasswordField(DEFAULT_PASSWORD);
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
-        geneIDType = new JTextField(DEFAULT_GENE_ID_TYPE);
+        geneIDType = new JComboBox<ComboOption>(GENE_ID_TYPES);
+        geneIDType.setSelectedIndex(1);
+        logLevel = new JComboBox<ComboOption>(LOG_LEVELS);
         submit = new JButton(TEXT_SUBMIT_BUTTON);
+        submit.setEnabled(false);
     }
 
     private void loadHeader() {
@@ -316,8 +371,8 @@ public class MainUI {
         log.info("uploading to project: " + projectName);
         String datasetName = this.datasetName.getText();
         log.info("uploading dataset with name: " + datasetName);
-        String geneIDType = this.geneIDType.getText();
-        log.info("gene ID type is: " + geneIDType); // TODO: gene ID type combo box
+        String geneIDType = ((ComboOption)this.geneIDType.getSelectedItem()).getValue();
+        log.info("gene ID type is: " + geneIDType);
 
         // build the column mapping
         log.info("building POST data");
@@ -343,6 +398,8 @@ public class MainUI {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt");
         }
+        log.info("POST request sent");
+        log.info("------------------------------------------------------------------------------");
     }
 
     private List<Pair> buildPOSTData(String filePath, String projectName, String datasetName,

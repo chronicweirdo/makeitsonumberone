@@ -39,6 +39,7 @@ public class Util {
     }
 
     public static void writeToFile(String text, String file) {
+        if (text == null) return;
         log.info("writing to file: " + file);
         FileWriter fw = null;
         try {
@@ -47,6 +48,14 @@ public class Util {
             fw.close();
         } catch (IOException e) {
             log.error(e, e);
+        } finally {
+            if (fw != null) {
+                try {
+                    fw.close();
+                } catch (IOException e) {
+                    log.error(e, e);
+                }
+            }
         }
 
     }

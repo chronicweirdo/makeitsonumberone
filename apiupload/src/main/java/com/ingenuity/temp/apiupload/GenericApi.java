@@ -88,14 +88,13 @@ public class GenericApi {
         for (Pair parameter: parameters) {
             post.addParameter(parameter.getKey(), parameter.getValue());
         }
-        /*try {
+        try {
             client.executeMethod(post);
         } catch (IOException e) {
             log.error(e);
         }
         String result = Util.getResponseBody(post);
-        return result;*/
-        return null;
+        return result;
     }
 
 

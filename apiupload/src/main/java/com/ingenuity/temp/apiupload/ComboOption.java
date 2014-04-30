@@ -31,6 +31,10 @@ public class ComboOption {
 
     @Override
     public String toString() {
-        return value + " (" + description + ")";
+        if (description != null) {
+            return value + " (" + description + ")";
+        } else {
+            return value;
+        }
     }
 }
