@@ -49,19 +49,20 @@ public class MainUI {
     private JPasswordField password;
     private JButton submit;
 
-    private JSplitPane panel;
-    private JPanel mappingPanel;
+    private JSplitPane mainPanel;
+    private JPanel editPanel;
+    //private JPanel mappingPanel;
 
     private List<String> columns;
     private List<JComboBox<ComboOption>> fields;
-    private JScrollPane scrollLogArea;
+    //private JScrollPane scrollLogArea;
 
     public MainUI() {
         init();
     }
 
-    public JComponent getPanel() {
-        return panel;
+    public JComponent getMainPanel() {
+        return mainPanel;
     }
 
     private void pickFile() {
@@ -74,14 +75,20 @@ public class MainUI {
             // set filePath
             filePath.setText(file.getAbsolutePath());
             loadHeader();
-            buildColumnMappingPanel();
+            //buildColumnMappingPanel();
+            SwingUtilities.invokeLater(new Runnable() {
+                @Override
+                public void run() {
+                    buildEditPanel();
+                }
+            });
         } else {
             // nothing
         }
     }
 
     private void init() {
-        panel = new JSplitPane();
+        mainPanel = new JSplitPane();
 
         createEditComponents();
 
@@ -114,59 +121,83 @@ public class MainUI {
         });
 
         // build UI
-        JPanel editPanel = buildEditPanel();
+        buildEditPanel();
 
-        panel.setLeftComponent(editPanel);
+        JScrollPane scrollEditPane = new JScrollPane(editPanel, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollEditPane.setPreferredSize(new Dimension(500, 600));
+        mainPanel.setLeftComponent(scrollEditPane);
 
         JTextArea logArea = new JTextArea();
         logArea.setEditable(false);
         logArea.setAutoscrolls(true);
+        // initialize log4j appender to write in this text area
         new TextAreaAppender(logArea);
-        scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+        JScrollPane scrollLogArea = new JScrollPane(logArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
                 JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollLogArea.setPreferredSize(new Dimension(300, 600));
+        scrollLogArea.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createTitledBorder("Log output"),
+                BorderFactory.createEmptyBorder(5,5,5,5)));
 
-        panel.setRightComponent(scrollLogArea);
+        mainPanel.setRightComponent(scrollLogArea);
 
 
         log.info("UI init done");
         log.info("Now you can play");
     }
 
-    private JPanel buildEditPanel() {
-        int row = 0;
-        JPanel editPanel = new JPanel(new GridBagLayout());
-        editPanel.add(new JLabel("File to upload:"), UIUtil.constraints(0, row));
-        editPanel.add(filePath, UIUtil.constraints(1, row, 2, 1));
-        editPanel.add(selectFile, UIUtil.constraints(3, row));
+    private void buildEditPanel() {
+        int panelRow = 0;
+        editPanel.removeAll();
+        editPanel.add(new JLabel("File to upload:"), UIUtil.constraints(0, panelRow));
+        editPanel.add(filePath, UIUtil.constraints(1, panelRow, 2, 1));
+        editPanel.add(selectFile, UIUtil.constraints(3, panelRow));
 
-        editPanel.add(new JLabel("Server URL:"), UIUtil.constraints(0, ++row));
-        editPanel.add(serverPath, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("Server URL:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(serverPath, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("API path:"), UIUtil.constraints(0, ++row));
-        editPanel.add(apiPath, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("API path:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(apiPath, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("User name:"), UIUtil.constraints(0, ++row));
-        editPanel.add(userName, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("User name:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(userName, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("Password:"), UIUtil.constraints(0, ++row));
-        editPanel.add(password, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("Password:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(password, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("Project name:"), UIUtil.constraints(0, ++row));
-        editPanel.add(projectName, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("Project name:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(projectName, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("Dataset name:"), UIUtil.constraints(0, ++row));
-        editPanel.add(datasetName, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("Dataset name:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(datasetName, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(new JLabel("Gene ID type:"), UIUtil.constraints(0, ++row));
-        editPanel.add(geneIDType, UIUtil.constraints(1, row, 3, 1));
+        editPanel.add(new JLabel("Gene ID type:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(geneIDType, UIUtil.constraints(1, panelRow, 3, 1));
 
-        editPanel.add(mappingPanel, UIUtil.constraints(0, ++row, 4, 1));
+        //editPanel.add(mappingPanel, UIUtil.constraints(0, ++panelRow, 4, 1));
+        if (columns != null) {
+            editPanel.add(new JLabel("File column mapping to API inputs:"), UIUtil.constraints(0, ++panelRow, 4, 1));
+            fields = new ArrayList<JComboBox<ComboOption>>(columns.size());
+            for (int row = 0; row < columns.size(); row++) {
+                editPanel.add(new JLabel(columns.get(row) + ":"), UIUtil.constraints(0, ++panelRow));
+                JComboBox field = new JComboBox(COLUMN_MAPPING_OPTIONS);
+                field.setEditable(true);
+                field.setSelectedIndex(row);
+                fields.add(field);
+                editPanel.add(field, UIUtil.constraints(1, panelRow, 3, 1));
+            }
+        } else {
+            editPanel.add(new JLabel("File column mapping to API inputs: load a file!"), UIUtil.constraints(0, ++panelRow, 1, 4));
+        }
 
-        editPanel.add(submit, UIUtil.constraints(3, ++row));
-        return editPanel;
+        editPanel.add(submit, UIUtil.constraints(3, ++panelRow));
+        mainPanel.updateUI();
     }
 
     private void createEditComponents() {
+        editPanel = new JPanel(new GridBagLayout());
+        editPanel.setPreferredSize(new Dimension(400, 100));
         filePath = new JTextField("<select file>");
         filePath.setEditable(false);
         selectFile = new JButton("...");
@@ -177,10 +208,10 @@ public class MainUI {
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
         geneIDType = new JTextField(DEFAULT_GENE_ID_TYPE);
-        mappingPanel = new JPanel(new GridBagLayout());
-        mappingPanel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createTitledBorder("File column mapping"),
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        //mappingPanel = new JPanel(new GridBagLayout());
+        //mappingPanel.setBorder(BorderFactory.createCompoundBorder(
+        //        BorderFactory.createTitledBorder("File column mapping"),
+        //        BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         submit = new JButton("Submit");
     }
 
@@ -206,7 +237,7 @@ public class MainUI {
         }
     }
 
-    private void buildColumnMappingPanel() {
+    /*private void buildColumnMappingPanel() {
         mappingPanel.removeAll();
         fields = new ArrayList<JComboBox<ComboOption>>(columns.size());
         for (int row = 0; row < columns.size(); row++) {
@@ -218,7 +249,7 @@ public class MainUI {
             mappingPanel.add(field, UIUtil.constraints(1, row));
         }
         mappingPanel.updateUI();
-    }
+    }*/
 
     private void executeUpload() {
         String server = serverPath.getText();
@@ -295,6 +326,6 @@ public class MainUI {
 
     public static void main(String[] args) {
         MainUI main = new MainUI();
-        UIUtil.createAndShowGUI("IPA API Upload", null, main.getPanel());
+        UIUtil.createAndShowGUI("IPA API Upload", null, main.getMainPanel());
     }
 }

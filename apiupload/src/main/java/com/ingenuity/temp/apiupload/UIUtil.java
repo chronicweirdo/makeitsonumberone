@@ -16,8 +16,8 @@ public class UIUtil {
         return constraints(gridx, gridy, 1, 1, weightx, 1);
     }
 
-    public static GridBagConstraints constraints(int gridx, int gridy, int weight_width_x, int weight_width_y) {
-            return constraints(gridx, gridy, weight_width_x, weight_width_y, weight_width_x, weight_width_y);
+    public static GridBagConstraints constraints(int gridx, int gridy, int weight_width_x, int weight_height_y) {
+            return constraints(gridx, gridy, weight_width_x, weight_height_y, weight_width_x, weight_height_y);
     }
 
     public static GridBagConstraints constraints(int gridx, int gridy, int gridwidth, int gridheight,
