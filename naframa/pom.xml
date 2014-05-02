@@ -83,6 +83,11 @@
         </dependency>
         <dependency>
             <groupId>batik</groupId>
+            <artifactId>batik-svggen</artifactId>
+            <version>1.6-1</version>
+        </dependency>
+        <dependency>
+            <groupId>batik</groupId>
             <artifactId>batik-css</artifactId>
             <version>1.6-1</version>
         </dependency>

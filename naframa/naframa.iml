@@ -34,6 +34,7 @@
     <orderEntry type="library" name="Maven: xalan:xalan:2.4.1" level="project" />
     <orderEntry type="library" name="Maven: avalon-framework:avalon-framework:4.0" level="project" />
     <orderEntry type="library" name="Maven: rhino:js:1.5R4.1" level="project" />
+    <orderEntry type="library" name="Maven: batik:batik-svggen:1.6-1" level="project" />
     <orderEntry type="library" name="Maven: net.sf.saxon:saxon:8.7" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:3.8.1" level="project" />
   </component>
