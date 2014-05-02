@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -68,7 +67,9 @@ public class MainUI {
             new ComboOption("dbsnp", "dbSNP"),
             new ComboOption("mirbasemature", "miRBase (mature)")
     };
+    private static final String FIELD_TYPE_NO_VALUE = "<no value>";
     private static final ComboOption[] EXPRESSION_VALUE_TYPES = {
+            new ComboOption(FIELD_TYPE_NO_VALUE, null),
             new ComboOption("ratio", "Ratio values in [0.+INF)"),
             new ComboOption("foldchange", "Fold Change values in (-INF,-1] and [1,+INF)"),
             new ComboOption("logratio", "Log Ratio values in (-INF,+INF)"),
@@ -98,6 +99,11 @@ public class MainUI {
     private static final String TEXT_DATASET_CHOOSER_LOAD_BUTTON = "Load";
     private static final String LOG_INDENTATION = "\t";
     private static final String FIELD_CHANGED_ACTION = "comboBoxChanged";
+    private static final String TEXT_LABEL_FIELD_TYPES = "Set the field type values for up to three expression values (not all may be required):";
+    private static final String TEXT_LABEL_FIELD_TYPE_1 = "expvaltype:";
+    private static final String TEXT_LABEL_FIELD_TYPE_2 = "expvaltype2:";
+    private static final String TEXT_LABEL_FIELD_TYPE_3 = "expvaltype3:";
+
 
 
     private JSplitPane mainPanel;
@@ -119,9 +125,8 @@ public class MainUI {
     private JButton submit;
     // fields holding the mapping between file columns and API input fields
     private List<JComboBox> fields;
-    private List<JComboBox> fieldTypes;
+    private JComboBox fieldType1, fieldType2, fieldType3;
     private int fieldsStartAtRow = -1;
-    private Pattern fieldsWithTypesPattern = Pattern.compile("[a-z]+|[0-9]+");
 
     // the file columns
     private List<String> columns;
@@ -181,23 +186,6 @@ public class MainUI {
         log.info("UI init done");
     }
 
-    private boolean fieldHasType(String fieldName) {
-        if (fieldName.equals("expvalue")) return true;
-        if (fieldName.equals("expval2")) return true;
-        if (fieldName.equals("expval3")) return true;
-        // split in text and number groups
-        Matcher matcher = fieldsWithTypesPattern.matcher(fieldName);
-        List<String> groups = new ArrayList<String>();
-        while (matcher.find()) {
-            groups.add(matcher.group());
-        }
-        // check if groups match expval fields
-        if ((groups.size() == 3 || groups.size() == 4)
-                && groups.get(0).equals("obs") && groups.get(2).equals("expval")) {
-            return true;
-        }
-        return false;
-    }
     private String getStringValue(JComboBox combo) {
         Object item = combo.getSelectedItem();
         if (item instanceof ComboOption) {
@@ -207,44 +195,7 @@ public class MainUI {
         }
         return null;
     }
-    private void addExpressionValueTypeCombo(JComboBox field) {
-        if (fieldsStartAtRow > 0) {
-            // find row where we must make the changes
-            int index = fields.indexOf(field);
-            int row = fieldsStartAtRow + index + 1;
-            if (fieldHasType(getStringValue(field))) {
-                // add the new combo box
-                editPanel.remove(field);
-                editPanel.add(field, UIUtil.constraints(1, row, 2, 1));
-                JComboBox fieldType = new JComboBox(EXPRESSION_VALUE_TYPES);
-                fieldTypes.add(index, fieldType);
-                log.debug("setting field type combo box for index " + index);
-                editPanel.add(fieldType, UIUtil.constraints(3, row));
-                editPanel.updateUI();
-            } else {
-                // remove the field type combo, if there is one
-                JComboBox fieldType = fieldTypes.get(index);
-                if (fieldType != null) {
-                    editPanel.remove(field);
-                    editPanel.remove(fieldType);
-                    fieldTypes.set(index, null);
-                    editPanel.add(field, UIUtil.constraints(1, row, 3, 1));
-                    editPanel.updateUI();
-                }
-            }
-        }
-    }
 
-    private void initFieldListener(final JComboBox field) {
-        field.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == field && e.getActionCommand().equals(FIELD_CHANGED_ACTION)) {
-                    addExpressionValueTypeCombo(field);
-                }
-            }
-        });
-    }
     private void initBasicListeners() {
         log.info("initializing listeners");
         filePath.getDocument().addDocumentListener(new DocumentListener() {
@@ -356,8 +307,6 @@ public class MainUI {
             // we only add file column mapping fields if we have loaded a file and have columns
             editPanel.add(new JLabel(TEXT_LABEL_FILE_COLUMN_MAPPING), UIUtil.constraints(0, ++panelRow, 4, 1));
             fields = new ArrayList<JComboBox>(columns.size());
-            // initialize field types combo boxes
-            fieldTypes = new ArrayList<JComboBox>(columns.size());
             for (int row = 0; row < columns.size(); row++) {
                 editPanel.add(new JLabel(columns.get(row) + ":"), UIUtil.constraints(0, ++panelRow));
                 JComboBox field = new JComboBox(COLUMN_MAPPING_OPTIONS);
@@ -367,12 +316,23 @@ public class MainUI {
                 } else {
                     field.setSelectedIndex(COLUMN_MAPPING_OPTIONS.length-1);
                 }
-                initFieldListener(field);
                 fields.add(field);
-                fieldTypes.add(null);
                 editPanel.add(field, UIUtil.constraints(1, panelRow, 3, 1));
             }
+            // we also add the field type combos
+            editPanel.add(new JLabel(TEXT_LABEL_FIELD_TYPES), UIUtil.constraints(0, ++panelRow, 4, 1));
 
+            editPanel.add(new JLabel(TEXT_LABEL_FIELD_TYPE_1), UIUtil.constraints(0, ++panelRow));
+            fieldType1 = new JComboBox(EXPRESSION_VALUE_TYPES);
+            editPanel.add(fieldType1, UIUtil.constraints(1, panelRow, 3, 1));
+
+            editPanel.add(new JLabel(TEXT_LABEL_FIELD_TYPE_2), UIUtil.constraints(0, ++panelRow));
+            fieldType2 = new JComboBox(EXPRESSION_VALUE_TYPES);
+            editPanel.add(fieldType2, UIUtil.constraints(1, panelRow, 3, 1));
+
+            editPanel.add(new JLabel(TEXT_LABEL_FIELD_TYPE_3), UIUtil.constraints(0, ++panelRow));
+            fieldType3 = new JComboBox(EXPRESSION_VALUE_TYPES);
+            editPanel.add(fieldType3, UIUtil.constraints(1, panelRow, 3, 1));
         } else {
             editPanel.add(new JLabel(TEXT_LABEL_FILE_COLUMN_MAPPING_EMPTY), UIUtil.constraints(0, ++panelRow, 4, 1));
             fieldsStartAtRow = -1;
@@ -470,7 +430,27 @@ public class MainUI {
             }
         }
 
-        List<Pair> data = buildPOSTData(filePath, projectName, datasetName, geneIDType, columnMapping);
+        // extract field types
+        List<String> fieldTypes = new ArrayList<String>(3);
+        if (getStringValue(fieldType1).equals(FIELD_TYPE_NO_VALUE)) {
+            fieldTypes.add(null);
+        } else {
+            fieldTypes.add(getStringValue(fieldType1));
+        }
+        if (getStringValue(fieldType2).equals(FIELD_TYPE_NO_VALUE)) {
+            fieldTypes.add(null);
+        } else {
+            fieldTypes.add(getStringValue(fieldType2));
+        }
+        if (getStringValue(fieldType3).equals(FIELD_TYPE_NO_VALUE)) {
+            fieldTypes.add(null);
+        } else {
+            fieldTypes.add(getStringValue(fieldType3));
+        }
+
+
+        List<Pair> data = buildPOSTData(filePath, projectName, datasetName, geneIDType,
+                columnMapping, fieldTypes);
         if (data.size() > 4) {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt");
@@ -480,7 +460,8 @@ public class MainUI {
     }
 
     private List<Pair> buildPOSTData(String filePath, String projectName, String datasetName,
-                                     String geneidtype, List<String> columnMapping) {
+                                     String geneidtype, List<String> columnMapping,
+                                     List<String> fieldTypes) {
         log.info("building POST data");
 
         // read dataset
@@ -493,6 +474,11 @@ public class MainUI {
         data.add(new Pair("ipaview", "projectmanager"));
         data.add(new Pair("datasetname", datasetName));
         data.add(new Pair("geneidtype", geneidtype));
+
+        // set field types
+        if (fieldTypes.get(0) != null) data.add(new Pair("expvaltype", fieldTypes.get(0)));
+        if (fieldTypes.get(1) != null) data.add(new Pair("expvaltype2", fieldTypes.get(1)));
+        if (fieldTypes.get(2) != null) data.add(new Pair("expvaltype3", fieldTypes.get(2)));
 
         log.info("setting data parameters");
         for (int row = 1; row < dataset.size(); row++) {
@@ -514,16 +500,5 @@ public class MainUI {
     public static void main(String[] args) {
         MainUI main = new MainUI();
         UIUtil.createAndShowGUI("IPA API Upload", null, main.getMainPanel());
-        /*String val = "obs2name";
-        Pattern pattern = Pattern.compile("[a-z]+|[0-9]+");
-        Matcher matcher = pattern.matcher(val);
-        List<String> groups = new ArrayList<String>();
-        while (matcher.find()) {
-            groups.add(matcher.group());
-        }
-        System.out.println(groups.toString());
-        if (groups.size() == 4 && groups.get(0).equals("obs") && groups.get(2).equals("expval")) {
-            System.out.println(true);
-        }*/
     }
 }
