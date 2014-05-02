@@ -5758,11 +5758,915 @@
 2014-04-30 14:26:11,985 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:138) - creating main panel
 2014-04-30 14:26:12,019 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:308) - creating edit components
 2014-04-30 14:26:12,019 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:308) - creating edit components
-2014-04-30 14:26:12,078 INFO [main] com.ingenuity.temp.apiupload.MainUI.initListeners(MainUI.java:173) - initializing listeners
-2014-04-30 14:26:12,078 INFO [main] com.ingenuity.temp.apiupload.MainUI.initListeners(MainUI.java:173) - initializing listeners
+2014-04-30 14:26:12,078 INFO [main] initBasicListeners(MainUI.java:173) - initializing listeners
+2014-04-30 14:26:12,078 INFO [main] initBasicListeners(MainUI.java:173) - initializing listeners
 2014-04-30 14:26:12,090 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:249) - building edit panel
 2014-04-30 14:26:12,090 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:249) - building edit panel
 2014-04-30 14:26:12,092 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:303) - updating main panel UI
 2014-04-30 14:26:12,092 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:303) - updating main panel UI
 2014-04-30 14:26:12,100 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:169) - UI init done
 2014-04-30 14:26:12,100 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:169) - UI init done
+2014-05-02 10:17:00,929 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:17:00,929 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:17:00,971 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:17:00,971 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:17:01,031 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:17:01,031 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:17:01,039 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:01,039 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:01,042 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:01,042 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:01,049 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:17:01,049 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:17:08,204 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:17:08,204 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:17:08,211 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:17:08,211 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:17:08,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:17:08,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:17:08,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:17:08,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:17:08,244 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:08,244 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:08,264 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:08,264 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:37,927 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:17:37,927 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:17:37,959 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:17:37,959 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:17:38,000 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:17:38,000 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:17:38,009 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:38,009 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:38,011 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:38,011 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:38,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:17:38,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:17:44,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:17:44,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:17:44,406 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:17:44,406 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:17:44,408 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:17:44,408 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:17:44,409 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:17:44,409 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:17:44,439 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:44,439 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:17:44,470 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:17:44,470 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:24,970 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:18:24,970 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:18:25,007 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:18:25,007 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:18:25,051 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:18:25,051 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:18:25,060 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:25,060 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:25,062 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:25,062 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:25,068 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:18:25,068 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:18:29,271 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:18:29,271 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:18:29,275 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:18:29,275 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:18:29,285 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:18:29,285 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:18:29,286 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:18:29,286 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:18:29,308 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:29,308 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:29,335 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:29,335 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:50,063 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:18:50,063 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:140) - creating main panel
+2014-05-02 10:18:50,095 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:18:50,095 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:334) - creating edit components
+2014-05-02 10:18:50,138 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:18:50,138 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:196) - initializing listeners
+2014-05-02 10:18:50,147 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:50,147 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:50,149 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:50,149 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:50,154 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:18:50,154 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:171) - UI init done
+2014-05-02 10:18:53,798 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:18:53,798 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:133) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:18:53,804 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:18:53,804 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:353) - loading table header from file
+2014-05-02 10:18:53,807 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:18:53,807 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:368) - loaded 7 columns
+2014-05-02 10:18:53,807 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:18:53,807 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:369) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:18:53,837 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:53,837 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:272) - building edit panel
+2014-05-02 10:18:53,861 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:18:53,861 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:329) - updating main panel UI
+2014-05-02 10:22:07,402 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - creating main panel
+2014-05-02 10:22:07,402 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - creating main panel
+2014-05-02 10:22:07,434 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:340) - creating edit components
+2014-05-02 10:22:07,434 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:340) - creating edit components
+2014-05-02 10:22:07,477 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:200) - initializing listeners
+2014-05-02 10:22:07,477 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:200) - initializing listeners
+2014-05-02 10:22:07,485 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:22:07,485 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:22:07,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:335) - updating main panel UI
+2014-05-02 10:22:07,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:335) - updating main panel UI
+2014-05-02 10:22:07,492 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:172) - UI init done
+2014-05-02 10:22:07,492 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:172) - UI init done
+2014-05-02 10:22:19,770 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:134) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:22:19,770 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:134) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:22:19,776 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:359) - loading table header from file
+2014-05-02 10:22:19,776 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:359) - loading table header from file
+2014-05-02 10:22:19,778 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:374) - loaded 7 columns
+2014-05-02 10:22:19,778 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:374) - loaded 7 columns
+2014-05-02 10:22:19,778 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:375) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:22:19,778 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:375) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:22:19,809 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:22:19,809 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:22:19,840 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:335) - updating main panel UI
+2014-05-02 10:22:19,840 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:335) - updating main panel UI
+2014-05-02 10:25:13,711 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - creating main panel
+2014-05-02 10:25:13,711 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:141) - creating main panel
+2014-05-02 10:25:13,742 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:342) - creating edit components
+2014-05-02 10:25:13,742 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:342) - creating edit components
+2014-05-02 10:25:13,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:200) - initializing listeners
+2014-05-02 10:25:13,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:200) - initializing listeners
+2014-05-02 10:25:13,792 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:25:13,792 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:25:13,793 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:337) - updating main panel UI
+2014-05-02 10:25:13,793 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:337) - updating main panel UI
+2014-05-02 10:25:13,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:172) - UI init done
+2014-05-02 10:25:13,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:172) - UI init done
+2014-05-02 10:25:18,480 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:134) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:25:18,480 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:134) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:25:18,497 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:361) - loading table header from file
+2014-05-02 10:25:18,497 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:361) - loading table header from file
+2014-05-02 10:25:18,499 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:376) - loaded 7 columns
+2014-05-02 10:25:18,499 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:376) - loaded 7 columns
+2014-05-02 10:25:18,499 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:377) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:25:18,499 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:377) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:25:18,530 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:25:18,530 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:276) - building edit panel
+2014-05-02 10:25:18,560 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:337) - updating main panel UI
+2014-05-02 10:25:18,560 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:337) - updating main panel UI
+2014-05-02 10:25:20,808 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:185) - setting field type combo box for index 1
+2014-05-02 10:25:20,808 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:185) - setting field type combo box for index 1
+2014-05-02 10:25:26,469 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:185) - setting field type combo box for index 3
+2014-05-02 10:25:26,469 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:185) - setting field type combo box for index 3
+2014-05-02 10:49:58,502 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:49:58,502 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:49:58,538 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:382) - creating edit components
+2014-05-02 10:49:58,538 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:382) - creating edit components
+2014-05-02 10:49:58,583 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:240) - initializing listeners
+2014-05-02 10:49:58,583 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:240) - initializing listeners
+2014-05-02 10:49:58,593 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-05-02 10:49:58,593 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-05-02 10:49:58,594 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:377) - updating main panel UI
+2014-05-02 10:49:58,594 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:377) - updating main panel UI
+2014-05-02 10:49:58,600 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:49:58,600 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:50:09,388 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:50:09,388 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:50:09,400 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:401) - loading table header from file
+2014-05-02 10:50:09,400 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:401) - loading table header from file
+2014-05-02 10:50:09,401 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:416) - loaded 7 columns
+2014-05-02 10:50:09,401 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:416) - loaded 7 columns
+2014-05-02 10:50:09,401 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:417) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:50:09,401 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:417) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:50:09,433 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-05-02 10:50:09,433 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-05-02 10:50:09,452 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:377) - updating main panel UI
+2014-05-02 10:50:09,452 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:377) - updating main panel UI
+2014-05-02 10:50:12,636 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:214) - setting field type combo box for index 0
+2014-05-02 10:50:12,636 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:214) - setting field type combo box for index 0
+2014-05-02 10:50:59,896 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:50:59,896 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:50:59,928 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:383) - creating edit components
+2014-05-02 10:50:59,928 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:383) - creating edit components
+2014-05-02 10:50:59,972 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:241) - initializing listeners
+2014-05-02 10:50:59,972 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:241) - initializing listeners
+2014-05-02 10:50:59,981 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:317) - building edit panel
+2014-05-02 10:50:59,981 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:317) - building edit panel
+2014-05-02 10:50:59,983 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:378) - updating main panel UI
+2014-05-02 10:50:59,983 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:378) - updating main panel UI
+2014-05-02 10:50:59,988 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:50:59,988 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:51:07,330 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:51:07,330 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:51:07,348 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:402) - loading table header from file
+2014-05-02 10:51:07,348 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:402) - loading table header from file
+2014-05-02 10:51:07,349 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:417) - loaded 7 columns
+2014-05-02 10:51:07,349 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:417) - loaded 7 columns
+2014-05-02 10:51:07,349 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:51:07,349 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:51:07,381 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:317) - building edit panel
+2014-05-02 10:51:07,381 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:317) - building edit panel
+2014-05-02 10:51:07,401 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:378) - updating main panel UI
+2014-05-02 10:51:07,401 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:378) - updating main panel UI
+2014-05-02 10:51:09,453 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 10:51:09,453 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 10:51:15,589 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:51:15,589 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:51:28,179 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:28,179 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:28,181 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:28,181 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:34,063 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:34,063 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:34,068 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:34,068 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:42,919 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:42,919 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:42,927 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:51:42,927 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 2
+2014-05-02 10:52:57,569 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:52:57,569 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:52:57,605 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:384) - creating edit components
+2014-05-02 10:52:57,605 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:384) - creating edit components
+2014-05-02 10:52:57,656 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:242) - initializing listeners
+2014-05-02 10:52:57,656 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:242) - initializing listeners
+2014-05-02 10:52:57,667 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:52:57,667 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:52:57,669 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:52:57,669 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:52:57,675 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:52:57,675 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:53:04,923 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:53:04,923 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:53:04,926 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:403) - loading table header from file
+2014-05-02 10:53:04,926 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:403) - loading table header from file
+2014-05-02 10:53:04,927 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded 7 columns
+2014-05-02 10:53:04,927 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded 7 columns
+2014-05-02 10:53:04,928 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:419) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:53:04,928 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:419) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:53:04,959 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:53:04,959 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:53:04,979 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:53:04,979 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:53:08,047 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:08,047 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:14,885 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:14,885 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:14,891 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:14,891 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:53:28,251 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:53:28,251 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:59:30,241 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:59:30,241 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 10:59:30,273 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:384) - creating edit components
+2014-05-02 10:59:30,273 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:384) - creating edit components
+2014-05-02 10:59:30,314 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:242) - initializing listeners
+2014-05-02 10:59:30,314 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:242) - initializing listeners
+2014-05-02 10:59:30,324 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:59:30,324 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:59:30,325 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:59:30,325 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:59:30,331 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:59:30,331 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 10:59:34,610 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:59:34,610 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 10:59:34,615 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:403) - loading table header from file
+2014-05-02 10:59:34,615 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:403) - loading table header from file
+2014-05-02 10:59:34,617 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded 7 columns
+2014-05-02 10:59:34,617 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:418) - loaded 7 columns
+2014-05-02 10:59:34,618 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:419) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:59:34,618 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:419) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 10:59:34,648 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:59:34,648 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:318) - building edit panel
+2014-05-02 10:59:34,676 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:59:34,676 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:379) - updating main panel UI
+2014-05-02 10:59:41,106 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:59:41,106 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:59:44,254 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:59:44,254 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:59:49,562 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:59:49,562 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:59:54,858 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:59:54,858 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 10:59:56,919 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 10:59:56,919 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:07,441 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:00:07,441 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:00:13,214 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:13,214 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:13,221 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:13,221 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:21,022 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:00:21,022 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:00:33,611 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:33,611 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:33,619 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:00:33,619 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 1
+2014-05-02 11:02:49,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:02:49,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:02:49,831 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:02:49,831 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:02:49,872 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:02:49,872 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:02:49,880 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:02:49,880 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:02:49,883 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:02:49,883 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:02:49,888 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:02:49,888 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:03:30,566 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:03:30,566 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:03:30,598 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:03:30,598 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:03:30,640 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:03:30,640 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:03:30,649 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:03:30,649 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:03:30,652 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:03:30,652 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:03:30,658 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:03:30,658 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:03:48,521 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:03:48,521 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:03:48,553 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:03:48,553 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:03:48,594 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:03:48,594 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:03:48,596 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:03:48,596 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:03:48,598 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:03:48,598 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:03:48,604 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:03:48,604 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:04:02,276 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:04:02,276 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:04:02,308 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:04:02,308 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:04:02,349 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:04:02,349 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:04:02,351 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:04:02,351 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:04:02,354 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:04:02,354 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:04:02,359 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:04:02,359 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:04:07,720 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:04:07,720 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:04:07,729 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:405) - loading table header from file
+2014-05-02 11:04:07,729 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:405) - loading table header from file
+2014-05-02 11:04:07,731 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:420) - loaded 7 columns
+2014-05-02 11:04:07,731 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:420) - loaded 7 columns
+2014-05-02 11:04:07,732 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:421) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:04:07,732 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:421) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:04:07,762 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:04:07,762 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:04:07,792 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:04:07,792 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:04:14,853 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:14,853 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:19,596 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:19,596 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:19,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:04:19,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:04:19,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:04:19,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:04:24,904 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:24,904 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:31,616 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:31,616 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:31,619 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:04:31,619 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:04:31,620 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:04:31,620 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:04:38,877 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:38,877 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:38,884 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:38,884 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:04:43,424 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:43,424 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:04:43,426 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 36
+2014-05-02 11:04:43,426 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 36
+2014-05-02 11:04:43,426 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 35
+2014-05-02 11:04:43,426 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 35
+2014-05-02 11:05:19,666 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:05:19,666 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:05:19,697 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:05:19,697 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:386) - creating edit components
+2014-05-02 11:05:19,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:05:19,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-05-02 11:05:19,741 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:05:19,741 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:05:19,743 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:05:19,743 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:05:19,749 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:05:19,749 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:05:24,322 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:05:24,322 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:05:24,327 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:405) - loading table header from file
+2014-05-02 11:05:24,327 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:405) - loading table header from file
+2014-05-02 11:05:24,329 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:420) - loaded 7 columns
+2014-05-02 11:05:24,329 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:420) - loaded 7 columns
+2014-05-02 11:05:24,329 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:421) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:05:24,329 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:421) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:05:24,360 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:05:24,360 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:320) - building edit panel
+2014-05-02 11:05:24,388 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:05:24,388 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:381) - updating main panel UI
+2014-05-02 11:05:31,658 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:31,658 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:39,790 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:05:39,790 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:05:39,791 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:05:39,791 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 35
+2014-05-02 11:05:39,792 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:05:39,792 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 34
+2014-05-02 11:05:46,731 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:46,731 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:46,736 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:46,736 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:215) - setting field type combo box for index 0
+2014-05-02 11:05:52,420 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:05:52,420 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:222) - field type has focus: false
+2014-05-02 11:05:52,421 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 36
+2014-05-02 11:05:52,421 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - edit panel component count before delete: 36
+2014-05-02 11:05:52,422 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 35
+2014-05-02 11:05:52,422 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count after delete: 35
+2014-05-02 11:07:29,650 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:07:29,650 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:07:29,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:388) - creating edit components
+2014-05-02 11:07:29,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:388) - creating edit components
+2014-05-02 11:07:29,723 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:246) - initializing listeners
+2014-05-02 11:07:29,723 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:246) - initializing listeners
+2014-05-02 11:07:29,731 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:07:29,731 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:07:29,733 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:07:29,733 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:07:29,738 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:07:29,738 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:07:34,334 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:07:34,334 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:07:34,346 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:407) - loading table header from file
+2014-05-02 11:07:34,346 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:407) - loading table header from file
+2014-05-02 11:07:34,347 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:422) - loaded 7 columns
+2014-05-02 11:07:34,347 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:422) - loaded 7 columns
+2014-05-02 11:07:34,347 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:423) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:07:34,347 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:423) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:07:34,379 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:07:34,379 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:07:34,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:07:34,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:07:41,539 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:07:41,539 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:07:41,551 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:41,551 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:41,551 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:07:41,551 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:07:51,366 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:07:51,366 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:07:51,368 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:07:51,368 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:07:51,369 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:07:51,369 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:07:57,956 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:07:57,956 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:07:57,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:57,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:57,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:07:57,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:07:57,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:07:57,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:07:57,969 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:57,969 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:07:57,970 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:07:57,970 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:08:24,743 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:08:24,743 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:08:24,777 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:388) - creating edit components
+2014-05-02 11:08:24,777 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:388) - creating edit components
+2014-05-02 11:08:24,819 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:246) - initializing listeners
+2014-05-02 11:08:24,819 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:246) - initializing listeners
+2014-05-02 11:08:24,828 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:08:24,828 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:08:24,830 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:08:24,830 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:08:24,835 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:08:24,835 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:08:33,178 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:08:33,178 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:08:33,197 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:407) - loading table header from file
+2014-05-02 11:08:33,197 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:407) - loading table header from file
+2014-05-02 11:08:33,198 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:422) - loaded 7 columns
+2014-05-02 11:08:33,198 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:422) - loaded 7 columns
+2014-05-02 11:08:33,198 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:423) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:08:33,198 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:423) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:08:33,230 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:08:33,230 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:322) - building edit panel
+2014-05-02 11:08:33,255 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:08:33,255 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:383) - updating main panel UI
+2014-05-02 11:08:37,595 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:08:37,595 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:08:37,600 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:08:37,600 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:08:37,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:08:37,601 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:08:37,602 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:08:37,602 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:08:37,609 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:08:37,609 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:08:37,610 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:08:37,610 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:09:27,877 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:09:27,877 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:09:27,909 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:390) - creating edit components
+2014-05-02 11:09:27,909 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:390) - creating edit components
+2014-05-02 11:09:27,951 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:248) - initializing listeners
+2014-05-02 11:09:27,951 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:248) - initializing listeners
+2014-05-02 11:09:27,959 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:324) - building edit panel
+2014-05-02 11:09:27,959 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:324) - building edit panel
+2014-05-02 11:09:27,961 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:385) - updating main panel UI
+2014-05-02 11:09:27,961 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:385) - updating main panel UI
+2014-05-02 11:09:27,966 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:09:27,966 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:09:31,039 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:09:31,039 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:09:31,044 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:409) - loading table header from file
+2014-05-02 11:09:31,044 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:409) - loading table header from file
+2014-05-02 11:09:31,046 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:424) - loaded 7 columns
+2014-05-02 11:09:31,046 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:424) - loaded 7 columns
+2014-05-02 11:09:31,047 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:09:31,047 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:09:31,077 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:324) - building edit panel
+2014-05-02 11:09:31,077 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:324) - building edit panel
+2014-05-02 11:09:31,097 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:385) - updating main panel UI
+2014-05-02 11:09:31,097 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:385) - updating main panel UI
+2014-05-02 11:09:40,503 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:09:40,503 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:09:40,508 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:09:40,508 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:09:40,509 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:09:40,509 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:09:40,509 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:09:40,509 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:09:40,517 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:09:40,517 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:09:40,517 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:09:40,517 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:10:19,369 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:10:19,369 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:10:19,402 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:10:19,402 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:10:19,445 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:10:19,445 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:10:19,453 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:19,453 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:19,455 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:19,455 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:19,460 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:10:19,460 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:10:23,102 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:10:23,102 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:10:23,107 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:10:23,107 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:10:23,108 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:10:23,108 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:10:23,109 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:10:23,109 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:10:23,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:23,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:23,170 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:23,170 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:27,836 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed
+2014-05-02 11:10:27,836 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed
+2014-05-02 11:10:27,837 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:10:27,837 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:10:27,842 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:27,842 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:27,843 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:10:27,843 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:10:27,845 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed
+2014-05-02 11:10:27,845 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed
+2014-05-02 11:10:27,846 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:10:27,846 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:10:27,850 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:27,850 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:27,851 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:10:27,851 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:10:42,944 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:10:42,944 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:10:42,977 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:10:42,977 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:10:43,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:10:43,018 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:10:43,026 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:43,026 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:43,027 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:43,027 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:43,033 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:10:43,033 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:10:45,005 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:10:45,005 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:10:45,011 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:10:45,011 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:10:45,012 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:10:45,012 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:10:45,012 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:10:45,012 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:10:45,044 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:45,044 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:10:45,070 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:45,070 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:10:48,668 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:10:48,668 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:10:48,669 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:10:48,669 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:10:48,674 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:48,674 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:48,675 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:10:48,675 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:10:48,677 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:10:48,677 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:241) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:10:48,678 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:10:48,678 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:10:48,683 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:48,683 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:10:48,684 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:10:48,684 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:11:41,534 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:11:41,534 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:11:41,567 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:393) - creating edit components
+2014-05-02 11:11:41,567 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:393) - creating edit components
+2014-05-02 11:11:41,609 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:251) - initializing listeners
+2014-05-02 11:11:41,609 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:251) - initializing listeners
+2014-05-02 11:11:41,618 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:327) - building edit panel
+2014-05-02 11:11:41,618 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:327) - building edit panel
+2014-05-02 11:11:41,619 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:388) - updating main panel UI
+2014-05-02 11:11:41,619 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:388) - updating main panel UI
+2014-05-02 11:11:41,625 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:11:41,625 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:11:43,702 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:11:43,702 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:11:43,714 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:412) - loading table header from file
+2014-05-02 11:11:43,714 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:412) - loading table header from file
+2014-05-02 11:11:43,716 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:427) - loaded 7 columns
+2014-05-02 11:11:43,716 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:427) - loaded 7 columns
+2014-05-02 11:11:43,716 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:11:43,716 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:11:43,747 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:327) - building edit panel
+2014-05-02 11:11:43,747 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:327) - building edit panel
+2014-05-02 11:11:43,764 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:388) - updating main panel UI
+2014-05-02 11:11:43,764 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:388) - updating main panel UI
+2014-05-02 11:11:48,953 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:11:48,953 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:11:48,954 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:11:48,954 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:11:48,954 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:11:48,954 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:11:48,960 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:11:48,960 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:11:48,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:11:48,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:11:48,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:11:48,963 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:11:48,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:11:48,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:11:48,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:11:48,964 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:11:48,969 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:11:48,969 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:11:48,970 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:11:48,970 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:12:22,721 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:12:22,721 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:12:22,755 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:394) - creating edit components
+2014-05-02 11:12:22,755 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:394) - creating edit components
+2014-05-02 11:12:22,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:252) - initializing listeners
+2014-05-02 11:12:22,799 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:252) - initializing listeners
+2014-05-02 11:12:22,809 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:12:22,809 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:12:22,811 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:12:22,811 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:12:22,818 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:12:22,818 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:12:25,134 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:12:25,134 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:12:25,147 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:413) - loading table header from file
+2014-05-02 11:12:25,147 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:413) - loading table header from file
+2014-05-02 11:12:25,148 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded 7 columns
+2014-05-02 11:12:25,148 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded 7 columns
+2014-05-02 11:12:25,148 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:429) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:12:25,148 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:429) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:12:25,180 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:12:25,180 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:12:25,198 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:12:25,198 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:12:28,630 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:12:28,630 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:12:28,630 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:12:28,630 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:12:28,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:12:28,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:12:28,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:12:28,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:12:28,634 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:12:28,635 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 36
+2014-05-02 11:12:28,637 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:12:28,637 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:12:28,637 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:12:28,637 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 37
+2014-05-02 11:13:13,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:13:13,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:144) - creating main panel
+2014-05-02 11:13:13,816 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:394) - creating edit components
+2014-05-02 11:13:13,816 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:394) - creating edit components
+2014-05-02 11:13:13,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:252) - initializing listeners
+2014-05-02 11:13:13,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:252) - initializing listeners
+2014-05-02 11:13:13,865 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:13:13,865 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:13:13,866 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:13:13,866 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:13:13,872 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:13:13,872 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:175) - UI init done
+2014-05-02 11:13:17,055 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:13:17,055 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:137) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:13:17,068 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:413) - loading table header from file
+2014-05-02 11:13:17,068 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:413) - loading table header from file
+2014-05-02 11:13:17,070 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded 7 columns
+2014-05-02 11:13:17,070 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:428) - loaded 7 columns
+2014-05-02 11:13:17,072 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:429) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:13:17,072 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:429) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:13:17,101 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:13:17,101 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:328) - building edit panel
+2014-05-02 11:13:17,122 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:13:17,122 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - updating main panel UI
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:21,152 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:21,153 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:21,155 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:21,155 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:21,155 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:21,155 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:25,394 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:25,394 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:25,394 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:25,394 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:25,395 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:25,396 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:25,396 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:25,396 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:25,396 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:25,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:25,397 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:25,398 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:13:25,398 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:13:29,986 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:29,986 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:29,986 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:29,986 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:29,987 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:29,988 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:29,988 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:29,988 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:29,988 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:29,995 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:29,995 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:29,995 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:29,995 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:35,694 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:35,694 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:35,695 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:35,695 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:35,695 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:35,695 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:35,696 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:35,697 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:35,697 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:35,697 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:35,697 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:35,698 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:13:35,698 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:13:47,137 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:47,137 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:47,138 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:47,138 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,145,487,636x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvalue]
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:47,139 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:47,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:47,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:47,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:47,140 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:211) - edit panel component count before add: 35
+2014-05-02 11:13:47,145 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:47,145 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:216) - setting field type combo box for index 0
+2014-05-02 11:13:47,146 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:47,146 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:218) - edit panel component count after add: 36
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxChanged
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:51,544 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:242) - field action performed on field: javax.swing.JComboBox[,125,487,533x58,invalid,layout=javax.swing.plaf.metal.MetalComboBoxUI$MetalComboBoxLayoutManager,alignmentX=0.0,alignmentY=0.0,border=,flags=4194632,maximumSize=,minimumSize=,preferredSize=,isEditable=true,lightWeightPopupEnabled=true,maximumRowCount=8,selectedItemReminder=expvaluex]
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:243) - field action performed on field index: 0
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI$1.actionPerformed(MainUI.java:244) - action command: comboBoxEdited
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:224) - field type has focus: false
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:51,545 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - edit panel component count before delete: 36
+2014-05-02 11:13:51,546 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:13:51,546 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:230) - edit panel component count after delete: 35
+2014-05-02 11:14:26,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:145) - creating main panel
+2014-05-02 11:14:26,783 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:145) - creating main panel
+2014-05-02 11:14:26,817 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:14:26,817 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:14:26,859 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:14:26,859 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:14:26,868 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:26,868 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:26,870 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:26,870 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:26,875 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:176) - UI init done
+2014-05-02 11:14:26,875 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:176) - UI init done
+2014-05-02 11:14:29,731 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:138) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:14:29,731 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:138) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:14:29,734 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:14:29,734 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:14:29,735 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:14:29,735 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:14:29,735 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:14:29,735 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:14:29,767 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:29,767 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:29,785 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:29,785 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:59,810 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:145) - creating main panel
+2014-05-02 11:14:59,810 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:145) - creating main panel
+2014-05-02 11:14:59,843 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:14:59,843 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:391) - creating edit components
+2014-05-02 11:14:59,886 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:14:59,886 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:249) - initializing listeners
+2014-05-02 11:14:59,895 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:59,895 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:14:59,896 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:59,896 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:14:59,902 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:176) - UI init done
+2014-05-02 11:14:59,902 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:176) - UI init done
+2014-05-02 11:15:02,683 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:138) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:15:02,683 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:138) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:410) - loading table header from file
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:425) - loaded 7 columns
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:15:02,685 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:426) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-05-02 11:15:02,718 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:15:02,718 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:325) - building edit panel
+2014-05-02 11:15:02,736 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:15:02,736 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:386) - updating main panel UI
+2014-05-02 11:15:04,803 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:212) - edit panel component count before add: 35
+2014-05-02 11:15:04,803 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:212) - edit panel component count before add: 35
+2014-05-02 11:15:04,814 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:217) - setting field type combo box for index 0
+2014-05-02 11:15:04,814 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:217) - setting field type combo box for index 0
+2014-05-02 11:15:04,814 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:219) - edit panel component count after add: 36
+2014-05-02 11:15:04,814 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:219) - edit panel component count after add: 36
+2014-05-02 11:15:10,910 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - field type has focus: false
+2014-05-02 11:15:10,910 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:225) - field type has focus: false
+2014-05-02 11:15:10,913 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count before delete: 36
+2014-05-02 11:15:10,913 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:226) - edit panel component count before delete: 36
+2014-05-02 11:15:10,914 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:231) - edit panel component count after delete: 35
+2014-05-02 11:15:10,914 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.addExpressionValueTypeCombo(MainUI.java:231) - edit panel component count after delete: 35

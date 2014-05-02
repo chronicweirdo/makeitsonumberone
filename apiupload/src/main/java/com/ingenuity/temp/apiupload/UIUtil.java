@@ -58,6 +58,7 @@ public class UIUtil {
                 //Display the window.
                 frame.pack();
                 frame.setVisible(true);
+                frame.setExtendedState(frame.getExtendedState() | JFrame.MAXIMIZED_BOTH);
             }
         });
     }
