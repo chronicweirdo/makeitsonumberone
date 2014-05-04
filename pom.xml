@@ -16,6 +16,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
         <module>bmo</module>
         <module>fitnesse</module>
         <module>naframa</module>
+        <module>wol</module>
     </modules>
 
     <build>

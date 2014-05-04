@@ -1,4 +1,4 @@
-package wol;
+package com.chronicweirdo.wol;
 
 import java.io.*;
 import java.net.*;
