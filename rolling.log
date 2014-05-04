@@ -981,3 +981,229 @@
 2014-05-02 11:53:47,443 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:458) - POST request sent
 2014-05-02 11:53:47,443 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:459) - ------------------------------------------------------------------------------
 2014-05-02 11:53:47,443 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:459) - ------------------------------------------------------------------------------
+2014-05-04 13:15:36,930 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.<init>(HDocument.java:32) - creating HDocument
+2014-05-04 13:15:36,930 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.<init>(HDocument.java:32) - creating HDocument
+2014-05-04 13:15:36,933 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property java.awt.font.TextAttribute(run_direction)
+2014-05-04 13:15:36,933 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property java.awt.font.TextAttribute(run_direction)
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.putProperty(HDocument.java:129) - adding property java.awt.font.TextAttribute(run_direction) with value false
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.putProperty(HDocument.java:129) - adding property java.awt.font.TextAttribute(run_direction) with value false
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.text.DefaultCaret$Handler@38bf5400
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.text.DefaultCaret$Handler@38bf5400
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.plaf.basic.BasicTextUI$UpdateHandler@1923e91b
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.plaf.basic.BasicTextUI$UpdateHandler@1923e91b
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getDefaultRootElement(HDocument.java:174) - getting default root element
+2014-05-04 13:15:36,934 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getDefaultRootElement(HDocument.java:174) - getting default root element
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property i18n
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property i18n
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.remove(HDocument.java:134) - removing text at offset 0 of length 0
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.remove(HDocument.java:134) - removing text at offset 0 of length 0
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.getLength(HDocument.java:99) - getting length
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.insertString(HDocument.java:139) - inserting text test text at offset 0
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.insertString(HDocument.java:139) - inserting text test text at offset 0
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.putProperty(HDocument.java:129) - adding property __EndOfLine__ with value 
+
+2014-05-04 13:15:36,935 INFO [main] com.chronicweirdo.bmo.himpl.HDocument.putProperty(HDocument.java:129) - adding property __EndOfLine__ with value 
+
+2014-05-04 13:15:37,004 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,004 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,006 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,006 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,006 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,006 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,008 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,009 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,010 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,011 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,011 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,011 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,011 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,012 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,013 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,014 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,015 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,016 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,017 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,035 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,035 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,037 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,038 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,039 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,039 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,039 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,039 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,040 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,041 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,042 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,048 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.text.JTextComponent$InputMethodRequestsHandler@7af44dd0
+2014-05-04 13:15:37,048 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.addDocumentListener(HDocument.java:104) - adding a new document listener: javax.swing.text.JTextComponent$InputMethodRequestsHandler@7af44dd0
+2014-05-04 13:15:37,051 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,051 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,053 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,054 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,057 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,554 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:37,554 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:38,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:38,055 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:38,556 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:38,556 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:39,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:39,056 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:39,557 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:39,557 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:40,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:40,058 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:40,558 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
+2014-05-04 13:15:40,558 INFO [AWT-EventQueue-0] com.chronicweirdo.bmo.himpl.HDocument.getProperty(HDocument.java:124) - getting property tabSize
