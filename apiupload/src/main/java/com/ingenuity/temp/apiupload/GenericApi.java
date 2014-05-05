@@ -53,10 +53,10 @@ public class GenericApi {
         return executeGet(path, url.toString());
     }
     public String executeGet(String path, String parameters) {
-        log.info("executing GET request");
         log.info("path: " + path);
         log.info("parameters: " + parameters);
         log.info("parameters.length: " + parameters.length());
+        log.info("executing GET request: " + server + path + "?" + parameters);
 
         GetMethod get = new GetMethod(server + path + "?" + parameters);
         try {

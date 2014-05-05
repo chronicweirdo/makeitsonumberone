@@ -59,8 +59,8 @@ public class LargeTranscoder {
         //transcoder.addTranscodingHint(JPEGTranscoder.KEY_AOI, aoi);
 
         int originalWidth = 10244;
-        int originalHeight = 437;
-        float ratio = 2;
+        int originalHeight = 725;
+        float ratio = 6;
         float pixels = originalHeight * originalWidth * ratio * ratio;
         System.out.println("writing " + NumberFormat.getInstance().format(pixels) + " pixels");
         transcoder.addTranscodingHint(JPEGTranscoder.KEY_WIDTH, new Float(originalWidth*ratio));
