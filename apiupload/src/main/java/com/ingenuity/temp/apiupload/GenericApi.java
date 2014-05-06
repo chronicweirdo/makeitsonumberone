@@ -40,17 +40,21 @@ public class GenericApi {
                 log.info("parameter: " + parameter.getKey() + " = " + parameter.getValue());
             }
         }
-        // build url
-        StringBuilder url = new StringBuilder();
+        String parametersString = concatenateParameters(parameters);
+        return executeGet(path, parametersString);
+    }
+
+    private String concatenateParameters(List<Pair> parameters) {
+        StringBuilder builder = new StringBuilder();
         String prefix = "";
         for (Pair parameter: parameters) {
-            url.append(prefix);
-            url.append(parameter.getKey());
-            url.append("=");
-            url.append(parameter.getValue());
+            builder.append(prefix);
+            builder.append(parameter.getKey());
+            builder.append("=");
+            builder.append(parameter.getValue());
             prefix = "&";
         }
-        return executeGet(path, url.toString());
+        return builder.toString();
     }
     public String executeGet(String path, String parameters) {
         log.info("path: " + path);
@@ -82,6 +86,9 @@ public class GenericApi {
                 log.debug(LOG_INDENTATION + parameter.getKey() + " = " + parameter.getValue());
             }
         }
+        String parametersString = concatenateParameters(parameters);
+        log.info("full URL:");
+        log.info(server + path + "?" + parametersString);
 
         // build request
         PostMethod post = new PostMethod(server + path);
