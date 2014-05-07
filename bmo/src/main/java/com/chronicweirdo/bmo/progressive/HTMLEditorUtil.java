@@ -1,12 +1,7 @@
 package com.chronicweirdo.bmo.progressive;
 
-import com.chronicweirdo.bmo.MyDocument;
-
 import javax.swing.*;
-import javax.swing.text.BadLocationException;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 /**
  * Created by scacoveanu on 4/28/2014.

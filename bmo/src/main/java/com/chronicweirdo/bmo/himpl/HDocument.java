@@ -177,6 +177,11 @@ public class HDocument implements StyledDocument {
 
     public void render(Runnable r) {
         log.info("rendering");
-        // do nothing
+        //readLock();
+        try {
+            r.run();
+        } finally {
+            //readUnlock();
+        }
     }
 }

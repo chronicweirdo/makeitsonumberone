@@ -1,4 +1,4 @@
-package com.chronicweirdo.bmo;
+package com.chronicweirdo.bmo.myimpl;
 
 import javax.swing.text.Position;
 
@@ -13,7 +13,6 @@ public class MyPosition implements Position {
         this.offset = offset;
     }
 
-    @Override
     public int getOffset() {
         return offset;
     }

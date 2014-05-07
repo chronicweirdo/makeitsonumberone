@@ -4,6 +4,8 @@ import com.chronicweirdo.bmo.progressive.HTMLEditorUtil;
 import org.apache.log4j.Logger;
 
 import javax.swing.*;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.SimpleAttributeSet;
 import java.io.IOException;
 
 /**
@@ -24,7 +26,12 @@ public class HMain {
         area.setDocument(hDocument);
         area.updateUI();
         log.info("setting JEditorPane text");
-        area.setText("test text");
+        //area.setText("test text");
+        try {
+            hDocument.insertString(0, "test text", new SimpleAttributeSet());
+        } catch (BadLocationException e) {
+            e.printStackTrace();
+        }
 
         log.info("showing GUI");
         HTMLEditorUtil.createAndShowGUI("HDocument", null, HTMLEditorUtil.scrollable(area, 500, 500));

@@ -1,4 +1,4 @@
-package com.chronicweirdo.bmo;
+package com.chronicweirdo.bmo.myimpl;
 
 import javax.print.attribute.HashAttributeSet;
 import javax.swing.*;
@@ -10,7 +10,7 @@ import java.net.URL;
 /**
  * Created by Silviu on 4/8/14.
  */
-public class Main2 {
+public class MyMain {
     private static final String APPLICATION_NAME = "BMO";
 
     private static void createAndShowGUI() {

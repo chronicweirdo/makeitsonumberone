@@ -1,4 +1,4 @@
-package com.chronicweirdo.bmo;
+package com.chronicweirdo.bmo.myimpl;
 
 import com.chronicweirdo.bmo.explorer.MyDocumentEvent;
 import org.apache.log4j.LogManager;
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class MyDocument implements StyledDocument {
 
-    private static final Logger LOG = LogManager.getLogger(MyDocument.class);
+    private static final Logger log = LogManager.getLogger(MyDocument.class);
 
     private StringBuffer data = new StringBuffer();
     private Element root = new MyElement(this, null, "root", new SimpleAttributeSet(), 0, 0);
@@ -29,43 +29,35 @@ public class MyDocument implements StyledDocument {
         return (MyElement) root;
     }
 
-    @Override
     public int getLength() {
         return data.length();
     }
 
-    @Override
     public void addDocumentListener(DocumentListener listener) {
-        LOG.info("adding document listener " + listener);
+        log.info("adding document listener " + listener);
         documentListeners.add(listener);
     }
 
-    @Override
     public void removeDocumentListener(DocumentListener listener) {
         documentListeners.remove(listener);
     }
 
-    @Override
     public void addUndoableEditListener(UndoableEditListener listener) {
         undoableEditListeners.add(listener);
     }
 
-    @Override
     public void removeUndoableEditListener(UndoableEditListener listener) {
         undoableEditListeners.remove(listener);
     }
 
-    @Override
     public Object getProperty(Object key) {
         return properties.get(key);
     }
 
-    @Override
     public void putProperty(Object key, Object value) {
         properties.put(key, value);
     }
 
-    @Override
     public void remove(int offs, int len) throws BadLocationException {
         if (offs < 0) throw new BadLocationException("Start offset problem!", offs);
         if (offs + len > data.length()) throw new BadLocationException("End offset problem!", offs + len);
@@ -74,7 +66,6 @@ public class MyDocument implements StyledDocument {
         ((MyElement)root).end = data.length(); // must end right after the last element
     }
 
-    @Override
     public void insertString(int offset, String str, AttributeSet a) throws BadLocationException {
         if (offset < 0) throw new BadLocationException("Start offset problem!", offset);
         // TODO: handle attribute set
@@ -93,52 +84,44 @@ public class MyDocument implements StyledDocument {
         }
     }
 
-    @Override
     public String getText(int offset, int length) throws BadLocationException {
         if (offset < 0) throw new BadLocationException("Start offset problem!", offset);
         if (offset + length > data.length()) throw new BadLocationException("End offset problem!", offset + length);
         return data.substring(offset, offset + length);
     }
 
-    @Override
     public void getText(int offset, int length, Segment txt) throws BadLocationException {
         if (offset < 0) throw new BadLocationException("Start offset problem!", offset);
         if (offset + length > data.length()) throw new BadLocationException("End offset problem!", offset + length);
-        //LOG.info("get text in segment offset:" + offset + " length:" + length);
+        //log.info("get text in segment offset:" + offset + " length:" + length);
         txt.array = new char[length];
         data.getChars(offset, offset + length, txt.array, 0);
-        //LOG.info("array: " + Arrays.toString(txt.array));
+        //log.info("array: " + Arrays.toString(txt.array));
         txt.offset = 0; //offset;
         txt.count = length;
     }
 
-    @Override
     public Position getStartPosition() {
         return new MyPosition(0);
     }
 
-    @Override
     public Position getEndPosition() {
         return new MyPosition(data.length()-1);
     }
 
-    @Override
     public Position createPosition(int offset) throws BadLocationException {
         if (offset < 0 || offset >= data.length()) throw new BadLocationException("Start offset problem!", offset);
         return new MyPosition(offset);
     }
 
-    @Override
     public Element[] getRootElements() {
         return new Element[] {root};
     }
 
-    @Override
     public Element getDefaultRootElement() {
         return root;
     }
 
-    @Override
     public void render(Runnable r) {
         // TODO: handle rendering
         //readLock();
@@ -151,35 +134,35 @@ public class MyDocument implements StyledDocument {
 
     //////////////////////////////////////////////////////////////////////// STYLED DOCUMENT BELOW
 
-    private List<Style> styles = new ArrayList<Style>();
-    private Map<String, Style> namedStyles = new HashMap<String, Style>();
+    private StyleContext styleContext = new StyleContext();
+    //private List<Style> styles = new ArrayList<Style>();
+    //private Map<String, Style> namedStyles = new HashMap<String, Style>();
 
-    @Override
     public Style addStyle(String nm, Style parent) {
-        if (nm != null) {
+        /*if (nm != null) {
             Style existing = namedStyles.get(nm);
             if (existing != null) styles.remove(existing);
             namedStyles.put(nm, parent);
         }
-        styles.add(parent);
-        return parent;
+        styles.add(parent);*/
+        return styleContext.addStyle(nm, parent);
+        //return parent;
     }
 
-    @Override
     public void removeStyle(String nm) {
-        Style existing = namedStyles.get(nm);
+        /*Style existing = namedStyles.get(nm);
         if (existing != null) {
             namedStyles.remove(nm);
             styles.remove(existing);
-        }
+        }*/
+        styleContext.removeStyle(nm);
     }
 
-    @Override
     public Style getStyle(String nm) {
-        return namedStyles.get(nm);
+        //return namedStyles.get(nm);
+        return styleContext.getStyle(nm);
     }
 
-    @Override
     public void setCharacterAttributes(int offset, int length, AttributeSet s, boolean replace) {
         if (getRoot().attributes == null) {
             getRoot().attributes = s;
@@ -190,42 +173,35 @@ public class MyDocument implements StyledDocument {
         }
     }
 
-    @Override
     public void setParagraphAttributes(int offset, int length, AttributeSet s, boolean replace) {
         setCharacterAttributes(offset, length, s, replace);
     }
 
-    @Override
     public void setLogicalStyle(int pos, Style s) {
         // TODO: what is this?
     }
 
-    @Override
     public Style getLogicalStyle(int p) {
-        return null; // TODO: don't be null
+        return styleContext.getStyle(StyleContext.DEFAULT_STYLE);
+        //return null; // TODO: don't be null
     }
 
-    @Override
     public Element getParagraphElement(int pos) {
         return root;
     }
 
-    @Override
     public Element getCharacterElement(int pos) {
         return root;
     }
 
-    @Override
     public Color getForeground(AttributeSet attr) {
         return Color.BLACK;
     }
 
-    @Override
     public Color getBackground(AttributeSet attr) {
         return Color.WHITE;
     }
 
-    @Override
     public Font getFont(AttributeSet attr) {
         return getDefaultFont(); // TODO: don't be null
     }

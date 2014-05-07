@@ -2,10 +2,7 @@ package com.chronicweirdo.bmo.himpl;
 
 import com.sun.org.omg.SendingContext._CodeBaseImplBase;
 
-import javax.swing.text.AttributeSet;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-import javax.swing.text.Segment;
+import javax.swing.text.*;
 
 /**
  * Created by Silviu on 5/4/14.
@@ -21,6 +18,8 @@ public class HElement implements Element {
     public HElement(Document document) {
         this.document = document;
         this.name = "theonlyelement";
+        this.attributeSet = new SimpleAttributeSet();
+        this.parent = null;
         data = new StringBuilder();
     }
 

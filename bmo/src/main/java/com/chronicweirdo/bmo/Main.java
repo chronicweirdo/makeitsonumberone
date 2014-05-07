@@ -1,11 +1,12 @@
 package com.chronicweirdo.bmo;
 
+import com.chronicweirdo.bmo.myimpl.MyDocument;
+
 import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Element;
 import javax.swing.text.StyledDocument;
 import java.awt.*;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
