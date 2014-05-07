@@ -18,18 +18,18 @@ public class DatasetReader {
         log.info("reading file " + path);
         List<List<String>> data = new ArrayList<List<String>>();
         try {
-            BufferedReader r = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
 
 
 
-            String line = r.readLine();
+            String line = reader.readLine();
             while (line != null) {
                 String[] tokens = line.split("\t");
                 data.add(Arrays.asList(tokens));
-                line = r.readLine();
+                line = reader.readLine();
             }
 
-            r.close();
+            reader.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
