@@ -33,10 +33,10 @@ public class AnalysisExportMain {
 
     public static void main(String[] args) {
         String apiAnalysis = "apiAnalysis.txt";
-        //exportAnalysis(apiAnalysis);
+        exportAnalysis(apiAnalysis);
 
         // compare files
         //FileComparer.findDifferentTokens("uiAnalysis.txt", apiAnalysis);
-        FileComparer.compareTables("uiAnalysis.txt", apiAnalysis);
+        //FileComparer.compareTables("uiAnalysis.txt", apiAnalysis);
     }
 }

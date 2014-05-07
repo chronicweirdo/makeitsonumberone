@@ -183,7 +183,7 @@ public class MyDocument implements StyledDocument {
 
     public Style getLogicalStyle(int p) {
         return styleContext.getStyle(StyleContext.DEFAULT_STYLE);
-        //return null; // TODO: don't be null
+        //return null; // TODO: get style from element
     }
 
     public Element getParagraphElement(int pos) {
@@ -203,7 +203,7 @@ public class MyDocument implements StyledDocument {
     }
 
     public Font getFont(AttributeSet attr) {
-        return getDefaultFont(); // TODO: don't be null
+        return getDefaultFont(); // TODO: don't be default
     }
 
     private Font getDefaultFont() {

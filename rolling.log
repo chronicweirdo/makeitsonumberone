@@ -3345,3 +3345,33 @@
 2014-05-06 11:55:17,718 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:91) - https://analysis-stable.ingenuity.com/pa/api/v1/export?aid=30908&art=regulatoreffects
 2014-05-06 11:55:23,477 INFO [main] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:43) - writing to file: apiAnalysis.txt
 2014-05-06 11:55:23,477 INFO [main] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:43) - writing to file: apiAnalysis.txt
+2014-05-07 11:28:07,249 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-05-07 11:28:07,249 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-05-07 11:28:10,326 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-05-07 11:28:10,326 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-05-07 11:28:10,327 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-05-07 11:28:10,327 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-05-07 11:28:10,340 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com/
+2014-05-07 11:28:10,340 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com/
+2014-05-07 11:28:10,341 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-05-07 11:28:10,341 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-05-07 11:28:10,341 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-05-07 11:28:10,341 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-05-07 11:28:11,295 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-05-07 11:28:11,295 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-05-07 11:28:14,526 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com/
+2014-05-07 11:28:14,526 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com/
+2014-05-07 11:28:14,527 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=newauto4@infostretch.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-05-07 11:28:14,527 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=newauto4@infostretch.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-05-07 11:28:14,527 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-05-07 11:28:14,527 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-05-07 11:28:14,530 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:81) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/export
+2014-05-07 11:28:14,530 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:81) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/export
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - sending 2 parameters
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - sending 2 parameters
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:90) - full URL:
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:90) - full URL:
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:91) - https://analysis-stable.ingenuity.com/pa/api/v1/export?aid=30908&art=regulatoreffects
+2014-05-07 11:28:14,531 INFO [main] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:91) - https://analysis-stable.ingenuity.com/pa/api/v1/export?aid=30908&art=regulatoreffects
+2014-05-07 11:28:21,759 INFO [main] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:43) - writing to file: apiAnalysis.txt
+2014-05-07 11:28:21,759 INFO [main] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:43) - writing to file: apiAnalysis.txt
