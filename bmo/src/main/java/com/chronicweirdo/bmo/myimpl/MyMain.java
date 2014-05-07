@@ -25,9 +25,9 @@ public class MyMain {
         frame.getContentPane().add(label, BorderLayout.NORTH);
 
         // add a text pane
-        JTextPane pane = new JTextPane();
-        pane.setBackground(Color.black);
-        pane.setCaretColor(Color.white);
+        JTextPane pane = new JTextPane(new MyDocument());
+        //pane.setBackground(Color.black);
+        //pane.setCaretColor(Color.white);
         System.out.println(pane.getStyledDocument().getClass());
         try {
             SimpleAttributeSet set = new SimpleAttributeSet();
