@@ -1,5 +1,6 @@
 package com.ingenuity.temp.apiupload;
 
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpMethodBase;
 import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
@@ -20,6 +21,9 @@ public class Util {
         InputStream stream = null;
         try {
             stream = m.getResponseBodyAsStream();
+            for (Header header: m.getResponseHeaders()) {
+                System.out.println(header.getName() + " : " + header.getValue());
+            }
         } catch (IOException e) {
             log.error(e);
         }

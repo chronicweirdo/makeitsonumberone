@@ -1,11 +1,15 @@
 package com.ingenuity.temp.apiupload;
 
+import org.apache.commons.httpclient.Header;
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.log4j.Logger;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 
 /**
@@ -15,6 +19,7 @@ public class GenericApi {
 
     private static final Logger log = Logger.getLogger(GenericApi.class);
     public static final String LOG_INDENTATION = "\t";
+    public static final String HEADER_LOCATION = "Location";
 
     private HttpClient client;
     private String server;
@@ -72,12 +77,12 @@ public class GenericApi {
         return result;
     }
 
-    public void executePost(String path, List<Pair> parameters, String outputFile) {
-        String result = executePost(path, parameters);
+    public void executePost(String path, List<Pair> parameters, String outputFile, boolean openIPA) {
+        String result = executePost(path, parameters, openIPA);
         Util.writeToFile(result, outputFile);
     }
 
-    public String executePost(String path, List<Pair> parameters) {
+    public String executePost(String path, List<Pair> parameters, boolean openIPA) {
         log.info("executing POST request at address: " + server + path);
         log.info("sending " + parameters.size() + " parameters");
         if (log.isDebugEnabled()) {
@@ -101,6 +106,27 @@ public class GenericApi {
             log.error(e);
         }
         String result = Util.getResponseBody(post);
+        if (openIPA) {
+            // try to open IPA using the default browser
+            Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
+            if (locationHeader != null) {
+                log.info("opening URL " + locationHeader.getValue() + " in default internet " +
+                        "browser");
+                if (Desktop.isDesktopSupported()) {
+                    try {
+                        Desktop.getDesktop().browse(new URI(locationHeader.getValue()));
+                    } catch (IOException e) {
+                        log.error(e, e);
+                    } catch (URISyntaxException e) {
+                        log.error(e, e);
+                    }
+                } else {
+                    log.warn("can't access default browser on current platform!");
+                }
+            } else {
+                log.warn("no location header was found in response!");
+            }
+        }
         return result;
     }
 

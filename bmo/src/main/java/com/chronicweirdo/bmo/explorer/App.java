@@ -6,8 +6,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 /**
  * The original structure editor was taken from http://java-sl.com/JEditorPaneStructureTool.html
@@ -31,18 +29,18 @@ public class App extends JFrame {
     EditorPaneStructure info;
 
     public static void main(String[] args) {
-        String html = null;
+        /*String html = null;
         try {
             html = new String(Files.readAllBytes(Paths.get("src", "main", "resources",
                     "small.html")));
             System.out.println(html);
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
-        final App app = new App(html);
+        //final App app = new App(html);
 
-        app.setSize(750, 550);
+        /*app.setSize(750, 550);
         app.setLocationRelativeTo(null);
         app.setExtendedState(JFrame.MAXIMIZED_BOTH);
         app.setVisible(true);
@@ -58,7 +56,7 @@ public class App extends JFrame {
             }
         });
 
-        t.start();
+        t.start();*/
     }
 
     public App(String htmlStr) {

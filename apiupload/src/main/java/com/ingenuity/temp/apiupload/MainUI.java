@@ -27,6 +27,14 @@ public class MainUI {
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
     private static final String DEFAULT_PROJECT_NAME = "Training Project";
+    private static final ComboOption[] IPAVIEW_VALUES = {
+            new ComboOption("projectmanager", "upload and save dataset"),
+            new ComboOption("upload", "upload dataset and view - don't save")
+    };
+    private static final ComboOption[] OPEN_IPA_VALUES = {
+            new ComboOption("yes", "open IPA after post request was executed"),
+            new ComboOption("no", "do not open IPA")
+    };
     private static final String DEFAULT_DATASET_NAME = "MyTestDataset";
 
     private static final ComboOption[] COLUMN_MAPPING_OPTIONS = {
@@ -103,7 +111,8 @@ public class MainUI {
     private static final String TEXT_LABEL_FIELD_TYPE_1 = "expvaltype:";
     private static final String TEXT_LABEL_FIELD_TYPE_2 = "expvaltype2:";
     private static final String TEXT_LABEL_FIELD_TYPE_3 = "expvaltype3:";
-
+    private static final String TEXT_LABEL_IPA_VIEW = "IPA View:";
+    private static final String TEXT_LABEL_OPEN_IPA = "Open IPA:";
 
 
     private JSplitPane mainPanel;
@@ -118,6 +127,8 @@ public class MainUI {
     private JTextField apiPath;
     private JTextField userName;
     private JTextField projectName;
+    private JComboBox ipaView;
+    private JComboBox openIPA;
     private JTextField datasetName;
     private JComboBox geneIDType;
     private JComboBox logLevel;
@@ -168,7 +179,7 @@ public class MainUI {
         scrollEditPane.setPreferredSize(new Dimension(SIZE_EDIT_PANE_WIDTH, SIZE_EDIT_PANE_HEIGHT));
         mainPanel.setLeftComponent(scrollEditPane);
 
-        JTextArea logArea = new JTextArea();
+        JTextPane logArea = new JTextPane();
         logArea.setEditable(false);
         logArea.setAutoscrolls(true);
         // initialize log4j appender to write in this text area
@@ -299,6 +310,12 @@ public class MainUI {
         editPanel.add(new JLabel(TEXT_LABEL_DATASET_NAME), UIUtil.constraints(0, ++panelRow));
         editPanel.add(datasetName, UIUtil.constraints(1, panelRow, 3, 1));
 
+        editPanel.add(new JLabel(TEXT_LABEL_IPA_VIEW), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(ipaView, UIUtil.constraints(1, panelRow, 3, 1));
+
+        editPanel.add(new JLabel(TEXT_LABEL_OPEN_IPA), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(openIPA, UIUtil.constraints(1, panelRow, 3, 1));
+
         editPanel.add(new JLabel(TEXT_LABEL_GENE_ID_TYPE), UIUtil.constraints(0, ++panelRow));
         editPanel.add(geneIDType, UIUtil.constraints(1, panelRow, 3, 1));
 
@@ -358,6 +375,8 @@ public class MainUI {
         userName = new JTextField(DEFAULT_USERNAME);
         password = new JPasswordField(DEFAULT_PASSWORD);
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
+        ipaView = new JComboBox(IPAVIEW_VALUES);
+        openIPA = new JComboBox(OPEN_IPA_VALUES);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
         geneIDType = new JComboBox(GENE_ID_TYPES);
         geneIDType.setSelectedIndex(1);
@@ -412,6 +431,14 @@ public class MainUI {
 
         String projectName = this.projectName.getText();
         log.info("uploading to project: " + projectName);
+        String ipaview = getStringValue(this.ipaView);
+        log.info("ipaview is: " + ipaview);
+        boolean openIPA = "yes".equals(getStringValue(this.openIPA)) ? true : false;
+        log.info("opening IPA after post request: " + openIPA);
+        if ("upload".equals(ipaview) && (!openIPA)) {
+            log.warn("you are uploading a dataset (without saving) and not opening IPA - nothing " +
+                    "will be saved in IPA!");
+        }
         String datasetName = this.datasetName.getText();
         log.info("uploading dataset with name: " + datasetName);
         String geneIDType = ((ComboOption)this.geneIDType.getSelectedItem()).getValue();
@@ -449,19 +476,19 @@ public class MainUI {
         }
 
 
-        List<Pair> data = buildPOSTData(filePath, projectName, datasetName, geneIDType,
+        List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, geneIDType,
                 columnMapping, fieldTypes);
         if (data.size() > 4) {
             // we have data, not just generic parameters
-            genericApi.executePost(uploadAPIPath, data, "output.txt");
+            genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
         }
         log.info("POST request sent");
         log.info("------------------------------------------------------------------------------");
     }
 
-    private List<Pair> buildPOSTData(String filePath, String projectName, String datasetName,
-                                     String geneidtype, List<String> columnMapping,
-                                     List<String> fieldTypes) {
+    private List<Pair> buildPOSTData(String filePath, String projectName, String ipaview,
+                                     String datasetName, String geneidtype,
+                                     List<String> columnMapping, List<String> fieldTypes) {
         log.info("building POST data");
 
         // read dataset
@@ -471,7 +498,7 @@ public class MainUI {
         log.info("setting generic parameters (projectname, ipaview, datasetname, geneidtype)");
         List<Pair> data = new ArrayList<Pair>();
         data.add(new Pair("projectname", projectName));
-        data.add(new Pair("ipaview", "projectmanager"));
+        data.add(new Pair("ipaview", ipaview));
         data.add(new Pair("datasetname", datasetName));
         data.add(new Pair("geneidtype", geneidtype));
 

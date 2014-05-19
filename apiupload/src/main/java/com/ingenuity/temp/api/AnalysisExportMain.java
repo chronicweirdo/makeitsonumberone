@@ -28,7 +28,7 @@ public class AnalysisExportMain {
         parameters.add(new Pair("art", "regulatoreffects"));
 
 
-        genericApi.executePost(path, parameters, apiAnalysis);
+        genericApi.executePost(path, parameters, apiAnalysis, false);
     }
 
     public static void main(String[] args) {
