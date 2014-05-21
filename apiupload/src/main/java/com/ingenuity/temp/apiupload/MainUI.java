@@ -13,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 /**
  * Created by scacoveanu on 4/29/2014.
@@ -23,19 +22,29 @@ public class MainUI {
     private static final Logger log = Logger.getLogger(MainUI.class);
 
     private static final String DEFAULT_SERVER_URL = "https://analysis-stable.ingenuity.com";
-    private static final String DEFAULT_API_PATH = "/pa/api/v1/dataupload";
+    public static final String API_PATH_DATASET_UPLOAD = "/pa/api/v1/dataupload";
+    public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
+    private static final ComboOption[] API_PATH_VALUES = {
+            new ComboOption(API_PATH_DATASET_UPLOAD, "upload dataset"),
+            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis")
+    };
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
     private static final String DEFAULT_PROJECT_NAME = "Training Project";
-    private static final ComboOption[] IPAVIEW_VALUES = {
+    private static final ComboOption[] IPAVIEW_DATASET_VALUES = {
             new ComboOption("projectmanager", "upload and save dataset"),
             new ComboOption("upload", "upload dataset and view - don't save")
+    };
+    private static final ComboOption[] IPAVIEW_ANALYSIS_VALUES = {
+            new ComboOption("projectmanager", "upload and save dataset and run analysis"),
+            new ComboOption("createanalysis", "upload dataset, create analysis and view it - don't save")
     };
     private static final ComboOption[] OPEN_IPA_VALUES = {
             new ComboOption("yes", "open IPA after post request was executed"),
             new ComboOption("no", "do not open IPA")
     };
     private static final String DEFAULT_DATASET_NAME = "MyTestDataset";
+    private static final String DEFAULT_ANALYSIS_NAME = "MyTestAnalysis";
 
     private static final ComboOption[] COLUMN_MAPPING_OPTIONS = {
             new ComboOption("geneid", "the gene or protein IDs to be uploaded to IPA"),
@@ -113,6 +122,7 @@ public class MainUI {
     private static final String TEXT_LABEL_FIELD_TYPE_3 = "expvaltype3:";
     private static final String TEXT_LABEL_IPA_VIEW = "IPA View:";
     private static final String TEXT_LABEL_OPEN_IPA = "Open IPA:";
+    private static final String TEXT_LABEL_ANALYSIS_NAME = "Analysis name:";
 
 
     private JSplitPane mainPanel;
@@ -124,12 +134,13 @@ public class MainUI {
     private JTextField filePath;
     private JButton selectFile;
     private JTextField serverPath;
-    private JTextField apiPath;
+    private JComboBox apiPath;
     private JTextField userName;
     private JTextField projectName;
     private JComboBox ipaView;
     private JComboBox openIPA;
     private JTextField datasetName;
+    private JTextField analysisName;
     private JComboBox geneIDType;
     private JComboBox logLevel;
     private JPasswordField password;
@@ -248,6 +259,17 @@ public class MainUI {
                 pickFile();
             }
         });
+        apiPath.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        buildEditPanel();
+                    }
+                });
+            }
+        });
         submit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -310,6 +332,26 @@ public class MainUI {
         editPanel.add(new JLabel(TEXT_LABEL_DATASET_NAME), UIUtil.constraints(0, ++panelRow));
         editPanel.add(datasetName, UIUtil.constraints(1, panelRow, 3, 1));
 
+        if (apiPath.getSelectedItem().equals(API_PATH_VALUES[1])) {
+            editPanel.add(new JLabel(TEXT_LABEL_ANALYSIS_NAME), UIUtil.constraints(0, ++panelRow));
+            editPanel.add(analysisName, UIUtil.constraints(1, panelRow, 3, 1));
+        }
+
+        if (apiPath.getSelectedItem().equals(API_PATH_VALUES[1])) {
+            int selectedIndex = ipaView.getSelectedIndex();
+            ipaView.removeAllItems();
+            for (ComboOption item: IPAVIEW_ANALYSIS_VALUES) {
+                ipaView.addItem(item);
+            }
+            ipaView.setSelectedIndex(selectedIndex);
+        } else {
+            int selectedIndex = ipaView.getSelectedIndex();
+            ipaView.removeAllItems();
+            for (ComboOption item: IPAVIEW_DATASET_VALUES) {
+                ipaView.addItem(item);
+            }
+            ipaView.setSelectedIndex(selectedIndex);
+        }
         editPanel.add(new JLabel(TEXT_LABEL_IPA_VIEW), UIUtil.constraints(0, ++panelRow));
         editPanel.add(ipaView, UIUtil.constraints(1, panelRow, 3, 1));
 
@@ -371,13 +413,14 @@ public class MainUI {
         filePath.setEditable(false);
         selectFile = new JButton(TEXT_FILE_CHOOSER_BUTTON);
         serverPath = new JTextField(DEFAULT_SERVER_URL);
-        apiPath = new JTextField(DEFAULT_API_PATH);
+        apiPath = new JComboBox(API_PATH_VALUES);
         userName = new JTextField(DEFAULT_USERNAME);
         password = new JPasswordField(DEFAULT_PASSWORD);
         projectName = new JTextField(DEFAULT_PROJECT_NAME);
-        ipaView = new JComboBox(IPAVIEW_VALUES);
+        ipaView = new JComboBox(IPAVIEW_DATASET_VALUES);
         openIPA = new JComboBox(OPEN_IPA_VALUES);
         datasetName = new JTextField(DEFAULT_DATASET_NAME);
+        analysisName = new JTextField(DEFAULT_ANALYSIS_NAME);
         geneIDType = new JComboBox(GENE_ID_TYPES);
         geneIDType.setSelectedIndex(1);
         logLevel = new JComboBox(LOG_LEVELS);
@@ -425,8 +468,12 @@ public class MainUI {
         log.info("initializing generic api for server: " + server);
         GenericApi genericApi = new GenericApi(client, server);
 
-        String uploadAPIPath = this.apiPath.getText();
+        String uploadAPIPath = getStringValue(apiPath);
         log.info("using API path: " + uploadAPIPath);
+        String analysisName = this.analysisName.getText();
+        if (API_PATH_DATASET_UPLOAD.equals(uploadAPIPath)) {
+            analysisName = null;
+        }
         String filePath = this.filePath.getText();
 
         String projectName = this.projectName.getText();
@@ -476,8 +523,8 @@ public class MainUI {
         }
 
 
-        List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, geneIDType,
-                columnMapping, fieldTypes);
+        List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
+                geneIDType, columnMapping, fieldTypes);
         if (data.size() > 4) {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
@@ -487,7 +534,7 @@ public class MainUI {
     }
 
     private List<Pair> buildPOSTData(String filePath, String projectName, String ipaview,
-                                     String datasetName, String geneidtype,
+                                     String datasetName, String analysisName, String geneidtype,
                                      List<String> columnMapping, List<String> fieldTypes) {
         log.info("building POST data");
 
@@ -500,6 +547,9 @@ public class MainUI {
         data.add(new Pair("projectname", projectName));
         data.add(new Pair("ipaview", ipaview));
         data.add(new Pair("datasetname", datasetName));
+        if (analysisName != null) {
+            data.add(new Pair("analysisname", analysisName));
+        }
         data.add(new Pair("geneidtype", geneidtype));
 
         // set field types
