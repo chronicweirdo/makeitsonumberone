@@ -32,6 +32,15 @@ public class TestTemplate {
     }
 
     /**
+     * Evaluating template "Hello, ${name}" with no value for variable "name" raises a MissingValueError.
+     */
+
+    /**
+     * Evaluating template "Hello, ${name}" with values "Hi" and "Reader" for variables "doesnotexist" and "name",
+     * respectively, results in the string "Hello, Reader".
+     */
+
+    /**
      * Evaluate template "${one}, ${two}, ${three}" with values "1", "${foo}" and "3" and verify that the template
      * engine renders the result as "1, ${foo}, 3".
      */
