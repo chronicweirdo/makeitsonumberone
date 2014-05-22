@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="makeitso.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,8 +107,8 @@
       <file leaf-file-name="TestTemplate.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5759494" vertical-offset="494" max-vertical-offset="1144">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.6455696" vertical-offset="494" max-vertical-offset="1342">
+              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#554#555#0" expanded="true" />
@@ -114,6 +116,16 @@
                 <element signature="e#669#670#0" expanded="true" />
                 <element signature="e#728#729#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MissingValueException.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="286">
+              <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -145,7 +157,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/bmo/pom.xml" />
         <option value="$PROJECT_DIR$/fitnesse/pom.xml" />
         <option value="$PROJECT_DIR$/bmo/src/main/java/com/chronicweirdo/bmo/progressive/HTMLEditorUtil.java" />
         <option value="$PROJECT_DIR$/bmo/src/main/java/com/chronicweirdo/bmo/Main2.java" />
@@ -196,6 +207,7 @@
         <option value="$PROJECT_DIR$/tdd/pom.xml" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
         <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
+        <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" />
       </list>
     </option>
   </component>
@@ -365,6 +377,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\workspace\makeitso" />
       <recent name="C:\Users\Silviu\workspace\makeitso\wol" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.chronicweirdo.tdd" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Silviu\workspace\makeitso\wol\src\main\java" />
@@ -857,12 +872,12 @@
       <workItem from="1400484018863" duration="11023000" />
       <workItem from="1400589941715" duration="1149000" />
       <workItem from="1400747487131" duration="840000" />
-      <workItem from="1400749141291" duration="4629000" />
+      <workItem from="1400749141291" duration="4864000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108380000" />
+    <option name="totallyTimeSpent" value="108615000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -955,13 +970,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/javax/swing/JComponent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="14586" max-vertical-offset="122958">
-          <caret line="663" column="0" selection-start-line="663" selection-start-column="0" selection-end-line="663" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.7.0_51/src.zip!/javax/swing/text/JTextComponent.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7062" max-vertical-offset="111738">
@@ -1325,10 +1333,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="286">
+          <caret line="5" column="59" selection-start-line="5" selection-start-column="59" selection-end-line="5" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5759494" vertical-offset="494" max-vertical-offset="1144">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.6455696" vertical-offset="494" max-vertical-offset="1342">
+          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#554#555#0" expanded="true" />
