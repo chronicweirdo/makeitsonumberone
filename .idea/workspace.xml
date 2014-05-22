@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/apiupload/apiupload.iml" afterPath="$PROJECT_DIR$/apiupload/apiupload.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bmo/bmo.iml" afterPath="$PROJECT_DIR$/bmo/bmo.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/fitnesse/fitnesse.iml" afterPath="$PROJECT_DIR$/fitnesse/fitnesse.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
     </list>
     <ignored path="makeitso.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -129,10 +118,10 @@
         <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.5221519" vertical-offset="0" max-vertical-offset="632">
-              <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="20" />
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
               <folding>
                 <element signature="e#244#245#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -863,12 +852,12 @@
       <workItem from="1400484018863" duration="11023000" />
       <workItem from="1400589941715" duration="1149000" />
       <workItem from="1400747487131" duration="840000" />
-      <workItem from="1400749141291" duration="375000" />
+      <workItem from="1400749141291" duration="691000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104126000" />
+    <option name="totallyTimeSpent" value="104442000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1332,10 +1321,10 @@
     <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5221519" vertical-offset="0" max-vertical-offset="632">
-          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="20" />
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="e#244#245#0" expanded="true" />
-            <element signature="e#271#272#0" expanded="true" />
+            <element signature="e#282#283#0" expanded="true" />
           </folding>
         </state>
       </provider>
