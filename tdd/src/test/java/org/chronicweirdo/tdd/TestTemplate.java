@@ -32,14 +32,9 @@ public class TestTemplate {
     /*
      * Evaluating template "Hello, ${name}" with no value for variable "name" raises a MissingValueError.
      */
-    @Test
+    @Test(expected = MissingValueException.class)
     public void missingValueRaisesException() throws Exception {
-        try {
-            new Template("${foo}").evaluate();
-            fail("evaluate() shold throw an exception if a variable was left without a value!");
-        } catch (MissingValueException expected) {
-
-        }
+        new Template("${foo}").evaluate();
     }
 
     @Test
