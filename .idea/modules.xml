@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/fitnesse/fitnesse.iml" filepath="$PROJECT_DIR$/fitnesse/fitnesse.iml" />
       <module fileurl="file://$PROJECT_DIR$/makeitso.iml" filepath="$PROJECT_DIR$/makeitso.iml" />
       <module fileurl="file://$PROJECT_DIR$/naframa/naframa.iml" filepath="$PROJECT_DIR$/naframa/naframa.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tdd/tdd.iml" filepath="$PROJECT_DIR$/tdd/tdd.iml" />
       <module fileurl="file://$PROJECT_DIR$/wol/wol.iml" filepath="$PROJECT_DIR$/wol/wol.iml" />
     </modules>
   </component>
