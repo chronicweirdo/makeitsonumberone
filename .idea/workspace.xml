@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
     </list>
     <ignored path="makeitso.iws" />
@@ -104,11 +102,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="TestTemplate.java" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="TestTemplate.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="1342">
-              <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
+            <state vertical-scroll-proportion="0.8607595" vertical-offset="710" max-vertical-offset="1452">
+              <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#554#555#0" expanded="true" />
@@ -132,11 +130,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Template.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="Template.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.0712025" vertical-offset="269" max-vertical-offset="1166">
-              <caret line="43" column="79" selection-start-line="43" selection-start-column="79" selection-end-line="43" selection-end-column="79" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="269" max-vertical-offset="1166">
+              <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#494#495#0" expanded="true" />
@@ -207,9 +205,9 @@
         <option value="$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/MainUI.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tdd/pom.xml" />
-        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
+        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
       </list>
     </option>
   </component>
@@ -881,12 +879,12 @@
       <workItem from="1400484018863" duration="11023000" />
       <workItem from="1400589941715" duration="1149000" />
       <workItem from="1400747487131" duration="840000" />
-      <workItem from="1400749141291" duration="7077000" />
+      <workItem from="1400749141291" duration="8439000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="110828000" />
+    <option name="totallyTimeSpent" value="112190000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1330,20 +1328,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="468" max-vertical-offset="1342">
-          <caret line="41" column="9" selection-start-line="41" selection-start-column="9" selection-end-line="41" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#554#555#0" expanded="true" />
-            <element signature="e#606#607#0" expanded="true" />
-            <element signature="e#669#670#0" expanded="true" />
-            <element signature="e#728#729#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="352">
@@ -1356,12 +1340,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.0712025" vertical-offset="269" max-vertical-offset="1166">
-          <caret line="43" column="79" selection-start-line="43" selection-start-column="79" selection-end-line="43" selection-end-column="79" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="269" max-vertical-offset="1166">
+          <caret line="38" column="5" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#494#495#0" expanded="true" />
             <element signature="e#545#546#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8607595" vertical-offset="710" max-vertical-offset="1452">
+          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#554#555#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#669#670#0" expanded="true" />
+            <element signature="e#728#729#0" expanded="true" />
           </folding>
         </state>
       </provider>

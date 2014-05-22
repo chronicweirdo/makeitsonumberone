@@ -52,4 +52,9 @@ public class TestTemplate {
      * Evaluate template "${one}, ${two}, ${three}" with values "1", "${foo}" and "3" and verify that the template
      * engine renders the result as "1, ${foo}, 3".
      */
+
+    /*
+        Verify that a template of 100 words and 20 variables with values of approximately 15 characters each is
+        evaluated in 200 milliseconds or less.
+     */
 }
