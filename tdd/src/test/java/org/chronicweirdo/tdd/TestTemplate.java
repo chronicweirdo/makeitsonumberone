@@ -39,6 +39,13 @@ public class TestTemplate {
      * Evaluating template "Hello, ${name}" with values "Hi" and "Reader" for variables "doesnotexist" and "name",
      * respectively, results in the string "Hello, Reader".
      */
+    @Test
+    public void unknownVariablesAreIgnored() throws Exception {
+        Template template = new Template("Hello, ${name}");
+        template.set("name", "Reader");
+        template.set("doesnotexist", "Hi");
+        assertEquals("Hello, Reader", template.evaluate());
+    }
 
     /**
      * Evaluate template "${one}, ${two}, ${three}" with values "1", "${foo}" and "3" and verify that the template
