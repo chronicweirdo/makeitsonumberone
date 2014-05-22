@@ -7,6 +7,9 @@ import java.util.regex.Pattern;
 
 /**
  * Created by scacoveanu on 5/22/2014.
+ *
+ * Spike - (Extreme Programming vocabulary) the exploratory process of figuring out whether a given solution would solve
+ * our problem or what might be the best approach to solving a given problem.
  */
 public class Template {
 
