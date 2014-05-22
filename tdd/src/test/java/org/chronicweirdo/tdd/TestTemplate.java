@@ -30,4 +30,9 @@ public class TestTemplate {
         template.set("three", "3");
         assertEquals("1, 2, 3", template.evaluate());
     }
+
+    /**
+     * Evaluate template "${one}, ${two}, ${three}" with values "1", "${foo}" and "3" and verify that the template
+     * engine renders the result as "1, ${foo}, 3".
+     */
 }
