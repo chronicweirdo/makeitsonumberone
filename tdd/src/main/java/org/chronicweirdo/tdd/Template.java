@@ -2,6 +2,8 @@ package org.chronicweirdo.tdd;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by scacoveanu on 5/22/2014.
@@ -37,8 +39,9 @@ public class Template {
     }
 
     private void checkForMissingValues(String result) {
-        if (result.matches(".*\\$\\{.+\\}.*")) {
-            throw new MissingValueException();
+        Matcher matcher = Pattern.compile(".*\\$\\{.+\\}.*").matcher(result);
+        if (matcher.find()) {
+            throw new MissingValueException("No value for " + matcher.group());
         }
     }
 }
