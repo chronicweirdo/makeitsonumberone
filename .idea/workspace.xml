@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
     </list>
     <ignored path="makeitso.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -105,8 +105,8 @@
       <file leaf-file-name="TestTemplate.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.721519" vertical-offset="28" max-vertical-offset="660">
-              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.79113925" vertical-offset="28" max-vertical-offset="660">
+              <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -191,8 +191,8 @@
         <option value="$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/MainUI.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tdd/pom.xml" />
-        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
+        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
       </list>
     </option>
   </component>
@@ -854,12 +854,12 @@
       <workItem from="1400484018863" duration="11023000" />
       <workItem from="1400589941715" duration="1149000" />
       <workItem from="1400747487131" duration="840000" />
-      <workItem from="1400749141291" duration="1027000" />
+      <workItem from="1400749141291" duration="1121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104778000" />
+    <option name="totallyTimeSpent" value="104872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1325,8 +1325,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.721519" vertical-offset="28" max-vertical-offset="660">
-          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.79113925" vertical-offset="28" max-vertical-offset="660">
+          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
