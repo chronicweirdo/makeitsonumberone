@@ -1,5 +1,7 @@
 package org.chronicweirdo.tdd;
 
+import java.util.Map;
+
 /**
  * Created by scacoveanu on 5/23/2014.
  */
@@ -26,5 +28,9 @@ public class Variable implements Segment {
     @Override
     public int hashCode() {
         return name.hashCode();
+    }
+
+    public String evaluate(Map<String, String> variables) {
+        return variables.get(name);
     }
 }
