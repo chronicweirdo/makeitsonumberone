@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e008d62-8a9e-44b2-9745-0d58de67ace0" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/RegexLearningTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/TemplateParse.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplateParse.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" afterPath="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="makeitso.iws" />
@@ -118,8 +120,8 @@
       <file leaf-file-name="TestTemplate.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="1430">
-              <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="1430">
+              <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,10 +129,36 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RegexLearningTest.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="TestTemplateParse.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplateParse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.721519" vertical-offset="138" max-vertical-offset="770">
+              <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TemplateParse.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/TemplateParse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="418">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#209#210#0" expanded="true" />
+                <element signature="e#267#268#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RegexLearningTest.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/RegexLearningTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7563291" vertical-offset="336" max-vertical-offset="990">
+            <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="990">
               <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -152,8 +180,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/bmo/src/main/java/com/chronicweirdo/bmo/Main2.java" />
-        <option value="$PROJECT_DIR$/bmo/page1.html" />
         <option value="$PROJECT_DIR$/bmo/src/main/java/com/chronicweirdo/bmo/progressive/HTMLEditor.java" />
         <option value="$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/Main.java" />
         <option value="$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/ComboOptionComboBoxEditor.java" />
@@ -199,10 +225,12 @@
         <option value="$PROJECT_DIR$/tdd/pom.xml" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/MissingValueException.java" />
         <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplatePerformance.java" />
-        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
         <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/Template.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/RegexLearningTest.java" />
+        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java" />
+        <option value="$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/TemplateParse.java" />
+        <option value="$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplateParse.java" />
       </list>
     </option>
   </component>
@@ -394,119 +422,7 @@
       <recent name="C:\workspace\makeitso" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RegexLearningTest.testFindStartAndEnd">
-    <configuration default="false" name="TestTemplate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="tdd" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
-      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.TestTemplate" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestTemplate.variablesGetProcessedJustOnce" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="tdd" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
-      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.TestTemplate" />
-      <option name="METHOD_NAME" value="variablesGetProcessedJustOnce" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="RegexLearningTest.testHowGroupCountWorks" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="tdd" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
-      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.RegexLearningTest" />
-      <option name="METHOD_NAME" value="testHowGroupCountWorks" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
-    <configuration default="false" name="RegexLearningTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="tdd" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
-      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.RegexLearningTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
+  <component name="RunManager" selected="JUnit.TestTemplateParse.templateWithOnlyPlainTest">
     <configuration default="false" name="RegexLearningTest.testFindStartAndEnd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -520,6 +436,118 @@
       <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
       <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.RegexLearningTest" />
       <option name="METHOD_NAME" value="testFindStartAndEnd" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="org.chronicweirdo.tdd in tdd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tdd" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestTemplateParse" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tdd" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
+      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.TestTemplateParse" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestTemplateParse.emptyTemplateRendersAsEmptyString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tdd" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
+      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.TestTemplateParse" />
+      <option name="METHOD_NAME" value="emptyTemplateRendersAsEmptyString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="TestTemplateParse.templateWithOnlyPlainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.chronicweirdo.tdd.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="tdd" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.chronicweirdo.tdd" />
+      <option name="MAIN_CLASS_NAME" value="org.chronicweirdo.tdd.TestTemplateParse" />
+      <option name="METHOD_NAME" value="templateWithOnlyPlainTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -918,20 +946,20 @@
       <item index="0" class="java.lang.String" itemvalue="Application.MainUI" />
       <item index="1" class="java.lang.String" itemvalue="Application.MyMain" />
       <item index="2" class="java.lang.String" itemvalue="Application.MyMain (1)" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.TestTemplate" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.TestTemplate.variablesGetProcessedJustOnce" />
-      <item index="5" class="java.lang.String" itemvalue="Tomcat Server.tiger" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testHowGroupCountWorks" />
-      <item index="7" class="java.lang.String" itemvalue="JUnit.RegexLearningTest" />
-      <item index="8" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testFindStartAndEnd" />
+      <item index="3" class="java.lang.String" itemvalue="Tomcat Server.tiger" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testFindStartAndEnd" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.org.chronicweirdo.tdd in tdd" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.TestTemplateParse" />
+      <item index="7" class="java.lang.String" itemvalue="JUnit.TestTemplateParse.emptyTemplateRendersAsEmptyString" />
+      <item index="8" class="java.lang.String" itemvalue="JUnit.TestTemplateParse.templateWithOnlyPlainTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testFindStartAndEnd" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.RegexLearningTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testHowGroupCountWorks" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.TestTemplate" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.TestTemplate.variablesGetProcessedJustOnce" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.TestTemplateParse.templateWithOnlyPlainTest" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.TestTemplateParse.emptyTemplateRendersAsEmptyString" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.TestTemplateParse" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.org.chronicweirdo.tdd in tdd" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.RegexLearningTest.testFindStartAndEnd" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -991,12 +1019,12 @@
       <workItem from="1400761552420" duration="183000" />
       <workItem from="1400761769928" duration="2113000" />
       <workItem from="1400832015938" duration="1655000" />
-      <workItem from="1400838351345" duration="5143000" />
+      <workItem from="1400838351345" duration="5789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123779000" />
+    <option name="totallyTimeSpent" value="124425000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1091,20 +1119,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/naframa/src/main/java/com/chronicweirdo/naframa/LargeTranscoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.42824858" vertical-offset="853" max-vertical-offset="1738">
-          <caret line="56" column="24" selection-start-line="56" selection-start-column="24" selection-end-line="56" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/uiAnalysis.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2596">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apiupload/src/main/java/com/ingenuity/temp/apiupload/DatasetReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5276836" vertical-offset="105" max-vertical-offset="990">
@@ -1444,20 +1458,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
+    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/RegexLearningTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="1430">
-          <caret line="60" column="62" selection-start-line="60" selection-start-column="62" selection-end-line="60" selection-end-column="62" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="336" max-vertical-offset="990">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/RegexLearningTest.java">
+    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplate.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7563291" vertical-offset="336" max-vertical-offset="990">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="798" max-vertical-offset="1430">
+          <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tdd/src/main/java/org/chronicweirdo/tdd/TemplateParse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="418">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#267#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tdd/src/test/java/org/chronicweirdo/tdd/TestTemplateParse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.721519" vertical-offset="138" max-vertical-offset="770">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
