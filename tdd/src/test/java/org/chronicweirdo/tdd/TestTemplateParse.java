@@ -39,4 +39,11 @@ public class TestTemplateParse {
         assertEquals(Arrays.asList(expected), actual);
     }
 
+    @Test
+    public void parsingTemplateIntoSegmentObjects() throws Exception {
+        TemplateParse parse = new TemplateParse();
+        List<Segment> segments = parse.parseSegments("a ${b} c ${d}");
+        assertSegments(segments, new PlainText("a "), new Variable("b"), new PlainText(" c "), new Variable("d"));
+    }
+
 }

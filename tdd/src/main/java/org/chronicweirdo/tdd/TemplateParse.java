@@ -53,4 +53,7 @@ public class TemplateParse {
     }
 
 
+    public List<Segment> parseSegments(String template) {
+        return null;
+    }
 }
