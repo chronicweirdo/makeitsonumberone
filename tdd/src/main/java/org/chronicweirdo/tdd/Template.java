@@ -48,20 +48,4 @@ public class Template {
             result.append(segment);
         }
     }
-
-    private String replaceVariables() {
-        String result = templateText;
-        for (Map.Entry<String, String> entry: variables.entrySet()) {
-            String regex = "\\$\\{" + entry.getKey() + "\\}";
-            result = result.replaceAll(regex, entry.getValue());
-        }
-        return result;
-    }
-
-    private void checkForMissingValues(String result) {
-        Matcher matcher = Pattern.compile(".*\\$\\{.+\\}.*").matcher(result);
-        if (matcher.find()) {
-            throw new MissingValueException("No value for " + matcher.group());
-        }
-    }
 }
