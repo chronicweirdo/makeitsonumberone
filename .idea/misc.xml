@@ -3,6 +3,9 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
+  <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/tiger" />
+  </component>
   <component name="IdProvider" IDEtalkID="61E6748300D8395C79C0BC88489D3E48" />
   <component name="MavenProjectsManager">
     <option name="originalFiles">

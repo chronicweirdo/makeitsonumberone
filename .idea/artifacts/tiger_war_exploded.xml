@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="tiger:war exploded">
+    <output-path>$PROJECT_DIR$/tiger/target/tiger</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="tiger/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="tiger" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -27,16 +27,17 @@
         <module name="fitnesse" />
         <module name="naframa" />
         <module name="tdd" />
+        <module name="tiger" />
         <module name="wol" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="apiupload" target="1.7" />
-      <module name="bmo" target="1.7" />
-      <module name="fitnesse" target="1.7" />
-      <module name="naframa" target="1.7" />
-      <module name="tdd" target="1.7" />
-      <module name="wol" target="1.7" />
+      <module name="apiupload" target="1.5" />
+      <module name="bmo" target="1.5" />
+      <module name="fitnesse" target="1.5" />
+      <module name="naframa" target="1.5" />
+      <module name="tdd" target="1.5" />
+      <module name="wol" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
