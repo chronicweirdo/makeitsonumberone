@@ -8,3 +8,5 @@
 /.gradle
 */target/*
 */.idea/*
+/.idea/workspace.xml
+/.idea
