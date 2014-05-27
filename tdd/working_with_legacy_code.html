@@ -1,0 +1,62 @@
+<html>
+<head>
+    <title>Working with legacy code</title>
+</head>
+<body>
+    <h1>Working with legacy code</h1>
+    <h2>Test-driven legacy development</h2>
+    <ul>
+        <li>Begin by writing tests around the code we want to change.</li>
+        <li>
+            Process for working with legacy code (Michael Feathers):
+            <ol>
+                <li>Identify change points (analyzing the change)</li>
+                <li>Identify inflection points (analyzing the change)</li>
+                <li>
+                    Cover the inflection point (preparing for the change):
+                    <ol>
+                        <li>Break external dependencies</li>
+                        <li>Break internal dependencies</li>
+                        <li>Write tests</li>
+                    </ol>
+                </li>
+                <li>Make changes (test-driving the change)</li>
+                <li>Refactor covered code (test-driving the change)</li>
+            </ol>
+        </li>
+    </ul>
+    <h2>Analyzing the change</h2>
+    <p>
+        Change points are the places in the code base where we need to edit code in order to implement a desired change
+        - we identify them.
+    </p>
+    <p>
+        The inflection point (test point) is the point "downstream" where we can detect any relevant change in the
+        system's behavior. We can choose close-proximity or distant inflection points to test.
+    </p>
+    <h2>Preparing for the change</h2>
+    <ul>
+        <li>
+            Characterization tests: Cover inflection point with tests that nail down the current behavior before making
+            the change.
+        </li>
+        <li>We might have to break dependencies through a seam we can manipulate in our tests.</li>
+        <li>
+            Characterization tests are also learning tests. We use them to verify assumptions we've made while
+            identifying change points.
+        </li>
+    </ul>
+    <h2>Test-driving the change</h2>
+    <ul>
+        <li>First add tests for the desired new functionality.</li>
+        <li>Implement the change.</li>
+        <li>Characterization tests tell us if we broke anything.</li>
+        <li>New tests tell us if we implemented the new feature.</li>
+        <li>Remember to refactor.</li>
+    </ul>
+    <h2>References</h2>
+    <ul>
+        <li>"Working effectively with legacy code" by Michael Feathers</li>
+    </ul>
+</body>
+</html>

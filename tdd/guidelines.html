@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Guidelines and Unit-testing patterns</title>
+</head>
+<body>
+    <h1>Guidelines for testable designs</h1>
+    <ul>
+        <li>Choose composition over inheritance.</li>
+        <li>Avoid static and the Singleton.</li>
+        <li>Isolate dependencies.</li>
+        <li>Inject dependencies.</li>
+    </ul>
+    <h1>Unit-testing patterns</h1>
+    <h2>Assetion patterns</h2>
+    <ul>
+        <li>Resulting state assertion.</li>
+        <li>Guard assetion: assert the initial state too.</li>
+        <li>
+            Delta assertion: when we don't know the initiali state of the test object we assert a difference between
+            initial and final states.
+        </li>
+        <li>Custom assertion: custom method to make a series of complicated assertions.</li>
+        <li>
+            Interaction assertion: verify that the test object interracts with collaborator objects the way we expect
+            it to.
+        </li>
+    </ul>
+    <h2>Fixture patterns</h2>
+    <ul>
+        <li>Parameterized creation method: to create test objects and avoid code duplication.</li>
+        <li>Object mother: creating complex test objects, in specific states.</li>
+        <li>Automated teardown (ex. clean up database objects created during test).</li>
+    </ul>
+    <h2>Test patterns</h2>
+    <ul>
+        <li>Parameterized test (see org.chronicweirdo.tdd.ParameterizedTest).</li>
+        <li>
+            Self-shunt: test class provides functionality to test object (ex. implementing a service injected in the
+            test object).
+        </li>
+        <li>
+            Intimate inner class: can be anonymous (access finla variables in test method) or nested (cleaner).
+        </li>
+        <li>Priviledged access (see org.chronicweirdo.tdd.ServiceUserTest).</li>
+    </ul>
+</body>
+</html>
