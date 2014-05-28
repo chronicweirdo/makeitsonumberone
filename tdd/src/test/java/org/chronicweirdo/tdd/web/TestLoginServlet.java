@@ -7,14 +7,14 @@ import org.springframework.mock.web.MockHttpServletRequest;
 import org.springframework.mock.web.MockHttpServletResponse;
 
 import javax.servlet.http.HttpServlet;
+import static org.chronicweirdo.tdd.web.LoginServlet.*;
 
 /**
  * Created by scacoveanu on 5/28/2014.
  */
 public class TestLoginServlet {
 
-    public static final String J_USERNAME = "j_username";
-    public static final String J_PASSWORD = "j_password";
+
     public static final String SESSION_USERNAME = "username";
     public static final String VALID_USER = "validuser";
     public static final String CORRECT_PASSWORD = "correctpassword";

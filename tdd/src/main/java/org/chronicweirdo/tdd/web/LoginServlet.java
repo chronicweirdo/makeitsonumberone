@@ -11,14 +11,17 @@ import java.io.IOException;
  */
 public class LoginServlet extends HttpServlet {
 
+    public static final String J_USERNAME = "j_username";
+    public static final String J_PASSWORD = "j_password";
+
     protected AuthenticationService getAuthenticationService() {
         return null;
     }
 
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String user = request.getParameter("j_username");
-        String password = request.getParameter("j_password");
+        String user = request.getParameter(J_USERNAME);
+        String password = request.getParameter(J_PASSWORD);
         if (getAuthenticationService().isValidLogin(user, password)) {
             response.sendRedirect("/frontpage");
             request.getSession().setAttribute("username", user);
