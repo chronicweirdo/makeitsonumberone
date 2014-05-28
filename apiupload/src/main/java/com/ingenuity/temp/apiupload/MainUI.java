@@ -535,7 +535,7 @@ public class MainUI {
         List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
                 geneIDType, columnMapping, fieldTypes);
         // add additional parameters
-
+        data.addAll(parseParameters(additionalParameters.getText()));
         if (data.size() > 4) {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
@@ -546,8 +546,12 @@ public class MainUI {
 
     protected List<Pair> parseParameters(String parameters) {
         List<Pair> result = new ArrayList<>();
-        //String pattern = "()"
-        //Matcher matcher = Pattern.compile(pattern).matcher(parameters);
+        String pattern = "([^ =&]+)=([^ =&]+)";
+        Matcher matcher = Pattern.compile(pattern).matcher(parameters);
+        while (matcher.find()) {
+            Pair parameter = new Pair(matcher.group(1), matcher.group(2));
+            result.add(parameter);
+        }
         return result;
     }
 
