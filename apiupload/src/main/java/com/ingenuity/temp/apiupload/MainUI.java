@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by scacoveanu on 4/29/2014.
@@ -123,6 +125,8 @@ public class MainUI {
     private static final String TEXT_LABEL_IPA_VIEW = "IPA View:";
     private static final String TEXT_LABEL_OPEN_IPA = "Open IPA:";
     private static final String TEXT_LABEL_ANALYSIS_NAME = "Analysis name:";
+    public static final String TEXT_LABEL_LOG_LEVEL = "Log level:";
+    public static final String TEXT_LABEL_ADDITIONAL_PARAMETERS = "Additional parameters:";
 
 
     private JSplitPane mainPanel;
@@ -141,6 +145,7 @@ public class MainUI {
     private JComboBox openIPA;
     private JTextField datasetName;
     private JTextField analysisName;
+    private JTextField additionalParameters;
     private JComboBox geneIDType;
     private JComboBox logLevel;
     private JPasswordField password;
@@ -397,8 +402,11 @@ public class MainUI {
             fieldsStartAtRow = -1;
         }
 
-        editPanel.add(new JLabel("Log level:"), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(new JLabel(TEXT_LABEL_LOG_LEVEL), UIUtil.constraints(0, ++panelRow));
         editPanel.add(logLevel, UIUtil.constraints(1, panelRow, 3, 1));
+
+        editPanel.add(new JLabel(TEXT_LABEL_ADDITIONAL_PARAMETERS), UIUtil.constraints(0, ++panelRow));
+        editPanel.add(additionalParameters, UIUtil.constraints(1, panelRow, 3, 1));
 
         editPanel.add(submit, UIUtil.constraints(3, ++panelRow));
 
@@ -424,6 +432,7 @@ public class MainUI {
         geneIDType = new JComboBox(GENE_ID_TYPES);
         geneIDType.setSelectedIndex(1);
         logLevel = new JComboBox(LOG_LEVELS);
+        additionalParameters = new JTextField();
         submit = new JButton(TEXT_SUBMIT_BUTTON);
         submit.setEnabled(false);
     }
@@ -525,12 +534,21 @@ public class MainUI {
 
         List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
                 geneIDType, columnMapping, fieldTypes);
+        // add additional parameters
+
         if (data.size() > 4) {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
         }
         log.info("POST request sent");
         log.info("------------------------------------------------------------------------------");
+    }
+
+    protected List<Pair> parseParameters(String parameters) {
+        List<Pair> result = new ArrayList<>();
+        //String pattern = "()"
+        //Matcher matcher = Pattern.compile(pattern).matcher(parameters);
+        return result;
     }
 
     private List<Pair> buildPOSTData(String filePath, String projectName, String ipaview,
