@@ -11,7 +11,24 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class LoginController implements Controller {
 
+    public static final String J_USERNAME = "j_username";
+    public static final String J_PASSWORD = "j_password";
+    public static final String FRONTPAGE = "frontpage";
+    public static final String WRONGPASSWORD = "wrongpassword";
+    private AuthenticationService authenticationService;
+
     public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
-        return new ModelAndView("wrongpassword");
+        String user = httpServletRequest.getParameter(J_USERNAME);
+        String password = httpServletRequest.getParameter(J_PASSWORD);
+        if (authenticationService.isValidLogin(user, password)) {
+            return new ModelAndView(FRONTPAGE);
+        } else {
+            return new ModelAndView(WRONGPASSWORD);
+        }
+    }
+
+
+    public void setAuthenticationService(AuthenticationService authenticationService) {
+        this.authenticationService = authenticationService;
     }
 }
