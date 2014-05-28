@@ -11,8 +11,19 @@ import java.io.IOException;
  */
 public class LoginServlet extends HttpServlet {
 
+    protected AuthenticationService getAuthenticationService() {
+        return null;
+    }
+
     @Override
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.sendRedirect("/invalidlogin");
+        String user = request.getParameter("j_username");
+        String password = request.getParameter("j_password");
+        if (getAuthenticationService().isValidLogin(user, password)) {
+            response.sendRedirect("/frontpage");
+            request.getSession().setAttribute("username", user);
+        } else {
+            response.sendRedirect("/invalidlogin");
+        }
     }
 }
