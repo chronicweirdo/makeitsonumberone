@@ -9,6 +9,6 @@ public class MyJspTestCase extends HtmlTestCase {
 
     @Override
     protected String getWebRoot() {
-        return "./websrc/jsp";
+        return "tdd/src/main/webapp/jsp";
     }
 }
