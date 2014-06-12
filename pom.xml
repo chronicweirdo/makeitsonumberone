@@ -17,6 +17,7 @@
         <module>wol</module>
         <module>tdd</module>
     <module>tiger</module>
+    <module>empetrei</module>
   </modules>
 
     <build>
