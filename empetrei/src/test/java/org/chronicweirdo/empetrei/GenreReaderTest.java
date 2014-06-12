@@ -4,6 +4,7 @@ import org.blinkenlights.jid3.ID3Exception;
 import org.blinkenlights.jid3.ID3Tag;
 import org.blinkenlights.jid3.MP3File;
 import org.blinkenlights.jid3.MediaFile;
+import org.blinkenlights.jid3.v1.ID3V1_0Tag;
 import org.blinkenlights.jid3.v2.ID3V2Tag;
 import org.blinkenlights.jid3.v2.ID3V2_3_0Tag;
 import org.junit.Before;
@@ -17,30 +18,22 @@ import java.util.List;
 /**
  * Created by scacoveanu on 6/12/2014.
  */
-public class GenreReaderTest {
-
-    private List<String> filePaths;
-
-    @Before
-    public void setUp() throws Exception {
-        filePaths = new ArrayList<String>(2);
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\alternative\\Noir Desir - Vive la Fete.mp3");
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\Regula de Aur.mp3");
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\hardcore\\08 - Gauze.mp3");
-    }
+public class GenreReaderTest extends AbstractTagTest {
 
     @Test
     public void testReadGenre() throws Exception {
-        File mp3File = new File(filePaths.get(0));
-        assertNotNull(mp3File);
-        assertTrue(mp3File.exists());
-
-        MediaFile mediaFile = new MP3File(mp3File);
-        assertNotNull(mediaFile);
+        MediaFile mediaFile = getMediaFile(filePaths.get(1));
 
         //ID3V2_3_0Tag tag = new ID3V2_3_0Tag();
 
         id3Tags(mediaFile);
+    }
+
+    @Test
+    public void testReadTags() throws Exception {
+        MediaFile mediaFile = getMediaFile(filePaths.get(3));
+        id3Tags(mediaFile);
+        id3TagsRead(mediaFile);
     }
 
     private void id3v2Tag(MediaFile mediaFile) throws Exception {
@@ -60,5 +53,33 @@ public class GenreReaderTest {
         for (ID3Tag tag: tags) {
             System.out.println(tag.getClass().getName());
         }
+    }
+
+    private void id3TagsRead(MediaFile mediaFile) throws Exception {
+        ID3Tag[] tags = mediaFile.getTags();
+        assertNotNull(tags);
+        assertNotEquals(0, tags.length);
+
+        for (ID3Tag tag: tags) {
+            if (tag instanceof ID3V1_0Tag) {
+                readTag((ID3V1_0Tag) tag);
+            } else if (tag instanceof ID3V2_3_0Tag) {
+                readTag((ID3V2_3_0Tag) tag);
+            }
+        }
+    }
+
+    private void readTag(ID3V2_3_0Tag tag) {
+        System.out.println(tag.getClass().getName());
+        System.out.println(tag.getArtist());
+        System.out.println(tag.getTitle());
+        System.out.println(tag.getGenre());
+    }
+
+    private void readTag(ID3V1_0Tag tag) {
+        System.out.println(tag.getClass().getName());
+        System.out.println(tag.getArtist());
+        System.out.println(tag.getTitle());
+        System.out.println(tag.getGenre());
     }
 }
