@@ -22,8 +22,10 @@ public class MP3Tag {
         this.artist = tag.getArtist();
         this.title = tag.getTitle();
         this.album = tag.getAlbum();
+        if (this.album.length() == 0) this.album = null;
         this.track = null;
         this.year = tag.getYear();
+        if (this.year.length() == 0) this.year = null;
         this.genre = tag.getGenre().toString();
     }
 
