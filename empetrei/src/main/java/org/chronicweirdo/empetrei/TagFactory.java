@@ -40,18 +40,15 @@ public class TagFactory {
         tag.setArtist(source.getArtist());
         tag.setTitle(source.getTitle());
         tag.setAlbum(source.getAlbum());
-        tag
-        this.album = source.getAlbum();
         try {
-            this.track = Integer.toString(source.getTrackNumber());
+            tag.setTrack(Integer.toString(source.getTrackNumber()));
         } catch (ID3Exception e) {
-            this.track = null;
         }
         try {
-            this.year = Integer.toString(source.getYear());
+            tag.setDate(Integer.toString(source.getYear()));
         } catch (ID3Exception e) {
-            this.year = null;
         }
-        this.genre = source.getGenre();
+        tag.setGenres(tokenize(source.getGenre()));
+        return tag;
     }
 }
