@@ -16,16 +16,8 @@ import static org.junit.Assert.assertTrue;
  */
 public abstract class AbstractTagTest {
 
-    protected List<String> filePaths;
-
-    @Before
-    public void setUp() throws Exception {
-        filePaths = new ArrayList<String>(2);
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\alternative\\Noir Desir - Vive la Fete.mp3");
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\Regula de Aur.mp3");
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\rock\\hardcore\\08 - Gauze.mp3");
-        filePaths.add("C:\\Users\\scacoveanu\\Dropbox\\music\\playlists\\(2014.02.18) Melancholy Sips (chronicweirdo)\\08. Flowers From The Man Who Shot Your Cousin - Lay Down Your Arms.mp3");
-    }
+    protected String filePathWithCover = "temp\\music\\Wrath of God.mp3";
+    protected String filePathWithoutCover = "temp\\music\\Hanging Around.mp3";
 
     protected MediaFile getMediaFile(String path) {
         File mp3File = new File(path);
