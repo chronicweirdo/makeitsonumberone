@@ -22,8 +22,7 @@ public class TestAlbumArt extends AbstractTagTest {
 
     @Test
     public void extractAlbumArt() throws Exception {
-        String filePath = "temp\\music\\Wrath of God.mp3";
-        Mp3File song = new Mp3File(filePath);
+        Mp3File song = new Mp3File(filePathWithCover);
         if (song.hasId3v2Tag()){
             ID3v2 id3v2tag = song.getId3v2Tag();
             byte[] imageData = id3v2tag.getAlbumImage();

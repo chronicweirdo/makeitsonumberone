@@ -18,6 +18,7 @@ public abstract class AbstractTagTest {
 
     protected String filePathWithCover = "temp\\music\\Wrath of God.mp3";
     protected String filePathWithoutCover = "temp\\music\\Hanging Around.mp3";
+    protected String filePathWithMultipleGenres = "temp\\music\\Take on Me.mp3";
 
     protected MediaFile getMediaFile(String path) {
         File mp3File = new File(path);
