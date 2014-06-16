@@ -18,6 +18,7 @@
         <module>tdd</module>
     <module>tiger</module>
     <module>empetrei</module>
+    <module>junk</module>
   </modules>
 
     <build>
