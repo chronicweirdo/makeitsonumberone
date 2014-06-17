@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by scacoveanu on 6/6/2014.
  */
-public class JdbcPersonDAO {
+public class JdbcPersonDAO implements PersonDao {
 
     private DataSource dataSource;
 
