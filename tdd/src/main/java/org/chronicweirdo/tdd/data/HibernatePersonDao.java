@@ -1,5 +1,6 @@
 package org.chronicweirdo.tdd.data;
 
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -18,10 +19,14 @@ public class HibernatePersonDao implements PersonDao {
     }
 
     public List<Person> findByLastName(String name) {
-        Session session = sessionFactory.getCurrentSession();
-        String queryString = "from Person p where p.lastname = :lastname";
-        Query query = session.createQuery(queryString);
-        query.setParameter("lastname", name);
-        return query.list();
+        try {
+            Session session = sessionFactory.getCurrentSession();
+            String queryString = "from Person p where p.lastname = :lastname";
+            Query query = session.createQuery(queryString);
+            query.setParameter("lastname", name);
+            return query.list();
+        } catch (HibernateException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

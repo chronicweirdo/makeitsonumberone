@@ -1,9 +1,8 @@
 package org.chronicweirdo.tdd.data;
 
 import static org.easymock.EasyMock.*;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+
+import org.hibernate.*;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -48,6 +47,31 @@ public class HibernatePersonDaoTest {
         HibernatePersonDao dao = new HibernatePersonDao();
         dao.setSessionFactory(factory);
         assertEquals(theSmiths, dao.findByLastName(lastName));
+
+        verify(factory, session, query);
+    }
+
+    @Test
+    public void findByLastNameReturnsEmptyListUponException() throws Exception {
+        String queryString = "from Person p where p.lastname = :lastname";
+        String name = "Smith";
+        HibernateException hibernateError = new HibernateException("");
+
+        expect(factory.getCurrentSession()).andReturn(session);
+        expect(session.createQuery(queryString)).andReturn(query);
+        expect(query.setParameter("lastname", name)).andReturn(query);
+        expect(query.list()).andThrow(hibernateError);
+
+        replay(factory, session,query);
+
+        HibernatePersonDao dao = new HibernatePersonDao();
+        dao.setSessionFactory(factory);
+        try {
+            dao.findByLastName(name);
+            fail("should've thrown and exception");
+        } catch (RuntimeException expected) {
+            assertSame(hibernateError, expected.getCause());
+        }
 
         verify(factory, session, query);
     }
