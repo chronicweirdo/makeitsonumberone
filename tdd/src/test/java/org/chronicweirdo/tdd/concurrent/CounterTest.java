@@ -1,6 +1,9 @@
 package org.chronicweirdo.tdd.concurrent;
 
 import org.junit.Test;
+
+import java.util.concurrent.CyclicBarrier;
+
 import static org.junit.Assert.*;
 
 /**
@@ -24,6 +27,9 @@ public class CounterTest {
         final int numberOfThreads = 20;
         final int incrementsPerThread = 100;
 
+        CyclicBarrier entryBarrier = new CyclicBarrier(numberOfThreads + 1);
+        CyclicBarrier exitBarrier = new CyclicBarrier(numberOfThreads + 1);
+
         Runnable runnable = new Runnable() {
             public void run() {
                 for (int i = 0; i < incrementsPerThread; i++) {
@@ -33,9 +39,12 @@ public class CounterTest {
         };
 
         for (int i = 0; i < numberOfThreads; i++) {
-            new Thread(runnable).start();
+            new SynchedThread(runnable, entryBarrier, exitBarrier).start();
         }
-        Thread.sleep(500);
+
+        assertEquals(0, codeUnderTest.value());
+        entryBarrier.await();
+        exitBarrier.await();
         assertEquals(numberOfThreads * incrementsPerThread, codeUnderTest.value());
     }
 }
