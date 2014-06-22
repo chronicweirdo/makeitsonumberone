@@ -84,6 +84,7 @@ public class GenericApi {
 
     public String executePost(String path, List<Pair> parameters, boolean openIPA) {
         log.info("executing POST request at address: " + server + path);
+        log.info("sending " + parameters.size() + " post parameters");
         log.info("sending " + parameters.size() + " parameters");
         if (log.isDebugEnabled()) {
             log.debug("listing POST parameters (order is important):");
@@ -91,9 +92,9 @@ public class GenericApi {
                 log.debug(LOG_INDENTATION + parameter.getKey() + " = " + parameter.getValue());
             }
         }
-        String parametersString = concatenateParameters(parameters);
-        log.info("full URL:");
-        log.info(server + path + "?" + parametersString);
+        //String parametersString = concatenateParameters(parameters);
+        //log.info("full URL:");
+        //log.info(server + path + "?" + parametersString);
 
         // build request
         PostMethod post = new PostMethod(server + path);
@@ -101,10 +102,13 @@ public class GenericApi {
             post.addParameter(parameter.getKey(), parameter.getValue());
         }
         try {
+            log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
+            log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));
             client.executeMethod(post);
         } catch (IOException e) {
             log.error(e);
         }
+
         String result = Util.getResponseBody(post);
         if (openIPA) {
             // try to open IPA using the default browser

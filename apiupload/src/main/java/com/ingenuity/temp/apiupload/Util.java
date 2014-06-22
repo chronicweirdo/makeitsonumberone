@@ -45,22 +45,52 @@ public class Util {
     public static void writeToFile(String text, String file) {
         if (text == null) return;
         log.info("writing to file: " + file);
-        FileWriter fw = null;
+        FileWriter fileWriter = openFileWriter(file, false);
+        writeToFileWriter(text, fileWriter);
+        closeFileWriter(fileWriter);
+    }
+
+    public static void appendToFile(String text, String file) {
+        if (text == null) return;
+        log.info("appending to file: " + file);
+        FileWriter fileWriter = openFileWriter(file, true);
+        appendToFileWriter(text, fileWriter);
+        closeFileWriter(fileWriter);
+    }
+
+    private static void writeToFileWriter(String text, FileWriter fileWriter) {
         try {
-            fw = new FileWriter(file);
-            fw.write(text);
-            fw.close();
+            fileWriter.write(text);
         } catch (IOException e) {
             log.error(e, e);
-        } finally {
-            if (fw != null) {
-                try {
-                    fw.close();
-                } catch (IOException e) {
-                    log.error(e, e);
-                }
-            }
         }
-
     }
+
+    private static void appendToFileWriter(String text, FileWriter fileWriter) {
+        try {
+            fileWriter.append(text);
+        } catch (IOException e) {
+            log.error(e, e);
+        }
+    }
+
+    private static FileWriter openFileWriter(String file, boolean append) {
+        try {
+            FileWriter fileWriter = new FileWriter(file, append);
+            return fileWriter;
+        } catch (IOException e) {
+            log.error(e, e);
+            return null;
+        }
+    }
+
+    private static void closeFileWriter(FileWriter fileWriter) {
+        try {
+            fileWriter.close();
+        } catch (IOException e) {
+            log.error(e, e);
+        }
+    }
+
+
 }

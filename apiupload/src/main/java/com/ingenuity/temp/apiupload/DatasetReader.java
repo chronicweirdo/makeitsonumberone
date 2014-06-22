@@ -18,7 +18,10 @@ public class DatasetReader {
         log.info("reading file " + path);
         List<List<String>> data = new ArrayList<List<String>>();
         try {
-            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
+            File file = new File(path);
+            log.info("file size in bytes: " + file.length());
+            log.info("file size in MB: " + (file.length() / 1000d / 1000d));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
 
 
 
