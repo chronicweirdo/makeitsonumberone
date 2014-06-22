@@ -15,6 +15,10 @@ public class JdbcPersonDAO implements PersonDao {
 
     private DataSource dataSource;
 
+    public void save(Person person) {
+        throw new RuntimeException("not implemented");
+    }
+
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }

@@ -7,4 +7,6 @@ import java.util.List;
  */
 public interface PersonDao {
     List<Person> findByLastName(String name);
+
+    void save(Person person);
 }

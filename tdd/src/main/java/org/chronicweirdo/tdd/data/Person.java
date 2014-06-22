@@ -4,12 +4,21 @@ package org.chronicweirdo.tdd.data;
  * Created by scacoveanu on 6/6/2014.
  */
 public class Person {
+    private long id;
     private String lastName;
     private String firstName;
 
     public Person(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getLastName() {

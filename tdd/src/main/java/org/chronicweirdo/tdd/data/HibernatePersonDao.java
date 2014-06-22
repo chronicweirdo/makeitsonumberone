@@ -1,9 +1,6 @@
 package org.chronicweirdo.tdd.data;
 
-import org.hibernate.HibernateException;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
+import org.hibernate.*;
 
 import java.util.List;
 
@@ -28,5 +25,12 @@ public class HibernatePersonDao implements PersonDao {
         } catch (HibernateException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public void save(Person person) {
+        Session session = sessionFactory.getCurrentSession();
+        Transaction transaction = session.beginTransaction();
+        session.save(person);
+        transaction.commit();
     }
 }

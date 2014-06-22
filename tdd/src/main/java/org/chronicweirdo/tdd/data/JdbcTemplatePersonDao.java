@@ -16,4 +16,8 @@ public class JdbcTemplatePersonDao extends JdbcDaoSupport implements PersonDao{
         RowMapper mapper = new PersonRowMapper();
         return getJdbcTemplate().query(sql, args, mapper);
     }
+
+    public void save(Person person) {
+        throw new RuntimeException("not implemented");
+    }
 }
