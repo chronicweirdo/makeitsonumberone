@@ -79,6 +79,7 @@ public class GenericApi {
 
     public void executePost(String path, List<Pair> parameters, String outputFile, boolean openIPA) {
         String result = executePost(path, parameters, openIPA);
+        log.info("RESULT:\n" + result);
         Util.writeToFile(result, outputFile);
     }
 

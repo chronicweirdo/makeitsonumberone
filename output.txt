@@ -53,8 +53,10 @@ window.focus();
 <td width="25"></td>
 <td>
 <b>
-Missing required parameter: geneid.
-<br/>
+
+The page you are looking for is currently unavailable.<br> The IPA site might be experiencing technical difficulties.<br><br>
+Please try the following:<br>
+Click the <img src="/pa/images/btn_browserrefresh.gif" width="13" height="16" border="0"> Refresh button on your browser, or try again later.
 
 </b>
 </td>
@@ -67,6 +69,80 @@ Missing required parameter: geneid.
 </tr>
     <tr>
 <td>
+Attributes: <br/>javax.servlet.forward.request_uri=/pa/api/v1/dataupload<br/>javax.servlet.forward.context_path=/pa<br/>javax.servlet.forward.servlet_path=/api<br/>javax.servlet.forward.path_info=/library/error.jsp?errorcode=500<br/>org.springframework.web.servlet.DispatcherServlet.THEME_SOURCE=org.springframework.web.context.support.XmlWebApplicationContext@5ba5ba75: display name [WebApplicationContext for namespace 'integration-servlet']; startup date [Mon Jun 23 01:06:08 PDT 2014]; parent: org.springframework.web.context.support.XmlWebApplicationContext@31e46a68<br/>org.springframework.web.servlet.DispatcherServlet.THEME_RESOLVER=org.springframework.web.servlet.theme.FixedThemeResolver@249b7336<br/>org.springframework.web.servlet.DispatcherServlet.CONTEXT=org.springframework.web.context.support.XmlWebApplicationContext@5ba5ba75: display name [WebApplicationContext for namespace 'integration-servlet']; startup date [Mon Jun 23 01:06:08 PDT 2014]; parent: org.springframework.web.context.support.XmlWebApplicationContext@31e46a68<br/>javax.servlet.error.status_code=500<br/>javax.servlet.error.servlet_name=integration<br/>javax.servlet.error.exception_type=class java.lang.NullPointerException<br/>org.springframework.web.servlet.HandlerMapping.pathWithinHandlerMapping=v1<br/>__spring_security_session_fixation_filter_applied=true<br/>javax.servlet.error.message=Request processing failed; nested exception is java.lang.NullPointerException<br/>__spring_security_filterSecurityInterceptor_filterApplied=true<br/>javax.servlet.error.exception=java.lang.NullPointerException<br/>javax.servlet.error.request_uri=/pa/api/v1/dataupload<br/>org.springframework.web.servlet.DispatcherServlet.LOCALE_RESOLVER=org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@59a8f100<br/><br/>Parameters: <br/>errorcode=500<br/><br/><br/>java.lang.NullPointerException
+	at com.ingenuity.ipaweb.integration.validation.AbstractFunctionValidator.doRequiredCheck(AbstractFunctionValidator.java:146)
+	at com.ingenuity.ipaweb.integration.validation.AbstractFunctionValidator.validate(AbstractFunctionValidator.java:62)
+	at org.springframework.validation.ValidationUtils.invokeValidator(ValidationUtils.java:63)
+	at org.springframework.web.servlet.mvc.BaseCommandController.bindAndValidate(BaseCommandController.java:395)
+	at org.springframework.web.servlet.mvc.AbstractCommandController.handleRequestInternal(AbstractCommandController.java:82)
+	at org.springframework.web.servlet.mvc.AbstractController.handleRequest(AbstractController.java:153)
+	at org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter.handle(SimpleControllerHandlerAdapter.java:48)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:875)
+	at com.ingenuity.ipaweb.IpaDispatcherServlet.doDispatch(IpaDispatcherServlet.java:60)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:807)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:571)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:511)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:290)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:378)
+	at com.ingenuity.ipaweb.filter.PostLoginActionFilter.doFilterHttp(PostLoginActionFilter.java:66)
+	at com.ingenuity.ipaweb.filter.PostLoginActionFilter.doFilter(PostLoginActionFilter.java:58)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.intercept.web.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:109)
+	at org.springframework.security.intercept.web.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:83)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at com.ingenuity.ingsecurity.rules.ApplicationRulesEnforcementFilter.doFilterHttp(ApplicationRulesEnforcementFilter.java:94)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.ui.SessionFixationProtectionFilter.doFilterHttp(SessionFixationProtectionFilter.java:67)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.ui.ExceptionTranslationFilter.doFilterHttp(ExceptionTranslationFilter.java:101)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.providers.anonymous.AnonymousProcessingFilter.doFilterHttp(AnonymousProcessingFilter.java:105)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.wrapper.SecurityContextHolderAwareRequestFilter.doFilterHttp(SecurityContextHolderAwareRequestFilter.java:91)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.ui.AbstractProcessingFilter.doFilterHttp(AbstractProcessingFilter.java:278)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.ui.AbstractProcessingFilter.doFilterHttp(AbstractProcessingFilter.java:278)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at com.ingenuity.ingsecurity.signout.IngSingleSignOutFilter.doFilter(IngSingleSignOutFilter.java:120)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.ui.logout.LogoutFilter.doFilterHttp(LogoutFilter.java:89)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at com.ingenuity.ingsecurity.concurrent.IngConcurrentSessionFilter.doFilterHttp(IngConcurrentSessionFilter.java:124)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.context.HttpSessionContextIntegrationFilter.doFilterHttp(HttpSessionContextIntegrationFilter.java:235)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at com.ingenuity.ipaweb.filter.IpaVisitedFilter.doFilterHttp(IpaVisitedFilter.java:51)
+	at org.springframework.security.ui.SpringSecurityFilter.doFilter(SpringSecurityFilter.java:53)
+	at org.springframework.security.util.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:390)
+	at org.springframework.security.util.FilterChainProxy.doFilter(FilterChainProxy.java:175)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:236)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:167)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:235)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:206)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:230)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:175)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:128)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:104)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:109)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:261)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:844)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:581)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:447)
+	at java.lang.Thread.run(Thread.java:662)
 
     </td>
 </tr>
