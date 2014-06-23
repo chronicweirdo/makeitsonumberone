@@ -6,6 +6,15 @@ package com.chronicweirdo.springweb.command;
 public class APICommand {
 
     private String methodName;
+    private String[] geneId;
+
+    public String[] getGeneId() {
+        return geneId;
+    }
+
+    public void setGeneId(String[] geneId) {
+        this.geneId = geneId;
+    }
 
     public String getMethodName() {
         return methodName;

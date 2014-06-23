@@ -30,6 +30,11 @@ public class APIController extends AbstractCommandController {
     protected ModelAndView handle(HttpServletRequest request, HttpServletResponse httpServletResponse, Object command, BindException e) throws Exception {
         APICommand apiCommand = (APICommand) command;
         log.info("command method name: " + apiCommand.getMethodName());
+        if (apiCommand.getGeneId() != null) {
+            log.info("gene ids size: " + apiCommand.getGeneId().length);
+        } else {
+            log.info("gene ids are null");
+        }
 
         return new ModelAndView("api");
     }
