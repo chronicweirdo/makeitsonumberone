@@ -19,6 +19,7 @@
     <module>tiger</module>
     <module>empetrei</module>
     <module>junk</module>
+    <module>springweb</module>
   </modules>
 
     <build>
