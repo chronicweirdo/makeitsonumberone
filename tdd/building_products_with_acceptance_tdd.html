@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Building products with acceptance TDD</title>
+</head>
+<body>
+
+<p>What it is about: user stories, acceptance tests, what acceptance tests should be testing, fit framework, how we
+connect executable acceptance tests into the system.</p>
+
+<h1>Acceptance TDD explained</h1>
+
+<h2>User stories</h2>
+<ul>
+    <li>we need to know how our system should behave</li>
+    <li>a simple way of expressing requirements: <em>who</em> does <em>what</em> (and <em>why</em>)</li>
+    <li>Hannah Arendt: <em>"storytelling reveals meaning without committing the error of defining it"</em></li>
+</ul>
+
+<h2>Acceptance tests</h2>
+<ul>
+    <li>specifications for the desired behavior and functionality of a system</li>
+    <li>
+        <p>An example user story: Support technician sees customer's history on screen at the start of a call.</p>
+        <p>Exaple tests:
+            <ul>
+                <li>Simulate a call with Fred's account number and verify that Fred's info can be read from the screen;</li>
+                <li>Verify that the system displays a valid error message for a non-existing account number;</li>
+                <li>Omit the account number in the incoming call completely and verify that the system displays the text "no account number provided" on the screen.</li>
+            </ul>
+        </p>
+    </li>
+    <li>owned by the customer</li>
+    <li>written together with the customer, developer and tester</li>
+    <li>expressed in the language of the problem domain</li>
+    <li>concise, precise and unambiguous</li>
+    <li>focus on the <em>what</em>, not the <em>how</em></li>
+    <li>a test with too much detail: go to the new transaction screen, fill in the required details and save the entry; verify that the transaction shows up in the list</li>
+</ul>
+
+<h3>Understanding the process</h3>
+<ul>
+    <li>a cycle consisting of: pick a story, write tests, automate tests, implement functionality</li>
+</ul>
+
+</body>
+</html>
