@@ -12,6 +12,9 @@ import static org.powermock.api.mockito.PowerMockito.*;
 
 /**
  * Created by scacoveanu on 6/25/2014.
+ *
+ * Mockito doc: http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html
+ * Powermock doc: https://code.google.com/p/powermock/
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest( { StaticProvider.class })
