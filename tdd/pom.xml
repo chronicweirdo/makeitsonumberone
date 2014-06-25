@@ -79,11 +79,6 @@
             <version>1.8.0.10</version>
         </dependency>
         <dependency>
-            <groupId>abbot</groupId>
-            <artifactId>abbot</artifactId>
-            <version>1.2.0</version>
-        </dependency>
-        <dependency>
             <groupId>org.easymock</groupId>
             <artifactId>easymock</artifactId>
             <version>3.2</version>
@@ -94,6 +89,15 @@
             <artifactId>hibernate-core</artifactId>
             <version>4.3.5.Final</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-swing</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.easytesting</groupId>
+            <artifactId>fest-swing-junit</artifactId>
+            <version>1.2.1</version>
+        </dependency>
     </dependencies>
 </project>
