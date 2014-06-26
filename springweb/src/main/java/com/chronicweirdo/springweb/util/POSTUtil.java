@@ -85,7 +85,7 @@ public class POSTUtil {
     private static void largePost() {
         List<Pair> parameters = new ArrayList<>();
         parameters.add(new Pair("methodName", "largePost"));
-        for (int i = 0; i < 2000000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             parameters.add(new Pair("geneId", Integer.toString(i)));
         }
         String response = POSTUtil.executePost("http://localhost:8080/api", parameters);
