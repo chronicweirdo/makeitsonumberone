@@ -19,6 +19,7 @@ import java.io.File;
  * Created by scacoveanu on 6/25/2014.
  *
  * Fest documentation: http://docs.codehaus.org/display/FEST/Getting+Started
+ * Fest on testing Applets: http://fest.codehaus.org/Testing+Applets
  */
 public class TestWithFest extends FestSwingJUnitTestCase {
 
