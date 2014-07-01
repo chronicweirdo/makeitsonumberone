@@ -20,6 +20,7 @@
     <module>empetrei</module>
     <module>junk</module>
     <module>springweb</module>
+    <module>puzzlers</module>
   </modules>
 
     <build>
