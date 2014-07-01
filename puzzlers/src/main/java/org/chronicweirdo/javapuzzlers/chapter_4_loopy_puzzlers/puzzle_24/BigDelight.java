@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter_4_loopy_puzzlers.puzzle_24;
+
 class BigDelight {
     public static void main(String[] args) {
         for (byte b = Byte.MIN_VALUE; b < Byte.MAX_VALUE; b++) {

@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter_3_puzzlers_with_character.puzzle_23;
+
 import java.util.*;
 
 public class Rhymes {

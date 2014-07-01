@@ -13,7 +13,7 @@ public class Classifier {
             return "LETTER ";
 /*
  *      (Operators not supported yet) 
- *      if ("+-*/&|!=".indexOf(ch) >= 0)
+ *      if ("+-*//*&|!=".indexOf(ch) >= 0)
  *          return "OPERATOR "; 
  */
         return "UNKNOWN "; 

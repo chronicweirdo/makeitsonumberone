@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter_4_loopy_puzzlers.puzzle_25;
+
 public class Increment {
     public static void main(String[] args) {
         int j = 0;

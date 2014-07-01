@@ -1,4 +1,4 @@
-package com.javapuzzlers;
+package org.chronicweirdo.javapuzzlers.chapter_3_puzzlers_with_character.puzzle_20.com.javapuzzlers;
 
 public class Me {
    public static void main(String[] args) {

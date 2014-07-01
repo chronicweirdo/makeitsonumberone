@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter_4_loopy_puzzlers.puzzle_27;
+
 public class Shifty {
     public static void main(String[] args) {
         int i = 0;

@@ -1,4 +1,4 @@
-package com.javapuzzlers;
+package org.chronicweirdo.javapuzzlers.chapter_3_puzzlers_with_character.puzzle_21.com.javapuzzlers;
 import java.io.File;
 
 public class MeToo {

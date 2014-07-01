@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter_4_loopy_puzzlers.puzzle_26;
+
 public class InTheLoop {
     public static final int END = Integer.MAX_VALUE;
     public static final int START = END - 100;
