@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter_2_expressive_puzzlers.puzzle_1;
+package org.chronicweirdo.javapuzzlers.chapter1.puzzle1;
 
 public class Oddity {
     public static boolean isOdd(int i) {
