@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter_2_expressive_puzzlers.puzzle_3;
+package org.chronicweirdo.javapuzzlers.chapter1.puzzle3;
 
 public class LongDivision {
     public static void main(String[] args) {
