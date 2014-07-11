@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter1.puzzle2;
+package org.chronicweirdo.javapuzzlers.chapter2.puzzle2;
 
 import java.math.BigDecimal;
 

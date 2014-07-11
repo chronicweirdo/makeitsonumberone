@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter1.puzzle4;
+package org.chronicweirdo.javapuzzlers.chapter2.puzzle4;
 
 public class Elementary {
     public static void main(String[] args) {

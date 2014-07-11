@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter1.puzzle6;
+package org.chronicweirdo.javapuzzlers.chapter2.puzzle6;
 
 public class Multicast {
     public static void main(String[] args) {

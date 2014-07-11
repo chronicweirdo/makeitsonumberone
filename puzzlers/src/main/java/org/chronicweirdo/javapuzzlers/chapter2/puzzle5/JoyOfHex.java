@@ -1,4 +1,4 @@
-package org.chronicweirdo.javapuzzlers.chapter1.puzzle5;
+package org.chronicweirdo.javapuzzlers.chapter2.puzzle5;
 
 public class JoyOfHex {
     public static void main(String[] args) {
