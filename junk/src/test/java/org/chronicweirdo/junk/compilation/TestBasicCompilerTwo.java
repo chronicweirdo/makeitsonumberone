@@ -4,18 +4,20 @@ import org.junit.Test;
 
 import javax.tools.*;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URI;
+import java.net.URL;
+import java.net.URLClassLoader;
 import java.security.SecureClassLoader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 /**
  * Created by scacoveanu on 8/5/2014.
  */
-public class TestBasicCompiler {
+public class TestBasicCompilerTwo {
 
     @Test
     public void compileFile() throws Exception {
@@ -26,7 +28,7 @@ public class TestBasicCompiler {
         DiagnosticCollector diagnosticsCollector = new DiagnosticCollector();
 
         // instantiate the file manager - see implementation below
-        JavaFileManager fileManager = new ClassFileManager(compiler.getStandardFileManager(diagnosticsCollector, null, null));
+        JavaFileManager fileManager = new InterceptorFileManager(compiler.getStandardFileManager(diagnosticsCollector, null, null));
 
         // create java code string as a file object - see implementation below
         JavaFileObject javaObjectFromString = new JavaSourceFromString("ServiceInterfaceImpl", "" +
@@ -42,17 +44,16 @@ public class TestBasicCompiler {
         JavaCompiler.CompilationTask task = compiler.getTask(null, fileManager, diagnosticsCollector, null, null, fileObjects);
         Boolean result = task.call();
 
-        // print compilation errors, if any
-        List<Diagnostic> diagnostics = diagnosticsCollector.getDiagnostics();
-        for(Diagnostic d : diagnostics){
-            System.out.println(d.toString());
-        }
 
-        if(result == true){
+
+        if(result){
             System.out.println("Compilation has succeeded");
 
             // get the class loader from our own implementation of the file manager
-            ClassLoader classLoader = fileManager.getClassLoader(null);
+            //ClassLoader classLoader = new URLClassLoader(new URL[] {new File("./").toURI().toURL()});
+            ClassLoader classLoader = fileManager.getClassLoader(StandardLocation.CLASS_OUTPUT);
+            //ClassLoader classLoader = fileManager.getClassLoader(StandardLocation.SOURCE_OUTPUT);
+            System.out.println(classLoader);
             // load the class
             Class clazz = classLoader.loadClass("org.chronicweirdo.junk.compilation.ServiceInterfaceImpl");
             // instantiate the class
@@ -61,7 +62,15 @@ public class TestBasicCompiler {
             System.out.println(service.message());
         }else{
             System.out.println("Compilation fails.");
+
+            // print compilation errors, if any
+            List<Diagnostic> diagnostics = diagnosticsCollector.getDiagnostics();
+            for(Diagnostic<? extends JavaFileObject> d : diagnostics){
+                System.out.println(d.getLineNumber());
+                System.out.println(d.getSource().toUri());
+            }
         }
+        fileManager.close();
     }
 
     private class JavaSourceFromString extends SimpleJavaFileObject {
@@ -119,6 +128,25 @@ public class TestBasicCompiler {
         @Override
         public OutputStream openOutputStream() throws IOException {
             return bos;
+        }
+    }
+
+    public class InterceptorFileManager extends ForwardingJavaFileManager {
+        public InterceptorFileManager(JavaFileManager fileManager) {
+            super(fileManager);
+        }
+
+        @Override
+        public JavaFileObject getJavaFileForOutput(Location location, String className, JavaFileObject.Kind kind, FileObject sibling) throws IOException {
+            System.out.println(location);
+            return super.getJavaFileForOutput(location, className, kind, sibling);
+        }
+
+        @Override
+        public ClassLoader getClassLoader(Location location) {
+            ClassLoader loader = super.getClassLoader(location);
+            System.out.println(loader);
+            return loader;
         }
     }
 
