@@ -1,0 +1,42 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("body").keypress(function (event) {
+                //console.log("Handler for .keypress() called." + event.which);
+                if (event.which == 8) {
+                    var text = $("body").html();
+                    text = text.substring(0, text.length - 1);
+                    $("body").html(text);
+                } else {
+                    var character = String.fromCharCode(event.which);
+                    console.log("Handler for .keypress() called." + event.which);
+                    $("body").append(character);
+                }
+            });
+			$("body").click(function (event) {
+				var node = "|";
+				insertNodeAtCursor(node);
+			});
+        });
+		function insertNodeAtCursor(node) {
+			var range, html;
+			console.log("inserting node at cursor");
+			if (window.getSelection && window.getSelection().getRangeAt) {
+				console.log(window.getSelection());
+				range = window.getSelection().getRangeAt(0);
+				range.insertNode(range.createContextualFragment(node));
+			} else if (document.selection && document.selection.createRange) {
+				range = document.selection.createRange();
+				html = (node.nodeType == 3) ? node.data : node.outerHTML;
+				range.pasteHTML(html);
+			}
+		}
+    </script>
+</head>
+<body>
+	<p>Caret test</p>
+	<p>Paragraph 2</p>
+</body>
+</html>

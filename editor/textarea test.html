@@ -1,0 +1,35 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("body").keypress(function (event) {
+                //console.log("Handler for .keypress() called." + event.which);
+                if (event.which == 8) {
+                    var text = $("body").html();
+                    text = text.substring(0, text.length - 1);
+                    $("body").html(text);
+                } else {
+                    var character = String.fromCharCode(event.which);
+                    console.log("Handler for .keypress() called." + event.which);
+                    $("body").append(character);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+	<textarea>
+		<h1>Text Area Test</h1>
+		<p>A paragraph.</p>
+		<p>A list:
+			<ul>
+				<li>item1</li>
+				<li>item2</li>
+			</ul>
+		</p>
+		<p>A link: <a href="last.fm">to music</a></p>
+		<p><span style="background-color: yellow">Some color</span></p>
+	</textarea>
+</body>
+</html>
