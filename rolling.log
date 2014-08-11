@@ -6193,3 +6193,15 @@ Unable to upload dataset: Dataset Upload limit exceeded
 2014-08-11 14:38:25,839 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
 2014-08-11 14:38:25,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
 2014-08-11 14:38:25,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 15:18:05,430 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 15:18:05,430 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 15:18:05,463 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 15:18:05,463 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 15:18:05,539 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 15:18:05,539 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 15:18:05,542 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 15:18:05,542 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 15:18:05,544 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 15:18:05,544 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 15:18:05,562 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 15:18:05,562 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
