@@ -25,10 +25,12 @@ public class MainUI {
 
     private static final String DEFAULT_SERVER_URL = "https://analysis-stable.ingenuity.com";
     public static final String API_PATH_DATASET_UPLOAD = "/pa/api/v1/dataupload";
+    public static final String API_PATH_DATASTREAM = "/pa/api/v1/datastream";
     public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
     private static final ComboOption[] API_PATH_VALUES = {
             new ComboOption(API_PATH_DATASET_UPLOAD, "upload dataset"),
-            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis")
+            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis"),
+            new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
     };
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
@@ -545,7 +547,7 @@ public class MainUI {
     }
 
     protected List<Pair> parseParameters(String parameters) {
-        List<Pair> result = new ArrayList<>();
+        List<Pair> result = new ArrayList<Pair>();
         String pattern = "([^ =&]+)=([^ =&]+)";
         Matcher matcher = Pattern.compile(pattern).matcher(parameters);
         while (matcher.find()) {

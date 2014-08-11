@@ -95,9 +95,9 @@ public class FileComparer {
 
 
         // find consistency score in each file
-        Map<TableRow, List<String>> consistencyScores = new HashMap<>();
+        Map<TableRow, List<String>> consistencyScores = new HashMap<TableRow, List<String>>();
         for (int index = 0; index < table1.size(); index++) {
-            List<String> score = new ArrayList<>();
+            List<String> score = new ArrayList<String>();
             score.add(table1.get(index).entries.get(0));
             consistencyScores.put(table1.get(index), score);
         }
@@ -116,7 +116,7 @@ public class FileComparer {
     }
 
     public static List<TableRow> readTable(String file, int startLine, TableRowEqualizer equalizer) {
-        List<TableRow> table = new ArrayList<>();
+        List<TableRow> table = new ArrayList<TableRow>();
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(file))));
 
@@ -144,7 +144,7 @@ public class FileComparer {
         List<Integer> indexes; // indexes that count in the equals and hash code methods
 
         public TableRowEqualizer(Integer ... indexes) {
-            this.indexes = new ArrayList<>();
+            this.indexes = new ArrayList<Integer>();
             for (Integer index: indexes) {
                 this.indexes.add(index);
             }
@@ -181,7 +181,7 @@ public class FileComparer {
         public TableRow(TableRowEqualizer equalizer, String line) {
             this.equalizer = equalizer;
             String[] tokens = line.split("\t");
-            entries = new ArrayList<>(Arrays.asList(tokens));
+            entries = new ArrayList<String>(Arrays.asList(tokens));
         }
 
         @Override

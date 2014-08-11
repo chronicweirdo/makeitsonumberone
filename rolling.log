@@ -5363,3 +5363,785 @@ Missing required parameter: geneid.
 2014-06-23 16:45:08,339 INFO [SwingWorker-pool-2-thread-9] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:543) - POST request sent
 2014-06-23 16:45:08,339 INFO [SwingWorker-pool-2-thread-9] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:544) - ------------------------------------------------------------------------------
 2014-06-23 16:45:08,339 INFO [SwingWorker-pool-2-thread-9] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:544) - ------------------------------------------------------------------------------
+2014-08-07 08:56:13,275 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:182) - creating main panel
+2014-08-07 08:56:13,275 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:182) - creating main panel
+2014-08-07 08:56:13,341 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:418) - creating edit components
+2014-08-07 08:56:13,341 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:418) - creating edit components
+2014-08-07 08:56:13,450 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:227) - initializing listeners
+2014-08-07 08:56:13,450 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:227) - initializing listeners
+2014-08-07 08:56:13,460 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:314) - building edit panel
+2014-08-07 08:56:13,460 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:314) - building edit panel
+2014-08-07 08:56:13,464 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:413) - updating main panel UI
+2014-08-07 08:56:13,464 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:413) - updating main panel UI
+2014-08-07 08:56:13,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:213) - UI init done
+2014-08-07 08:56:13,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:213) - UI init done
+2014-08-07 08:58:19,285 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-07 08:58:19,285 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-07 08:58:19,344 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-07 08:58:19,344 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-07 08:58:19,446 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-07 08:58:19,446 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-07 08:58:19,461 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:58:19,461 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:58:19,466 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:58:19,466 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:58:19,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-07 08:58:19,486 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-07 08:58:25,060 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:58:25,060 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:58:25,072 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:58:25,072 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:59:00,222 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:177) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 08:59:00,222 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:177) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 08:59:00,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:443) - loading table header from file
+2014-08-07 08:59:00,228 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:443) - loading table header from file
+2014-08-07 08:59:00,230 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loaded 7 columns
+2014-08-07 08:59:00,230 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loaded 7 columns
+2014-08-07 08:59:00,231 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:459) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-08-07 08:59:00,231 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:459) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-08-07 08:59:00,262 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:59:00,262 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 08:59:00,286 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:59:00,286 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 08:59:14,625 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:14,625 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:14,625 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 08:59:14,625 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 08:59:14,626 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 08:59:14,626 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 08:59:14,662 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 08:59:14,662 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 08:59:18,794 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 08:59:18,794 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 08:59:18,795 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 08:59:18,795 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 08:59:18,810 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:18,810 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:18,815 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 08:59:18,815 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 08:59:18,816 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 08:59:18,816 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 08:59:19,992 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 08:59:19,992 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 08:59:28,523 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:28,523 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 08:59:28,524 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 08:59:28,525 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:28,525 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 08:59:28,526 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 08:59:28,526 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 08:59:28,526 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test
+2014-08-07 08:59:28,526 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 08:59:28,527 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 08:59:28,528 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 08:59:28,529 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 08:59:28,529 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 08:59:28,530 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 08:59:28,534 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 08:59:28,534 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 08:59:28,534 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 08:59:28,534 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 08:59:28,535 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 08:59:28,535 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 08:59:28,538 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 08:59:28,558 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76387
+2014-08-07 08:59:28,558 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76387
+2014-08-07 08:59:28,565 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076387
+2014-08-07 08:59:28,565 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076387
+2014-08-07 08:59:34,043 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 08:59:34,043 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 08:59:34,043 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 08:59:34,043 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 08:59:34,044 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 08:59:34,044 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 08:59:34,044 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 08:59:34,044 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:21:52,310 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:21:52,311 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:21:52,311 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:21:54,500 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:21:54,500 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:21:54,500 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:21:54,500 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:21:54,718 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:54,718 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:54,718 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:21:54,718 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:21:54,722 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:21:54,722 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:21:55,622 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:21:55,622 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:21:57,922 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:57,922 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:21:57,923 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 2
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 2
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:21:57,924 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:21:57,925 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:21:57,929 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:21:57,930 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:21:57,930 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:21:57,932 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:21:57,940 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:21:57,940 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:21:57,955 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:21:57,955 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:21:57,955 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:21:57,955 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:21:57,968 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:21:57,968 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:21:57,971 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:21:57,971 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:22:01,966 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<title>Error | IPA</title>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/pa/stylesheets/ipastyle.css" type="text/css">
+<link rel="icon" href="/pa/images/qiagenfavicon.png?v=2" type="image/x-icon" />
+<script language="javascript">
+window.focus();
+
+</script>
+</head>
+<body>
+
+<div class="ipaheader">
+    <div class="ipaheaderlogo">&nbsp;</div>
+    <div class="ipaheaderdecoration">&nbsp;</div>
+</div>
+<table width="100%" class="tablenodeview" cellpadding="0" cellspacing="0" border="0" height="95%" style="border: none">
+<tr>
+<td valign="top">
+<img src="/pa/images/spacer.gif" height="4" width="1">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr class="tablebody">
+<td class="tablecornerleft" style="background-color: white">&nbsp;</td>
+<td class="tableheadbkgr">Error</td>
+<td class="tablecornerright" style="background-color: white">&nbsp;</td>
+</tr>
+<tr class="tablebody"> 
+<td class="tableinstructionallft">&nbsp;</td>
+<td class="tableinstructional">If you continue to experience this problem, please <b><a href="/pa/login/debug.jsp">Send a Report</a></b> of this problem to Ingenuity Customer Support, or contact Ingenuity Customer Support at <a href="mailTo:support@ingenuity.com">support@ingenuity.com</a> or 1-650-381-5111.</td>
+<td class="tableinstructionalrt">&nbsp;</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablebody" height="85%">
+<tr>
+<td valign="top" class="tableinstructional"> 
+<table width="100%" class="tablewidget" cellpadding="0" cellspacing="0" border="0" height="100%">
+<tr valign="top">
+<td>
+<table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+<tr height="10"><td width="25"></td><td></td></tr>
+<tr>
+<td width="25"></td>
+<td>
+<b>
+Unable to upload dataset: Dataset Upload limit exceeded
+
+</b>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+    <tr>
+<td>
+
+    </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr height="5%">
+<td class="footer">
+<div><a href="http://www.ingenuity.com" class="altlink">About Ingenuity</a> | <a href="http://www.ingenuity.com/contact.html" class="altlink">Contact Us</a></div>
+<div>&copy;2000-2014 QIAGEN. All rights reserved.</div></td>
+</tr>
+</table>
+</body>
+</html>
+2014-08-07 09:22:01,966 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+
+
+
+
+
+
+
+
+
+<html>
+<head>
+<title>Error | IPA</title>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="/pa/stylesheets/ipastyle.css" type="text/css">
+<link rel="icon" href="/pa/images/qiagenfavicon.png?v=2" type="image/x-icon" />
+<script language="javascript">
+window.focus();
+
+</script>
+</head>
+<body>
+
+<div class="ipaheader">
+    <div class="ipaheaderlogo">&nbsp;</div>
+    <div class="ipaheaderdecoration">&nbsp;</div>
+</div>
+<table width="100%" class="tablenodeview" cellpadding="0" cellspacing="0" border="0" height="95%" style="border: none">
+<tr>
+<td valign="top">
+<img src="/pa/images/spacer.gif" height="4" width="1">
+<table width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr class="tablebody">
+<td class="tablecornerleft" style="background-color: white">&nbsp;</td>
+<td class="tableheadbkgr">Error</td>
+<td class="tablecornerright" style="background-color: white">&nbsp;</td>
+</tr>
+<tr class="tablebody"> 
+<td class="tableinstructionallft">&nbsp;</td>
+<td class="tableinstructional">If you continue to experience this problem, please <b><a href="/pa/login/debug.jsp">Send a Report</a></b> of this problem to Ingenuity Customer Support, or contact Ingenuity Customer Support at <a href="mailTo:support@ingenuity.com">support@ingenuity.com</a> or 1-650-381-5111.</td>
+<td class="tableinstructionalrt">&nbsp;</td>
+</tr>
+</table>
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="tablebody" height="85%">
+<tr>
+<td valign="top" class="tableinstructional"> 
+<table width="100%" class="tablewidget" cellpadding="0" cellspacing="0" border="0" height="100%">
+<tr valign="top">
+<td>
+<table cellspacing="0" cellpadding="3" width="100%" align="center" border="0">
+<tr height="10"><td width="25"></td><td></td></tr>
+<tr>
+<td width="25"></td>
+<td>
+<b>
+Unable to upload dataset: Dataset Upload limit exceeded
+
+</b>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+    <tr>
+<td>
+
+    </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr height="5%">
+<td class="footer">
+<div><a href="http://www.ingenuity.com" class="altlink">About Ingenuity</a> | <a href="http://www.ingenuity.com/contact.html" class="altlink">Contact Us</a></div>
+<div>&copy;2000-2014 QIAGEN. All rights reserved.</div></td>
+</tr>
+</table>
+</body>
+</html>
+2014-08-07 09:22:01,967 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:22:01,967 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:22:01,969 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:22:01,969 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:22:01,969 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:22:01,969 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:23:12,733 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:12,733 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:12,735 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:23:12,735 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:23:12,735 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:23:12,735 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:23:12,736 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:23:12,736 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:23:15,018 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:23:15,018 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:23:15,025 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:23:15,025 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:23:15,046 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:15,046 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:15,046 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:23:15,046 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:23:15,047 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:23:15,047 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:23:15,971 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:23:15,971 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:23:18,451 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:18,451 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:18,466 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:23:18,466 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:23:18,466 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:23:18,466 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:18,467 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 2
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 2
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:23:18,468 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:23:18,469 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:23:18,470 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:23:18,471 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:23:18,472 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:23:18,472 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:23:18,472 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:23:18,472 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:23:18,473 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:23:18,473 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:23:18,473 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:23:18,473 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:23:18,478 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:23:18,478 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:23:18,478 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:23:18,478 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:23:18,479 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:23:18,482 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:23:18,482 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:23:18,485 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:23:18,485 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:23:23,997 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:23:23,997 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:23:23,997 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:23:23,997 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:23:23,999 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:23:23,999 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:23:23,999 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:23:23,999 INFO [SwingWorker-pool-2-thread-4] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:40:16,316 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:16,316 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:16,317 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:40:16,317 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:40:16,318 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:40:16,318 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:40:16,318 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:40:16,318 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:40:18,479 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:40:18,479 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:40:18,482 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:40:18,482 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:40:18,699 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:18,699 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:18,701 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:40:18,701 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:40:18,701 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:40:18,701 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:40:19,646 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:40:19,646 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:40:22,954 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:22,954 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:40:22,955 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 3
+2014-08-07 09:40:22,957 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 3
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:40:22,958 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:40:22,959 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:40:22,959 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:40:22,959 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:40:22,959 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:40:22,960 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:40:22,961 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:40:22,964 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:40:22,964 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:40:22,965 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:40:22,965 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:40:22,965 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:40:22,965 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:40:22,967 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:40:22,968 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:40:22,974 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:40:22,974 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:40:22,986 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:40:22,986 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:40:30,937 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:40:30,937 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:40:30,938 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:40:30,938 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:40:30,941 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:40:30,941 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:40:30,941 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:40:30,941 INFO [SwingWorker-pool-2-thread-5] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:49:22,990 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:22,990 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:22,990 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:49:22,990 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:49:22,991 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:49:22,991 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:49:22,991 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:49:22,991 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:49:25,221 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:49:25,221 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:49:25,221 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:49:25,221 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:49:25,437 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:25,437 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:25,438 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:49:25,438 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:49:25,438 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:49:25,438 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:49:26,304 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:49:26,304 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:49:28,545 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:28,545 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:28,546 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:49:28,546 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:49:28,546 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:49:28,546 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:49:28,547 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 4
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 4
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:49:28,548 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:49:28,549 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:49:28,550 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:49:28,551 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:49:28,552 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:49:28,552 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:49:28,554 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:49:28,554 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:49:28,555 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:49:28,555 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:49:28,555 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:49:28,555 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:49:28,556 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:49:28,561 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:49:28,561 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:49:28,570 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:49:28,570 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:49:32,369 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:49:32,369 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:49:32,372 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:49:32,372 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:49:32,375 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:49:32,375 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:49:32,376 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:49:32,376 INFO [SwingWorker-pool-2-thread-6] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:468) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:470) - logging in
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:52:55,780 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:473) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-08-07 09:52:55,781 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:52:55,781 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-08-07 09:52:57,924 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:52:57,924 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-08-07 09:52:57,926 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:52:57,926 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:60) - get response body and close
+2014-08-07 09:52:58,136 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:52:58,136 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:64) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:52:58,137 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:52:58,137 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:71) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-08-07 09:52:58,137 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:52:58,137 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:75) - build post for login
+2014-08-07 09:52:59,019 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:52:59,019 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:87) - handle redirects
+2014-08-07 09:53:01,507 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:53:01,507 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:100) - server address: https://analysis-stable.ingenuity.com
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:107) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:113) - return logged in client
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:476) - login executed: true
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:477) - login successful: true
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:479) - initializing generic api for server: https://analysis-stable.ingenuity.com
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - using API path: /pa/api/v1/datastream
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 5
+2014-08-07 09:53:01,508 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:491) - uploading to project: Datastream Test 5
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:493) - ipaview is: projectmanager
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:495) - opening IPA after post request: false
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:501) - uploading dataset with name: MyTestDataset
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:503) - gene ID type is: affymetrix
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:506) - building POST data
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:512) - using following table column to POST field mapping:
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	Gene ID ---> geneid
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_A ---> expvalue
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_A ---> obs2expval
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:53:01,509 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_B ---> obs3expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_B ---> obs4expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_LO_C ---> obs5expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:514) - 	IV_HI_C ---> obs6expval
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:563) - building POST data
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:53:01,510 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:18) - reading file C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-08-07 09:53:01,511 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:53:01,511 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:22) - file size in bytes: 12299
+2014-08-07 09:53:01,511 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:53:01,511 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:23) - file size in MB: 0.012299
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.DatasetReader.getTable(DatasetReader.java:39) - read 549 lines (including header)
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:569) - setting generic parameters (projectname, ipaview, datasetname, geneidtype)
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.buildPOSTData(MainUI.java:584) - setting data parameters
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:87) - executing POST request at address: https://analysis-stable.ingenuity.com/pa/api/v1/datastream
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:88) - sending 3843 post parameters
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:53:01,512 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:89) - sending 3843 parameters
+2014-08-07 09:53:01,518 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:53:01,518 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:106) - request entity content length in bytes: 76389
+2014-08-07 09:53:01,527 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:53:01,527 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:107) - request entity content length in MB: 0.076389
+2014-08-07 09:53:05,383 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:53:05,383 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.GenericApi.executePost(GenericApi.java:82) - RESULT:
+
+2014-08-07 09:53:05,383 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:53:05,383 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.Util.writeToFile(Util.java:47) - writing to file: output.txt
+2014-08-07 09:53:05,384 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:53:05,384 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:545) - POST request sent
+2014-08-07 09:53:05,384 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:53:05,384 INFO [SwingWorker-pool-2-thread-7] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:546) - ------------------------------------------------------------------------------
+2014-08-07 09:55:24,875 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 09:55:24,875 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-07 09:55:24,898 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-07 09:55:24,898 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
