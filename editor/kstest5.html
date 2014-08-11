@@ -1,0 +1,90 @@
+<html>
+<head>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+		var cursor = { selection: window.getSelection() };
+        console.log(cursor);
+        $(document).ready(function() {
+            $("body").keypress(function (event) {
+                //console.log("Handler for .keypress() called." + event.which);
+                if (event.which == 8) {
+                    var text = $("body").html();
+                    text = text.substring(0, text.length - 1);
+                    $("body").html(text);
+                } else {
+                    var character = String.fromCharCode(event.which);
+                    console.log("Handler for .keypress() called." + event.which);
+                    $("body").append(character);
+                }
+            });
+			$("body").click(function (event) {
+				var node = "|";
+				//insertNodeAtCursor(node);
+                getPositionOnPage();
+			});
+
+            // test methods here
+        });
+        function getPositionOnPage() {
+            var range
+            //var selection;
+            if (window.getSelection && window.getSelection().getRangeAt) {
+                range = window.getSelection().getRangeAt(0);
+                //selection = window.getSelection();
+            } else if (document.selection && document.selection.createRange) {
+                //selection = document.selection;
+                range = document.selection.createRange();
+            }
+            //console.log(selection);
+            console.log(range);
+            var offset = range.startOffset;
+            var node = range.startContainer;
+            var count = countCharactersBefore(node);
+            console.log("count: " + count);
+            var position = count + offset;
+            console.log("click position in document: " + position);
+        }
+		function insertNodeAtCursor(node) {
+			var range, html;
+			console.log("inserting node at cursor");
+			console.log(window.getSelection);
+			if (window.getSelection && window.getSelection().getRangeAt) {
+				console.log(window.getSelection());
+				range = window.getSelection().getRangeAt(0);
+				console.log(range);
+				range.insertNode(range.createContextualFragment(node));
+			} else if (document.selection && document.selection.createRange) {
+				range = document.selection.createRange();
+				html = (node.nodeType == 3) ? node.data : node.outerHTML;
+				range.pasteHTML(html);
+			}
+		}
+        function countCharactersBefore(node) {
+            if ($(node).get(0).tagName != "BODY") {
+                var count = 0;
+                $.each($(node).prevAll(), function(index, element) {
+                        //console.log(index);
+                        //console.log(element);
+                        console.log($.trim($(element).text()));
+                        //console.log($(element).text().length);
+                        count = count + $(element).text().trim().length;
+                });
+                return count + countCharactersBefore($(node).parent());
+            } else {
+                return 0;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>Caret test</p>
+    <p>
+        <span>
+            <span>This </span>
+            <span id="idis">is</span>
+        </span>
+        <span> Paragraph 2</span>
+    </p>
+	<p><a href="http://stackoverflow.com/questions/2213376/how-to-find-cursor-position-in-a-contenteditable-div/2213514#2213514">link</a></p>
+</body>
+</html>
