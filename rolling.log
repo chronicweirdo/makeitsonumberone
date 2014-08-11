@@ -6145,3 +6145,51 @@ Unable to upload dataset: Dataset Upload limit exceeded
 2014-08-07 09:55:24,875 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
 2014-08-07 09:55:24,898 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
 2014-08-07 09:55:24,898 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:00:50,230 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:00:50,230 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:00:50,318 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:00:50,318 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:00:50,425 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:00:50,425 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:00:50,443 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:00:50,443 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:00:50,447 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:00:50,447 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:00:50,476 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:00:50,476 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:28:53,514 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:28:53,514 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:28:53,547 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:28:53,547 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:28:53,619 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:28:53,619 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:28:53,622 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:28:53,622 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:28:53,624 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:28:53,624 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:28:53,641 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:28:53,641 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:31:50,064 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:31:50,064 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:31:50,096 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:31:50,096 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:31:50,162 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:31:50,162 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:31:50,165 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:31:50,165 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:31:50,167 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:31:50,167 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:31:50,183 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:31:50,183 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:38:25,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:38:25,739 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:184) - creating main panel
+2014-08-11 14:38:25,771 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:38:25,771 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:420) - creating edit components
+2014-08-11 14:38:25,834 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:38:25,834 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:229) - initializing listeners
+2014-08-11 14:38:25,837 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:38:25,837 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:316) - building edit panel
+2014-08-11 14:38:25,839 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:38:25,839 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:415) - updating main panel UI
+2014-08-11 14:38:25,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done
+2014-08-11 14:38:25,856 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:215) - UI init done

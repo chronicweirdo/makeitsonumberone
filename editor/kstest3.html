@@ -2,6 +2,7 @@
 <head>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript">
+		var cursor = { selection: window.getSelection() };
         $(document).ready(function() {
             $("body").keypress(function (event) {
                 //console.log("Handler for .keypress() called." + event.which);
@@ -23,9 +24,11 @@
 		function insertNodeAtCursor(node) {
 			var range, html;
 			console.log("inserting node at cursor");
+			console.log(window.getSelection);
 			if (window.getSelection && window.getSelection().getRangeAt) {
 				console.log(window.getSelection());
 				range = window.getSelection().getRangeAt(0);
+				console.log(range);
 				range.insertNode(range.createContextualFragment(node));
 			} else if (document.selection && document.selection.createRange) {
 				range = document.selection.createRange();
