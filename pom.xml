@@ -21,6 +21,7 @@
     <module>junk</module>
     <module>springweb</module>
     <module>puzzlers</module>
+    <module>chattymonkey</module>
   </modules>
 
     <build>
