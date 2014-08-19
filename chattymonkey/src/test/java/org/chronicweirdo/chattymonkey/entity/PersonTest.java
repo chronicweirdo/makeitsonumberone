@@ -1,4 +1,4 @@
-package org.chronicweirdo.chattymonkey.model;
+package org.chronicweirdo.chattymonkey.entity;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
