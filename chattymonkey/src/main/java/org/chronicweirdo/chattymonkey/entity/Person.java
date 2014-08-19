@@ -19,6 +19,13 @@ public class Person {
     private String password;
     private String email;
 
+    public Person() {
+    }
+
+    public Person(String userName) {
+        this.userName = userName;
+    }
+
     @Id
     @GeneratedValue(generator = "increment")
     @GenericGenerator(name="increment", strategy = "increment")

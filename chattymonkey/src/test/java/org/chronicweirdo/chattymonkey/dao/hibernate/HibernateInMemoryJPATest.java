@@ -33,9 +33,7 @@ public class HibernateInMemoryJPATest {
         entityManager.getTransaction().begin();
         entityManager.persist(person);
         entityManager.getTransaction().commit();
-        entityManager.close();
 
-        entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();
         List<Person> result = entityManager.createQuery("from Person", Person.class).getResultList();
         entityManager.getTransaction().commit();
