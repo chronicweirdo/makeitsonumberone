@@ -20,34 +20,6 @@ import java.net.URLClassLoader;
 public class HibernateInMemoryTest {
 
     @Test
-    public void savePersonJPA() throws Exception {
-        listClasspath();
-
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("org.chronicweirdo.chattymonkey.jpa");
-
-        Person person = getPerson();
-
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        entityManager.getTransaction().begin();
-        entityManager.persist(person);
-        entityManager.getTransaction().commit();
-        entityManager.close();
-    }
-
-    private void listClasspath() {
-        ClassLoader classLoader = ClassLoader.getSystemClassLoader();
-
-        URL[] urls = ((URLClassLoader)classLoader).getURLs();
-
-        for (URL url: urls) {
-            System.out.println(url.getFile());
-        }
-
-        //URL xml = classLoader.getResource("META-INF/persistence.xml");
-        //System.out.println(xml.getFile());
-    }
-
-    @Test
     public void savePerson() throws Exception {
         Configuration configuration = new Configuration();
         configuration.configure();
