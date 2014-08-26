@@ -14,4 +14,8 @@ public interface PersonDAO {
     List<Person> findByUserName(String userName);
 
     List<Person> findByEmail(String email);
+
+    Person getForUsername(String username);
+
+    List<Person> getContacts(Person user);
 }

@@ -13,6 +13,14 @@ import java.util.List;
  */
 public class JPAPersonDAO extends JPADAO implements PersonDAO {
 
+    public Person getForUsername(String username) {
+        return null;
+    }
+
+    public List<Person> getContacts(Person user) {
+        return null;
+    }
+
     public void save(Person person) {
         getEntityManager().getTransaction().begin();
 

@@ -1,10 +1,13 @@
 package org.chronicweirdo.chattymonkey.service;
 
+import org.chronicweirdo.chattymonkey.dao.PersonDAO;
 import org.chronicweirdo.chattymonkey.entity.Conversation;
 import org.chronicweirdo.chattymonkey.entity.Message;
 import org.chronicweirdo.chattymonkey.entity.Person;
 import org.junit.Before;
 import org.junit.Test;
+import static org.mockito.Mockito.*;
+
 import static org.junit.Assert.*;
 
 import java.util.ArrayList;
@@ -19,20 +22,35 @@ public class ChatServiceTest {
 
     public static final int CONTACTS_SIZE = 10;
     public static final int CONVERSATIONS_SIZE = 3;
+    public static final String USERNAME = "username";
+    public static final String PASSWORD = "password";
     private PersonService personService;
     private ChatService chatService;
 
     @Before
     public void setUp() throws Exception {
-        chatService = new ChatService();
         personService = new PersonService();
+        PersonDAO personDao = mock(PersonDAO.class);
+        Person user = new Person();
+        user.setPassword(PASSWORD);
+        user.setUserName(USERNAME);
+        when(personDao.getForUsername(USERNAME)).thenReturn(user);
+        List<Person> contacts = new ArrayList<Person>(CONTACTS_SIZE);
+        for (int i = 0; i < CONTACTS_SIZE; i++) {
+            Person person = new Person();
+            person.setUserName("person" + i);
+            contacts.add(person);
+        }
+        when(personDao.getContacts(user)).thenReturn(contacts);
+        personService.setDao(personDao);
+        chatService = new ChatService();
     }
 
     @Test
     public void newConversation() throws Exception {
         // a user logs in to the application
-        String username = "username";
-        String password = "password";
+        String username = USERNAME;
+        String password = PASSWORD;
         Person user = personService.authenticate(username, password);
         assertNotNull(user);
         assertEquals(user.getUserName(), username);
