@@ -10,7 +10,8 @@
                 getMouseCoordonates(event);
                 computeCoordonatesInElement(event);
                 computeUsingSelection(event);
-                insertCaretAtSelection(event);
+                //insertCaretAtSelection(event);
+                createElementOverlay(event);
             });
         });
         // get mouse coordonates on page
@@ -61,6 +62,25 @@
             html = html.substring(0, offset) + '<span id="caret">|</span>' + html.substring(offset, html.length);
             console.log("new html: " + html);
             $(parent).html(html);
+        }
+        function createElementOverlay(event) {
+            $("#caret").remove();
+            var selection = window.getSelection();
+            var node = selection.anchorNode;
+            var parent = node.parentNode;
+            var offset = selection.anchorOffset;
+            $("body").append('<span id="caret">|</span>');
+            // http://stackoverflow.com/questions/396649/retrieving-dom-textnode-position
+            positionCaretOverNode(parent);
+        }
+        function positionCaretOverNode(node) {
+            $('#caret').css('position', 'absolute');
+            $('#caret').css('top', $(node).top);
+            $('#caret').css('left', $(node).left);
+            $('#caret').css('width', $(node).width());
+            $('#caret').css('height', $(node).height());
+            $('#caret').css('background-color', 'red');
+
         }
         // get element under mouse
         // get coordonates inside element
