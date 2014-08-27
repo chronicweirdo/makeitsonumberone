@@ -5,7 +5,63 @@
     <title>Testing what I can do with the mouse coordonates and javascript</title>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript">
+        $(document).ready(function() {
+            $("body").click(function (event) {
+                getMouseCoordonates(event);
+                computeCoordonatesInElement(event);
+                computeUsingSelection(event);
+                insertCaretAtSelection(event);
+            });
+        });
         // get mouse coordonates on page
+        function getMouseCoordonates(event) {
+            console.log(event);
+            // this event contains a host of attributes, like:
+            // pageX, pageY
+            // originalEvent
+            // originalEvent.explicitOriginalTarget (has value #text "paisprezece cincisprazece")
+            // originalEvent.explicitOriginalTarget:
+            //      nodeName: #text
+            //      nodeType: 3
+            //      nodeValue: saisprazece
+            //      parentElement: <span>
+            //      parentNode: <span>
+            //      length: 11
+        }
+        function computeCoordonatesInElement(event) {
+            var target = event.originalEvent.explicitOriginalTarget.parentElement;
+            console.log($(target).position())
+            console.log($(target).width());
+            console.log($(target).height());
+        }
+        function computeUsingSelection(event) {
+            console.log(window.getSelection());
+            // has the following fields:
+            // anchorNode - this is where we will insert caret
+            // anchorOffset - this is the position in the node where we will inser caret
+            // focusNode
+            // focusOffset
+            // isCollapsed
+            // rangeCount - one, on click
+        }
+        function insertCaretAtSelection(event) {
+            $("#caret").remove();
+            var selection = window.getSelection();
+            var node = selection.anchorNode;
+            var parent = node.parentNode;
+            var offset = selection.anchorOffset;
+            //console.log(node);
+            //console.log($(node));
+            //console.log($(parent).html());
+            //console.log($(selection.anchorNode).html());
+            //console.log($(node).outerHTML());
+            var html = $(parent).html();
+            console.log("offset: " + offset);
+            console.log("original html: " + html)
+            html = html.substring(0, offset) + '<span id="caret">|</span>' + html.substring(offset, html.length);
+            console.log("new html: " + html);
+            $(parent).html(html);
+        }
         // get element under mouse
         // get coordonates inside element
         // get word under mouse
