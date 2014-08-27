@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Testing what I can do with the mouse coordonates and javascript</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            logDocument();
+        });
+
+        function logDocument() {
+            //logDocumentTraverse($('body'), 0);
+            logDocumentLeafsTraverse($('body'), 0);
+        }
+        function logDocumentTraverse(node, level) {
+            console.log(level + ": " + $(node).html() + "//" + $(node).text());
+            $(node).contents().each(function() {
+                logDocumentTraverse(this, level+1);
+            })
+        }
+        function logDocumentLeafsTraverse(node, level) {
+            console.log(level + ": " + $(node).contents());
+            $(node).contents().each(function() {
+                logDocumentLeafsTraverse(this, level+1);
+            })
+        }
+    </script>
+</head>
+<body>
+
+<p>Unu doi trei patru <b>cinci</b> sase sapte <span>opt noua</span></p>
+<p>Zece unsprazece douasprazece:
+<ul>
+    <li>treisprazece</li>
+    <li>paisprazece cincisprazece</li>
+    <li><span>saisprazece</span> saptesprazece</li>
+    <li><a href="google.com">optsprazece</a></li>
+</ul>
+</p>
+</body>
+</html>
