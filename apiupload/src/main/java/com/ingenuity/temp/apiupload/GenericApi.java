@@ -86,7 +86,6 @@ public class GenericApi {
     public String executePost(String path, List<Pair> parameters, boolean openIPA) {
         log.info("executing POST request at address: " + server + path);
         log.info("sending " + parameters.size() + " post parameters");
-        log.info("sending " + parameters.size() + " parameters");
         if (log.isDebugEnabled()) {
             log.debug("listing POST parameters (order is important):");
             for (Pair parameter: parameters) {

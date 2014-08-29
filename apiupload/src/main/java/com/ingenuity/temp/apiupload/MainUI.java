@@ -29,8 +29,8 @@ public class MainUI {
     public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
     private static final ComboOption[] API_PATH_VALUES = {
             new ComboOption(API_PATH_DATASET_UPLOAD, "upload dataset"),
-            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis"),
-            new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
+            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis")//,
+            //new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
     };
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
@@ -71,22 +71,37 @@ public class MainUI {
             new ComboOption("affymetrixsnp", "Affymetrix SNP ID"),
             new ComboOption("agilent", "Agilent"),
             new ComboOption("cas", "CAS Registry"),
+            new ComboOption("ccds", "CCDS"),
             new ComboOption("codelink", "CodeLink"),
+            new ComboOption("dbsnp", "dbSNP"),
+            new ComboOption("eg_human", "Entrez Gene (human)"),
+            new ComboOption("eg_mouse", "Entrez Gene (mouse)"),
+            new ComboOption("eg_rat", "Entrez Gene (rat)"),
+            new ComboOption("ensembl", "Ensembl"),
             new ComboOption("entrezgene", "Entrez Gene"),
             new ComboOption("genbank", "GenBank"),
             new ComboOption("genpept", "GenPept"),
             new ComboOption("ginumber", "GI Number"),
             new ComboOption("hugo", "HUGO Gene Symbol"),
+            new ComboOption("hmdb", "Human Metabolome Database"),
             new ComboOption("illumina", "Illumina"),
+            new ComboOption("ing_human", "Ingenuity (human)"),
+            new ComboOption("ing_mouse", "Ingenuity (mouse)"),
+            new ComboOption("ing_rat", "Ingenuity (rat)"),
+            new ComboOption("ingenuity", "Ingenuity"),
             new ComboOption("ipi", "International Protein Index"),
             new ComboOption("kegg", "KEGG ID"),
-            new ComboOption("locuslink", "Locus Link"),
+            new ComboOption("locuslink", "Locus Link"), // this one does not exist in the current SourceType, locus link appears under entrezgene?
+            new ComboOption("mirbasemature", "miRBase (mature)"),
+            new ComboOption("mirbasestemloop", "miRBaseSt"),
+            new ComboOption("mousesymeg", "Gene Symbol - mouse (Entrez Gene)"),
             new ComboOption("pubchem", "PubChem CID"),
+            new ComboOption("rategsym", "Gene Symbol - rat (Entrez Gene)"),
             new ComboOption("refseq", "RefSeq"),
             new ComboOption("swissprot", "UniProt/SwissProt Accession"),
-            new ComboOption("unigene", "UniGene"),
-            new ComboOption("dbsnp", "dbSNP"),
-            new ComboOption("mirbasemature", "miRBase (mature)")
+            new ComboOption("ucsc_hg18", "UCSC (hg18)"),
+            new ComboOption("ucsc_hg19", "UCSC (hg19)"),
+            new ComboOption("unigene", "UniGene")
     };
     private static final String FIELD_TYPE_NO_VALUE = "<no value>";
     private static final ComboOption[] EXPRESSION_VALUE_TYPES = {
