@@ -1,5 +1,6 @@
 package org.chronicweirdo.chattymonkey.service;
 
+import org.chronicweirdo.chattymonkey.dao.ConversationDAO;
 import org.chronicweirdo.chattymonkey.entity.Conversation;
 import org.chronicweirdo.chattymonkey.entity.Message;
 import org.chronicweirdo.chattymonkey.entity.Person;
@@ -11,8 +12,14 @@ import java.util.List;
  */
 public class ChatService {
 
+    private ConversationDAO conversationDAO;
+
+    public void setConversationDAO(ConversationDAO conversationDAO) {
+        this.conversationDAO = conversationDAO;
+    }
+
     public List<Conversation> getConversations(Person user) {
-        return null;
+        return conversationDAO.getConversations(user);
     }
 
     public Conversation createConversation(Person user, String title) {

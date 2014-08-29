@@ -10,17 +10,17 @@ import java.util.List;
  */
 public class PersonService {
 
-    private PersonDAO dao;
+    private PersonDAO personDAO;
 
-    public void setDao(PersonDAO dao) {
-        this.dao = dao;
+    public void setPersonDAO(PersonDAO personDAO) {
+        this.personDAO = personDAO;
     }
 
     public Person authenticate(String username, String password) throws Exception {
         if (username == null || password == null) {
             throw new Exception("Insufficient data.");
         }
-        Person person = dao.getForUsername(username);
+        Person person = personDAO.getForUsername(username);
         if (person == null) {
             throw new Exception("No person with " + username + " username.");
         }
@@ -31,7 +31,7 @@ public class PersonService {
     }
 
     public List<Person> getContacts(Person user) {
-        List<Person> contacts = dao.getContacts(user);
+        List<Person> contacts = personDAO.getContacts(user);
         return contacts;
     }
 }

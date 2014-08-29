@@ -1,5 +1,6 @@
 package org.chronicweirdo.chattymonkey.service;
 
+import org.chronicweirdo.chattymonkey.dao.ConversationDAO;
 import org.chronicweirdo.chattymonkey.dao.PersonDAO;
 import org.chronicweirdo.chattymonkey.entity.Conversation;
 import org.chronicweirdo.chattymonkey.entity.Message;
@@ -42,8 +43,25 @@ public class ChatServiceTest {
             contacts.add(person);
         }
         when(personDao.getContacts(user)).thenReturn(contacts);
-        personService.setDao(personDao);
+        personService.setPersonDAO(personDao);
+
         chatService = new ChatService();
+        ConversationDAO conversationDAO = mock(ConversationDAO.class);
+        List<Conversation> conversations = mockConversations();
+        when(conversationDAO.getConversations(user)).thenReturn(conversations);
+        chatService.setConversationDAO(conversationDAO);
+    }
+
+    private List<Conversation> mockConversations() {
+        List<Conversation> conversations = new ArrayList<Conversation>();
+        for (int i = 0; i < CONVERSATIONS_SIZE; i++) {
+            conversations.add(mockConversation());
+        }
+        return conversations;
+    }
+
+    private Conversation mockConversation() {
+        return new Conversation();
     }
 
     @Test
