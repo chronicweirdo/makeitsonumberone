@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter5.puzzle_37;
+
 public class Arcane2 {
     public static void main(String[] args) {
         try {

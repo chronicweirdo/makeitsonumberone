@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter5.puzzle45;
+
 public class Workout {
     public static void main(String[] args) {
         workHard();

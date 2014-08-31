@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter5.puzzle_37;
+
 interface Type1 {
     void f() throws CloneNotSupportedException;
 }

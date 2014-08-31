@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter5.puzzle_41;
+
 import java.io.*;
 
 public class Copy {
@@ -12,6 +14,7 @@ public class Copy {
             while ((n = in.read(buf)) > 0)
                 out.write(buf, 0, n);
         } finally {
+            // close can throw IOException as well
             if (in != null) in.close();
             if (out != null) out.close();
         } 

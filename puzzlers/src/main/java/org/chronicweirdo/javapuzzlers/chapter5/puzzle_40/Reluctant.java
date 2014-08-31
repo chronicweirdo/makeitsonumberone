@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter5.puzzle_40;
+
 public class Reluctant {
     private Reluctant internalInstance = new Reluctant();
 
