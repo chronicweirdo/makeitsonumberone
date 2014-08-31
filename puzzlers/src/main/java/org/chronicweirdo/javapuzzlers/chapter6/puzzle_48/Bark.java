@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter6.puzzle_48;
+
 class Dog {
     public static void bark() {
         System.out.print("woof ");

@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter6.puzzle_49;
+
 import java.util.Calendar;
 
 public class Elvis {

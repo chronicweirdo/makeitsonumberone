@@ -1,3 +1,5 @@
+package org.chronicweirdo.javapuzzlers.chapter6.puzzle_47;
+
 class Counter {
     private static int count = 0;
     public static final synchronized void increment() {
