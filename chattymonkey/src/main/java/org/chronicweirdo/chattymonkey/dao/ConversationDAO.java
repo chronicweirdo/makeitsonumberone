@@ -10,5 +10,7 @@ import java.util.List;
  */
 public interface ConversationDAO {
 
+    void save(Conversation conversation);
+
     List<Conversation> getConversations(Person person);
 }

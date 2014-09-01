@@ -27,5 +27,7 @@
 
         <!-- Names the annotated entity class -->
         <mapping class="org.chronicweirdo.chattymonkey.entity.Person" />
+        <mapping class="org.chronicweirdo.chattymonkey.entity.Conversation" />
+        <mapping class="org.chronicweirdo.chattymonkey.entity.Message" />
     </session-factory>
 </hibernate-configuration>

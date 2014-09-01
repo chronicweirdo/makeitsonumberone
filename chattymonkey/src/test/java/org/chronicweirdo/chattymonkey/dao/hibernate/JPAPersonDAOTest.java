@@ -14,17 +14,15 @@ import java.util.List;
 /**
  * Created by scacoveanu on 8/19/2014.
  */
-public class JPAPersonDAOTest {
+public class JPAPersonDAOTest extends JPADAOTest {
 
     public static final String JOAN = "Joan";
-    private EntityManager entityManager;
     private PersonDAO dao;
 
     @Before
     public void setUp() throws Exception {
         // populate database with some data
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(JPADAO.PERSISTENCE_UNIT_NAME);
-        entityManager = entityManagerFactory.createEntityManager();
+        EntityManager entityManager = getEntityManager();
 
         entityManager.getTransaction().begin();
         entityManager.persist(new Person("Jane"));
@@ -43,6 +41,7 @@ public class JPAPersonDAOTest {
     public void save() throws Exception {
         dao.save(new Person("Alex"));
 
+        EntityManager entityManager = getEntityManager();
         entityManager.getTransaction().begin();
         List<Person> alexes = entityManager.createQuery("from Person where userName = 'Alex'", Person.class).getResultList();
         entityManager.getTransaction().commit();

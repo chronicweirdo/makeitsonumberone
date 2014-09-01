@@ -1,16 +1,33 @@
 package org.chronicweirdo.chattymonkey.entity;
 
-import java.util.List;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 /**
  * Created by Silviu on 8/26/14.
+ *
+ * More on hibernate annotations: http://docs.jboss.org/hibernate/stable/annotations/reference/en/html_single/
  */
+@Entity
 public class Message {
+    private Long id;
     private String text;
-    private Person from;
-    private List<Person> viewers;
+    private Person author;
+    // removing viewers, since all people in a conversation can see the message
     private long time;
     private Conversation conversation;
+
+    @Id
+    @GeneratedValue(generator = "increment")
+    @GenericGenerator(name="increment", strategy = "increment")
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getText() {
         return text;
@@ -20,20 +37,13 @@ public class Message {
         this.text = text;
     }
 
-    public Person getFrom() {
-        return from;
+    @OneToOne
+    public Person getAuthor() {
+        return author;
     }
 
-    public void setFrom(Person from) {
-        this.from = from;
-    }
-
-    public List<Person> getViewers() {
-        return viewers;
-    }
-
-    public void setViewers(List<Person> viewers) {
-        this.viewers = viewers;
+    public void setAuthor(Person author) {
+        this.author = author;
     }
 
     public long getTime() {
@@ -44,6 +54,7 @@ public class Message {
         this.time = time;
     }
 
+    @ManyToOne
     public Conversation getConversation() {
         return conversation;
     }

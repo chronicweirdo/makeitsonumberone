@@ -6,6 +6,8 @@
     <persistence-unit name="org.chronicweirdo.chattymonkey.jpa">
         <description>Persistence unit for the chattymonkey project</description>
         <class>org.chronicweirdo.chattymonkey.entity.Person</class>
+        <class>org.chronicweirdo.chattymonkey.entity.Conversation</class>
+        <class>org.chronicweirdo.chattymonkey.entity.Message</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />

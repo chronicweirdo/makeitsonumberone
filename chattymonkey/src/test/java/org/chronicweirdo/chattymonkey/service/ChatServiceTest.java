@@ -87,7 +87,7 @@ public class ChatServiceTest {
         Conversation conversation = chatService.createConversation(user, title);
         assertNotNull(conversation);
         assertEquals(conversation.getTitle(), title);
-        assertEquals(conversation.getCreator(), user);
+        assertEquals(conversation.getAuthor(), user);
         conversations = chatService.getConversations(user);
         assertNotNull(conversations);
         assertEquals(conversations.size(), CONVERSATIONS_SIZE + 1);
@@ -114,12 +114,7 @@ public class ChatServiceTest {
         Message message = chatService.message(user, conversation, text);
         assertNotNull(message);
         assertEquals(message.getText(), text);
-        assertEquals(message.getFrom(), user);
-        assertEquals(message.getViewers().size(), 4);
-        assertTrue(message.getViewers().contains(contacts.get(0)));
-        assertTrue(message.getViewers().contains(contacts.get(1)));
-        assertTrue(message.getViewers().contains(contacts.get(2)));
-        assertTrue(message.getViewers().contains(user));
+        assertEquals(message.getAuthor(), user);
 
         // periodic updates to the ui show if a new message has arrived in the conversation
         List<Message> messages = chatService.getNew(user, conversation);
