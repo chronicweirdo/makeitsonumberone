@@ -129,6 +129,13 @@ public class JPAConversationDAOTest extends JPADAOTest {
     public void tearDown() throws Exception {
         // there is a problem with deleting data through JPA queries
         // cascading does not work correctly, we get constraint violations
+
+        // details about the delete cascading issues: http://stackoverflow.com/questions/7825484/jpa-delete-where-does-not-delete-children-and-throws-an-exception
+        // DELETE (and INSERT) do not cascade via relationships in JPQL query. This is clearly spelled in specification:
+        // A delete operation only applies to entities of the specified class and its subclasses. It does not cascade to related entities.
+
+        // about bulk deletion
+        // http://www.javacodegeeks.com/2013/11/efficiently-delete-data-with-jpa-and-hibernate.html
         getEntityManager().getTransaction().begin();
         getEntityManager().createQuery("delete from Conversation c").executeUpdate();
         getEntityManager().getTransaction().commit();
