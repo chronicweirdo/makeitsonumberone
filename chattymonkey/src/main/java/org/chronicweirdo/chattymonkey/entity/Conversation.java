@@ -48,7 +48,7 @@ public class Conversation {
 
     // one conversation to many messages
     // each conversation has many messages, each message has one conversation
-    @OneToMany(cascade = {CascadeType.ALL})
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Message> getMessages() {
         return messages;
     }

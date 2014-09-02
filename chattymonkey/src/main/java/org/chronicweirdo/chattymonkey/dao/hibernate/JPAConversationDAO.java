@@ -19,6 +19,12 @@ public class JPAConversationDAO extends JPADAO implements ConversationDAO {
         getEntityManager().getTransaction().commit();
     }
 
+    public void delete(Conversation conversation) {
+        getEntityManager().getTransaction().begin();
+        getEntityManager().remove(conversation);
+        getEntityManager().getTransaction().commit();
+    }
+
     public List<Conversation> getConversations(Person person) {
         getEntityManager().getTransaction().begin();
         //Query query = getEntityManager().createQuery("select c from Conversation c where c.author=:author", Conversation.class);

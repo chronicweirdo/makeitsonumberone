@@ -13,9 +13,17 @@ public abstract class JPADAOTest {
 
     protected EntityManager getEntityManager() {
         if (entityManager == null) {
-            EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(JPADAO.PERSISTENCE_UNIT_NAME);
-            entityManager = entityManagerFactory.createEntityManager();
+            return getNewEntityManager();
         }
+        return entityManager;
+    }
+
+    protected EntityManager getNewEntityManager() {
+        if (entityManager != null) {
+            entityManager.close();
+        }
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(JPADAO.PERSISTENCE_UNIT_NAME);
+        entityManager = entityManagerFactory.createEntityManager();
         return entityManager;
     }
 }

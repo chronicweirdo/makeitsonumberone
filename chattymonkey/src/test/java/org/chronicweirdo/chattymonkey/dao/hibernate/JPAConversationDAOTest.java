@@ -4,6 +4,7 @@ import org.chronicweirdo.chattymonkey.dao.ConversationDAO;
 import org.chronicweirdo.chattymonkey.entity.Conversation;
 import org.chronicweirdo.chattymonkey.entity.Message;
 import org.chronicweirdo.chattymonkey.entity.Person;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,37 +32,24 @@ public class JPAConversationDAOTest extends JPADAOTest {
     private static final String TEXT2 = "text2";
     private JPAConversationDAO conversationDAO;
     private Person person;
+    private Person person2;
 
     @Before
     public void setUp() throws Exception {
+        // will delete the database
+        getNewEntityManager();
+
         // create some data
         person = new Person();
         person.setEmail(EMAIL);
         person.setPassword(PASSWORD);
         person.setUserName(USERNAME);
 
-        Person person2 = new Person();
+        person2 = new Person();
         person2.setEmail(EMAIL2);
         person2.setUserName(PASSWORD);
         person2.setUserName(USERNAME2);
 
-        /*Conversation conversation = new Conversation();
-        conversation.setAuthor(person);
-        conversation.setParticipants(Arrays.asList(person, person2));
-        conversation.setTime(TIME);
-        conversation.setTitle(TITLE);
-
-        Message message1 = new Message();
-        message1.setTime(TIME);
-        message1.setAuthor(person);
-        message1.setText(TEXT1);
-
-        Message message2 = new Message();
-        message2.setTime(TIME);
-        message2.setAuthor(person2);
-        message2.setText(TEXT2);
-
-        conversation.setMessages(Arrays.asList(message1, message2));*/
         Conversation conversation = createConversation(TITLE, Arrays.asList(person, person2),
                 Arrays.asList(person, person2, person), Arrays.asList("hello", "hi", "can we talk?"));
         Conversation conversation2 = createConversation(TITLE2, Arrays.asList(person2, person),
@@ -116,6 +104,37 @@ public class JPAConversationDAOTest extends JPADAOTest {
         assertEquals(conversation.getAuthor(), person);
         assertEquals(conversation.getParticipants().size(), 2);
         assertEquals(conversation.getMessages().size(), 3);
+    }
+
+    @Test
+    public void save() throws Exception {
+        Conversation conversation = createConversation("another conversation", Arrays.asList(person, person2),
+                Arrays.asList(person), Arrays.asList("what a beautiful day"));
+        conversationDAO.save(conversation);
+
+        List<Conversation> conversations = conversationDAO.getConversations(person);
+        assertEquals(conversations.size(), 3);
+    }
+
+    @Test
+    public void delete() throws Exception {
+        List<Conversation> originalConversations = conversationDAO.getConversations(person);
+        assertTrue(originalConversations.size() > 0);
+        conversationDAO.delete(originalConversations.get(0));
+        List<Conversation> newConversations = conversationDAO.getConversations(person);
+        assertEquals(originalConversations.size() - 1, newConversations.size());
+    }
+
+    //@After
+    public void tearDown() throws Exception {
+        // there is a problem with deleting data through JPA queries
+        // cascading does not work correctly, we get constraint violations
+        getEntityManager().getTransaction().begin();
+        getEntityManager().createQuery("delete from Conversation c").executeUpdate();
+        getEntityManager().getTransaction().commit();
+        getEntityManager().getTransaction().begin();
+        getEntityManager().createQuery("delete from Person p").executeUpdate();
+        getEntityManager().getTransaction().commit();
     }
 
 }

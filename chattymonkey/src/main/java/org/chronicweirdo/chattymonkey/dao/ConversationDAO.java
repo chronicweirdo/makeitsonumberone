@@ -12,5 +12,7 @@ public interface ConversationDAO {
 
     void save(Conversation conversation);
 
+    void delete(Conversation conversation);
+
     List<Conversation> getConversations(Person person);
 }
