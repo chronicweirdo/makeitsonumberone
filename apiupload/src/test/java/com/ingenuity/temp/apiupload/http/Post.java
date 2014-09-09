@@ -9,6 +9,7 @@ import org.apache.commons.httpclient.methods.RequestEntity;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.net.URLEncoder;
 
 /**
  * Created by Silviu on 9/9/14.
@@ -46,7 +47,12 @@ public class Post {
 
             public void writeRequest(OutputStream outputStream) throws IOException {
                 OutputStreamWriter writer = new OutputStreamWriter(outputStream);
-                writer.write("param1=test1&param2=test2&param2=test3");
+                writer.write("param1=");
+                writer.write(URLEncoder.encode("test1", "UTF-8"));
+                writer.write("&param2=");
+                writer.write(URLEncoder.encode("test2", "UTF-8"));
+                writer.write("&param2=");
+                writer.write(URLEncoder.encode("test3", "UTF-8"));
                 writer.flush();
             }
 
