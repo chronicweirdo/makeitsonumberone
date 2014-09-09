@@ -29,8 +29,8 @@ public class MainUI {
     public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
     private static final ComboOption[] API_PATH_VALUES = {
             new ComboOption(API_PATH_DATASET_UPLOAD, "upload dataset"),
-            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis")//,
-            //new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
+            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis"),
+            new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
     };
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
@@ -549,10 +549,10 @@ public class MainUI {
         }
 
 
-        List<Pair> data = buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
+        List<Pair> data = DataUtil.buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
                 geneIDType, columnMapping, fieldTypes);
         // add additional parameters
-        data.addAll(parseParameters(additionalParameters.getText()));
+        data.addAll(DataUtil.parseParameters(additionalParameters.getText()));
         if (data.size() > 4) {
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
@@ -561,57 +561,9 @@ public class MainUI {
         log.info("------------------------------------------------------------------------------");
     }
 
-    protected List<Pair> parseParameters(String parameters) {
-        List<Pair> result = new ArrayList<Pair>();
-        String pattern = "([^ =&]+)=([^ =&]+)";
-        Matcher matcher = Pattern.compile(pattern).matcher(parameters);
-        while (matcher.find()) {
-            Pair parameter = new Pair(matcher.group(1), matcher.group(2));
-            result.add(parameter);
-        }
-        return result;
-    }
 
-    private List<Pair> buildPOSTData(String filePath, String projectName, String ipaview,
-                                     String datasetName, String analysisName, String geneidtype,
-                                     List<String> columnMapping, List<String> fieldTypes) {
-        log.info("building POST data");
 
-        // read dataset
-        List<List<String>> dataset = DatasetReader.getTable(filePath);
 
-        // set generic parameters
-        log.info("setting generic parameters (projectname, ipaview, datasetname, geneidtype)");
-        List<Pair> data = new ArrayList<Pair>();
-        data.add(new Pair("projectname", projectName));
-        data.add(new Pair("ipaview", ipaview));
-        data.add(new Pair("datasetname", datasetName));
-        if (analysisName != null) {
-            data.add(new Pair("analysisname", analysisName));
-        }
-        data.add(new Pair("geneidtype", geneidtype));
-
-        // set field types
-        if (fieldTypes.get(0) != null) data.add(new Pair("expvaltype", fieldTypes.get(0)));
-        if (fieldTypes.get(1) != null) data.add(new Pair("expvaltype2", fieldTypes.get(1)));
-        if (fieldTypes.get(2) != null) data.add(new Pair("expvaltype3", fieldTypes.get(2)));
-
-        log.info("setting data parameters");
-        for (int row = 1; row < dataset.size(); row++) {
-            for (int column = 0; column < columnMapping.size(); column++) {
-                // check if we have a mapping for this column
-                if (columnMapping.get(column) != null && columnMapping.get(column).length() > 0) {
-                    String value = "#NUM!"; // assume we have no value
-                    if (column < dataset.get(row).size() && dataset.get(row).get(column) != null
-                            && dataset.get(row).get(column).length() > 0) {
-                        value = dataset.get(row).get(column);
-                    }
-                    data.add(new Pair(columnMapping.get(column), value));
-                }
-            }
-        }
-        return data;
-    }
 
     public static void main(String[] args) {
         MainUI main = new MainUI();

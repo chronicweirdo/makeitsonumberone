@@ -96,3 +96,67 @@
 2014-08-29 12:37:58,202 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:560) - POST request sent
 2014-08-29 12:37:58,202 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:561) - ------------------------------------------------------------------------------
 2014-08-29 12:37:58,202 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:561) - ------------------------------------------------------------------------------
+2014-09-08 10:39:05,346 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:199) - creating main panel
+2014-09-08 10:39:05,346 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:199) - creating main panel
+2014-09-08 10:39:05,561 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:435) - creating edit components
+2014-09-08 10:39:05,561 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:435) - creating edit components
+2014-09-08 10:39:05,761 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-09-08 10:39:05,761 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-09-08 10:39:05,774 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:39:05,774 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:39:05,777 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:39:05,777 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:39:05,811 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:230) - UI init done
+2014-09-08 10:39:05,811 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:230) - UI init done
+2014-09-08 10:41:16,354 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:192) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-09-08 10:41:16,354 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:192) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-09-08 10:41:16,367 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loading table header from file
+2014-09-08 10:41:16,367 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loading table header from file
+2014-09-08 10:41:16,373 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:473) - loaded 7 columns
+2014-09-08 10:41:16,373 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:473) - loaded 7 columns
+2014-09-08 10:41:16,373 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:474) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-09-08 10:41:16,373 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:474) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-09-08 10:41:16,401 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:41:16,401 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:41:16,457 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:41:16,457 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:41:20,799 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:41:20,799 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 10:41:20,858 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:41:20,858 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 10:42:33,563 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-09-08 10:42:33,563 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:483) - executing data upload to server: https://analysis-stable.ingenuity.com
+2014-09-08 10:42:33,564 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:485) - logging in
+2014-09-08 10:42:33,564 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:485) - logging in
+2014-09-08 10:42:33,566 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:488) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-09-08 10:42:33,566 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:488) - using username scacoveanu@ingenuity.com and password <redacted>
+2014-09-08 10:42:33,629 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-09-08 10:42:33,629 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:41) - execute a get to the server
+2014-09-08 10:43:58,381 ERROR [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:46) - java.net.ConnectException: Connection timed out: connect
+2014-09-08 10:43:58,381 ERROR [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:46) - java.net.ConnectException: Connection timed out: connect
+2014-09-08 10:43:58,384 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-09-08 10:43:58,384 INFO [SwingWorker-pool-2-thread-2] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:49) - check if we are redirected
+2014-09-08 15:25:44,333 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:199) - creating main panel
+2014-09-08 15:25:44,333 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:199) - creating main panel
+2014-09-08 15:25:44,519 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:435) - creating edit components
+2014-09-08 15:25:44,519 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:435) - creating edit components
+2014-09-08 15:25:44,710 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-09-08 15:25:44,710 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:244) - initializing listeners
+2014-09-08 15:25:44,728 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 15:25:44,728 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 15:25:44,732 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 15:25:44,732 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 15:25:44,764 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:230) - UI init done
+2014-09-08 15:25:44,764 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:230) - UI init done
+2014-09-08 15:25:58,588 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:192) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-09-08 15:25:58,588 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.pickFile(MainUI.java:192) - selected file: C:\Users\scacoveanu\Documents\LPSHepatotoxicityInRats.txt
+2014-09-08 15:25:58,597 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loading table header from file
+2014-09-08 15:25:58,597 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:458) - loading table header from file
+2014-09-08 15:25:58,598 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:473) - loaded 7 columns
+2014-09-08 15:25:58,598 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:473) - loaded 7 columns
+2014-09-08 15:25:58,599 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:474) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-09-08 15:25:58,599 INFO [SwingWorker-pool-2-thread-1] com.ingenuity.temp.apiupload.MainUI.loadHeader(MainUI.java:474) - loaded columns: [Gene ID, IV_LO_A, IV_HI_A, IV_LO_B, IV_HI_B, IV_LO_C, IV_HI_C]
+2014-09-08 15:25:58,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 15:25:58,631 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:331) - building edit panel
+2014-09-08 15:25:58,667 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI
+2014-09-08 15:25:58,667 INFO [AWT-EventQueue-0] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:430) - updating main panel UI

@@ -18,8 +18,7 @@ public class ParameterParsingTest {
     }
 
     private List<Pair> parse(String parameters) {
-        MainUI mainUI = new MainUI();
-        return mainUI.parseParameters(parameters);
+        return DataUtil.parseParameters(parameters);
     }
 
     @Test
