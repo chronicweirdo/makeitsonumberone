@@ -38,6 +38,8 @@ public class Server {
                 builder.append(buffer);
             }
             System.out.println(builder.toString());
+            System.out.println();
+            System.out.println();
             String response = "this is the response";
             httpExchange.sendResponseHeaders(200, response.length());
             OutputStream outputStream = httpExchange.getResponseBody();
