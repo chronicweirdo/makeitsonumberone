@@ -29,8 +29,8 @@ public class MainUI {
     public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
     private static final ComboOption[] API_PATH_VALUES = {
             new ComboOption(API_PATH_DATASET_UPLOAD, "upload dataset"),
-            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis"),
-            new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
+            new ComboOption(API_PATH_RUN_ANALYSIS, "upload dataset and run analysis")//,
+            //new ComboOption(API_PATH_DATASTREAM, "upload dataset to datastream API (experimental)")
     };
     private static final String DEFAULT_USERNAME = "@ingenuity.com";
     private static final String DEFAULT_PASSWORD = "";
@@ -482,18 +482,6 @@ public class MainUI {
         String server = serverPath.getText();
         log.info("executing data upload to server: " + server);
 
-        log.info("logging in");
-        String username = this.userName.getText();
-        String password = new String(this.password.getPassword());
-        log.info("using username " + username + " and password <redacted>");
-        ApiLogin login = new ApiLogin(username, password, server);
-        HttpClient client = login.getClient();
-        log.info("login executed: " + login.isLoginExecuted());
-        log.info("login successful: " + login.isLoginSuccessful());
-
-        log.info("initializing generic api for server: " + server);
-        GenericApi genericApi = new GenericApi(client, server);
-
         String uploadAPIPath = getStringValue(apiPath);
         log.info("using API path: " + uploadAPIPath);
         String analysisName = this.analysisName.getText();
@@ -554,6 +542,18 @@ public class MainUI {
         // add additional parameters
         data.addAll(DataUtil.parseParameters(additionalParameters.getText()));
         if (data.size() > 4) {
+            //login
+            log.info("logging in");
+            String username = this.userName.getText();
+            String password = new String(this.password.getPassword());
+            log.info("using username " + username + " and password <redacted>");
+            ApiLogin login = new ApiLogin(username, password, server);
+            HttpClient client = login.getClient();
+            log.info("login executed: " + login.isLoginExecuted());
+            log.info("login successful: " + login.isLoginSuccessful());
+            // prepare the generic api
+            log.info("initializing generic api for server: " + server);
+            GenericApi genericApi = new GenericApi(client, server);
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
         }
