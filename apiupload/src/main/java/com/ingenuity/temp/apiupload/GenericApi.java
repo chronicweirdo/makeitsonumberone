@@ -101,7 +101,8 @@ public class GenericApi {
         /*for (Pair parameter: parameters) {
             post.addParameter(parameter.getKey(), parameter.getValue());
         }*/
-        post.setRequestEntity(new APIRequestEntity(parameters));
+        //post.setRequestEntity(new APIRequestEntity(parameters));
+        post.setRequestEntity(new PreprocessingAPIRequestEntity(parameters));
         try {
             //log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
             //log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));

@@ -57,11 +57,12 @@ public class Post {
             }
 
             public long getContentLength() {
-                return -1;
+                return -1; // this means the post will be chunked, thus not handled correctly by spring
             }
 
             public String getContentType() {
-                return "application/x-www-form-urlencoded";
+                //return "application/x-www-form-urlencoded";
+                return "multipart/form-data";
             }
         });
         try {

@@ -610,9 +610,11 @@ public class MainUI {
             log.info("login successful: " + login.isLoginSuccessful());
             // prepare the generic api
             log.info("initializing generic api for server: " + server);
+            GenericApi genericApiTest = new GenericApi(client, "http://localhost:8000");
             GenericApi genericApi = new GenericApi(client, server);
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
+            genericApiTest.executePost(uploadAPIPath, data, "output.txt", openIPA);
         }
         log.info("POST request sent");
         log.info("------------------------------------------------------------------------------");
