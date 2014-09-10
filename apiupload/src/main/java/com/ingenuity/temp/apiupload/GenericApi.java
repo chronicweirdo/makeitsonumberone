@@ -98,12 +98,14 @@ public class GenericApi {
 
         // build request
         PostMethod post = new PostMethod(server + path);
-        for (Pair parameter: parameters) {
+        /*for (Pair parameter: parameters) {
             post.addParameter(parameter.getKey(), parameter.getValue());
-        }
+        }*/
+        post.setRequestEntity(new APIRequestEntity(parameters));
         try {
-            log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
-            log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));
+            //log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
+            //log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));
+            log.info("request content type: " + post.getRequestEntity().getContentType());
             client.executeMethod(post);
         } catch (IOException e) {
             log.error(e);

@@ -53,13 +53,65 @@ public class MainUI {
     private static final ComboOption[] COLUMN_MAPPING_OPTIONS = {
             new ComboOption("geneid", "the gene or protein IDs to be uploaded to IPA"),
             new ComboOption("expvalue", "the first set of expression values"),
-            new ComboOption("obs2expval", "the first set of expression values for the second observation"),
-            new ComboOption("obs3expval", "the first set of expression values for the third observation"),
-            new ComboOption("obs4expval", "the first set of expression values for the fourth observation"),
-            new ComboOption("obs5expval", "the first set of expression values for the fifth observation"),
-            new ComboOption("obs6expval", "the first set of expression values for the sixth observation"),
             new ComboOption("expval2", "the second set of expression values for the uploaded genes"),
-            new ComboOption("expval3", "the thirs set of expression values for the uploaded genes")
+            new ComboOption("expval3", "the thirs set of expression values for the uploaded genes"),
+            new ComboOption("obs2expval", "the first set of expression values for the second observation"),
+            new ComboOption("obs2expval2", ""),
+            new ComboOption("obs2expval3", ""),
+            new ComboOption("obs3expval", "the first set of expression values for the third observation"),
+            new ComboOption("obs3expval2", ""),
+            new ComboOption("obs3expval3", ""),
+            new ComboOption("obs4expval", "the first set of expression values for the fourth observation"),
+            new ComboOption("obs4expval2", ""),
+            new ComboOption("obs4expval3", ""),
+            new ComboOption("obs5expval", "the first set of expression values for the fifth observation"),
+            new ComboOption("obs5expval2", ""),
+            new ComboOption("obs5expval3", ""),
+            new ComboOption("obs6expval", "the first set of expression values for the sixth observation"),
+            new ComboOption("obs6expval2", ""),
+            new ComboOption("obs6expval3", ""),
+            new ComboOption("obs7expval", ""),
+            new ComboOption("obs7expval2", ""),
+            new ComboOption("obs7expval3", ""),
+            new ComboOption("obs8expval", ""),
+            new ComboOption("obs8expval2", ""),
+            new ComboOption("obs8expval3", ""),
+            new ComboOption("obs9expval", ""),
+            new ComboOption("obs9expval2", ""),
+            new ComboOption("obs9expval3", ""),
+            new ComboOption("obs10expval", ""),
+            new ComboOption("obs10expval2", ""),
+            new ComboOption("obs10expval3", ""),
+            new ComboOption("obs11expval", ""),
+            new ComboOption("obs11expval2", ""),
+            new ComboOption("obs11expval3", ""),
+            new ComboOption("obs12expval", ""),
+            new ComboOption("obs12expval2", ""),
+            new ComboOption("obs12expval3", ""),
+            new ComboOption("obs13expval", ""),
+            new ComboOption("obs13expval2", ""),
+            new ComboOption("obs13expval3", ""),
+            new ComboOption("obs14expval", ""),
+            new ComboOption("obs14expval2", ""),
+            new ComboOption("obs14expval3", ""),
+            new ComboOption("obs15expval", ""),
+            new ComboOption("obs15expval2", ""),
+            new ComboOption("obs15expval3", ""),
+            new ComboOption("obs16expval", ""),
+            new ComboOption("obs16expval2", ""),
+            new ComboOption("obs16expval3", ""),
+            new ComboOption("obs17expval", ""),
+            new ComboOption("obs17expval2", ""),
+            new ComboOption("obs17expval3", ""),
+            new ComboOption("obs18expval", ""),
+            new ComboOption("obs18expval2", ""),
+            new ComboOption("obs18expval3", ""),
+            new ComboOption("obs19expval", ""),
+            new ComboOption("obs19expval2", ""),
+            new ComboOption("obs19expval3", ""),
+            new ComboOption("obs20expval", ""),
+            new ComboOption("obs20expval2", ""),
+            new ComboOption("obs20expval3", ""),
     };
     private static final ComboOption[] LOG_LEVELS = {
             new ComboOption("INFO", null),
@@ -298,8 +350,13 @@ public class MainUI {
                 SwingWorker worker = new SwingWorker() {
                     @Override
                     protected Object doInBackground() throws Exception {
-                        executeUpload();
-                        return null;
+                        try {
+                            executeUpload();
+                            return null;
+                        } catch (Throwable throwable) {
+                            log.error(throwable, throwable);
+                            throw throwable;
+                        }
                     }
 
                     @Override
@@ -566,6 +623,12 @@ public class MainUI {
 
 
     public static void main(String[] args) {
+        System.setProperty("http.proxyHost", "127.0.0.1");
+        System.setProperty("http.proxyPort", "8888");
+        System.setProperty("https.proxyHost", "127.0.0.1");
+        System.setProperty("https.proxyPort", "8888");
+        System.out.println(System.getProperty("javax.net.ssl.trustStore"));
+
         MainUI main = new MainUI();
         UIUtil.createAndShowGUI("IPA API Upload", null, main.getMainPanel());
     }
