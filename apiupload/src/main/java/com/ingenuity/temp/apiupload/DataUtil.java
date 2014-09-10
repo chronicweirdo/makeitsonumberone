@@ -45,18 +45,24 @@ public class DataUtil {
 
     public static void mapDataset(List<String> columnMapping, List<List<String>> dataset, List<Pair> data) {
         for (int row = 1; row < dataset.size(); row++) {
-            for (int column = 0; column < columnMapping.size(); column++) {
-                // check if we have a mapping for this column
-                if (columnMapping.get(column) != null && columnMapping.get(column).length() > 0) {
-                    String value = "#NUM!"; // assume we have no value
-                    if (column < dataset.get(row).size() && dataset.get(row).get(column) != null
-                            && dataset.get(row).get(column).length() > 0) {
-                        value = dataset.get(row).get(column);
-                    }
-                    data.add(new Pair(columnMapping.get(column), value));
+            data.addAll(mapRow(columnMapping, dataset.get(row)));
+        }
+    }
+
+    public static List<Pair> mapRow(List<String> columnMapping, List<String> row) {
+        List<Pair> data = new ArrayList<Pair>();
+        for (int column = 0; column < columnMapping.size(); column++) {
+            // check if we have a mapping for this column
+            if (columnMapping.get(column) != null && columnMapping.get(column).length() > 0) {
+                String value = "#NUM!"; // assume we have no value
+                if (column < row.size() && row.get(column) != null
+                        && row.get(column).length() > 0) {
+                    value = row.get(column);
                 }
+                data.add(new Pair(columnMapping.get(column), value));
             }
         }
+        return data;
     }
 
     public static List<Pair> parseParameters(String parameters) {
