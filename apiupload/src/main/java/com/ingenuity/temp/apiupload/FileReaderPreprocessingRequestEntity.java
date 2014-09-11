@@ -82,6 +82,7 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
         stopwatch.lap("setting up logging");
         log.info(stopwatch.lastLapString());
         log.info("computed length in " + stopwatch.totalTimeString());
+        log.info("computed length (characters): " + length);
     }
 
     public String encodeRow(String line) {

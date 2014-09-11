@@ -37,6 +37,8 @@ public class TextAreaAppender extends AppenderSkeleton {
         this.textPane = textPane;
         this.fullLog = fullLog;
         dateFormat = new SimpleDateFormat(DATE_FORMAT_PATTERN);
+        Font font = new Font("Monospaced", Font.PLAIN, 14);
+        this.textPane.setFont(font);
         Logger.getRootLogger().addAppender(this);
     }
 
