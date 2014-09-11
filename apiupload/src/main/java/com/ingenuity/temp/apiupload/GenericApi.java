@@ -83,6 +83,13 @@ public class GenericApi {
         Util.writeToFile(result, outputFile);
     }
 
+    public void executePost(String path, List<Pair> parameters, String outputFile, boolean openIPA,
+                            String filePath, List<String> columnMapping) {
+        String result = executePost(path, parameters, openIPA, filePath, columnMapping);
+        log.info("RESULT:\n" + result);
+        Util.writeToFile(result, outputFile);
+    }
+
     public String executePost(String path, List<Pair> parameters, boolean openIPA) {
         log.info("executing POST request at address: " + server + path);
         log.info("sending " + parameters.size() + " post parameters");
@@ -114,25 +121,51 @@ public class GenericApi {
 
         String result = Util.getResponseBody(post);
         if (openIPA) {
-            // try to open IPA using the default browser
-            Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
-            if (locationHeader != null) {
-                log.info("opening URL " + locationHeader.getValue() + " in default internet " +
-                        "browser");
-                if (Desktop.isDesktopSupported()) {
-                    try {
-                        Desktop.getDesktop().browse(new URI(locationHeader.getValue()));
-                    } catch (IOException e) {
-                        log.error(e, e);
-                    } catch (URISyntaxException e) {
-                        log.error(e, e);
-                    }
-                } else {
-                    log.warn("can't access default browser on current platform!");
+            openIPA(post);
+
+        }
+        return result;
+    }
+
+    public void openIPA(PostMethod post) {
+        // try to open IPA using the default browser
+        Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
+        if (locationHeader != null) {
+            log.info("opening URL " + locationHeader.getValue() + " in default internet " +
+                    "browser");
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().browse(new URI(locationHeader.getValue()));
+                } catch (IOException e) {
+                    log.error(e, e);
+                } catch (URISyntaxException e) {
+                    log.error(e, e);
                 }
             } else {
-                log.warn("no location header was found in response!");
+                log.warn("can't access default browser on current platform!");
             }
+        } else {
+            log.warn("no location header was found in response!");
+        }
+    }
+
+    public String executePost(String path, List<Pair> parameters, boolean openIPA, String filePath,
+                              List<String> columnMapping) {
+        log.info("executing POST request at address: " + server + path);
+        log.info("sending " + parameters.size() + " post parameters");
+
+        // build request
+        PostMethod post = new PostMethod(server + path);
+        post.setRequestEntity(new FileReaderPreprocessingRequestEntity(parameters, filePath, columnMapping));
+        try {
+            client.executeMethod(post);
+        } catch (IOException e) {
+            log.error(e);
+        }
+
+        String result = Util.getResponseBody(post);
+        if (openIPA) {
+            openIPA(post);
         }
         return result;
     }

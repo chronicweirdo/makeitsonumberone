@@ -30,7 +30,7 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
     private List<String> columnMapping;
     private long length;
 
-    public FileReaderPreprocessingRequestEntity(List<Pair> parameters, String filePath, List<String> columnMapping) throws UnsupportedEncodingException {
+    public FileReaderPreprocessingRequestEntity(List<Pair> parameters, String filePath, List<String> columnMapping) {
         super();
         this.parameters = parameters;
         this.filePath = filePath;
@@ -39,7 +39,7 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
         prepare();
     }
 
-    private void prepare() throws UnsupportedEncodingException {
+    private void prepare() {
         length = 0;
 
         // calculate encoded parameters size
@@ -47,19 +47,36 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
         length += encodedParameters.length();
 
         // read file line by line and encode entries
+        FileLineProcessor processor = new FileLineProcessor() {
+            private boolean firstLine = true;
 
+            @Override
+            public void processLine(String line) {
+                if (! firstLine) {
+                    String encoded = encodeRow(line);
+                    length += encoded.length();
+                } else {
+                    firstLine = false;
+                }
+            }
+        };
+        processor.process(filePath);
 
+    }
+
+    public String encodeRow(String line) {
+        List<String> tokens = DatasetReader.tokenizeLine(line);
+        List<Pair> mapped = mapRow(columnMapping, tokens);
+        return encodePairs(mapped, false);
     }
 
     private List<Pair> mapRow(List<String> columnMapping, List<String> row) {
-        List<Pair> pairs = new ArrayList<Pair>();
-        //for (int column)
-        return pairs;
+        return DataUtil.mapRow(columnMapping, row);
     }
 
-    private String encodePairs(List<Pair> pairs, boolean first) throws UnsupportedEncodingException {
+    private String encodePairs(List<Pair> pairs, boolean first) {
         StringBuilder builder = new StringBuilder();
-        for (Pair pair: parameters) {
+        for (Pair pair: pairs) {
             if (!first) {
                 builder.append('&');
             } else {
@@ -67,7 +84,14 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
             }
             builder.append(pair.getKey());
             builder.append('=');
-            builder.append(URLEncoder.encode(pair.getValue(), "UTF-8"));
+            String value = null;
+            try {
+                value = URLEncoder.encode(pair.getValue(), "UTF-8");
+            } catch (UnsupportedEncodingException e) {
+                log.error(e, e);
+                value = pair.getValue();
+            }
+            builder.append(value);
         }
         return builder.toString();
     }
@@ -80,23 +104,33 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
 
     @Override
     public void writeRequest(OutputStream out) throws IOException {
-        OutputStreamWriter writer = new OutputStreamWriter(out);
+        final OutputStreamWriter writer = new OutputStreamWriter(out);
 
-        long count = 0;
-        boolean first = true;
-        for (Pair parameter: parameters) {
-            if (!first) {
-                writer.append("&");
-                //out.write("&".getBytes());
+        // write general parameters
+        String encodedParameters = encodePairs(parameters, true);
+        writer.append(encodedParameters);
+
+        // read file line by line and write encoded entries
+        FileLineProcessor processor = new FileLineProcessor() {
+            private boolean firstLine = true;
+
+            @Override
+            public void processLine(String line) {
+                if (! firstLine) {
+                    String encoded = encodeRow(line);
+                    try {
+                        writer.append(encoded);
+                    } catch (IOException e) {
+                        log.error(e, e);
+                    }
+                } else {
+                    firstLine = false;
+                }
             }
-            String text = parameter.getKey() + "=" + parameter.getValue();
-            //out.write(text.getBytes());
-            writer.append(text);
-            count++;
-            first = false;
-        }
+        };
+        processor.process(filePath);
+
         writer.flush();
-        //out.flush();
     }
 
     @Override

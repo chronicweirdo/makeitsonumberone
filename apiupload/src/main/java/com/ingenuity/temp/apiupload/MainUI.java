@@ -594,11 +594,28 @@ public class MainUI {
         }
 
 
-        List<Pair> data = DataUtil.buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
-                geneIDType, columnMapping, fieldTypes);
+        /*List<Pair> data = DataUtil.buildPOSTData(filePath, projectName, ipaview, datasetName, analysisName,
+                geneIDType, columnMapping, fieldTypes);*/
+        List<Pair> data = new ArrayList<Pair>();
+
+        // set generic parameters
+        data.add(new Pair("projectname", projectName));
+        data.add(new Pair("ipaview", ipaview));
+        data.add(new Pair("datasetname", datasetName));
+        if (analysisName != null) {
+            data.add(new Pair("analysisname", analysisName));
+        }
+        data.add(new Pair("geneidtype", geneIDType));
+
+        // set field types
+        if (fieldTypes.get(0) != null) data.add(new Pair("expvaltype", fieldTypes.get(0)));
+        if (fieldTypes.get(1) != null) data.add(new Pair("expvaltype2", fieldTypes.get(1)));
+        if (fieldTypes.get(2) != null) data.add(new Pair("expvaltype3", fieldTypes.get(2)));
+
         // add additional parameters
         data.addAll(DataUtil.parseParameters(additionalParameters.getText()));
-        if (data.size() > 4) {
+
+        //if (data.size() > 4) {
             //login
             log.info("logging in");
             String username = this.userName.getText();
@@ -608,14 +625,16 @@ public class MainUI {
             HttpClient client = login.getClient();
             log.info("login executed: " + login.isLoginExecuted());
             log.info("login successful: " + login.isLoginSuccessful());
+
             // prepare the generic api
             log.info("initializing generic api for server: " + server);
             GenericApi genericApiTest = new GenericApi(client, "http://localhost:8000");
             GenericApi genericApi = new GenericApi(client, server);
+
             // we have data, not just generic parameters
-            genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA);
-            genericApiTest.executePost(uploadAPIPath, data, "output.txt", openIPA);
-        }
+            genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA, filePath, columnMapping);
+            genericApiTest.executePost(uploadAPIPath, data, "output.txt", openIPA, filePath, columnMapping);
+        //}
         log.info("POST request sent");
         log.info("------------------------------------------------------------------------------");
     }

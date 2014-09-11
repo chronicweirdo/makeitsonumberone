@@ -11,19 +11,20 @@ public abstract class FileLineProcessor {
 
     private static final Logger log = Logger.getLogger(DatasetReader.class);
 
-    private String path;
-
-    public FileLineProcessor(String path) {
-        this.path = path;
-    }
-
-    public void process() {
+    public void process(String path) {
         try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(path))));
 
             String line = reader.readLine();
-            while(line)
+            while(line != null) {
+                processLine(line);
+                line = reader.readLine();
+            }
+
+            reader.close();
         } catch (FileNotFoundException e) {
+            log.error(e, e);
+        } catch (IOException e) {
             log.error(e, e);
         }
     }
