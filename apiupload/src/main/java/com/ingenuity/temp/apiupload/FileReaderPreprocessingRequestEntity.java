@@ -2,14 +2,15 @@ package com.ingenuity.temp.apiupload;
 
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.log4j.Logger;
+import sun.management.counter.LongCounter;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * This request entity receives some basic parameters along with the column mapping and the file path.
@@ -29,6 +30,8 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
     private String filePath;
     private List<String> columnMapping;
     private long length;
+    private long logSteps = 100;
+    private long logInSteps = 1;
 
     public FileReaderPreprocessingRequestEntity(List<Pair> parameters, String filePath, List<String> columnMapping) {
         super();
@@ -36,17 +39,24 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
         this.filePath = filePath;
         this.columnMapping = columnMapping;
 
-        prepare();
+        computeLength();
     }
 
-    private void prepare() {
+    private void computeLength() {
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
+
         length = 0;
 
         // calculate encoded parameters size
         String encodedParameters = encodePairs(parameters, true);
-        length += encodedParameters.length();
+        long encodedParametersLength = encodedParameters.length();
+        length += encodedParametersLength;
+        stopwatch.lap("compute length generic parameters");
+        log.info(stopwatch.lastLapString());
 
         // read file line by line and encode entries
+        final AtomicLong step = new AtomicLong(0);
         FileLineProcessor processor = new FileLineProcessor() {
             private boolean firstLine = true;
 
@@ -55,13 +65,23 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
                 if (! firstLine) {
                     String encoded = encodeRow(line);
                     length += encoded.length();
+                    step.incrementAndGet();
                 } else {
                     firstLine = false;
                 }
             }
         };
         processor.process(filePath);
-
+        stopwatch.lap("compute length dataset");
+        log.info(stopwatch.lastLapString());
+        // preparing logging steps
+        if (step.get() > logSteps) {
+            logInSteps = step.get() / logSteps;
+        }
+        log.info("logging every " + logInSteps + " steps");
+        stopwatch.lap("setting up logging");
+        log.info(stopwatch.lastLapString());
+        log.info("computed length in " + stopwatch.totalTimeString());
     }
 
     public String encodeRow(String line) {
@@ -104,15 +124,20 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
 
     @Override
     public void writeRequest(OutputStream out) throws IOException {
+        final Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
         final OutputStreamWriter writer = new OutputStreamWriter(out);
 
         // write general parameters
         String encodedParameters = encodePairs(parameters, true);
         writer.append(encodedParameters);
+        stopwatch.lap("sent generic parameters");
+        log.info(stopwatch.lastLapString());
 
         // read file line by line and write encoded entries
         FileLineProcessor processor = new FileLineProcessor() {
             private boolean firstLine = true;
+            private long step = 0;
 
             @Override
             public void processLine(String line) {
@@ -120,6 +145,11 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
                     String encoded = encodeRow(line);
                     try {
                         writer.append(encoded);
+                        step++;
+                        if (step % logInSteps == 0) {
+                            stopwatch.lap("sent " + step + " file lines");
+                            log.info(stopwatch.lastLapString() + " > " + stopwatch.totalTimeString());
+                        }
                     } catch (IOException e) {
                         log.error(e, e);
                     }
@@ -129,8 +159,10 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
             }
         };
         processor.process(filePath);
-
         writer.flush();
+        stopwatch.lap("finished sending data");
+        log.info(stopwatch.lastLapString());
+        log.info("sending data took " + stopwatch.totalTimeString());
     }
 
     @Override

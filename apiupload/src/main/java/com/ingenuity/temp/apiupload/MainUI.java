@@ -628,12 +628,12 @@ public class MainUI {
 
             // prepare the generic api
             log.info("initializing generic api for server: " + server);
-            GenericApi genericApiTest = new GenericApi(client, "http://localhost:8000");
+            //GenericApi genericApiTest = new GenericApi(client, "http://localhost:8000");
             GenericApi genericApi = new GenericApi(client, server);
 
             // we have data, not just generic parameters
             genericApi.executePost(uploadAPIPath, data, "output.txt", openIPA, filePath, columnMapping);
-            genericApiTest.executePost(uploadAPIPath, data, "output.txt", openIPA, filePath, columnMapping);
+            //genericApiTest.executePost(uploadAPIPath, data, "output.txt", openIPA, filePath, columnMapping);
         //}
         log.info("POST request sent");
         log.info("------------------------------------------------------------------------------");
