@@ -36,6 +36,7 @@ public class ApiLogin {
         HostConfiguration config = new HostConfiguration();
         config.setProxy("127.0.0.1", 8888);
         HttpClient client = new HttpClient();
+        client.getHttpConnectionManager().getParams().setSoTimeout(0);
         //client.setHostConfiguration(config);
 
 

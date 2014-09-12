@@ -4,10 +4,7 @@ import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.log4j.Logger;
 import sun.management.counter.LongCounter;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.net.URLEncoder;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
@@ -29,9 +26,9 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
     private List<Pair> parameters;
     private String filePath;
     private List<String> columnMapping;
-    private long length;
+    private long length = -1;
     private long logSteps = 100;
-    private long logInSteps = 1;
+    private long logInSteps = 1000;
 
     public FileReaderPreprocessingRequestEntity(List<Pair> parameters, String filePath, List<String> columnMapping) {
         super();
@@ -77,12 +74,15 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
         // preparing logging steps
         if (step.get() > logSteps) {
             logInSteps = step.get() / logSteps;
+        } else {
+            logInSteps = 1;
         }
         log.info("logging every " + logInSteps + " steps");
         stopwatch.lap("setting up logging");
         log.info(stopwatch.lastLapString());
         log.info("computed length in " + stopwatch.totalTimeString());
         log.info("computed length (characters): " + length);
+        log.info("sending " + (length / (1024*1024)) + "MB to server");
     }
 
     public String encodeRow(String line) {
@@ -127,7 +127,11 @@ public class FileReaderPreprocessingRequestEntity implements RequestEntity {
     public void writeRequest(OutputStream out) throws IOException {
         final Stopwatch stopwatch = new Stopwatch();
         stopwatch.start();
-        final OutputStreamWriter writer = new OutputStreamWriter(out);
+        OutputStreamWriter osWriter = new OutputStreamWriter(out);
+        //final Writer writer = new BufferedWriter(osWriter);
+        //final Writer writer = osWriter;
+        final BufferedPostWriter writer = new BufferedPostWriter(osWriter);
+        writer.setBufferSize(6 * 1024 * 1024);
 
         // write general parameters
         String encodedParameters = encodePairs(parameters, true);

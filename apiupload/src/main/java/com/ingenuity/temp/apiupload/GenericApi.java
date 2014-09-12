@@ -156,14 +156,21 @@ public class GenericApi {
 
         // build request
         PostMethod post = new PostMethod(server + path);
+        post.getParams().setSoTimeout(0);
         post.setRequestEntity(new FileReaderPreprocessingRequestEntity(parameters, filePath, columnMapping));
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
         try {
             client.executeMethod(post);
+            stopwatch.lap("POST sent to server");
+            log.info(stopwatch.lastLapString());
         } catch (IOException e) {
             log.error(e);
         }
 
         String result = Util.getResponseBody(post);
+        stopwatch.lap("response read from server");
+        log.info(stopwatch.lastLapString());
         if (openIPA) {
             openIPA(post);
         }
