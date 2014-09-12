@@ -1,11 +1,8 @@
 package com.ingenuity.temp.apiupload;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.junit.*;
 import org.junit.Test;
 
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**

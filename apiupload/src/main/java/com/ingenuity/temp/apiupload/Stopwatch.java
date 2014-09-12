@@ -18,8 +18,8 @@ public class Stopwatch {
     private String noData = "";
 
     private Long startTime = null;
-    private List<Long> laps = new ArrayList<>();
-    private List<String> lapNames = new ArrayList<>();
+    private List<Long> laps = new ArrayList<Long>();
+    private List<String> lapNames = new ArrayList<String>();
 
     public void setNameSeparator(String nameSeparator) {
         this.nameSeparator = nameSeparator;

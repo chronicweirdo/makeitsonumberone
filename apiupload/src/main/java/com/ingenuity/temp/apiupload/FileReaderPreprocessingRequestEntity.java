@@ -2,7 +2,6 @@ package com.ingenuity.temp.apiupload;
 
 import org.apache.commons.httpclient.methods.RequestEntity;
 import org.apache.log4j.Logger;
-import sun.management.counter.LongCounter;
 
 import java.io.*;
 import java.net.URLEncoder;

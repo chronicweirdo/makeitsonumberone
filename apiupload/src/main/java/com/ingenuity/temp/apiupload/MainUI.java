@@ -352,11 +352,12 @@ public class MainUI {
                     protected Object doInBackground() throws Exception {
                         try {
                             executeUpload();
-                            return null;
+
                         } catch (Throwable throwable) {
                             log.error(throwable, throwable);
-                            throw throwable;
+                            //throw throwable;
                         }
+                        return null;
                     }
 
                     @Override
