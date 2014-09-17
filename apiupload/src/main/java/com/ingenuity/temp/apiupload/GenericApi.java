@@ -127,7 +127,7 @@ public class GenericApi {
         return result;
     }
 
-    public void openIPA(PostMethod post) {
+    public static void openIPA(PostMethod post) {
         // try to open IPA using the default browser
         Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
         if (locationHeader != null) {

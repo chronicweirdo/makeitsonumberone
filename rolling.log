@@ -1190,3 +1190,81 @@ The dataset name (mytestdataset) already exists in the project &quot;consoletest
 2014-09-17 11:22:02,978 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:488) - updating main panel UI
 2014-09-17 11:22:03,045 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done
 2014-09-17 11:22:03,045 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done
+2014-09-17 14:51:27,956 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:251) - creating main panel
+2014-09-17 14:51:27,956 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:251) - creating main panel
+2014-09-17 14:51:28,152 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:493) - creating edit components
+2014-09-17 14:51:28,152 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:493) - creating edit components
+2014-09-17 14:51:28,360 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:296) - initializing listeners
+2014-09-17 14:51:28,360 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:296) - initializing listeners
+2014-09-17 14:51:28,387 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - building edit panel
+2014-09-17 14:51:28,387 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - building edit panel
+2014-09-17 14:51:28,392 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:488) - updating main panel UI
+2014-09-17 14:51:28,392 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:488) - updating main panel UI
+2014-09-17 14:51:28,429 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done
+2014-09-17 14:51:28,429 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done
+2014-09-17 15:56:08,644 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 15:56:08,644 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 15:56:12,759 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 15:56:12,759 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 15:56:12,760 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 15:56:12,760 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 15:56:12,996 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 15:56:12,996 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 15:56:12,997 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 15:56:12,997 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 15:56:12,998 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 15:56:12,998 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 15:56:14,065 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 15:56:14,065 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 15:56:18,587 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 15:56:18,587 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 15:56:18,588 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 15:56:18,588 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 15:56:18,590 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 15:56:18,590 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 15:56:20,519 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=a396caabe5ca28b3:-3e4f973c:148839d89ed:-7ffc in default internet browser
+2014-09-17 15:56:20,519 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=a396caabe5ca28b3:-3e4f973c:148839d89ed:-7ffc in default internet browser
+2014-09-17 16:01:10,703 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 16:01:10,703 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 16:01:13,942 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 16:01:13,942 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 16:01:13,945 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 16:01:13,945 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 16:01:14,139 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:01:14,139 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:01:14,140 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 16:01:14,140 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 16:01:14,144 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 16:01:14,144 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 16:01:15,093 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 16:01:15,093 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 16:01:18,554 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:01:18,554 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:01:18,556 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 16:01:18,556 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 16:01:18,558 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 16:01:18,558 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 16:01:19,995 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=70d82db693a3d3ea:15b4bf51:148839d2fbf:-7ff8 in default internet browser
+2014-09-17 16:01:19,995 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=70d82db693a3d3ea:15b4bf51:148839d2fbf:-7ff8 in default internet browser
+2014-09-17 16:02:37,689 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 16:02:37,689 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:43) - execute a get to the server
+2014-09-17 16:02:41,412 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 16:02:41,412 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:51) - check if we are redirected
+2014-09-17 16:02:41,416 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 16:02:41,416 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:62) - get response body and close
+2014-09-17 16:02:41,615 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:02:41,615 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:66) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:02:41,617 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 16:02:41,617 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:73) - final get address: https://apps-stable.ingenuity.com/ingsso/login?service=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa%2Fj_spring_cas_security_check&originalUrl=https%3A%2F%2Fanalysis-stable.ingenuity.com%2Fpa
+2014-09-17 16:02:41,618 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 16:02:41,618 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:77) - build post for login
+2014-09-17 16:02:42,580 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 16:02:42,580 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:89) - handle redirects
+2014-09-17 16:02:45,757 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:02:45,757 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:102) - server address: https://analysis-stable.ingenuity.com
+2014-09-17 16:02:45,759 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 16:02:45,759 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:109) - final post address: https://analysis-stable.ingenuity.com/ipawst/public/ipatest.jsp?email=scacoveanu@ingenuity.com&targetUrl=https://analysis-stable.ingenuity.com/pa/launch/start
+2014-09-17 16:02:45,761 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 16:02:45,761 INFO [main] com.ingenuity.temp.apiupload.ApiLogin.getClient(ApiLogin.java:115) - return logged in client
+2014-09-17 16:02:47,670 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=a396caabe5ca28b3:-3e4f973c:148839d89ed:-7ffa in default internet browser
+2014-09-17 16:02:47,670 INFO [main] com.ingenuity.temp.apiupload.GenericApi.openIPA(GenericApi.java:134) - opening URL https://analysis-stable.ingenuity.com/pa/launch/start?apiId=a396caabe5ca28b3:-3e4f973c:148839d89ed:-7ffa in default internet browser
