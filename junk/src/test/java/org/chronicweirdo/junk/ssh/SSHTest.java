@@ -8,6 +8,9 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import javax.swing.*;
+import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 
 /**
  * http://www.jcraft.com/jsch/examples/
@@ -16,14 +19,14 @@ import javax.swing.*;
  */
 public class SSHTest {
 
-    private String password;
+    private String password = "";
 
-    @BeforeClass
+    /*@BeforeClass
     public void setUpClass() throws Exception {
         password = JOptionPane.showInputDialog("Enter password");
-    }
+    }*/
 
-    @Test
+    //@Test
     public void loggingIn() throws Exception {
         String user = "scacoveanu";
         String host = "upadm1";
@@ -43,7 +46,7 @@ public class SSHTest {
         Channel channel = session.openChannel("shell");
         channel.setInputStream(System.in);
         channel.setOutputStream(System.out);
-        channel.connect(3*1000);
+        channel.connect(3 * 1000);
         channel.disconnect();
         session.disconnect();
     }
@@ -64,14 +67,33 @@ public class SSHTest {
 
         session.connect(30000);
 
-        Channel channel = session.openChannel("exec");
-        ((ChannelExec) channel).setCommand("pwd");
-        channel.setInputStream(System.in);
-        channel.setOutputStream(System.out);
-        ((ChannelExec)channel).setErrStream(System.err);
+        ChannelExec channel = (ChannelExec) session.openChannel("exec");
+        channel.setCommand("cd /tmp/tmpsilviu");
         channel.connect(3*1000);
+        InputStream commandOutput = channel.getInputStream();
+        System.out.println(getOutput(commandOutput));
+        channel.disconnect();
+
+        channel = (ChannelExec) session.openChannel("exec");
+        channel.setCommand("ls");
+        channel.connect();
+        System.out.println(getOutput(channel.getInputStream()));
+        channel.disconnect();
+
+        // not working, try this: http://stackoverflow.com/questions/22254466/how-to-execute-multiple-unix-command-through-jsch-using-same-shell
 
         channel.disconnect();
         session.disconnect();
+    }
+
+    private String getOutput(InputStream commandOutput) throws Exception {
+        StringBuilder outputBuffer = new StringBuilder();
+        int readByte = commandOutput.read();
+
+        while (readByte != 0xffffffff) {
+            outputBuffer.append((char) readByte);
+            readByte = commandOutput.read();
+        }
+        return outputBuffer.toString();
     }
 }
