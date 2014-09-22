@@ -73,9 +73,9 @@ public class SSHManager {
             sesConnection.setPassword(strPassword);
             // UNCOMMENT THIS FOR TESTING PURPOSES, BUT DO NOT USE IN PRODUCTION
             // sesConnection.setConfig("StrictHostKeyChecking", "no");
-            /*java.util.Properties config = new java.util.Properties();
+            java.util.Properties config = new java.util.Properties();
             config.put("StrictHostKeyChecking", "no");
-            sesConnection.setConfig(config);*/
+            sesConnection.setConfig(config);
             sesConnection.connect(intTimeOut);
         } catch (JSchException jschX) {
             errorMessage = jschX.getMessage();
