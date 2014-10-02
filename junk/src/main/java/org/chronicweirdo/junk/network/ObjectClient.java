@@ -9,8 +9,18 @@ import java.net.UnknownHostException;
  */
 public class ObjectClient {
 
+    private String host;
+
+    public ObjectClient() {
+        host = "localhost";
+    }
+
+    public ObjectClient(String host) {
+        this.host = host;
+    }
+
     public Message send(Message message) {
-        String host = "localhost";
+
         int port = EchoServer.PORT;
 
         Message response = null;
