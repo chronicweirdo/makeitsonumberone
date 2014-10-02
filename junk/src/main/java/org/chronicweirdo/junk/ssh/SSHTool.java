@@ -61,8 +61,8 @@ public class SSHTool {
     }
 
     public String run(String command) throws Exception {
-        System.out.println("<running " + command + ">");
-        input.print(command + "\n");
+        System.out.println(">>>>>>>>>>>>>>>>>>> running " + command);
+        input.print(command + "\n\r");
         input.flush();
         //channel.setCommand(command);
         //channel.run();
@@ -83,20 +83,42 @@ public class SSHTool {
         //return null;
     }
 
+    private String readOuput() throws Exception {
+        return readOuput3();
+    }
+
     private String readOuput2() throws Exception {
+        byte[] buffer = new byte[1024];
+        StringBuilder result = new StringBuilder();
+        while (output.available() > 0) {
+            int i = output.read(buffer);
+            if (i < 0) {
+                break;
+            }
+            result.append(new String(buffer));
+            //result.append((char) output.read());
+        }
+        return result.toString();
+    }
+
+    private String readOuput3() throws Exception {
         StringBuilder buffer = new StringBuilder();
-        while (output.available() != 0) {
-            buffer.append((char) output.read());
+        int data = output.read();
+        while (/*data != -1 &&*/ data != ((int) '>')) {
+            buffer.append((char) data);
+            //System.out.println("[" + data + "] [" + ((char) data) + "]");
+            data = output.read();
         }
         return buffer.toString();
     }
-    private String readOuput() throws Exception {
+
+    private String readOuput1() throws Exception {
         Callable<Integer> readTask = new Callable<Integer>() {
             public Integer call() throws Exception {
                 return output.read();
             }
         };
-        ExecutorService executor = Executors.newFixedThreadPool(2);
+        ExecutorService executor = Executors.newFixedThreadPool(1);
 
         StringBuilder outputBuffer = new StringBuilder();
 
@@ -104,13 +126,13 @@ public class SSHTool {
         try {
             while (readByte >= 0) {
                 Future<Integer> future = executor.submit(readTask);
-                readByte = future.get(1000, TimeUnit.MILLISECONDS);
+                readByte = future.get(100, TimeUnit.MILLISECONDS);
                 if (readByte >= 0) {
                     outputBuffer.append((char) readByte);
                 }
             }
         } catch (TimeoutException e) {
-            System.out.println("<timed out>");
+            System.out.println(">>>>>>>>>>>>>>>> timed out");
         }
         outputBuffer.append((char) readByte);
         return outputBuffer.toString();

@@ -18,7 +18,9 @@ public class SSHToolTest {
         SSHTool ssh = new SSHTool(userName, password, connectionIP);
         ssh.connect();
 
-        System.out.println(ssh.run("stty -echo"));
+        System.out.println(">>>>>>>>>>>>> logged in");
+
+        //System.out.println(ssh.run("stty -echo"));
         System.out.println(ssh.run("cd /tmp/tmpsilviu"));
         System.out.println(ssh.run("ls"));
         System.out.println(ssh.run("pwd"));
