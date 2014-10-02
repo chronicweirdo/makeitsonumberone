@@ -24,6 +24,7 @@
         <!--<module>chattymonkey</module>-->
         <module>playa</module>
     <module>sticker</module>
+    <module>patcher</module>
   </modules>
 
     <build>
