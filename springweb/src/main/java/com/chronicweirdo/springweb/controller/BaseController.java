@@ -24,4 +24,9 @@ public class BaseController {
         model.addAttribute("message", "Maven Web Project + Spring 3 MVC - " + name);
         return "index";
     }
+
+    @RequestMapping(value = "/doupload", method = RequestMethod.GET)
+    public String uploadPage() {
+        return "doupload";
+    }
 }
