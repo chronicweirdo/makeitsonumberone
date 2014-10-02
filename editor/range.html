@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Testing what I can do with the mouse coordonates and javascript</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        var selection = window.getSelection();
+
+        $(document).ready(function() {
+            initKeypressListener();
+        });
+
+        function initKeypressListener() {
+            $("body").keypress(doOnKeypress);
+            //$("body").click(doOnKeypress);
+            $("body").mouseup(doOnMouseUp);
+        }
+
+        function doOnKeypress(event) {
+            if (event.which == 8) {
+                deleteText(selection.anchorNode, selection.anchorOffset,
+                    selection.focusNode, selection.focusOffset);
+            }
+        }
+
+        function doOnMouseUp(event) {
+            selection = window.getSelection();
+            console.log(selection);
+        }
+
+        function deleteText(startNode, startIndex, endNode, endIndex) {
+            // find all nodes between start node and end node - a traversal
+            var nodes = getNodesBetween(startNode, endNode);
+            // delete all nodes between start node and end node
+            // delete text inside start node, from start index
+            // delete text inside end node, until end index
+        }
+
+        function getNodesBetween(startNode, endNode) {
+            console.log("start node parents:")
+            var startNodeParents = getParents(startNode);
+            console.log(startNodeParents);
+            console.log("end node parents:");
+            var endNodeParents = getParents(endNode);
+            console.log(endNodeParents);
+            var ancestor = findCommonAncestor(startNodeParents, endNodeParents);
+            console.log(ancestor);
+        }
+
+        function findCommonAncestor(parents1, parents2) {
+            var ancestor = null;
+            for (var i = 0; (i < parents1.length) && (i < parents2.length); i++) {
+                if (parents1[i] == parents2[i]) {
+                    ancestor = parents1[i];
+                }
+            }
+            return ancestor;
+        }
+
+        function getParents(node) {
+            var jNodeParents = $(node).parents("*");
+            var nodeParents = [];
+            for (var i = jNodeParents.length - 1; i >= 0; i--) {
+                nodeParents.push(jNodeParents[i]);
+            }
+            return nodeParents;
+        }
+
+    </script>
+</head>
+<body>
+
+<p>Unu doi trei patru <b>cinci</b> sase sapte <span>opt noua</span></p>
+<p>Zece unsprazece douasprazece:
+<ul>
+    <li>treisprazece</li>
+    <li>paisprazece cincisprazece</li>
+    <li><span>saisprazece</span> saptesprazece</li>
+    <li><a href="google.com">optsprazece</a></li>
+</ul>
+</p>
+</body>
+</html>
