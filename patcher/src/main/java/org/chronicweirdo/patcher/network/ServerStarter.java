@@ -1,4 +1,4 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 /**
  * Created by scacoveanu on 10/2/2014.

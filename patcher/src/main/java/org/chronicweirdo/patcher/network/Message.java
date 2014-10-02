@@ -1,4 +1,4 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 import java.io.Serializable;
 import java.util.Arrays;

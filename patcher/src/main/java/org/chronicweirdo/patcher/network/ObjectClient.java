@@ -1,4 +1,4 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 import java.io.*;
 import java.net.Socket;
@@ -30,7 +30,7 @@ public class ObjectClient {
         ObjectInputStream in = null;
         try {
             // connect to server
-            System.out.println("[client] connecting to server");
+            System.out.println("[client] connecting to server " + host);
             echoSocket = new Socket(host, port);
 
             // get streams

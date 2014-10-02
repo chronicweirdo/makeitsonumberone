@@ -1,23 +1,15 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 import org.junit.Test;
-
-import java.net.NetworkInterface;
-import java.util.Collections;
-import java.util.Enumeration;
 
 /**
  * Created by scacoveanu on 10/2/2014.
  */
-public class ObjectServerTest {
+public class ObjectClientTest {
 
     @Test
     public void sendObjects() throws Exception {
-        ObjectServer server = new ObjectServer();
-        ObjectClient client = new ObjectClient();
-
-        System.out.println("starting server");
-        new Thread(server).start();
+        ObjectClient client = new ObjectClient("10.32.50.11");
 
         System.out.println("sending first message");
         Message message1 = new Message(Message.Type.TEXT);

@@ -1,15 +1,19 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 import org.junit.Test;
 
 /**
  * Created by scacoveanu on 10/2/2014.
  */
-public class ObjectClientTest {
+public class ObjectServerTest {
 
     @Test
     public void sendObjects() throws Exception {
-        ObjectClient client = new ObjectClient("localhost");
+        ObjectServer server = new ObjectServer();
+        ObjectClient client = new ObjectClient();
+
+        System.out.println("starting server");
+        new Thread(server).start();
 
         System.out.println("sending first message");
         Message message1 = new Message(Message.Type.TEXT);

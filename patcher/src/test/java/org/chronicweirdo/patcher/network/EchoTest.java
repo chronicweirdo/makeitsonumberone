@@ -1,4 +1,4 @@
-package org.chronicweirdo.junk.network;
+package org.chronicweirdo.patcher.network;
 
 import org.junit.Test;
 
@@ -26,7 +26,7 @@ public class EchoTest {
         }
     }
 
-    @Test
+    //@Test
     public void sendEcho() throws Exception {
         EchoServer server = new EchoServer();
         EchoClient client = new EchoClient();
