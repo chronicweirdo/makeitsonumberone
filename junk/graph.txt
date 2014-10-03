@@ -1,0 +1,28 @@
+graphs
+nodes have identities
+	for example a node identity can be a file name
+	or the contents of mp3 tags
+	(one node can link to one or more real objects, based on the identity computed on the real object)
+	(somehow changes to the real object that affect the identiy should be done through the system so the
+
+we create links between nodes to define our data structure
+we use the links to build complex queries
+
+
+a query is applied on a graph and we get back something
+	do we get back nodes?
+	do we get back links?
+	do we get back both?
+	we get back a subgraph! both nodes and links
+	the query is a filter
+
+	how is this query applied?
+	go over all nodes?
+	go over all links?
+	shortcuts?
+
+a node/link should contain a set of tag-value entries
+a node/link is equal to another node/link if:
+    all tag-value entries in both are exactly the same
+    based on an identifier definition
+        the identifier specifies which tags should contain the same values for both nodes/links for them to be equal
