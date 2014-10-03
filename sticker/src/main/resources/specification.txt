@@ -1,0 +1,47 @@
+A patcher is a program that will perform the following steps:
+    stop an application
+    copy/replace/remove some files from the application folder structure
+    start the application
+    perform an unpatch (the reverse operation)
+
+Required functionality:
+    define commands to start/stop the application
+        allow definition of system commands
+    define file operations like add(+), remove(-), replace(~)
+    define root folders/variables
+    match file names
+
+    path matching
+    version inferrence
+        some types of files, like jars, have versions
+        the tool should be able to realise what part of the file name is a version
+        that part of the file name should not be used for name matching
+    a default working mode (convention over configuration)
+        when running the patch, take all files in the patch folder
+        search the full root application folder for files whose names match files in the patch folder
+        make the switch
+
+    allow definition of some other commands before start and stop (like log)
+
+CONFIGURATION
+    check if there is a ${patchfile} file inside the patch folder
+        default ${patchfile} is ".patch"
+        if this file exists, patch has a configuration and we follow it
+        if this file does not exist, patch does not have a configuration, we run the default configuration
+        as the default configuration is run, a ${patchfile} is created containing the successful operations
+    if a file in the patch folder has a corresponding file in the application folder, switch the two files
+        if more files in the application folder match, check to see if the file in the patch folder has a folder structure to it
+        try to break the tie using matching on the folder structures of the files
+        if the tie can't be broken, either ignore that file or replace all files in the application folder with the patch file
+    if a file in the patch folder does not have a match in the application folder, copy the file there with the full folder structure
+
+COMMANDS
+    patch
+        run the ${patchfile} or default configuration that creates the patch file
+    unpatch
+        reverse the ${patchfile}
+        if ${patchfile} does not exist, either error, or run the default configuration but create the ${patchfile} in "reverse"
+    patchx
+        run the default configuration even if there is a ${patchfile}
+        removes or creates a backup of the ${patchfile}
+        creates a new ${patchfile}

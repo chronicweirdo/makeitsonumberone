@@ -10,6 +10,7 @@ import javax.swing.text.*;
 import java.awt.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -36,6 +37,8 @@ public class TextAreaAppender extends AppenderSkeleton {
         this.textPane = textPane;
         this.fullLog = fullLog;
         dateFormat = new SimpleDateFormat(DATE_FORMAT_PATTERN);
+        Font font = new Font("Monospaced", Font.PLAIN, 14);
+        this.textPane.setFont(font);
         Logger.getRootLogger().addAppender(this);
     }
 
@@ -49,6 +52,11 @@ public class TextAreaAppender extends AppenderSkeleton {
             builder.append(loggingEvent.getLocationInformation().fullInfo).append(" - ");
         }
         builder.append(loggingEvent.getMessage()).append(NEW_LINE);
+        if (loggingEvent.getThrowableInformation() != null) {
+            for (String line: loggingEvent.getThrowableStrRep()) {
+                builder.append(line).append('\n');
+            }
+        }
         final String logMessage = builder.toString();
         SwingUtilities.invokeLater(new Runnable() {
             @Override

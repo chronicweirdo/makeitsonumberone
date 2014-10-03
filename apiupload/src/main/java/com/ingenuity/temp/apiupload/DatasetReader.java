@@ -27,8 +27,7 @@ public class DatasetReader {
 
             String line = reader.readLine();
             while (line != null) {
-                String[] tokens = line.split("\t");
-                data.add(Arrays.asList(tokens));
+                data.add(tokenizeLine(line));
                 line = reader.readLine();
             }
 
@@ -39,4 +38,16 @@ public class DatasetReader {
         log.info("read " + data.size() + " lines (including header)");
         return data;
     }
+
+    public static List<String> tokenizeLine(String line) {
+        return Arrays.asList(line.split("\t"));
+    }
+
+    public static List<String> getHeader(String path) {
+        log.info("reading file header " + path);
+        List<String> header = new ArrayList<String>();
+
+        return header;
+    }
+
 }

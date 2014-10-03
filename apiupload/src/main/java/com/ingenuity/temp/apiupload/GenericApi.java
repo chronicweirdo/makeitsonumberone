@@ -83,6 +83,13 @@ public class GenericApi {
         Util.writeToFile(result, outputFile);
     }
 
+    public void executePost(String path, List<Pair> parameters, String outputFile, boolean openIPA,
+                            String filePath, List<String> columnMapping) {
+        String result = executePost(path, parameters, openIPA, filePath, columnMapping);
+        log.info("RESULT:\n" + result);
+        Util.writeToFile(result, outputFile);
+    }
+
     public String executePost(String path, List<Pair> parameters, boolean openIPA) {
         log.info("executing POST request at address: " + server + path);
         log.info("sending " + parameters.size() + " post parameters");
@@ -98,12 +105,15 @@ public class GenericApi {
 
         // build request
         PostMethod post = new PostMethod(server + path);
-        for (Pair parameter: parameters) {
+        /*for (Pair parameter: parameters) {
             post.addParameter(parameter.getKey(), parameter.getValue());
-        }
+        }*/
+        //post.setRequestEntity(new APIRequestEntity(parameters));
+        post.setRequestEntity(new PreprocessingAPIRequestEntity(parameters));
         try {
-            log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
-            log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));
+            //log.info("request entity content length in bytes: " + post.getRequestEntity().getContentLength());
+            //log.info("request entity content length in MB: " + (((double) post.getRequestEntity().getContentLength()) / 1000 / 1000 ));
+            log.info("request content type: " + post.getRequestEntity().getContentType());
             client.executeMethod(post);
         } catch (IOException e) {
             log.error(e);
@@ -111,25 +121,58 @@ public class GenericApi {
 
         String result = Util.getResponseBody(post);
         if (openIPA) {
-            // try to open IPA using the default browser
-            Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
-            if (locationHeader != null) {
-                log.info("opening URL " + locationHeader.getValue() + " in default internet " +
-                        "browser");
-                if (Desktop.isDesktopSupported()) {
-                    try {
-                        Desktop.getDesktop().browse(new URI(locationHeader.getValue()));
-                    } catch (IOException e) {
-                        log.error(e, e);
-                    } catch (URISyntaxException e) {
-                        log.error(e, e);
-                    }
-                } else {
-                    log.warn("can't access default browser on current platform!");
+            openIPA(post);
+
+        }
+        return result;
+    }
+
+    public static void openIPA(PostMethod post) {
+        // try to open IPA using the default browser
+        Header locationHeader = post.getResponseHeader(HEADER_LOCATION);
+        if (locationHeader != null) {
+            log.info("opening URL " + locationHeader.getValue() + " in default internet " +
+                    "browser");
+            if (Desktop.isDesktopSupported()) {
+                try {
+                    Desktop.getDesktop().browse(new URI(locationHeader.getValue()));
+                } catch (IOException e) {
+                    log.error(e, e);
+                } catch (URISyntaxException e) {
+                    log.error(e, e);
                 }
             } else {
-                log.warn("no location header was found in response!");
+                log.warn("can't access default browser on current platform!");
             }
+        } else {
+            log.warn("no location header was found in response!");
+        }
+    }
+
+    public String executePost(String path, List<Pair> parameters, boolean openIPA, String filePath,
+                              List<String> columnMapping) {
+        log.info("executing POST request at address: " + server + path);
+        log.info("sending " + parameters.size() + " post parameters");
+
+        // build request
+        PostMethod post = new PostMethod(server + path);
+        post.getParams().setSoTimeout(0);
+        post.setRequestEntity(new FileReaderPreprocessingRequestEntity(parameters, filePath, columnMapping));
+        Stopwatch stopwatch = new Stopwatch();
+        stopwatch.start();
+        try {
+            client.executeMethod(post);
+            stopwatch.lap("POST sent to server");
+            log.info(stopwatch.lastLapString());
+        } catch (IOException e) {
+            log.error(e);
+        }
+
+        String result = Util.getResponseBody(post);
+        stopwatch.lap("response read from server");
+        log.info(stopwatch.lastLapString());
+        if (openIPA) {
+            openIPA(post);
         }
         return result;
     }

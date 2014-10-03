@@ -1,9 +1,6 @@
 package com.ingenuity.temp.apiupload;
 
-import org.apache.commons.httpclient.Header;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.URIException;
+import org.apache.commons.httpclient.*;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.httpclient.methods.PostMethod;
 import org.apache.log4j.Logger;
@@ -36,7 +33,12 @@ public class ApiLogin {
     }
 
     public HttpClient getClient() {
+        HostConfiguration config = new HostConfiguration();
+        config.setProxy("127.0.0.1", 8888);
         HttpClient client = new HttpClient();
+        client.getHttpConnectionManager().getParams().setSoTimeout(0);
+        //client.setHostConfiguration(config);
+
 
         log.info("execute a get to the server");
         GetMethod get = new GetMethod(server);
