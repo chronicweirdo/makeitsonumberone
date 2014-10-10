@@ -41,18 +41,13 @@
         }
 
         function postorder(startNode, endNode) {
-            //var previousNode = null;
             var caret = startNode;
-            console.log(caret);
-            console.log(endNode);
             var traversal = [];
             while (caret != endNode) {
                 // put node in traversal
                 traversal.push(caret);
                 // move to next node in order
-                // previousNode = caret;
                 caret = nextNode(caret);
-                console.log(caret);
             }
             return traversal;
         }
