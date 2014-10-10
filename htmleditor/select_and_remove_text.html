@@ -5,6 +5,21 @@
     <title>Testing what I can do with the mouse coordonates and javascript</title>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript">
+        /*
+        We have a selection starting from one node and ending in another node.
+        We want to delete text from the start position in the start node to the end of the start node.
+        We want to delete text from the start of the end node to the end position inside the end node.
+        We want to delete all nodes in between - all nodes that are part of the selection.
+
+        To decide which nodes are part of the selection, we must create a postorder traversal of the page.
+        Take the nodes between the start node and the end node in this postorder traversal.
+        Delete nodes one by one. Delete a node if it does not have children left outside the selected section
+        of the postorder traversal.
+
+        Methods:
+            postorder(startNode, endNode)
+
+         */
         var selection = window.getSelection();
 
         $(document).ready(function() {
@@ -19,9 +34,49 @@
 
         function doOnKeypress(event) {
             if (event.which == 8) {
-                deleteText(selection.anchorNode, selection.anchorOffset,
-                    selection.focusNode, selection.focusOffset);
+                //deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
+                var traversal = postorder(selection.anchorNode, selection.focusNode);
+                console.log(traversal);
             }
+        }
+
+        function postorder(startNode, endNode) {
+            //var previousNode = null;
+            var caret = startNode;
+            console.log(caret);
+            console.log(endNode);
+            var traversal = [];
+            while (caret != endNode) {
+                // put node in traversal
+                traversal.push(caret);
+                // move to next node in order
+                // previousNode = caret;
+                caret = nextNode(caret);
+                console.log(caret);
+            }
+            return traversal;
+        }
+
+        function nextNode(node) {
+            if (node.nextSibling == null) {
+                return node.parentNode;
+            } else {
+                var leaf = node.nextSibling;
+                while (leaf.firstChild != null) {
+                    leaf = leaf.firstChild;
+                }
+                return leaf;
+            }
+            /*// go to parent
+            var parent = node.parentNode;
+            // find next successor
+            var position = parent.childNodes.indexOf(node);
+            // if node is last successor, parent is the next node
+            if (position == parent.childNodes.length - 1) {
+                return parent;
+            } else {
+                return parent.childNodes[position + 1];
+            }*/
         }
 
         function doOnMouseUp(event) {
