@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Testing what I can do with the mouse coordonates and javascript</title>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript">
+        /*
+        We need to be able to find the current caret (cursor) position in the page.
+        We also need to be able to move this caret using both the mouse and the arrow keys.
+
+         */
+        var caret = window.getSelection();
+
+
+        $(document).ready(function() {
+            documentSizeInCharacters();
+            caret = window.getSelection();
+            console.log(caret);
+        });
+
+        function documentSizeInCharacters() {
+            var htmlElement = document.getElementsByTagName("body")[0];
+            var leaf = htmlElement;
+            while (leaf.firstChild != null) {
+                leaf = leaf.firstChild;
+            }
+            var text = [];
+            var length = 0;
+            while (leaf != null) {
+                text.push(leaf.textContent);
+                length = length + leaf.textContent.length;
+                leaf = nextNode(leaf);
+            }
+            console.log(text);
+            console.log(length);
+        }
+
+        function nextNode(node) {
+            while (node != null && node.nextSibling == null) {
+                node = node.parentNode;
+            }
+            if (node == null) return null;
+            var leaf = node.nextSibling;
+            while (leaf.firstChild != null) {
+                leaf = leaf.firstChild;
+            }
+            return leaf;
+        }
+
+
+    </script>
+</head>
+<body>
+
+<p>Unu doi trei patru <b>cinci</b> sase sapte <span>opt noua</span></p>
+<p>Zece unsprazece douasprazece:
+<ul>
+    <li>treisprazece</li>
+    <li>paisprazece cincisprazece</li>
+    <li><span>saisprazece</span> saptesprazece</li>
+    <li><a href="google.com">optsprazece</a></li>
+</ul>
+</p>
+</body>
+</html>

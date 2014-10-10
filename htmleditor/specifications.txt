@@ -1,6 +1,7 @@
 write text in the file
 delete text (del/backspace)
 position caret (mouse, keys)
+display caret
 select and remove text
 select and replace text
 insert elements with command keys
