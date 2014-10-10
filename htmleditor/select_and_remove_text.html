@@ -34,14 +34,7 @@
 
         function doOnKeypress(event) {
             if (event.which == 8) {
-                //deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
-                var traversal = postorder(selection.anchorNode, selection.focusNode);
-                console.log(traversal);
-                var toDelete = traversal.slice(1, traversal.length - 1);
-                console.log(toDelete);
-                deleteNodes(toDelete);
-                // delete text in first and last node
-                
+                deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
             }
         }
 
@@ -85,43 +78,25 @@
         }
 
         function deleteText(startNode, startIndex, endNode, endIndex) {
-            // find all nodes between start node and end node - a traversal
-            var nodes = getNodesBetween(startNode, endNode);
-            // delete all nodes between start node and end node
-            // delete text inside start node, from start index
-            // delete text inside end node, until end index
+            var traversal = postorder(startNode, endNode);
+            console.log(traversal);
+            var toDelete = traversal.slice(1, traversal.length - 1);
+            console.log(toDelete);
+            deleteNodes(toDelete);
+            // delete text in first and last node
+            var startNodeRemainingText = startNode.textContent.substring(
+                    0,
+                    startIndex
+            );
+            console.log(startNodeRemainingText);
+            startNode.textContent = startNodeRemainingText;
+            var endNodeRemainingText = endNode.textContent.substring(
+                    endIndex,
+                    endNode.textContent.length
+            );
+            console.log(endNodeRemainingText);
+            endNode.textContent = endNodeRemainingText;
         }
-
-        function getNodesBetween(startNode, endNode) {
-            console.log("start node parents:")
-            var startNodeParents = getParents(startNode);
-            console.log(startNodeParents);
-            console.log("end node parents:");
-            var endNodeParents = getParents(endNode);
-            console.log(endNodeParents);
-            var ancestor = findCommonAncestor(startNodeParents, endNodeParents);
-            console.log(ancestor);
-        }
-
-        function findCommonAncestor(parents1, parents2) {
-            var ancestor = null;
-            for (var i = 0; (i < parents1.length) && (i < parents2.length); i++) {
-                if (parents1[i] == parents2[i]) {
-                    ancestor = parents1[i];
-                }
-            }
-            return ancestor;
-        }
-
-        function getParents(node) {
-            var jNodeParents = $(node).parents("*");
-            var nodeParents = [];
-            for (var i = jNodeParents.length - 1; i >= 0; i--) {
-                nodeParents.push(jNodeParents[i]);
-            }
-            return nodeParents;
-        }
-
     </script>
 </head>
 <body>
