@@ -1,0 +1,15 @@
+write text in the file
+delete text (del/backspace)
+position caret (mouse, keys)
+select and remove text
+select and replace text
+insert elements with command keys
+create headers
+create paragraphs
+create lists
+create tables
+navigate tables
+format elements (headers, paragraphs, lists)
+format text (spans with styling)
+insert links
+insert images
