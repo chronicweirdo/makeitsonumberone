@@ -59,24 +59,16 @@
 
         function nextNode(node) {
             if (node.nextSibling == null) {
+                // if node is the last sibling in the parent node, the next node is the parent
                 return node.parentNode;
             } else {
+                // otherwise, the next node is the leftmost leaf of the next sibling
                 var leaf = node.nextSibling;
                 while (leaf.firstChild != null) {
                     leaf = leaf.firstChild;
                 }
                 return leaf;
             }
-            /*// go to parent
-            var parent = node.parentNode;
-            // find next successor
-            var position = parent.childNodes.indexOf(node);
-            // if node is last successor, parent is the next node
-            if (position == parent.childNodes.length - 1) {
-                return parent;
-            } else {
-                return parent.childNodes[position + 1];
-            }*/
         }
 
         function doOnMouseUp(event) {
