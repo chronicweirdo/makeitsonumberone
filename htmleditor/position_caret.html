@@ -15,24 +15,67 @@
 
         $(document).ready(function() {
             documentSizeInCharacters();
-            // initialize selection
-            var range = document.createRange();
+            initializeSelection();
+            initKeypressListener();
+        });
 
-            console.log(caret);
-            var leaf = firstLeaf();
-            range.setStart(leaf, 0);
-            range.setEnd(leaf, 0);
-            console.log(range);
+        function initKeypressListener() {
+            $("body").keypress(doOnKeypress);
+        }
+
+        function doOnKeypress(event) {
+            console.log(event);
+            if (event.keyCode == 39) {
+                // right
+                moveSelection(1);
+            } else if (event.keyCode == 37) {
+                // left
+                moveSelection(-1);
+            }
+            /*if (event.which == 8) {
+                handleSelection();
+                deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
+            }*/
+        }
+
+        function moveSelection(value) {
             var selection = window.getSelection();
-            //range.select();
+            var position = selection.anchorOffset;
+            var newPosition = position + value;
+            if (newPosition < 0) {
+                // jump to previous leaf
+                var leaf = previousLeaf(selection.anchorNode);
+                if (leaf != null) {
+                    setSelection(leaf, leaf.textContent.length, leaf, leaf.textContent.length);
+                }
+            } else if (newPosition > selection.anchorNode.textContent.length) {
+                // jump to next leaf
+                var leaf = nextLeaf(selection.anchorNode);
+                if (leaf != null) {
+                    setSelection(leaf, 0, leaf, 0);
+                }
+            } else {
+                // just move the selection
+                setSelection(selection.anchorNode, newPosition, selection.anchorNode, newPosition);
+            }
+            console.log(window.getSelection());
+        }
+
+        function setSelection(startNode, startPosition, endNode, endPosition) {
+            var range = document.createRange();
+            range.setStart(startNode, startPosition);
+            range.setEnd(endNode, endPosition);
+            var selection = window.getSelection();
+            selection.removeAllRanges();
             selection.addRange(range);
+        }
+
+        function initializeSelection() {
+            var leaf = firstLeaf();
+            setSelection(leaf, 0, leaf, 0);
             caret = window.getSelection();
             console.log(caret);
-            /*console.log(leaf);
-            caret.setStart(leaf, 0);
-            caret.setEnd(leaf, 0);
-            console.log(caret);*/
-        });
+        }
 
         function documentSizeInCharacters() {
             var leaf = firstLeaf();
@@ -45,6 +88,32 @@
             }
             console.log(text);
             console.log(length);
+        }
+
+        function previousLeaf(node) {
+            while (node.previousSibling == null) {
+                node = node.parentNode;
+                if (node == document) return null;
+            }
+            if (node == null) return null;
+            var leaf = node.previousSibling;
+            while (leaf.lastChild != null) {
+                leaf = leaf.lastChild;
+            }
+            return leaf;
+        }
+
+        function nextLeaf(node) {
+            while (node.nextSibling == null) {
+                node = node.parentNode;
+                if (node == document) return null;
+            }
+            if (node == null) return null;
+            var leaf = node.nextSibling;
+            while (leaf.firstChild != null) {
+                leaf = leaf.firstChild;
+            }
+            return leaf;
         }
 
         function firstLeaf() {
