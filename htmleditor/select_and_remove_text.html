@@ -34,8 +34,67 @@
 
         function doOnKeypress(event) {
             if (event.which == 8) {
+                handleSelection();
                 deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
             }
+        }
+
+        function handleSelection() {
+            // we must make sure that the anchor node in the selection is positioned before the focus node
+            var selection = window.getSelection();
+            // get parents of both nodes
+            var anchorNodeParents = parents(selection.anchorNode);
+            var focusNodeParents = parents(selection.focusNode);
+            // find common parent
+            var commonParentIndex = 0;
+            for (var i = 0; i < anchorNodeParents.length && i < focusNodeParents.length; i++) {
+                if (anchorNodeParents[i] == focusNodeParents[i]) {
+                    commonParentIndex = i;
+                } else {
+                    break;
+                }
+            }
+            var commonParent = anchorNodeParents[commonParentIndex];
+            console.log(commonParent);
+            var anchorNode = anchorNodeParents[commonParentIndex + 1];
+            console.log(anchorNode)
+            var focusNode = focusNodeParents[commonParentIndex + 1];
+            console.log(focusNode);
+            // verify order of common parent children
+            var anchorNodeIndex = indexOf(commonParent.childNodes, anchorNode);
+            console.log(anchorNodeIndex);
+            var focusNodeIndex = indexOf(commonParent.childNodes, focusNode);
+            console.log(focusNodeIndex);
+            // invert selection if necessary
+            if (anchorNodeIndex > focusNodeIndex) {
+                var range = document.createRange();
+                range.setStart(selection.focusNode, selection.focusOffset);
+                range.setEnd(selection.anchorNode, selection.anchorOffset);
+                //selection.clear();
+                selection.removeAllRanges();
+                selection.addRange(range);
+                console.log(selection);
+            }
+            console.log(window.getSelection());
+        }
+
+        function indexOf(nodeList, node) {
+            for (var i = 0; i < nodeList.length; i++) {
+                if (nodeList[i] == node) {
+                    return i;
+                }
+            }
+            return -1;
+        }
+
+        function parents(node) {
+            var p = [node];
+            while (node.parentNode != null) {
+                node = node.parentNode;
+                p.unshift(0);
+                p[0] = node;
+            }
+            return p;
         }
 
         function deleteNodes(nodes) {

@@ -15,16 +15,27 @@
 
         $(document).ready(function() {
             documentSizeInCharacters();
+            // initialize selection
+            var range = document.createRange();
+
+            console.log(caret);
+            var leaf = firstLeaf();
+            range.setStart(leaf, 0);
+            range.setEnd(leaf, 0);
+            console.log(range);
+            var selection = window.getSelection();
+            //range.select();
+            selection.addRange(range);
             caret = window.getSelection();
             console.log(caret);
+            /*console.log(leaf);
+            caret.setStart(leaf, 0);
+            caret.setEnd(leaf, 0);
+            console.log(caret);*/
         });
 
         function documentSizeInCharacters() {
-            var htmlElement = document.getElementsByTagName("body")[0];
-            var leaf = htmlElement;
-            while (leaf.firstChild != null) {
-                leaf = leaf.firstChild;
-            }
+            var leaf = firstLeaf();
             var text = [];
             var length = 0;
             while (leaf != null) {
@@ -36,7 +47,17 @@
             console.log(length);
         }
 
+        function firstLeaf() {
+            var htmlElement = document.getElementsByTagName("body")[0];
+            var leaf = htmlElement;
+            while (leaf.firstChild != null) {
+                leaf = leaf.firstChild;
+            }
+            return leaf;
+        }
+
         function nextNode(node) {
+            // we always try to get the next leaf element, which is a text node
             while (node != null && node.nextSibling == null) {
                 node = node.parentNode;
             }
