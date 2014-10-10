@@ -37,6 +37,19 @@
                 //deleteText(selection.anchorNode, selection.anchorOffset, selection.focusNode, selection.focusOffset);
                 var traversal = postorder(selection.anchorNode, selection.focusNode);
                 console.log(traversal);
+                var toDelete = traversal.slice(1, traversal.length - 1);
+                console.log(toDelete);
+                deleteNodes(toDelete);
+                // delete text in first and last node
+                
+            }
+        }
+
+        function deleteNodes(nodes) {
+            for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].childNodes.length == 0) {
+                    nodes[i].remove();
+                }
             }
         }
 
