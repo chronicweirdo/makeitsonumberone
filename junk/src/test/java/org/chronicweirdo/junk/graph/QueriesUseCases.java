@@ -17,9 +17,9 @@ public class QueriesUseCases {
         graph = new Graph();
 
         // populate with data
-        graph.addNode(new Node("artist", "Deftones", "title", "Drive"));
+        /*graph.addNode(new Node("artist", "Deftones", "title", "Drive"));
         graph.addNode(new Node("artist", "Deftones", "title", "Mx"));
-        graph.addNode(new Node("artist", "NoFX", "title", "Leaving Jesusland"));
+        graph.addNode(new Node("artist", "NoFX", "title", "Leaving Jesusland"));*/
     }
 
     /*@Test

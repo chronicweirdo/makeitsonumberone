@@ -25,6 +25,11 @@ public class MapIdentifierQuery implements Query {
 
     @Override
     public Graph filter(Graph graph) {
+        return null;
+    }
+
+    /*@Override
+    public Graph filter(Graph graph) {
         Graph result = new Graph();
         for (Map.Entry<Identifier, Node> entry: graph.nodes.entrySet()) {
             Identifier id = entry.getKey();
@@ -36,9 +41,9 @@ public class MapIdentifierQuery implements Query {
             }
         }
         return result;
-    }
+    }*/
 
-    private boolean matches(MapIdentifier id) {
+    /*private boolean matches(MapIdentifier id) {
         for (Map.Entry<String, String> entry: this.map.entrySet()) {
             if (id.get(entry.getKey()) == null) {
                 return false;
@@ -48,5 +53,5 @@ public class MapIdentifierQuery implements Query {
             }
         }
         return true;
-    }
+    }*/
 }
