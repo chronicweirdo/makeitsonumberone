@@ -31,9 +31,9 @@ public class MatcherTest {
         String patchRoot = "C:\\patch";
         List<Entry> patch = Scanner.scan(patchRoot);
 
-        Map<Entry, Object> result = Matcher.match(patch, files);
-        for (Map.Entry<Entry, Object> entry: result.entrySet()) {
-            System.out.println(entry.getKey().getName() + " --- " + entry.getValue());
+        Map<Entry, Entry> result = Matcher.match(patch, files);
+        for (Map.Entry<Entry, Entry> entry: result.entrySet()) {
+            System.out.println(entry.getKey().getName() + " --- " + (entry.getValue() != null ? entry.getValue().getName() : null));
         }
     }
 }

@@ -12,30 +12,48 @@ import java.util.Map;
  */
 public class Matcher {
 
-    public static Map<Entry, Object> match(List<Entry> patch, List<Entry> files) {
+    public static Map<Entry, Entry> match(List<Entry> patch, List<Entry> files) {
         // build index ?
-        // find match for each patch file
-        Map<Entry, Object> result = new HashMap<Entry, Object>(patch.size());
+        // pass 1 - find matches for each patch file
+        Map<Entry, List<Entry>> matches = new HashMap<Entry, List<Entry>>(patch.size());
         for (Entry p: patch) {
-            result.put(p, match(p, files));
+            matches.put(p, match(p, files));
+        }
+        // pass 2 - select only the best match
+        Map<Entry, Entry> result = new HashMap<Entry, Entry>(patch.size());
+        for (Map.Entry<Entry, List<Entry>> e: matches.entrySet()) {
+            if (e.getValue().size() == 0) {
+                result.put(e.getKey(), null);
+            } else if (e.getValue().size() == 1) {
+                result.put(e.getKey(), e.getValue().get(0));
+            } else {
+                result.put(e.getKey(), getBest(e.getKey(), e.getValue()));
+            }
         }
         return result;
     }
 
-    private static Object match(Entry patch, List<Entry> files) {
+    private static Entry getBest(Entry key, List<Entry> value) {
+        Entry best = value.get(0);
+        double score = matchScore(key, best);
+        for (int i = 1; i < value.size(); i++) {
+            double newScore = matchScore(key, value.get(i));
+            if (newScore > score) {
+                score = newScore;
+                best = value.get(i);
+            }
+        }
+        return best;
+    }
+
+    private static List<Entry> match(Entry patch, List<Entry> files) {
         List<Entry> result = new ArrayList<Entry>(1);
         for (Entry file: files) {
             if (match(patch, file)) {
                 result.add(file);
             }
         }
-        if (result.size() == 0) {
-            return null;
-        } else if (result.size() == 1) {
-            return result.get(0);
-        } else {
-            return result;
-        }
+        return result;
     }
 
     private static boolean match(Entry patch, Entry file) {
