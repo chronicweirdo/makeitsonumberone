@@ -1,5 +1,6 @@
 package org.chronicweirdo.patcher.scanner;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +14,14 @@ public class Entry {
 
     public List<String> getName() {
         return name;
+    }
+
+    public String getNameString() {
+        StringBuilder builder = new StringBuilder();
+        for (String n: name) {
+            builder.append(n);
+        }
+        return builder.toString();
     }
 
     public void setName(List<String> name) {
@@ -34,5 +43,16 @@ public class Entry {
     @Override
     public String toString() {
         return path.toString() + " " + name.toString();
+    }
+
+    public String getRelativePath() {
+        StringBuilder builder = new StringBuilder();
+        for (String p: path) {
+            if (builder.length() > 0) {
+                builder.append(File.separator);
+            }
+            builder.append(p);
+        }
+        return builder.toString();
     }
 }

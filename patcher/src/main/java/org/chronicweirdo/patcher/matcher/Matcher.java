@@ -63,7 +63,7 @@ public class Matcher {
 
     private static double matchScore(Entry patch, Entry file) {
         // if they don't have the same extension, they don't match
-        if (! patch.getExtension().equalsIgnoreCase(file.getExtension())) return 0;
+        //if (! patch.getExtension().equalsIgnoreCase(file.getExtension())) return 0;
 
         String patchName, fileName;
         if (patch.getPath().size() > 0) {
