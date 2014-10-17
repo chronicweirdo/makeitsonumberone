@@ -19,26 +19,45 @@ public class Scanner {
         return scan(r);
     }
 
-    private static List<Entry> scan(File file) {
+    private static List<Entry> scan(File root) {
+        if (! root.isDirectory()) {
+            return null;
+        } else {
+            List<Entry> result = new ArrayList<Entry>();
+            for (File child : root.listFiles()) {
+                result.addAll(scan(new ArrayList<String>(), child));
+            }
+            return result;
+        }
+    }
+
+    private static List<String> add(List<String> list, String element) {
+        List<String> result = new ArrayList<String>(list);
+        result.add(element);
+        return result;
+    }
+
+    private static List<Entry> scan(List<String> path, File file) {
         if (! file.exists()) {
             return new ArrayList<Entry>(0);
         } else {
             List<Entry> list = new ArrayList<Entry>();
             if (file.isDirectory()) {
+                path = add(path, file.getName());
                 for (File child : file.listFiles()) {
-                    list.addAll(scan(child));
+                    list.addAll(scan(path, child));
                 }
             } else {
-                list.add(extract(file));
+                list.add(extract(file, path));
             }
             return list;
         }
     }
 
-    private static Entry extract(File file) {
+    private static Entry extract(File file, List<String> path) {
         Entry entry = new Entry();
         entry.setName(Arrays.asList(file.getName().split(DOT_LINE_SPLITTER_KEEPER)));
-        entry.setPath(Arrays.asList(file.getAbsolutePath().split("\\\\|/")));
+        entry.setPath(path);
         return entry;
     }
 }

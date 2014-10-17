@@ -8,7 +8,6 @@ import java.util.List;
  */
 public class Entry {
 
-    private String root;
     private List<String> path = new ArrayList<String>();
     private List<String> name;
 
@@ -26,5 +25,9 @@ public class Entry {
 
     public void setPath(List<String> path) {
         this.path = path;
+    }
+
+    public String getExtension() {
+        return name.get(name.size() - 1);
     }
 }
