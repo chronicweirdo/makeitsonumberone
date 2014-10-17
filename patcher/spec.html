@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Patcher spec</title>
+</head>
+<body>
+    <p>How is a patch applied:</p>
+    <ul>
+        <li>we get a list of all files in the application</li>
+        <li>a file has a name and an extension</li>
+        <li>
+            create matchings between patch files and application files
+            <ul>
+                <li>same extension</li>
+                <li>file starts with the same text (end of file name may contain version)</li>
+            </ul>
+        </li>
+        apply patch by switching original files with patch files
+        rename patch files to the same name as original files? optional
+        keep original files in backup (original name + extension, followed by the patch timestamp)
+
+        now how do we apply multiple patches and revert them?
+
+EXAMPLE RUN:
+        original:
+        ipaweb-1.0.123456.jar
+
+        we patch with ipaweb-1.0-SNAPSHOT.jar:
+        ipaweb-1.0-SNAPSHOT.jar is matched with ipaweb-1.0.123456.jar
+        ipaweb-1.0.123456.jar moved to backup ipaweb-1.0.123546.jar.1
+        ipaweb-1.0-SNAPSHOT.jar is moved to ipaweb-1.0.123456.jar
+
+        we patch with a new ipaweb-1.0-SNAPSHOT.jar
+        ipaweb-1.0-SNAPSHOT.jar is matched with ipaweb-1.0.123456.jar
+        ipaweb-1.0.123456.jar move to backup ipaweb-1.0.123456.jar.2
+        ipaweb-1.0-SNAPSHOT.jar is moved to ipaweb-1.0.123456.jar
+
+        we now have two patches on the application: 1 and 2, in order
+        we can revert patch 2 (go back to patch 1) or revert patch 1 (reverts all patches applied until patch 1 is reverted).
+
+        REVERT PATCH 2:
+        we select backup files: ipaweb-1.0.123456.jar.2
+        we remove ipaweb-1.0.123456.jar
+        we move ipaweb-1.0.123456.jar.2 to ipaweb-1.0.123456.jar
+
+        REVERT PATCH 1:
+        REVERT PATCH 2
+        REVERT PATCH 1
+
+</body>
+</html>
