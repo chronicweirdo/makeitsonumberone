@@ -30,4 +30,9 @@ public class Entry {
     public String getExtension() {
         return name.get(name.size() - 1);
     }
+
+    @Override
+    public String toString() {
+        return path.toString() + " " + name.toString();
+    }
 }

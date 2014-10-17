@@ -2,27 +2,45 @@ package org.chronicweirdo.patcher.matcher;
 
 import org.chronicweirdo.patcher.scanner.Entry;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by scacoveanu on 10/17/2014.
  */
 public class Matcher {
 
-    public static List<Tuple> match(List<Entry> patch, List<Entry> files) {
+    public static Map<Entry, Object> match(List<Entry> patch, List<Entry> files) {
         // build index ?
         // find match for each patch file
-
-        return null;
+        Map<Entry, Object> result = new HashMap<Entry, Object>(patch.size());
+        for (Entry p: patch) {
+            result.put(p, match(p, files));
+        }
+        return result;
     }
 
-    private static Tuple match(Entry patch, List<Entry> files) {
-
-        return null;
+    private static Object match(Entry patch, List<Entry> files) {
+        List<Entry> result = new ArrayList<Entry>(1);
+        for (Entry file: files) {
+            if (match(patch, file)) {
+                result.add(file);
+            }
+        }
+        if (result.size() == 0) {
+            return null;
+        } else if (result.size() == 1) {
+            return result.get(0);
+        } else {
+            return result;
+        }
     }
 
     private static boolean match(Entry patch, Entry file) {
-        return matchScore(patch, file) > 0;
+        //return matchScore(patch, file) > 0;
+        return patch.getName().get(0).equals(file.getName().get(0));
     }
 
     private static double matchScore(Entry patch, Entry file) {
