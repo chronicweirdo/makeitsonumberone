@@ -26,7 +26,6 @@
     <module>sticker</module>
     <module>patcher</module>
     <module>apitest</module>
-    <module>mwahahaweb</module>
   </modules>
 
     <build>

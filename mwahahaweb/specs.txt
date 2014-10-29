@@ -1,0 +1,28 @@
+how are articles stored?
+	html pages or simple text
+	each page has a title
+	each page has tags
+	must be really simple
+
+idea: use the dropbox api and have a dropbox folder as the content source
+	or use a local folder
+	or use a list of folders
+	some folder that can be accessed by some protocol somewhere will be a content source
+	the server periodically scans the source folders and builds a content db
+	the db itself contains pages, tags
+	but the db should be as minimal as possible
+	just have information that can't be stored in the file itself, like page access counts, tag access counts
+
+scanner
+	be able to retrieve files in order of last modifiation date
+	scan everything once on startup and keep an in-memory db
+	scan periodically and only look at file titles and for some content type at file meta-data
+	file title can also contain tags: my new page [new] [test][random].txt
+	each file is identified by a path
+
+a title page which shown the latest changes and also a tag tree
+we have information on what were the latests accessed tags
+
+Scanner service
+    different scanners for different data sources
+    scans a data source and returns a list of pages to be save in the content DB
