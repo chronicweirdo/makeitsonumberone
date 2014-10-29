@@ -8,15 +8,31 @@
         <artifactId>makeitso</artifactId>
         <version>1.0</version>
     </parent>
+
     <groupId>com.ingenuity.test</groupId>
     <artifactId>apitest</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>apitest</name>
     <url>http://maven.apache.org</url>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.6</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+
+        <analysis.project.version>1.11.323059</analysis.project.version>
     </properties>
+
+
     <dependencies>
+        <dependency>
+            <groupId>com.ingenuity.ipaserver_component</groupId>
+            <artifactId>analysis-api</artifactId>
+            <version>${analysis.project.version}</version>
+        </dependency>
+
+        <!-- testing -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
