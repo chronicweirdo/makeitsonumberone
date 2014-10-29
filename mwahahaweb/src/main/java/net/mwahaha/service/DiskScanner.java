@@ -21,6 +21,10 @@ public class DiskScanner implements Scanner {
         this.source = source;
     }
 
+    public void addInterpreter(Interpreter interpreter) {
+        interpreters.add(interpreter);
+    }
+
     private List<File> getFiles(File parent, Date modifiedAfter) {
         ArrayList<File> result = new ArrayList<>();
         if (parent.isFile()) {
@@ -50,6 +54,23 @@ public class DiskScanner implements Scanner {
 
     @Override
     public List<Page> scan(Date modifiedAfter) {
+        List<File> files = getFiles(modifiedAfter);
+        List<Page> pages = new ArrayList<>();
+        for (File file: files) {
+            Page page = getPage(file);
+            if (page != null) {
+                pages.add(page);
+            }
+        }
+        return pages;
+    }
+
+    private Page getPage(File file) {
+        for (Interpreter interpreter: interpreters) {
+            if (interpreter.accepted(file)) {
+                return interpreter.interpret(file);
+            }
+        }
         return null;
     }
 
