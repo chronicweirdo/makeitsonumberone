@@ -51,4 +51,12 @@ public class XStreamTestAdvanced {
         Person git = (Person) xStream.fromXML(xml);
         System.out.println(git);
     }
+
+    @Test
+    public void testGetClassAlias() throws Exception {
+        Class clazz = XStreamTestAdvanced.class;
+        String name = clazz.getSimpleName();
+        String alias = name.substring(0, 1).toLowerCase() + name.substring(1);
+        System.out.println(alias);
+    }
 }

@@ -25,6 +25,7 @@
         <module>playa</module>
     <module>sticker</module>
     <module>patcher</module>
+    <module>apitest</module>
   </modules>
 
     <build>
