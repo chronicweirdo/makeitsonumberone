@@ -49,7 +49,7 @@ public class Matcher {
     private static List<Entry> match(Entry patch, List<Entry> files) {
         List<Entry> result = new ArrayList<Entry>(1);
         for (Entry file: files) {
-            if (SimilarityCalculator.similarity(patch.getName(), file.getName()) > 0) {
+            if (SimilarityCalculator.similarity(patch.getNameString(), file.getNameString()) > 0) {
                 result.add(file);
             }
         }

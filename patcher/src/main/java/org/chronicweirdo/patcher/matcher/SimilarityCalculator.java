@@ -7,10 +7,9 @@ import java.util.List;
  */
 public class SimilarityCalculator {
 
-    public static double similarity(String token1, String token2) {
+    public static int similarity(String token1, String token2) {
         int[] root = rootSize(token1, token2);
-        double score = (double) root[0] / root[1];
-        return score;
+        return root[0];
     }
 
     private static int[] rootSize(String token1, String token2) {
@@ -27,7 +26,7 @@ public class SimilarityCalculator {
         return new int[] {index, max};
     }
 
-    public static double similarity(List<String> tokens1, List<String> tokens2) {
+    /*public static double similarity(List<String> tokens1, List<String> tokens2) {
         int index = 0; // index up to which this string sequences are equal
         int max = 0;
         boolean cont = true;
@@ -41,5 +40,5 @@ public class SimilarityCalculator {
         }
         double score = (double) index / max;
         return score;
-    }
+    }*/
 }

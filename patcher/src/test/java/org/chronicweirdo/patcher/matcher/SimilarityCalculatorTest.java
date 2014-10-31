@@ -21,29 +21,20 @@ public class SimilarityCalculatorTest {
             a score is computed based on (reverse) path similarity/equality?
      */
 
-    //@Test
+    @Test
     public void tokenSimilarity() {
-        assertAndPrint(SimilarityCalculator.similarity("analysis", "analisis"), 0.5);
-        assertAndPrint(SimilarityCalculator.similarity("analysis", "analysis"), 1);
-        assertAndPrint(SimilarityCalculator.similarity("analysisa", "analysisaa"), 0.9);
-        assertAndPrint(SimilarityCalculator.similarity("ana", "analysisaa"), 0.3);
-        assertAndPrint(SimilarityCalculator.similarity("beans", "analysisaa"), 0.0);
-    }
-
-    //@Test
-    public void listSimilarity() {
-        assertAndPrint(SimilarityCalculator.similarity(l("analysis", "-", "api"), l("analysis", "-", "api")), 1);
-        assertAndPrint(SimilarityCalculator.similarity(l("analysis", "-", "api", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "1")), 0.933333);
-        assertAndPrint(SimilarityCalculator.similarity(l("analysis", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.888888);
-        assertAndPrint(SimilarityCalculator.similarity(l("dataset", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.0);
-        assertAndPrint(SimilarityCalculator.similarity(l("analysiz", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.0);
+        assertAndPrint(SimilarityCalculator.similarity("analysis", "analisis"), 4);
+        assertAndPrint(SimilarityCalculator.similarity("analysis", "analysis"), 8);
+        assertAndPrint(SimilarityCalculator.similarity("analysisa", "analysisaa"), 9);
+        assertAndPrint(SimilarityCalculator.similarity("ana", "analysisaa"), 3);
+        assertAndPrint(SimilarityCalculator.similarity("beans", "analysisaa"), 0);
     }
 
     @Test
     public void percentageSimilarityProblem() {
-        List<String> patch = l("analysis", "-", "api", "-", "1", ".", "158744");
-        List<String> correctMatch = l("analysis", "-", "api", "-", "1", ".", "887426"); // this should be considered the closer match
-        List<String> wrongMatch = l("analysiz", "-", "1"); // this should be a worse match
+        String patch = "analysis-api-1.158744";
+        String correctMatch = "analysis-api-1.887426"; // this should be considered the closer match
+        String wrongMatch = "analysiz-1"; // this should be a worse match
 
         double correctMatchScore = SimilarityCalculator.similarity(patch, correctMatch);
         System.out.println(correctMatchScore);
@@ -53,9 +44,9 @@ public class SimilarityCalculatorTest {
         assertTrue(correctMatchScore > wrongMatchScore); // this fails, the score should only consider the number of leading characters that are
     }
 
-    private void assertAndPrint(double value, double expectedValue) {
+    private void assertAndPrint(int value, int expectedValue) {
         System.out.println(value);
-        assertEquals(value, expectedValue, 0.0001);
+        assertEquals(value, expectedValue);
     }
 
     private List<String> l(String ... s) {
