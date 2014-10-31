@@ -6965,3 +6965,15 @@ The dataset name (MyTestDataset) already exists in the project &quot;Training Pr
 2014-10-30 15:27:14,580 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:639) - POST request sent
 2014-10-30 15:27:14,581 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:640) - ------------------------------------------------------------------------------
 2014-10-30 15:27:14,581 INFO [SwingWorker-pool-2-thread-3] com.ingenuity.temp.apiupload.MainUI.executeUpload(MainUI.java:640) - ------------------------------------------------------------------------------
+2014-10-30 18:33:59,494 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:251) - creating main panel
+2014-10-30 18:33:59,494 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:251) - creating main panel
+2014-10-30 18:33:59,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:493) - creating edit components
+2014-10-30 18:33:59,683 INFO [main] com.ingenuity.temp.apiupload.MainUI.createEditComponents(MainUI.java:493) - creating edit components
+2014-10-30 18:33:59,905 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:296) - initializing listeners
+2014-10-30 18:33:59,905 INFO [main] com.ingenuity.temp.apiupload.MainUI.initBasicListeners(MainUI.java:296) - initializing listeners
+2014-10-30 18:33:59,930 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - building edit panel
+2014-10-30 18:33:59,930 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:389) - building edit panel
+2014-10-30 18:33:59,936 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:488) - updating main panel UI
+2014-10-30 18:33:59,936 INFO [main] com.ingenuity.temp.apiupload.MainUI.buildEditPanel(MainUI.java:488) - updating main panel UI
+2014-10-30 18:33:59,972 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done
+2014-10-30 18:33:59,972 INFO [main] com.ingenuity.temp.apiupload.MainUI.init(MainUI.java:282) - UI init done

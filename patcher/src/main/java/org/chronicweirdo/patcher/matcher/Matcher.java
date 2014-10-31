@@ -35,33 +35,34 @@ public class Matcher {
 
     private static Entry getBest(Entry key, List<Entry> value) {
         Entry best = value.get(0);
-        double score = matchScore(key, best);
+        /*double score = matchScore(key, best);
         for (int i = 1; i < value.size(); i++) {
             double newScore = matchScore(key, value.get(i));
             if (newScore > score) {
                 score = newScore;
                 best = value.get(i);
             }
-        }
+        }*/
         return best;
     }
 
     private static List<Entry> match(Entry patch, List<Entry> files) {
         List<Entry> result = new ArrayList<Entry>(1);
         for (Entry file: files) {
-            if (match(patch, file)) {
+            if (SimilarityCalculator.similarity(patch.getName(), file.getName()) > 0) {
                 result.add(file);
             }
         }
         return result;
     }
 
-    private static boolean match(Entry patch, Entry file) {
+    /*private static boolean match(Entry patch, Entry file) {
         //return matchScore(patch, file) > 0;
-        return patch.getName().get(0).equals(file.getName().get(0));
-    }
+        //return patch.getName().get(0).equals(file.getName().get(0));
+        return ;
+    }*/
 
-    private static double matchScore(Entry patch, Entry file) {
+    /*private static double matchScore(Entry patch, Entry file) {
         // if they don't have the same extension, they don't match
         //if (! patch.getExtension().equalsIgnoreCase(file.getExtension())) return 0;
 
@@ -84,7 +85,7 @@ public class Matcher {
             index += 1;
         }
         return (double)index / max;
-    }
+    }*/
 
     private static String merge(List<String> ... lists) {
         StringBuilder builder = new StringBuilder();
@@ -95,7 +96,6 @@ public class Matcher {
         }
         return builder.toString();
     }
-
 
 
 }

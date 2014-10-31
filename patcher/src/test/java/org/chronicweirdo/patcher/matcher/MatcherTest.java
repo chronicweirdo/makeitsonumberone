@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class MatcherTest {
 
-    @Test
+    /*@Test
     public void matchStringScore() throws Exception {
         String patch = "ipaweb-1.0-SNAPSHOT.jar";
         String file = "ipaweb-1.0.213456.jar";
@@ -22,7 +22,7 @@ public class MatcherTest {
         double score = Matcher.matchScore(patch, file);
 
         assertEquals(score, (double) 10 / Math.max(patch.length(), file.length()), 0.0001d);
-    }
+    }*/
 
     @Test
     public void match() throws Exception {
