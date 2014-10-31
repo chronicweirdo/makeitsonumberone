@@ -41,7 +41,7 @@ public class SimilarityCalculatorTest {
         double wrongMatchScore = SimilarityCalculator.similarity(patch, wrongMatch);
         System.out.println(wrongMatchScore);
 
-        assertTrue(correctMatchScore > wrongMatchScore); // this fails, the score should only consider the number of leading characters that are
+        assertTrue(correctMatchScore > wrongMatchScore);
     }
 
     private void assertAndPrint(int value, int expectedValue) {
