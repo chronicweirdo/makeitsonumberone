@@ -30,13 +30,27 @@ public class SimilarityCalculatorTest {
         assertAndPrint(SimilarityCalculator.similarity("beans", "analysisaa"), 0.0);
     }
 
-    @Test
+    //@Test
     public void listSimilarity() {
         assertAndPrint(SimilarityCalculator.similarity(l("analysis", "-", "api"), l("analysis", "-", "api")), 1);
         assertAndPrint(SimilarityCalculator.similarity(l("analysis", "-", "api", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "1")), 0.933333);
         assertAndPrint(SimilarityCalculator.similarity(l("analysis", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.888888);
         assertAndPrint(SimilarityCalculator.similarity(l("dataset", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.0);
         assertAndPrint(SimilarityCalculator.similarity(l("analysiz", "1", ".", "0"), l("analysis", "-", "api", "1", ".", "0")), 0.0);
+    }
+
+    @Test
+    public void percentageSimilarityProblem() {
+        List<String> patch = l("analysis", "-", "api", "-", "1", ".", "158744");
+        List<String> correctMatch = l("analysis", "-", "api", "-", "1", ".", "887426"); // this should be considered the closer match
+        List<String> wrongMatch = l("analysiz", "-", "1"); // this should be a worse match
+
+        double correctMatchScore = SimilarityCalculator.similarity(patch, correctMatch);
+        System.out.println(correctMatchScore);
+        double wrongMatchScore = SimilarityCalculator.similarity(patch, wrongMatch);
+        System.out.println(wrongMatchScore);
+
+        assertTrue(correctMatchScore > wrongMatchScore); // this fails, the score should only consider the number of leading characters that are
     }
 
     private void assertAndPrint(double value, double expectedValue) {
