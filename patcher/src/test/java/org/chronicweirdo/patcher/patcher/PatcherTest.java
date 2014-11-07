@@ -1,7 +1,11 @@
 package org.chronicweirdo.patcher.patcher;
 
+import org.chronicweirdo.patcher.fileops.Pair;
 import org.chronicweirdo.patcher.fileops.Patcher;
+import org.chronicweirdo.patcher.matcher.MatchCollection;
 import org.chronicweirdo.patcher.matcher.Matcher;
+import org.chronicweirdo.patcher.matcher.Scorer;
+import org.chronicweirdo.patcher.matcher.SimilarityScorer;
 import org.chronicweirdo.patcher.scanner.Entry;
 import org.chronicweirdo.patcher.scanner.Scanner;
 import org.junit.Test;
@@ -16,7 +20,7 @@ import java.util.Map;
  */
 public class PatcherTest {
 
-    @Test
+    /*@Test
     public void patch() throws Exception {
         String root = "C:\\ipaserver\\web\\WEB-INF";
         List<Entry> files = Scanner.scan(root);
@@ -54,7 +58,29 @@ public class PatcherTest {
         // TODO: notify users which files were not found and remove them
 
         Patcher.patch(root, patchRoot, details, null);
+    }*/
+
+    @Test
+    public void testPatch() throws Exception {
+        String root = "C:\\ipaserver\\web\\WEB-INF";
+        List<Entry> files = Scanner.scan(root);
+        String patchRoot = "C:\\patch";
+        List<Entry> patch = Scanner.scan(patchRoot);
+
+        List<Pair<Entry>> pairs = new ArrayList<Pair<Entry>>();
+        Scorer scorer = new SimilarityScorer();
+        for (Entry patchFile: patch) {
+            System.out.println(patchFile.getNameString());
+            MatchCollection result = new MatchCollection(scorer, patchFile);
+            for (Entry file: files) {
+                result.addMatch(file);
+            }
+            System.out.println(result.getMatches().toString());
+            System.out.println();
+            pairs.add(new Pair<Entry>(result.getMatch(), patchFile));
+        }
+
+        String label = "label";
+        Patcher.patch(root, patchRoot, patchRoot, label, pairs);
     }
-
-
 }

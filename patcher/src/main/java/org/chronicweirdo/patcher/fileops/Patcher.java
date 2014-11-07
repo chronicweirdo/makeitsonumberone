@@ -21,13 +21,28 @@ import java.util.Map;
  */
 public class Patcher {
 
-    public static void patch(String appRoot, String patchRoot, Map<Entry, Entry> files, String timestamp) {
-        // if we have a timestamp, we are making a patch, if not, we are reverting a patch
-        for (Map.Entry<Entry, Entry> e: files.entrySet()) {
-            if (timestamp != null) {
+    /*
+    There is a patch folder. In this folder we have files. These files can be "pristine" or patch backups.
+    When we apply a patch, we do a simple run, or we revert a patch.
+
+    How do we distinguish between pristines or backups? do we use some code, or do we give a list of files we want to
+    patch?
+
+    Start with a list of files.
+     */
+
+    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, List<Pair<Entry>> pairs) {
+        for (Pair<Entry> pair: pairs) {
+            String originalFile = getPath(appRoot, pair.getA().getRelativePath(), pair.getA().getNameString(), null);
+            String backupFile = getPath(backupRoot, pair.getA().getRelativePath(), pair.getA().getNameString(), label);
+            String patchFile = getPath(patchRoot, pair.getB().getRelativePath(), pair.getB().getNameString(), null);
+            moveFile(originalFile, backupFile);
+            moveFile(patchFile, originalFile);
+            /*
+            if (label != null) {
                 // make a backup of original file
                 String originalPath = getPath(appRoot, e.getValue().getRelativePath(), e.getValue().getNameString(), null);
-                String newPath = getPath(patchRoot, e.getKey().getRelativePath(), e.getValue().getNameString(), timestamp);
+                String newPath = getPath(patchRoot, e.getKey().getRelativePath(), e.getValue().getNameString(), label);
                 moveFile(originalPath, newPath);
             } else {
                 // delete patch file
@@ -37,7 +52,7 @@ public class Patcher {
             // copy other file to app root, keeping the name of the file in approot
             String appFile = getPath(appRoot, e.getValue().getRelativePath(), e.getValue().getNameString(), null);
             String otherFile = getPath(patchRoot, e.getKey().getRelativePath(), e.getKey().getNameString(), null);
-            moveFile(otherFile, appFile);
+            moveFile(otherFile, appFile);*/
         }
     }
 
@@ -67,24 +82,6 @@ public class Patcher {
         return builder.toString();
     }
 
-
-    /**
-     * Applies a patch.
-     * @param root
-     * @param patchRoot
-     * @param backupRoot
-     * @param patch
-     */
-    public static void patch(String root, String patchRoot, String backupRoot, Map<Entry, Entry> patch) {
-        // get patch timestamp
-        String timestamp = Long.toString(System.currentTimeMillis());
-
-        // backup original files
-        for (Map.Entry<Entry, Entry> item: patch.entrySet()) {
-
-        }
-        // copy new files
-    }
 
     private static void move(Entry original, String root, String timestamp) {
         // compute path of where we will move the file
