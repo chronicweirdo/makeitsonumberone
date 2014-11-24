@@ -3,6 +3,7 @@ package org.chronicweirdo.patcher.fileops;
 import org.chronicweirdo.patcher.scanner.Entry;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,18 +32,20 @@ public class Patcher {
     Start with a list of files.
      */
 
-    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs, boolean userRelativePathForBackup) {
+    public static List<Action> patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs, boolean userRelativePathForBackup) {
+        List<Action> actions = new ArrayList<Action>(pairs.size()*2);
         for (Map.Entry<Entry, Entry> pair: pairs.entrySet()) {
             String originalFile = getPath(appRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), null, true);
             if (label != null) {
                 String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label, userRelativePathForBackup);
-                moveFile(originalFile, backupFile);
+                actions.add(Action.move(originalFile, backupFile));
             } else {
-                deleteFile(originalFile);
+                actions.add(Action.delete(originalFile));
             }
             String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null, true);
-            moveFile(patchFile, originalFile);
+            actions.add(Action.move(patchFile, originalFile));
         }
+        return actions;
     }
 
     private static void deleteFile(String patchPath) {
