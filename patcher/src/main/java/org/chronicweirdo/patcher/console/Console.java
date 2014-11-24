@@ -28,6 +28,17 @@ public class Console {
      *      way to determine the install location: command argument
      *      way to determine patch and backup folders: use folder from where command is run
      *      way to determine software stop and start commands: command arguments?
+     *
+     * so the configuration is defined by "special" settings:
+     *      -ir, -installroot
+     *      -br, -backuproot
+     *      -pr, -patchroot
+     *
+     *      the three above accept relative paths as arguments
+     *
+     *      -stop   command for stopping the application
+     *      -start  command for starting the application
+     *
      * @param args
      */
     public static void main(String[] args) {
@@ -37,4 +48,5 @@ public class Console {
         }
 
     }
+
 }
