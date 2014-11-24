@@ -31,11 +31,11 @@ public class Patcher {
     Start with a list of files.
      */
 
-    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs) {
+    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs, boolean userRelativePathForBackup) {
         for (Map.Entry<Entry, Entry> pair: pairs.entrySet()) {
-            String originalFile = getPath(appRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), null);
-            String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label);
-            String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null);
+            String originalFile = getPath(appRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), null, true);
+            String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label, userRelativePathForBackup);
+            String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null, true);
             moveFile(originalFile, backupFile);
             moveFile(patchFile, originalFile);
             /*
@@ -64,15 +64,17 @@ public class Patcher {
         System.out.println("moving " + from + " to " + to);
     }
 
-    private static String getPath(String root, String relativePath, String name, String timestamp) {
+    private static String getPath(String root, String relativePath, String name, String timestamp, boolean userRelativePath) {
         StringBuilder builder = new StringBuilder();
         builder.append(root);
         if (! (root.endsWith("/") || root.endsWith("\\"))) {
             builder.append(File.separator);
         }
-        if (relativePath != null && relativePath.length() > 0) {
-            builder.append(relativePath);
-            builder.append(File.separator);
+        if (userRelativePath) {
+            if (relativePath != null && relativePath.length() > 0) {
+                builder.append(relativePath);
+                builder.append(File.separator);
+            }
         }
         builder.append(name);
         if (timestamp != null) {

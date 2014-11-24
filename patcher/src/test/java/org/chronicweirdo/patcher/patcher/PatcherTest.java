@@ -103,6 +103,6 @@ public class PatcherTest {
 
         String label = "orig";
         String backupRoot = "~";
-        Patcher.patch(root, patchRoot, backupRoot, label, link);
+        Patcher.patch(root, patchRoot, backupRoot, label, link, false);
     }
 }
