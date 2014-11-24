@@ -10,10 +10,7 @@ import org.chronicweirdo.patcher.scanner.Entry;
 import org.chronicweirdo.patcher.scanner.Scanner;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by scacoveanu on 10/17/2014.
@@ -60,7 +57,7 @@ public class PatcherTest {
         Patcher.patch(root, patchRoot, details, null);
     }*/
 
-    @Test
+    /*@Test
     public void testPatch() throws Exception {
         String root = "C:\\ipaserver\\web\\WEB-INF";
         List<Entry> files = Scanner.scan(root);
@@ -82,5 +79,30 @@ public class PatcherTest {
 
         String label = "label";
         Patcher.patch(root, patchRoot, patchRoot, label, pairs);
+    }*/
+
+    @Test
+    public void patch() throws Exception {
+        String root = "C:\\ipaserver\\web\\WEB-INF";
+        List<Entry> files = Scanner.scan(root);
+        String patchRoot = "C:\\patch";
+        List<Entry> patch = Scanner.scan(patchRoot);
+
+        Scorer scorer = new SimilarityScorer();
+        Map<Entry, Entry> link = new HashMap<Entry, Entry>();
+        for (Entry patchFile: patch) {
+            System.out.println(patchFile.getNameString());
+            MatchCollection result = new MatchCollection(scorer, patchFile);
+            for (Entry file: files) {
+                result.addMatch(file);
+            }
+            System.out.println(result.getMatches().toString());
+            System.out.println();
+            link.put(result.getMatch(), patchFile);
+        }
+
+        String label = "orig";
+        String backupRoot = "~";
+        Patcher.patch(root, patchRoot, backupRoot, label, link);
     }
 }

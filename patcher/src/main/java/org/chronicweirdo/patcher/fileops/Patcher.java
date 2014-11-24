@@ -31,11 +31,11 @@ public class Patcher {
     Start with a list of files.
      */
 
-    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, List<Pair<Entry>> pairs) {
-        for (Pair<Entry> pair: pairs) {
-            String originalFile = getPath(appRoot, pair.getA().getRelativePath(), pair.getA().getNameString(), null);
-            String backupFile = getPath(backupRoot, pair.getA().getRelativePath(), pair.getA().getNameString(), label);
-            String patchFile = getPath(patchRoot, pair.getB().getRelativePath(), pair.getB().getNameString(), null);
+    public static void patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs) {
+        for (Map.Entry<Entry, Entry> pair: pairs.entrySet()) {
+            String originalFile = getPath(appRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), null);
+            String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label);
+            String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null);
             moveFile(originalFile, backupFile);
             moveFile(patchFile, originalFile);
             /*
