@@ -54,7 +54,7 @@ public class Scanner {
         }
     }
 
-    private static Entry extract(File file, List<String> path) {
+    public static Entry extract(File file, List<String> path) {
         Entry entry = new Entry();
         entry.setName(Arrays.asList(file.getName().split(DOT_LINE_SPLITTER_KEEPER)));
         entry.setPath(path);
