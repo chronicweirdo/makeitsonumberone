@@ -34,25 +34,14 @@ public class Patcher {
     public static void patch(String appRoot, String patchRoot, String backupRoot, String label, Map<Entry, Entry> pairs, boolean userRelativePathForBackup) {
         for (Map.Entry<Entry, Entry> pair: pairs.entrySet()) {
             String originalFile = getPath(appRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), null, true);
-            String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label, userRelativePathForBackup);
-            String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null, true);
-            moveFile(originalFile, backupFile);
-            moveFile(patchFile, originalFile);
-            /*
             if (label != null) {
-                // make a backup of original file
-                String originalPath = getPath(appRoot, e.getValue().getRelativePath(), e.getValue().getNameString(), null);
-                String newPath = getPath(patchRoot, e.getKey().getRelativePath(), e.getValue().getNameString(), label);
-                moveFile(originalPath, newPath);
+                String backupFile = getPath(backupRoot, pair.getKey().getRelativePath(), pair.getKey().getNameString(), label, userRelativePathForBackup);
+                moveFile(originalFile, backupFile);
             } else {
-                // delete patch file
-                String patchPath = getPath(appRoot, e.getValue().getRelativePath(), e.getValue().getNameString(), null);
-                deleteFile(patchPath);
+                deleteFile(originalFile);
             }
-            // copy other file to app root, keeping the name of the file in approot
-            String appFile = getPath(appRoot, e.getValue().getRelativePath(), e.getValue().getNameString(), null);
-            String otherFile = getPath(patchRoot, e.getKey().getRelativePath(), e.getKey().getNameString(), null);
-            moveFile(otherFile, appFile);*/
+            String patchFile = getPath(patchRoot, pair.getValue().getRelativePath(), pair.getValue().getNameString(), null, true);
+            moveFile(patchFile, originalFile);
         }
     }
 
@@ -82,30 +71,5 @@ public class Patcher {
             builder.append(timestamp);
         }
         return builder.toString();
-    }
-
-
-    private static void move(Entry original, String root, String timestamp) {
-        // compute path of where we will move the file
-        // compute name of new file
-    }
-
-    /**
-     * Lists patches found in the backup folder.
-     * @param backupRoot
-     * @return
-     */
-    public static Map<String, List<Entry>> getPatches(String backupRoot) {
-        return null;
-    }
-
-    /**
-     * Revers a patch based on its timestamp.
-     * @param root
-     * @param backupRoot
-     * @param timestamp
-     */
-    public static void revert(String root, String backupRoot, String timestamp) {
-
     }
 }

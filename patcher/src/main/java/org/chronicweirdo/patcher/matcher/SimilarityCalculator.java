@@ -25,20 +25,4 @@ public class SimilarityCalculator {
         }
         return new int[] {index, max};
     }
-
-    /*public static double similarity(List<String> tokens1, List<String> tokens2) {
-        int index = 0; // index up to which this string sequences are equal
-        int max = 0;
-        boolean cont = true;
-        for (int i = 0; (i < tokens1.size()) && (i < tokens2.size()) && (cont); i++) {
-            int[] root = rootSize(tokens1.get(i), tokens2.get(i));
-            if (root[0] != root[1]) {
-                cont = false;
-            }
-            index += root[0];
-            max += root[1];
-        }
-        double score = (double) index / max;
-        return score;
-    }*/
 }
