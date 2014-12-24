@@ -1,9 +1,9 @@
 package org.chronicweirdo.dump;
 
+import org.eclipse.jetty.server.Request;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.AbstractHandler;
 import org.junit.Test;
-import org.mortbay.jetty.Request;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.handler.AbstractHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -27,10 +27,10 @@ public class ServerTest {
     }
 
     private class HelloHandler extends AbstractHandler {
-        public void handle(String s, HttpServletRequest request, HttpServletResponse response, int i) throws IOException, ServletException {
+        public void handle(String s, Request request, HttpServletRequest request2, HttpServletResponse response) throws IOException, ServletException {
             response.setContentType("text/html;charset=utf-8");
             response.setStatus(HttpServletResponse.SC_OK);
-            ((Request) request).setHandled(true);
+            request.setHandled(true);
             response.getWriter().println("<h1>Hi Bub!</h1>");
         }
     }
