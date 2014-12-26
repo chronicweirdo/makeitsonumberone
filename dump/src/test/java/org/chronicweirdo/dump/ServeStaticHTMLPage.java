@@ -1,0 +1,27 @@
+package org.chronicweirdo.dump;
+
+import org.chronicweirdo.dump.web.StaticHTMLServlet;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
+import org.junit.Test;
+
+/**
+ * Created by Silviu on 12/26/2014.
+ */
+public class ServeStaticHTMLPage {
+
+    @Test
+    public void createServerWithServlet() throws Exception {
+        Server server = new Server(80);
+
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+
+        context.addServlet(new ServletHolder(new StaticHTMLServlet()), "/maven");
+
+        server.start();
+        server.join();
+    }
+}

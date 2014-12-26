@@ -1,0 +1,334 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>maven</title>
+</head>
+
+<body>
+<p>maven is a:</p>
+<ul>
+  <li> build tool</li>
+  <li> project management tool</li>
+  <li> abstract container for running build tasks</li>
+</ul>
+<p>indispensable for projects that need to find consistent ways to manage and build large collections of interdependent modules</p>
+<h1>introducing Apache Maven</h1>
+<p>  what is it?</p>
+<ul>
+  <li>  most will say it's a build tool
+    <ul>
+      <li>a tool used to build deployable artifacts from source code</li>
+      <li>build tool focused solely on preprocessing, compilation, packaging, testing and distribution</li>
+    </ul>
+  </li>
+  <li>build engineers and project managers might say it's a project management tool  
+    <ul>
+      <li>besides being a build tool, it also runs reports, generates a web site, facilitates communication among members of a working team</li>
+    </ul>
+  </li>
+  <li>formal definition: &quot;Maven is a project management tool which encompasses a project object model, a set of standards, a project lifecycle, a dependency management system and logic for executing plugin goals at defined phases in a lifecycle. When you use Maven you describe your project using a well-defined project object model, Maven can then apply cross-cutting logic from a set of shared (or custom) plugins.&quot;</li>
+</ul>
+<p>convention over configuration</p>
+<ul>
+  <li>  simple concept: systems, libraries and frameworks should assume reasonable defaults</li>
+  <li> without requiring unnecessary configuration, systems should just work</li>
+  <li>example: EJB3 persistence, all you need to make a particular bean persistent is to annotate it with @Entity<br>
+    maven incorporates this concept by providing sensible default behaviour for projects</li>
+  <li>without customization
+    <ul>
+      <li>source code is assumed to be in: ${basedir}/src/main/java</li>
+      <li>rersources: ${basedir}/src/main/resources</li>
+      <li>tests: ${basedir}/src/test</li>
+      <li>project is assumed to produce a JAR file</li>
+      <li>compiled bytecode to: ${basedir}/target/classes</li>
+      <li>create a distributable JAR in: ${basedir}/target</li>
+    </ul>
+  </li>
+  <li>maven's core plugins apply a common set of conventions for compiling source code, packaging distributions, generating web sites, many other processes<br>
+    if you don't want to follow convention, Maven allows you to customize defaults</li>
+</ul>
+<p>a common interface</p>
+<ul>
+  <li>these days you check out from source and you run mvn install</li>
+</ul>
+<p>universal reuse through maven plugins</p>
+<ul>
+  <li>the core of maven doesn't know how to do much beyond parsing a few XML files and keeping track of a lifecycle and a few plugins</li>
+  <li>maven delegates most responsibility to a set of maven plugins which can affect the project lifecycle and offer access to goals</li>
+  <li>most of the action in maven takes place in plugin goals which take care of things like compiling source, packaging bytecode...</li>
+  <li>plugins are retrived from the maven repo</li>
+  <li>first time you run mvn install with a newly installed maven, a lot of plugins are downloaded from teh central maven repository - allows for universal reuse of build logic</li>
+  <li>maven surefire plugin
+    <ul>
+      <li>responsible for running unit tests</li>
+    </ul>
+  </li>
+  <li>projects are compiled with a Compiler plugin</li>
+  <li>projects are turned into JAR with a Jar plugin</li>
+</ul>
+<p>conceptual model of a &quot;Project&quot;</p>
+<ul>
+  <li>you are not just compiling code
+    <ul>
+      <li>you are developing a description of a software project</li>
+      <li>assigning a unique set of coordonates to the project</li>
+      <li>describing the attributes of the project</li>
+      <li>what's the project's license</li>
+      <li>who develops and contributes to the project</li>
+      <li>what other projects does this project depend on?</li>
+    </ul>
+  </li>
+  <li>dependency management
+    <ul>
+      <li>project unique coordinates: group identifier, artifact identifier, version</li>
+      <li>projects can now use these coordinates to declare dependencies</li>
+    </ul>
+  </li>
+  <li>remote repositories
+    <ul>
+      <li>we can use the coordinates in the Maven Project Object Model (POM) to create repositories of maven artifacts</li>
+    </ul>
+  </li>
+  <li>universal reuse of build logic
+    <ul>
+      <li>everything is abstracted into the model</li>
+    </ul>
+  </li>
+  <li>tool portability/integration
+    <ul>
+      <li>IDEs have a common place to find information about a project</li>
+    </ul>
+  </li>
+  <li>easy searching and filtering of project artifacts
+    <ul>
+      <li>tools like nexus allow you to index and search the contents of a repository using the information stored in the POM<br>
+        </li>
+    </ul>
+  </li>
+</ul>
+<p>core tenets of maven</p>
+<ul>
+  <li>  declarative builds</li>
+  <li>dependency management</li>
+  <li>repository managers</li>
+  <li>universal reuse throgh plugins</li>
+</ul>
+<p>  comparing maven with ant</p>
+<ul>
+  <li>  ant excels at build process
+    <ul>
+      <li>a build system modelled after make with targets and dependencies</li>
+      <li>each target consists of a set of instructions which are coded in XML</li>
+      <li>there is a copy, javac and jar task</li>
+    </ul>
+  </li>
+  <li>you have to tell ant exactly what to do, exactly where your source is</li>
+  <li>ant: coding a procedural language written in XML</li>
+  <li>ant is made available as a core maven plugin</li>
+</ul>
+<h1>  CREATE A GRAPH OF MAVEN DEPENDENCIES</h1>
+<p>  using the maven dependency plugin</p>
+<p>add the following to the pom.xml</p>
+<pre>&lt;build&gt;
+	&lt;plugins&gt;
+		&lt;plugin&gt;
+			&lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+			&lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+			&lt;version&gt;2.2&lt;/version&gt;
+		&lt;/plugin&gt;
+	&lt;/plugins&gt;
+&lt;/build&gt; </pre>
+<p>  then use the following command to generate the dependency tree and save it in graphml format</p>
+<pre>mvn dependency:tree -DoutputType=graphml -DoutputFile=dependency.graphml</pre>
+<p> you can open the generated file with a graphml viewer (yEd): <a href="http://www.summa-tech.com/blog/2011/04/12/a-visual-maven-dependency-tree-view/">http://www.summa-tech.com/blog/2011/04/12/a-visual-maven-dependency-tree-view/</a></p>
+<h1>creating a project from scratch using the maven archetype plugin</h1>
+<p>  command to create new project:</p>
+<pre>mvn archetype:create -DgroupId=org.chronicweirdo.mavenbook.ch03 -DartifactId=mavenbook -DpackageName=org.chronicweirdo.mavenbook</pre>
+<ul>
+  <li> archetype:create is a maven goal (analogous to an ant target)</li>
+  <li> describes a unit of work to be completed in a build</li>
+  <li>its purpose is to quickly create a project from an archetype (a prototype)</li>
+  <li> the most basic archetype creates a simple skeleton starter project</li>
+  <li> -Dname=value are pairs that are passed to goal</li>
+  <li> -D properties similar to the system property options you might pass to the JVM via the command line</li>
+</ul>
+<p> to build and package the app run:</p>
+<pre>mvn install</pre>
+<h1>Create a webapp</h1>
+<p>command to create webapp:</p>
+<pre>mvn archetype:create -DarchetypeGroupId=org.apache.maven.archetypes -DarchetypeArtifactId=maven-archetype-webapp -DarchetypeVersion=1.0 -DgroupId=com.chronicweirdo -DartifactId=tiger -Dversion=1.0-SNAPSHOT -DpackageName=org.chronicweirdo.tiger</pre>
+<pre>mvn archetype:generate -DgroupId=com.chronicweirdo -DartifactId=tiger -DpackageName=org.chronicweirdo.tiger -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false</pre>
+<h1> POM</h1>
+<p>  maven always executes against an effective POM, a combination of:</p>
+<ul>
+  <li>settings from the project's pom.xml</li>
+  <li>all parent POMs</li>
+  <li>a super-POM defined within Maven</li>
+  <li>user-defined settings</li>
+  <li>active profiles</li>
+</ul>
+<p>see the effective POM:</p>
+<pre>mvn help:effective-pom</pre>
+<h1>  CORE CONCEPTS</h1>
+<ul>
+  <li>maven plugin = collection of one or more goals
+    <ul>
+      <li>custom plugin can be written in java, ant, groovy, beanshell, ruby</li>
+    </ul>
+  </li>
+  <li>goal = a unit of work
+    <ul>
+      <li>a specific task that may be executed as a standalone goal or along with other goals as part of a larger build</li>
+      <li>goals are configured via configuration properties that can be used to customize behavior</li>
+    </ul>
+  </li>
+  <li>maven code is a very basic shell that knows how to
+    <ul>
+      <li>parse command line</li>
+      <li>manage a classpath</li>
+      <li>parse a POM file</li>
+      <li>download maven plugins</li>
+    </ul>
+  </li>
+  <li>plugins are everything!</li>
+  <li>lifecycle = an ordered sequence of phases involved in building a project
+    <ul>
+      <li>maven can support a number of different lifecycles</li>
+      <li>vague definition: validation, testing, deployment</li>
+      <li>phases may mean different things to different projects</li>
+      <li>plugin goals may be attached to a lifecycle phase</li>
+      <li>defaul lifecycle:
+        <ul>
+          <li>resources:resources bound to the process-resources phase (copies resources to output directory)</li>
+          <li>compiler:compile bound to the compile phase</li>
+          <li>compiler:testCompile bound to the test-compile phase</li>
+          <li>surefire:test bound to the test phase</li>
+          <li>jar:jar bound to the package phase</li>
+        </ul>
+      </li>
+      <li>the lifecycle is what allows a dev to jump from one maven project to another without having to know very much about the details of each particular project's build</li>
+    </ul>
+  </li>
+  <li>coordinates = group id, artifact id, version and packaging
+    <ul>
+      <li>goals execute in the context of a pom</li>
+      <li>the pom names the project, provides a set of unique identifiers for a project and defines the relationships between this project and others through dependencies, parents and prerequisites</li>
+      <li>format: groupId:artifactId:packaging:version (junit:junit:jar:3.8.1)</li>
+    </ul>
+  </li>
+  <li>maven repositories
+    <ul>
+      <li>artifacts and plugins are retrieved from a remote repository when they are needed</li>
+      <li>default remote repositoru location: http://repo1.maven.org/maven2</li>
+      <li>when using libraries that are neither free or public: setup a custom repo or download and install dependencies manually</li>
+      <li>artifact stored in repo at: /&lt;groupId&gt;/&lt;artifactId&gt;/&lt;version&gt;/&lt;artifactId&gt;-&lt;version&gt;.&lt;packaging&gt;</li>
+      <li>mvn install puts your artifact in the local repo</li>
+    </ul>
+  </li>
+  <li>dependencies
+    <ul>
+      <li>a section in the pom</li>
+      <li>transitive dependencies: dependencies that depend on other artefacts</li>
+      <li>maven doesn't only download the dependency jar, it also downloads its pom</li>
+      <li>when your project is published to the local repo, the pom published with it is slightly modified</li>
+      <li>you can exclude transitive dependencies from being included in a project's classpath</li>
+      <li>dependency scopes
+        <ul>
+          <li>for example the &quot;test&quot; scope, those dependencies will only be available in the classpath of the compiler:testCompile and surefire:test goals</li>
+          <li>you can configure maven to bundle dependencies for WAR or EAR packages but exclude some dependencies that have the &quot;provided&quot; scope (exclude servlet api jar)</li>
+        </ul>
+      </li>
+      <li>site generation and reporting
+        <ul>
+          <li>mvn site - the site lifecycle phase</li>
+          <li>generates documentation and reports</li>
+          <li>reports:
+            <ul>
+              <li>Clover (examines unit test coverage)</li>
+              <li>JXR (generates cross-referenced HTML source code listings useful for code reviews)</li>
+              <li>PMD (analyzes source code for various coding problems)</li>
+              <li>JDepend (analyzes the dependencies between packages in a codebase)</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h1>CUSTOMIZING A MAVEN PROJECT</h1>
+<ul>
+  <li>locate dependencies: http://www.mvnrepository.com</li>
+  <li>execute application using the exec plugin:
+    <ul>
+      <li>mvn exec:java -Dexec.mainClass=org.sonatype.mavenbook.weather.Main</li>
+      <li>mvn exec:java -Dexec.mainClass=org.sonatype.mavenbook.weather.Main -Dexec.args=&quot;70112&quot;</li>
+    </ul>
+  </li>
+  <li>MAVEN EXEC PLUGIN
+    <ul>
+      <li>for full description: mvn help:describe -Dplugin=exec -Dfull</li>
+    </ul>
+  </li>
+  <li>MAVEN DEPENDENCY PLUGIN
+    <ul>
+      <li>mvn dependency:resolve</li>
+      <li>mvn dependency:tree</li>
+      <li>maven is creating a graph of dependencies, eliminating duplicates and resolving any conflicts between different versions</li>
+      <li>dig deeper into dependency resolution by running maven with debug flag: mvn install -X</li>
+    </ul>
+  </li>
+  <li>MAVEN SUREFIRE PLUGIN - executing unit tests
+    <ul>
+      <li>executes all unit tests under src/test/java with filenames matching **/Test*.java, **/*Test.java and **/*TestCase.java</li>
+      <li>generates XML and text reports in ${basedir}/target/surefire-reports (stack traces and error messages)</li>
+      <li>ignore tests:
+        <ul>
+          <li>in the surefire plugin set: &lt;configuration&gt;&lt;testFailureIgnore&gt;true&lt;/testFailureIgnore&gt;&lt;/configuration&gt;</li>
+          <li>or set the expression from the command line: -Dmaven.test.failure.ignore=true</li>
+        </ul>
+      </li>
+      <li>skip tests:
+        <ul>
+          <li>use the skip parameter of the surefire plugin: -Dmaven.test.skip=true</li>
+          <li>in the surefire plugin configuration: &lt;skip&gt;true&lt;/skip&gt;</li>
+        </ul>
+      </li>
+      <li>MAVEN ASSEMBLY PLUGIN - building a packaged command line application
+        <ul>
+          <li>assemble the output of the project in any format by defining a custom assembly descriptor<br>
+            predefined: jar-with-dependencies</li>
+          <li>run: mvn install assembly:assembly</li>
+          <li>execute app: java -cp simple-weather-1.0-jar-with-dependencies.jar com.chronicweirdo.mavenbook.weather.Main 10002</li>
+          <li>you can bind plugin goals to phases in the lifecycle
+            <ul>
+              <li>example is to bind the attached goal of the assembly plugin to the package phase, then you can just run mvn package and the jar with dependencies is built</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h1>A SIMPLE WEB APPLICATION</h1>
+<p>can use the maven jetty pluin to run the application within maven</p>
+<p>we need to add J2EE dependency Servlet API - with &lt;scope&gt;provided&lt;/scope&gt; since the container (jetty) comes with the required JARs</p>
+<h1>A MULTI-MODULE PROJECT</h1>
+<ul>
+  <li>parent project
+    <ul>
+      <li>a multi-module project is defined by a parent POM referencing one or more submodules</li>
+      <li>&lt;modules&gt;&lt;module&gt;..&lt;/module&gt;&lt;module&gt;..&lt;/module&gt;&lt;/modules&gt;</li>
+      <li>doesn't create a JAR or WAR, just refers to other maven projects</li>
+      <li>each module corresponds to a subdirectory in the parent</li>
+      <li>settings defined in the parent POM are inherited by all submodules</li>
+    </ul>
+  </li>
+  <li>child project
+    <ul>
+      <li>references a parent POM using maven coordinates</li>
+    </ul>
+  </li>
+</ul>
+</body>
+</html>

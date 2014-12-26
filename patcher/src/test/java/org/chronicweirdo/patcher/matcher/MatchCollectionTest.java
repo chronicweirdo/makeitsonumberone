@@ -42,7 +42,7 @@ public class MatchCollectionTest {
         List<Entry> files = Scanner.scan(root);
 
         List<Entry> patch = new ArrayList<Entry>();
-        patch.add(Scanner.extract(new File("integration-servlet.xml.orig"), new ArrayList<String>()));
+        patch.add(Scanner.extract(new File("integration-web.xml.orig"), new ArrayList<String>()));
         patch.add(Scanner.extract(new File("ipaweb-1.0.320701.jar.orig"), new ArrayList<String>()));
 
         Scorer scorer = new SimilarityScorer();
