@@ -20,13 +20,14 @@ public class ServletTest {
 
     @Test
     public void createServerWithServlet() throws Exception {
-        Server server = new Server(8080);
+        Server server = new Server(80);
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
         server.setHandler(context);
 
         context.addServlet(new ServletHolder(new HelloServlet("greeting message")), "/*");
+        context.addServlet(new ServletHolder(new HelloServlet("this is a post")), "/post/*");
 
         server.start();
         server.join();
