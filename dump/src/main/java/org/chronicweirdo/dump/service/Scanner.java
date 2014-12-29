@@ -3,7 +3,12 @@ package org.chronicweirdo.dump.service;
 import org.chronicweirdo.dump.model.Post;
 
 import java.io.File;
-import java.time.Year;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
+import java.nio.file.attribute.FileTime;
+import java.text.Normalizer;
 import java.util.*;
 
 /**
@@ -52,15 +57,56 @@ public class Scanner {
     }
 
     private Date getCreationDate(File root, Map<String, Set<String>> tags) throws FormattingException, NumberFormatException {
+        Calendar created = null;
+        try {
+            BasicFileAttributes attr = Files.readAttributes(Paths.get(root.toURI()), BasicFileAttributes.class);
+            created = Calendar.getInstance();
+            created.setTimeInMillis(attr.creationTime().toMillis());
+        } catch (IOException e) {
+            // allowed to not have a date on filesystem
+        }
         Calendar calendar = Calendar.getInstance();
-        calendar.set(Calendar.YEAR, Integer.parseInt(getSingleField(tags, Parser.YEAR, root.getAbsolutePath())));
-        calendar.set(Calendar.MONTH, Integer.parseInt(getSingleField(tags, Parser.MONTH, root.getAbsolutePath())));
-        calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(getSingleField(tags, Parser.DAY, root.getAbsolutePath())) - 1);
-        calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
-        calendar.set(Calendar.MINUTE, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
+        // calendar.set(Calendar.YEAR, Integer.parseInt(getSingleField(tags, Parser.YEAR, root.getAbsolutePath())));
+        //calendar.set(Calendar.MONTH, Integer.parseInt(getSingleField(tags, Parser.MONTH, root.getAbsolutePath())));
+        setCalendarField(calendar, Calendar.YEAR, tags, Parser.YEAR, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.MONTH, tags, Parser.MONTH, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.DAY_OF_MONTH, tags, Parser.DAY, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.HOUR_OF_DAY, tags, Parser.HOUR, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.MINUTE, tags, Parser.MINUTE, root.getAbsolutePath(), created);
+        //calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(getSingleField(tags, Parser.DAY, root.getAbsolutePath())) - 1);
+        //calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
+        //calendar.set(Calendar.MINUTE, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
         calendar.set(Calendar.SECOND, 0);
         calendar.set(Calendar.MILLISECOND, 0);
         return calendar.getTime();
+    }
+
+    private void setCalendarField(Calendar calendar, int calendarField,
+                             Map<String, Set<String>> tags, String fieldName, String itemId,
+                             Calendar backup) throws FormattingException {
+        // try to set field from tags
+        Integer value = null;
+        try {
+            String string = getSingleField(tags, fieldName, itemId);
+            value = Integer.parseInt(string);
+            if (calendarField == Calendar.MONTH) {
+                value -= 1;
+            }
+        } catch (FormattingException e) {
+            // allowed
+        } catch (NumberFormatException e) {
+            // allowed
+        }
+        if (value != null) {
+            calendar.set(calendarField, value);
+        } else {
+            // try to set field from file date
+            if (backup != null) {
+                calendar.set(calendarField, backup.get(calendarField));
+            } else {
+                throw new FormattingException("Can't get field " + fieldName + " for " + itemId);
+            }
+        }
     }
 
     private String getSingleField(Map<String, Set<String>> tags, String name, String itemId) throws FormattingException {

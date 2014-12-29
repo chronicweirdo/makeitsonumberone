@@ -16,7 +16,7 @@ public class ScannerTest {
         Scanner scanner = new Scanner();
         scanner.setParser(new Parser());
 
-        List<Post> posts = scanner.scan(new File("dump/data"));
+        List<Post> posts = scanner.scan(new File("data"));
         System.out.println(posts);
     }
 }
