@@ -69,7 +69,7 @@ public class Builder {
     }
 
     private String getServerPath(File file) {
-        return file.getPath();
+        return "/" + file.getPath();
     }
 
     private String getExtension(File file) {
