@@ -12,6 +12,6 @@ public class TemplatingTest {
 
     @Test
     public void templatePlusModel() throws Exception {
-        
+
     }
 }
