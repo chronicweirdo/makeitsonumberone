@@ -3,10 +3,7 @@ package org.chronicweirdo.dump.service;
 import jdk.internal.util.xml.impl.Pair;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,39 +19,57 @@ public class Parser {
     // accepted tags and synonyms
     private static Map<String, String> formal;
 
+    public static final String TITLE = "title";
+
+    public static final String YEAR = "year";
+
+    public static final String MONTH = "month";
+
+    public static final String DAY = "day";
+
+    public static final String HOUR = "hour";
+
+    public static final String MINUTE = "minute";
+
+    public static final String TAG = "tag";
+
+    public static final String INDEX = "index";
+
+    public static final String CAPTION = "caption";
+
     {
         formal = new HashMap<String, String>();
 
-        formal.put("year", "year");
-        formal.put("y", "year");
+        formal.put(YEAR, YEAR);
+        formal.put("y", YEAR);
 
-        formal.put("month", "month");
-        formal.put("mo", "month");
+        formal.put(MONTH, MONTH);
+        formal.put("mo", MONTH);
 
-        formal.put("day", "day");
-        formal.put("d", "day");
+        formal.put(DAY, DAY);
+        formal.put("d", DAY);
 
-        formal.put("hour", "hour");
-        formal.put("h", "hour");
+        formal.put(HOUR, HOUR);
+        formal.put("h", HOUR);
 
-        formal.put("minute", "minute");
-        formal.put("m", "minute");
+        formal.put(MINUTE, MINUTE);
+        formal.put("m", MINUTE);
 
-        formal.put("tag", "tag");
-        formal.put("t", "tag");
+        formal.put(TAG, TAG);
+        formal.put("t", TAG);
 
-        formal.put("index", "index");
-        formal.put("i", "index");
+        formal.put(INDEX, INDEX);
+        formal.put("i", INDEX);
 
-        formal.put("caption", "caption");
-        formal.put("c", "caption");
+        formal.put(CAPTION, CAPTION);
+        formal.put("c", CAPTION);
 
-        formal.put("title", "title");
-        formal.put("ti", "title");
+        formal.put(TITLE, TITLE);
+        formal.put("ti", TITLE);
     }
 
-    public Map<String, List<String>> parse(String fileName) {
-        Map<String, List<String>> tags = new HashMap<String, List<String>>();
+    public Map<String, Set<String>> parse(String fileName) {
+        Map<String, Set<String>> tags = new HashMap<String, Set<String>>();
         Pattern pattern = Pattern.compile(PATTERN);
         Matcher matcher = pattern.matcher(fileName);
         while (matcher.find()) {
@@ -64,7 +79,7 @@ public class Parser {
             String formalTag = formal.get(tag);
             if (formalTag != null) {
                 if (!tags.containsKey(formalTag)) {
-                    tags.put(formalTag, new ArrayList<String>());
+                    tags.put(formalTag, new HashSet<String>());
                 }
                 tags.get(formalTag).add(value);
             }
