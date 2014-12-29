@@ -36,13 +36,17 @@ public class Post {
         this.tags.addAll(tags);
     }
 
-    private List<File> files = new ArrayList<File>();
-    private List<String> indexes = new ArrayList<String>();
-    private List<String> captions = new ArrayList<String>();
+    private TreeMap<String, Section> sections = new TreeMap<String, Section>();
 
     public void addFile(File root, String caption, String index) {
-        files.add(root);
-        captions.add(caption);
-        indexes.add(index);
+        Section section = new Section();
+        section.setCaption(caption);
+        section.setFile(root);
+        section.setIndex(index);
+        sections.put(index, section);
+    }
+
+    public Collection<Section> getSections() {
+        return sections.values();
     }
 }
