@@ -50,7 +50,7 @@ public class BuilderServerTest {
 
         List<Post> posts = scanner.scan(new File("data"));
 
-        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/p/*");
+        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
         //context.addServlet(new ServletHolder(new DefaultServlet()), "/*");
 
         server.start();
