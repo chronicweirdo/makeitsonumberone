@@ -14,7 +14,7 @@ public class BuilderTest {
     @Test
     public void testBuilder() throws Exception {
         Scanner scanner = new Scanner();
-        scanner.setParser(new Parser());
+        scanner.setFileNameParser(new FileNameParser());
 
         List<Post> posts = scanner.scan(new File("data"));
 

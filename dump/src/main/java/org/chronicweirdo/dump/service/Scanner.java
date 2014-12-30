@@ -7,8 +7,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.attribute.BasicFileAttributes;
-import java.nio.file.attribute.FileTime;
-import java.text.Normalizer;
 import java.util.*;
 
 /**
@@ -18,10 +16,10 @@ import java.util.*;
  */
 public class Scanner {
 
-    private Parser parser;
+    private FileNameParser fileNameParser;
 
-    public void setParser(Parser parser) {
-        this.parser = parser;
+    public void setFileNameParser(FileNameParser fileNameParser) {
+        this.fileNameParser = fileNameParser;
     }
 
     public List<Post> scan(File root) {
@@ -36,7 +34,7 @@ public class Scanner {
 
     private void scan(File root, List<Post> posts) throws FormattingException {
         if (root.isFile()) {
-            Map<String, Set<String>> tags = parser.parse(root.getName());
+            Map<String, Set<String>> tags = fileNameParser.parse(root.getName());
             String title = getTitle(root, tags);
             Date creationDate = getCreationDate(root, tags);
             Post post = findPost(posts, title, creationDate);
@@ -68,11 +66,11 @@ public class Scanner {
         Calendar calendar = Calendar.getInstance();
         // calendar.set(Calendar.YEAR, Integer.parseInt(getSingleField(tags, Parser.YEAR, root.getAbsolutePath())));
         //calendar.set(Calendar.MONTH, Integer.parseInt(getSingleField(tags, Parser.MONTH, root.getAbsolutePath())));
-        setCalendarField(calendar, Calendar.YEAR, tags, Parser.YEAR, root.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.MONTH, tags, Parser.MONTH, root.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.DAY_OF_MONTH, tags, Parser.DAY, root.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.HOUR_OF_DAY, tags, Parser.HOUR, root.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.MINUTE, tags, Parser.MINUTE, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.YEAR, tags, FileNameParser.YEAR, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.MONTH, tags, FileNameParser.MONTH, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.DAY_OF_MONTH, tags, FileNameParser.DAY, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.HOUR_OF_DAY, tags, FileNameParser.HOUR, root.getAbsolutePath(), created);
+        setCalendarField(calendar, Calendar.MINUTE, tags, FileNameParser.MINUTE, root.getAbsolutePath(), created);
         //calendar.set(Calendar.DAY_OF_MONTH, Integer.parseInt(getSingleField(tags, Parser.DAY, root.getAbsolutePath())) - 1);
         //calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
         //calendar.set(Calendar.MINUTE, Integer.parseInt(getSingleField(tags, Parser.HOUR, root.getAbsolutePath())));
@@ -120,22 +118,22 @@ public class Scanner {
     }
 
     private String getTitle(File root, Map<String, Set<String>> tags) throws FormattingException {
-        return getSingleField(tags, Parser.TITLE, root.getAbsolutePath());
+        return getSingleField(tags, FileNameParser.TITLE, root.getAbsolutePath());
     }
 
     private void addFile(Post post, File root, Map<String, Set<String>> tags) throws FormattingException {
         // get tags and add them to post
-        post.addTags(tags.get(Parser.TAG));
+        post.addTags(tags.get(FileNameParser.TAG));
         // add file to post
         String caption = "";
         try {
-            caption = getSingleField(tags, Parser.CAPTION, root.getAbsolutePath());
+            caption = getSingleField(tags, FileNameParser.CAPTION, root.getAbsolutePath());
         } catch (FormattingException e) {
             // no caption is allowed
         }
         String index = "";
         try {
-            index = getSingleField(tags, Parser.INDEX, root.getAbsolutePath());
+            index = getSingleField(tags, FileNameParser.INDEX, root.getAbsolutePath());
         } catch (FormattingException e) {
             // no index is allowed
         }

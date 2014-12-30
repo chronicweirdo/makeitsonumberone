@@ -1,23 +1,21 @@
 package org.chronicweirdo.dump.service;
 
-import org.chronicweirdo.dump.service.Parser;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 /**
  * Created by scacoveanu on 12/29/2014.
  */
-public class ParserTest {
+public class FileNameParserTest {
 
     @Test
     public void testParse1() throws Exception {
-        Parser parser = new Parser();
+        FileNameParser fileNameParser = new FileNameParser();
         String fileName = "[y.2014][mo.11][d.12][h.10][m.00][i.01][t.comic][t.blobs][ti.blobs go to the theater].jpg";
-        Map<String, Set<String>> tags = parser.parse(fileName);
+        Map<String, Set<String>> tags = fileNameParser.parse(fileName);
         System.out.println(tags);
         assertEquals(tags.get("month").size(), 1);
         assertTrue(tags.get("month").contains("11"));

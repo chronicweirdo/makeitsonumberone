@@ -14,7 +14,7 @@ public class ScannerTest {
     @Test
     public void testScanFolder() throws Exception {
         Scanner scanner = new Scanner();
-        scanner.setParser(new Parser());
+        scanner.setFileNameParser(new FileNameParser());
 
         List<Post> posts = scanner.scan(new File("data"));
         System.out.println(posts);

@@ -2,15 +2,12 @@ package org.chronicweirdo.dump;
 
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.Builder;
-import org.chronicweirdo.dump.service.Parser;
+import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.Scanner;
-import org.chronicweirdo.dump.web.ImageServlet;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
-import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.junit.Test;
@@ -20,9 +17,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 
 /**
@@ -46,7 +41,7 @@ public class BuilderServerTest {
         server.setHandler(handlers);
 
         Scanner scanner = new Scanner();
-        scanner.setParser(new Parser());
+        scanner.setFileNameParser(new FileNameParser());
 
         List<Post> posts = scanner.scan(new File("data"));
 

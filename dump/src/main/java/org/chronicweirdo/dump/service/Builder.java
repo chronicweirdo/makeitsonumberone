@@ -1,5 +1,6 @@
 package org.chronicweirdo.dump.service;
 
+import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Section;
 
@@ -65,12 +66,10 @@ public class Builder {
     }
 
     private void writeImage(StringBuilder builder, File file) {
-        builder.append("<img src=\"" + getServerPath(file) + "\" />");
+        builder.append("<img src=\"" + Util.getServerPath(file) + "\" />");
     }
 
-    private String getServerPath(File file) {
-        return "/" + file.getPath();
-    }
+
 
     private String getExtension(File file) {
         return file.getName().substring(file.getName().lastIndexOf('.')+1);

@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * Tag syntax is [tag.value].
  * Created by scacoveanu on 12/29/2014.
  */
-public class Parser {
+public class FileNameParser {
 
     private static final String PATTERN = "\\[([^.]*)\\.([^\\]]+)\\]";
 
@@ -68,7 +68,7 @@ public class Parser {
         formal.put("ti", TITLE);
     }
 
-    public Map<String, Set<String>> parse(String fileName) {
+    public static Map<String, Set<String>> parse(String fileName) {
         Map<String, Set<String>> tags = new HashMap<String, Set<String>>();
         Pattern pattern = Pattern.compile(PATTERN);
         Matcher matcher = pattern.matcher(fileName);
