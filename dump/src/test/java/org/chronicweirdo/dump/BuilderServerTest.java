@@ -27,7 +27,7 @@ public class BuilderServerTest {
 
     @Test
     public void createServer() throws Exception {
-        Server server = new Server(80);
+        Server server = new Server(8080);
 
         ResourceHandler resource_handler = new ResourceHandler();
         resource_handler.setDirectoriesListed(true);

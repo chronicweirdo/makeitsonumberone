@@ -3,6 +3,10 @@ package org.chronicweirdo.dump.service;
 import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Section;
+import org.chronicweirdo.dump.parsers.Parser;
+import org.chronicweirdo.dump.parsers.ReferenceParser;
+import org.chronicweirdo.dump.parsers.XPathParser;
+import org.chronicweirdo.dump.view.Viewer;
 
 import java.io.*;
 
@@ -12,6 +16,16 @@ import java.io.*;
  * Created by scacoveanu on 12/29/2014.
  */
 public class Builder {
+
+    private Viewer viewer;
+
+    public Builder() {
+        try {
+            this.viewer = new Viewer();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String convert(Post post) {
         StringBuilder builder = new StringBuilder();
@@ -28,14 +42,34 @@ public class Builder {
 
     private void writeFile(StringBuilder builder, File file, String caption, String index) {
         String extension = getExtension(file);
-        if ("png".equalsIgnoreCase(extension)) {
-            writeImage(builder, file);
-        } else if ("html".equalsIgnoreCase(extension)) {
-            writeHtml(builder, file);
+        Parser parser = getParser(extension);
+        String template = getTemplate(extension);
+        if (parser != null && template != null) {
+            builder.append(viewer.apply(parser.parse(file), template));
         }
     }
 
-    private void writeHtml(StringBuilder builder, File file) {
+    private Parser getParser(String name) {
+        if ("png".equalsIgnoreCase(name)) {
+            return new ReferenceParser();
+        } else if ("html".equalsIgnoreCase(name)) {
+            XPathParser p = new XPathParser();
+            p.addXPath("contents", XPathParser.HTML_BODY_ELEMENTS);
+            return p;
+        }
+        return null;
+    }
+
+    private String getTemplate(String name) {
+        if ("png".equalsIgnoreCase(name)) {
+            return "image";
+        } else if ("html".equalsIgnoreCase(name)) {
+            return "contents";
+        }
+        return null;
+    }
+
+    /*private void writeHtml(StringBuilder builder, File file) {
         try {
             FileReader fr = new FileReader(file);
             BufferedReader br = new BufferedReader(fr);
@@ -67,7 +101,7 @@ public class Builder {
 
     private void writeImage(StringBuilder builder, File file) {
         builder.append("<img src=\"" + Util.getServerPath(file) + "\" />");
-    }
+    }*/
 
 
 
