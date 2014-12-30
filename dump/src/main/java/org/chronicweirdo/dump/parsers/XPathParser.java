@@ -30,6 +30,7 @@ public class XPathParser implements Parser {
     private Map<String, String> xpaths = new HashMap<>();
     private XPath xpath;
     private DocumentBuilder documentBuilder;
+    private boolean toList = true;
 
     public XPathParser() {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
@@ -71,9 +72,19 @@ public class XPathParser implements Parser {
 
     private void addToModel(Map model, String key, String data) {
         if (! model.containsKey(key)) {
-            model.put(key, new ArrayList<String>());
+            if (toList) {
+                model.put(key, new ArrayList<String>());
+            } else {
+                model.put(key, "");
+            }
         }
-        ((ArrayList<String>)model.get(key)).add(data);
+        if (toList) {
+            ((ArrayList<String>) model.get(key)).add(data);
+        } else {
+            String existing = (String) model.get(key);
+            String value = existing + data;
+            model.put(key, value);
+        }
     }
 
     private NodeList getNodes(Document doc, String xpath) {
