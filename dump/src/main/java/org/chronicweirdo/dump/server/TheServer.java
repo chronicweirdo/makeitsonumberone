@@ -67,7 +67,7 @@ public class TheServer {
 
 
         context.addServlet(new ServletHolder(homeServlet), "/home/");
-        //context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
+        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/post/*");
         DefaultServlet defaultServlet = new DefaultServlet();
         ServletHolder defaultServletHolder = new ServletHolder(defaultServlet);
         defaultServletHolder.setInitParameter("dirAllowed", "false");
