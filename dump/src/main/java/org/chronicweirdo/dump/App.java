@@ -1,5 +1,10 @@
 package org.chronicweirdo.dump;
 
+import org.chronicweirdo.dump.server.TheServer;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
 /**
  * Hello world!
  *
@@ -8,6 +13,10 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/context.xml");
+
+        TheServer server = context.getBean(TheServer.class);
+        server.start();
+        //((ConfigurableApplicationContext) context).refresh();
     }
 }
