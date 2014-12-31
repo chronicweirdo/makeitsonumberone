@@ -60,14 +60,13 @@ public class TheServer {
         //server.setHandler(handlers);
         server.setHandler(rewriteHandler);
 
+        context.addServlet(new ServletHolder(homeServlet), "/home/");
+
         Scanner scanner = new Scanner();
         scanner.setFileNameParser(new FileNameParser());
-
         List<Post> posts = scanner.scan(new File("data"));
+        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
 
-
-        context.addServlet(new ServletHolder(homeServlet), "/home/");
-        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/post/*");
         DefaultServlet defaultServlet = new DefaultServlet();
         ServletHolder defaultServletHolder = new ServletHolder(defaultServlet);
         defaultServletHolder.setInitParameter("dirAllowed", "false");

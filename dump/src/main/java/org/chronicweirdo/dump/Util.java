@@ -10,7 +10,7 @@ import java.util.Map;
 public class Util {
 
     public static String getServerPath(File file) {
-        return "/" + file.getPath();
+        return "/" + file.getName();
     }
 
     public static Map map(Object ... data) {
