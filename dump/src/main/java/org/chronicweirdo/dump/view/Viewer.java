@@ -5,6 +5,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
 import org.chronicweirdo.dump.Util;
+import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,6 +16,7 @@ import java.util.Map;
 /**
  * Created by scacoveanu on 12/30/2014.
  */
+@Service
 public class Viewer {
 
     private final Configuration configuration;
