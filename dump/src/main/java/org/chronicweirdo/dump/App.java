@@ -13,7 +13,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        ApplicationContext context = new FileSystemXmlApplicationContext("src/main/resources/context.xml");
+        ApplicationContext context = new FileSystemXmlApplicationContext("dump/src/main/resources/context.xml");
 
         TheServer server = context.getBean(TheServer.class);
         server.start();

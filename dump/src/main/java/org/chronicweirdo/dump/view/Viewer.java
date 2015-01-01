@@ -23,7 +23,7 @@ public class Viewer {
 
     public Viewer() throws IOException {
         configuration = new Configuration(Configuration.VERSION_2_3_21);
-        configuration.setDirectoryForTemplateLoading(new File("templates"));
+        configuration.setDirectoryForTemplateLoading(new File("dump/templates"));
         configuration.setDefaultEncoding("UTF-8");
         configuration.setTemplateExceptionHandler(TemplateExceptionHandler.HTML_DEBUG_HANDLER);
     }

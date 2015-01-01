@@ -3,10 +3,14 @@ package org.chronicweirdo.dump.server;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.Scanner;
+import org.eclipse.jetty.rewrite.handler.RedirectPatternRule;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
 import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.handler.DefaultHandler;
+import org.eclipse.jetty.server.handler.HandlerCollection;
 import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
 import org.eclipse.jetty.servlet.DefaultServlet;
@@ -17,7 +21,10 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.UnavailableException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,87 +34,51 @@ import java.util.List;
 public class TheServer {
 
     @Autowired
-    private HomeServlet homeServlet;
+    private HomeHandler homeHandler;
 
-    public void setHomeServlet(HomeServlet homeServlet) {
-        this.homeServlet = homeServlet;
+    public void setHomeHandler(HomeHandler homeHandler) {
+        this.homeHandler = homeHandler;
     }
 
     public void start() {
         Server server = new Server(getPort());
 
-        //ResourceHandler resourceHandler = new ResourceHandler();
-        // don't list directories
-        //resourceHandler.setDirectoriesListed(false);
-        //resourceHandler.setResourceBase(".");
-
-
-
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
         context.setContextPath("/");
-        //context.setResourceBase(".");
 
         RewriteHandler rewriteHandler = new RewriteHandler();
         rewriteHandler.setHandler(context);
+        rewriteHandler.setRewritePathInfo(false);
+        rewriteHandler.setRewriteRequestURI(false);
         RewritePatternRule rootRule = new RewritePatternRule();
         rootRule.setPattern("");
         rootRule.setReplacement("/home");
-        rootRule.setTerminating(true);
+        //rootRule.setLocation("/home");
+        //rootRule.setTerminating(true);
         rewriteHandler.addRule(rootRule);
 
-
-
-        HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] { /*rewriteHandler,*/ context/*, resourceHandler*/ });
-        //server.setHandler(handlers);
-        server.setHandler(rewriteHandler);
-
-        context.addServlet(new ServletHolder(homeServlet), "/home/");
-
-
-
-        Scanner scanner = new Scanner();
-        scanner.setFileNameParser(new FileNameParser());
-        List<Post> posts = scanner.scan(new File("data"));
-        PostsServlet postsServlet = new PostsServlet(posts);
-
-        DefaultServlet defaultServlet = new DefaultServlet();/* {
+        ResourceHandler resourceHandler = new ResourceHandler() {
             @Override
-            public String getInitParameter(String name) {
-                if ("dirAllowed".equals(name)) {
-                    return "false";
-                } else if ("resourceBase".equals(name)) {
-                    return "./data/";
-                }
-                return super.getInitParameter(name);
+            public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+                super.handle(target, baseRequest, request, response);
+                System.out.println("! handled with the resource handler");
             }
-        };*/
-        ServletHolder defaultServletHolder = new ServletHolder(defaultServlet);
-        defaultServletHolder.setInitParameter("dirAllowed", "false");
-        defaultServletHolder.setInitParameter("resourceBase", "./data/");
-        try {
-            defaultServlet.init();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*try {
-            defaultServletHolder.initialize();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
+        };
+        resourceHandler.setDirectoriesListed(false);
+        resourceHandler.setResourceBase("./dump/data/");
 
-        /*try {
-            defaultServlet.init();
-        } catch (UnavailableException e) {
-            e.printStackTrace();
-        }*/
-
-        ServletChainer chainer = new ServletChainer();
-        //chainer.addServlet(postsServlet);
-        chainer.addServlet(defaultServlet);
-        ServletHolder servletHolder = new ServletHolder(chainer);
-
-        context.addServlet(servletHolder, "/*");
+        HandlerCollection handlerCollection = new HandlerCollection();
+        //handlerCollection.addHandler(rewriteHandler);
+        handlerCollection.addHandler(homeHandler);
+        handlerCollection.addHandler(resourceHandler);
+        handlerCollection.addHandler(new DefaultHandler());
+        /*HandlerList handlers = new HandlerList();
+        handlers.setHandlers(new Handler[] {
+                homeHandler,
+                resourceHandler,
+                new DefaultHandler() });
+        server.setHandler(handlers);*/
+        server.setHandler(handlerCollection);
 
         try {
             server.start();
