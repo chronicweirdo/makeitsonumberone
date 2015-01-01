@@ -15,6 +15,8 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.ServletException;
+import javax.servlet.UnavailableException;
 import java.io.File;
 import java.util.List;
 
@@ -62,16 +64,50 @@ public class TheServer {
 
         context.addServlet(new ServletHolder(homeServlet), "/home/");
 
+
+
         Scanner scanner = new Scanner();
         scanner.setFileNameParser(new FileNameParser());
         List<Post> posts = scanner.scan(new File("data"));
-        context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
+        PostsServlet postsServlet = new PostsServlet(posts);
 
-        DefaultServlet defaultServlet = new DefaultServlet();
+        DefaultServlet defaultServlet = new DefaultServlet();/* {
+            @Override
+            public String getInitParameter(String name) {
+                if ("dirAllowed".equals(name)) {
+                    return "false";
+                } else if ("resourceBase".equals(name)) {
+                    return "./data/";
+                }
+                return super.getInitParameter(name);
+            }
+        };*/
         ServletHolder defaultServletHolder = new ServletHolder(defaultServlet);
         defaultServletHolder.setInitParameter("dirAllowed", "false");
         defaultServletHolder.setInitParameter("resourceBase", "./data/");
-        context.addServlet(defaultServletHolder, "/*");
+        try {
+            defaultServlet.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        /*try {
+            defaultServletHolder.initialize();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }*/
+
+        /*try {
+            defaultServlet.init();
+        } catch (UnavailableException e) {
+            e.printStackTrace();
+        }*/
+
+        ServletChainer chainer = new ServletChainer();
+        //chainer.addServlet(postsServlet);
+        chainer.addServlet(defaultServlet);
+        ServletHolder servletHolder = new ServletHolder(chainer);
+
+        context.addServlet(servletHolder, "/*");
 
         try {
             server.start();

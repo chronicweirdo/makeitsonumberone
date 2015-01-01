@@ -22,9 +22,24 @@ public class PostsServlet extends HttpServlet {
         this.posts = posts;
     }
 
+    private boolean accept(String url) {
+        // check if it has a number
+        String index = url.substring(url.lastIndexOf("/")+1);
+        try {
+            Integer.parseInt(index);
+            return true;
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String url = req.getRequestURL().toString();
+        if (! accept(url)) {
+            return;
+        };
         String index = url.substring(url.lastIndexOf("/")+1);
         int ii = Integer.parseInt(index);
         resp.setContentType("text/html");
