@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,8 @@ public class PostsHandler extends AbstractHandler {
         builder.setTemplates(source.getTemplates());
     }
 
-    private void load() {
+    public void load() {
+        this.posts = new HashMap<>();
         List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
         for (Post post: posts) {
             for (String url: getUrls(post)) {
@@ -51,7 +53,7 @@ public class PostsHandler extends AbstractHandler {
     }
 
     private List<String> getUrls(Post post) {
-        return Arrays.asList(post.getTitle());
+        return Arrays.asList(post.getTitle().replaceAll("\\s","_"));
     }
 
     private String convert(String target) {

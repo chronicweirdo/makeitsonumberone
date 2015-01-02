@@ -61,11 +61,14 @@ public class TheServer {
 
         List<Handler> postHandlers = new ArrayList<>();
         List<Handler> resourceHandlers = new ArrayList<>();
+        ScannerService scannerService = new ScannerService();
         for (Source source: sources) {
             // create a posts handler
-            ScannerService scannerService = new ScannerService();
-            List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
-            System.out.println("--- posts: " + posts.size());
+            PostsHandler postsHandler = new PostsHandler();
+            postsHandler.setScannerService(scannerService);
+            postsHandler.setSource(source);
+            postsHandler.load();
+            postHandlers.add(postsHandler);
 
             // create a resource handler
             ResourceHandler resourceHandler = new ResourceHandler();

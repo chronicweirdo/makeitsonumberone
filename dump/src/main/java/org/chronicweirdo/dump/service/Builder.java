@@ -1,6 +1,5 @@
 package org.chronicweirdo.dump.service;
 
-import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Section;
 import org.chronicweirdo.dump.parsers.Parser;
@@ -49,18 +48,18 @@ public class Builder {
         builder.append("<html><body>");
         // write content
         for (Section section: post.getSections()) {
-            writeFile(builder, section);
+            writeSection(builder, section);
         }
         // write footer
         builder.append("</body></html>");
         return builder.toString();
     }
 
-    private void writeFile(StringBuilder builder, Section section) {
+    private void writeSection(StringBuilder builder, Section section) {
         builder.append(viewer.apply(parsers.get(section.getProcessor()).parse(section.getFile()), templates.get(section.getProcessor())));
     }
 
-    private Parser getParser(String name) {
+    /*private Parser getParser(String name) {
         if ("png".equalsIgnoreCase(name)) {
             return new ReferenceParser();
         } else if ("html".equalsIgnoreCase(name)) {
@@ -78,7 +77,7 @@ public class Builder {
             return "contents";
         }
         return null;
-    }
+    }*/
 
     /*private void writeHtml(StringBuilder builder, File file) {
         try {
