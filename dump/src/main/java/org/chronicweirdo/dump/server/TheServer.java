@@ -1,6 +1,8 @@
 package org.chronicweirdo.dump.server;
 
 import org.chronicweirdo.dump.model.Post;
+import org.chronicweirdo.dump.model.Source;
+import org.chronicweirdo.dump.scanners.FileNameScanner;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.ScannerService;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
@@ -35,6 +37,10 @@ public class TheServer {
     }
 
     public void start() {
+        Source source = new Source();
+        source.setFolder(new File("dump/data"));
+        source.setScanner(new FileNameScanner());
+
         Server server = new Server(getPort());
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -63,8 +69,8 @@ public class TheServer {
 
 
         ScannerService scannerService = new ScannerService();
-        scannerService.setFileNameParser(new FileNameParser());
-        List<Post> posts = scannerService.scan(new File("dump/data"));
+        List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
+        System.out.println("--- posts: " + posts.size());
 
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler);

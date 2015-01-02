@@ -37,7 +37,7 @@ public class FileNameParser {
 
     public static final String CAPTION = "caption";
 
-    {
+    static {
         formal = new HashMap<String, String>();
 
         formal.put(YEAR, YEAR);
@@ -66,6 +66,8 @@ public class FileNameParser {
 
         formal.put(TITLE, TITLE);
         formal.put("ti", TITLE);
+
+        System.out.println("--- formal size: " + formal.size());
     }
 
     public static Map<String, Set<String>> parse(String fileName) {

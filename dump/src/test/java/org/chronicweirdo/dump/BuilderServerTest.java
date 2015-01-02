@@ -1,6 +1,7 @@
 package org.chronicweirdo.dump;
 
 import org.chronicweirdo.dump.model.Post;
+import org.chronicweirdo.dump.scanners.FileNameScanner;
 import org.chronicweirdo.dump.service.Builder;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.ScannerService;
@@ -41,9 +42,8 @@ public class BuilderServerTest {
         server.setHandler(handlers);
 
         ScannerService scannerService = new ScannerService();
-        scannerService.setFileNameParser(new FileNameParser());
 
-        List<Post> posts = scannerService.scan(new File("data"));
+        List<Post> posts = scannerService.scan(new File("data"), new FileNameScanner());
 
         context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
         //context.addServlet(new ServletHolder(new DefaultServlet()), "/*");

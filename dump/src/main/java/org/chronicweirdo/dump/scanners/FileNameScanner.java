@@ -27,9 +27,10 @@ public class FileNameScanner implements Scanner {
             post.setTitle(getTitle(file, tags));
             post.setCreationDate(getCreationDate(file, tags));
             post.addFile(file,
-                    getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString()),
-                    getSingleField(tags, FileNameParser.INDEX, file.getPath().toString()));
-        } catch (FormattingException e) {
+                    getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
+                    getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""));
+            return post;
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
@@ -87,6 +88,14 @@ public class FileNameScanner implements Scanner {
         }
     }
 
+    private String getSingleField(Map<String, Set<String>> tags, String name, String itemId, String def) {
+        try {
+            return getSingleField(tags, name, itemId);
+        } catch (FormattingException e) {
+            // allowed
+        }
+        return def;
+    }
     private String getSingleField(Map<String, Set<String>> tags, String name, String itemId) throws FormattingException {
         if (tags.get(name) == null || tags.get(name).size() == 0) {
             throw new FormattingException("No " + name + " found for " + itemId);
