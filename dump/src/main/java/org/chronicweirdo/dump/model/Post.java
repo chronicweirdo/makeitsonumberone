@@ -49,4 +49,24 @@ public class Post {
     public Collection<Section> getSections() {
         return sections.values();
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Post post = (Post) o;
+
+        if (!creationDate.equals(post.creationDate)) return false;
+        if (!title.equals(post.title)) return false;
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = title.hashCode();
+        result = 31 * result + creationDate.hashCode();
+        return result;
+    }
 }

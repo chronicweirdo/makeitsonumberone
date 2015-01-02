@@ -14,7 +14,7 @@ import java.util.*;
  *
  * Created by scacoveanu on 12/29/2014.
  */
-public class Scanner {
+public class ScannerService {
 
     private FileNameParser fileNameParser;
 

@@ -3,7 +3,7 @@ package org.chronicweirdo.dump;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.Builder;
 import org.chronicweirdo.dump.service.FileNameParser;
-import org.chronicweirdo.dump.service.Scanner;
+import org.chronicweirdo.dump.service.ScannerService;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.HandlerList;
@@ -40,10 +40,10 @@ public class BuilderServerTest {
         handlers.setHandlers(new Handler[] { resource_handler, context });
         server.setHandler(handlers);
 
-        Scanner scanner = new Scanner();
-        scanner.setFileNameParser(new FileNameParser());
+        ScannerService scannerService = new ScannerService();
+        scannerService.setFileNameParser(new FileNameParser());
 
-        List<Post> posts = scanner.scan(new File("data"));
+        List<Post> posts = scannerService.scan(new File("data"));
 
         context.addServlet(new ServletHolder(new PostsServlet(posts)), "/*");
         //context.addServlet(new ServletHolder(new DefaultServlet()), "/*");

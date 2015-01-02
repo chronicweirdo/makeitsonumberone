@@ -2,25 +2,19 @@ package org.chronicweirdo.dump.server;
 
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.FileNameParser;
-import org.chronicweirdo.dump.service.Scanner;
-import org.eclipse.jetty.rewrite.handler.RedirectPatternRule;
+import org.chronicweirdo.dump.service.ScannerService;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
-import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerCollection;
-import org.eclipse.jetty.server.handler.HandlerList;
 import org.eclipse.jetty.server.handler.ResourceHandler;
-import org.eclipse.jetty.servlet.DefaultServlet;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
-import javax.servlet.UnavailableException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -68,9 +62,9 @@ public class TheServer {
         resourceHandler.setResourceBase("./dump/data/");
 
 
-        Scanner scanner = new Scanner();
-        scanner.setFileNameParser(new FileNameParser());
-        List<Post> posts = scanner.scan(new File("dump/data"));
+        ScannerService scannerService = new ScannerService();
+        scannerService.setFileNameParser(new FileNameParser());
+        List<Post> posts = scannerService.scan(new File("dump/data"));
 
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler);

@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Created by scacoveanu on 12/29/2014.
  */
-public class ScannerTest {
+public class ScannerServiceTest {
 
     @Test
     public void testScanFolder() throws Exception {
-        Scanner scanner = new Scanner();
-        scanner.setFileNameParser(new FileNameParser());
+        ScannerService scannerService = new ScannerService();
+        scannerService.setFileNameParser(new FileNameParser());
 
-        List<Post> posts = scanner.scan(new File("data"));
+        List<Post> posts = scannerService.scan(new File("data"));
         System.out.println(posts);
     }
 }

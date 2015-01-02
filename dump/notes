@@ -1,7 +1,7 @@
 when we configure this server:
     we have source folders
         each source folder has:
-            filename parser - responsible with going through the folder and
+            scannerService - responsible with going through the folder and
                 obtaining data about posts
             a list of parser/template pairs - responsible with interpreting
                 post sections and putting them in a contents list (another model)

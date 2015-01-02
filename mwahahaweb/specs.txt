@@ -13,7 +13,7 @@ idea: use the dropbox api and have a dropbox folder as the content source
 	but the db should be as minimal as possible
 	just have information that can't be stored in the file itself, like page access counts, tag access counts
 
-scanner
+scannerService
 	be able to retrieve files in order of last modifiation date
 	scan everything once on startup and keep an in-memory db
 	scan periodically and only look at file titles and for some content type at file meta-data
