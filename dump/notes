@@ -12,3 +12,15 @@ when we configure this server:
 
     we also have pages
         well, the main page for now
+
+need some way to define parsers (or metion what parses we will use and initialise
+    them) in config files
+    see spring config files
+    see how we can reload spring context periodically
+
+rescan content folder periodically (reload)
+
+build a tree of parsers and templates in config files and apply that processing tree
+    on content folders
+
+add styles
