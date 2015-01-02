@@ -9,6 +9,7 @@ public class Section {
     private File file;
     private String caption;
     private String index;
+    private String processor;
 
     public File getFile() {
         return file;
@@ -32,5 +33,13 @@ public class Section {
 
     public void setIndex(String index) {
         this.index = index;
+    }
+
+    public String getProcessor() {
+        return processor;
+    }
+
+    public void setProcessor(String processor) {
+        this.processor = processor;
     }
 }

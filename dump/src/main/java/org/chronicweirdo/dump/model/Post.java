@@ -44,11 +44,12 @@ public class Post {
 
     private TreeMap<String, Section> sections = new TreeMap<String, Section>();
 
-    public void addFile(File root, String caption, String index) {
+    public void addFile(File root, String caption, String index, String processor) {
         Section section = new Section();
         section.setCaption(caption);
         section.setFile(root);
         section.setIndex(index);
+        section.setProcessor(processor);
         sections.put(index, section);
     }
 

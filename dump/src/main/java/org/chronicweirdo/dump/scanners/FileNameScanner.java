@@ -28,12 +28,21 @@ public class FileNameScanner implements Scanner {
             post.setCreationDate(getCreationDate(file, tags));
             post.addFile(file,
                     getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
-                    getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""));
+                    getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""),
+                    getProcessor(file, tags));
             return post;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private String getProcessor(File file, Map<String, Set<String>> tags) {
+        return getSingleField(tags, FileNameParser.PROCESSOR, file.getPath(), getExtension(file));
+    }
+
+    private String getExtension(File file) {
+        return file.getName().substring(file.getName().lastIndexOf('.')+1);
     }
 
     private String getTitle(File file, Map<String, Set<String>> tags) throws FormattingException {

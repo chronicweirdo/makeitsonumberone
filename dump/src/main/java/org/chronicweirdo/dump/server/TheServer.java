@@ -7,6 +7,7 @@ import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.ScannerService;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;
@@ -21,6 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,15 +34,17 @@ public class TheServer {
     @Autowired
     private HomeHandler homeHandler;
 
+    private List<Source> sources;
+
     public void setHomeHandler(HomeHandler homeHandler) {
         this.homeHandler = homeHandler;
     }
 
-    public void start() {
-        Source source = new Source();
-        source.setFolder(new File("dump/data"));
-        source.setScanner(new FileNameScanner());
+    public void setSources(List<Source> sources) {
+        this.sources = sources;
+    }
 
+    public void start() {
         Server server = new Server(getPort());
 
         ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
@@ -53,37 +57,36 @@ public class TheServer {
         RewritePatternRule rootRule = new RewritePatternRule();
         rootRule.setPattern("");
         rootRule.setReplacement("/home");
-        //rootRule.setLocation("/home");
-        //rootRule.setTerminating(true);
         rewriteHandler.addRule(rootRule);
 
-        ResourceHandler resourceHandler = new ResourceHandler() {
-            @Override
-            public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-                super.handle(target, baseRequest, request, response);
-                System.out.println("! handled with the resource handler");
-            }
-        };
-        resourceHandler.setDirectoriesListed(false);
-        resourceHandler.setResourceBase("./dump/data/");
+        List<Handler> postHandlers = new ArrayList<>();
+        List<Handler> resourceHandlers = new ArrayList<>();
+        for (Source source: sources) {
+            // create a posts handler
+            ScannerService scannerService = new ScannerService();
+            List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
+            System.out.println("--- posts: " + posts.size());
+
+            // create a resource handler
+            ResourceHandler resourceHandler = new ResourceHandler();
+            resourceHandler.setDirectoriesListed(false);
+            resourceHandler.setResourceBase(source.getFolder().getPath());
+            resourceHandlers.add(resourceHandler);
+        }
 
 
-        ScannerService scannerService = new ScannerService();
-        List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
-        System.out.println("--- posts: " + posts.size());
+
 
         HandlerCollection handlerCollection = new HandlerCollection();
-        //handlerCollection.addHandler(rewriteHandler);
+        //handlerCollection.addHandler(rewriteHandler); TODO: why does this work even if it's not added?
         handlerCollection.addHandler(homeHandler);
-        handlerCollection.addHandler(new PostsHandler(posts));
-        handlerCollection.addHandler(resourceHandler);
+        for (Handler handler: postHandlers) {
+            handlerCollection.addHandler(handler);
+        }
+        for (Handler handler: resourceHandlers) {
+            handlerCollection.addHandler(handler);
+        }
         handlerCollection.addHandler(new DefaultHandler());
-        /*HandlerList handlers = new HandlerList();
-        handlers.setHandlers(new Handler[] {
-                homeHandler,
-                resourceHandler,
-                new DefaultHandler() });
-        server.setHandler(handlers);*/
         server.setHandler(handlerCollection);
 
         try {

@@ -9,6 +9,7 @@ import org.chronicweirdo.dump.parsers.XPathParser;
 import org.chronicweirdo.dump.view.Viewer;
 
 import java.io.*;
+import java.util.Map;
 
 /**
  * Service that takes a post and returns a html file.
@@ -18,6 +19,9 @@ import java.io.*;
 public class Builder {
 
     private Viewer viewer;
+    private String masterTemplate;
+    private Map<String, Parser> parsers;
+    private Map<String, String> templates;
 
     public Builder() {
         try {
@@ -27,26 +31,33 @@ public class Builder {
         }
     }
 
+    public void setMasterTemplate(String masterTemplate) {
+        this.masterTemplate = masterTemplate;
+    }
+
+    public void setParsers(Map<String, Parser> parsers) {
+        this.parsers = parsers;
+    }
+
+    public void setTemplates(Map<String, String> templates) {
+        this.templates = templates;
+    }
+
     public String convert(Post post) {
         StringBuilder builder = new StringBuilder();
         // write header
         builder.append("<html><body>");
         // write content
         for (Section section: post.getSections()) {
-            writeFile(builder, section.getFile(), section.getCaption(), section.getIndex());
+            writeFile(builder, section);
         }
         // write footer
         builder.append("</body></html>");
         return builder.toString();
     }
 
-    private void writeFile(StringBuilder builder, File file, String caption, String index) {
-        String extension = getExtension(file);
-        Parser parser = getParser(extension);
-        String template = getTemplate(extension);
-        if (parser != null && template != null) {
-            builder.append(viewer.apply(parser.parse(file), template));
-        }
+    private void writeFile(StringBuilder builder, Section section) {
+        builder.append(viewer.apply(parsers.get(section.getProcessor()).parse(section.getFile()), templates.get(section.getProcessor())));
     }
 
     private Parser getParser(String name) {
@@ -105,7 +116,5 @@ public class Builder {
 
 
 
-    private String getExtension(File file) {
-        return file.getName().substring(file.getName().lastIndexOf('.')+1);
-    }
+
 }

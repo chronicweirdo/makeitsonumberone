@@ -65,4 +65,12 @@ public class Source {
     public void setFolder(File folder) {
         this.folder = folder;
     }
+
+    public Map<String, Parser> getParsers() {
+        return parsers;
+    }
+
+    public Map<String, String> getTemplates() {
+        return templates;
+    }
 }
