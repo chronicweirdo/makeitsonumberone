@@ -1,5 +1,7 @@
 package org.chronicweirdo.dump.model;
 
+import org.chronicweirdo.dump.service.FileNameParser;
+
 import java.io.File;
 import java.util.*;
 
@@ -36,6 +38,10 @@ public class Post {
         this.tags.addAll(tags);
     }
 
+    public Set<String> getTags() {
+        return tags;
+    }
+
     private TreeMap<String, Section> sections = new TreeMap<String, Section>();
 
     public void addFile(File root, String caption, String index) {
@@ -68,5 +74,10 @@ public class Post {
         int result = title.hashCode();
         result = 31 * result + creationDate.hashCode();
         return result;
+    }
+
+    public void merge(Post filePost) {
+        this.addTags(filePost.getTags());
+        this.sections.putAll(filePost.sections);
     }
 }
