@@ -1,0 +1,14 @@
+when we configure this server:
+    we have source folders
+        each source folder has:
+            filename parser - responsible with going through the folder and
+                obtaining data about posts
+            a list of parser/template pairs - responsible with interpreting
+                post sections and putting them in a contents list (another model)
+            a master template - will take all contents and put them in the final
+                web page
+    each source folder has an associated posts handler that serves the post pages
+    each source folder also has an associated resources handler
+
+    we also have pages
+        well, the main page for now
