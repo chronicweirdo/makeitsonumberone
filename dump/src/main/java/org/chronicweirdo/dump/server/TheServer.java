@@ -67,9 +67,15 @@ public class TheServer {
         resourceHandler.setDirectoriesListed(false);
         resourceHandler.setResourceBase("./dump/data/");
 
+
+        Scanner scanner = new Scanner();
+        scanner.setFileNameParser(new FileNameParser());
+        List<Post> posts = scanner.scan(new File("dump/data"));
+
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler);
         handlerCollection.addHandler(homeHandler);
+        handlerCollection.addHandler(new PostsHandler(posts));
         handlerCollection.addHandler(resourceHandler);
         handlerCollection.addHandler(new DefaultHandler());
         /*HandlerList handlers = new HandlerList();
