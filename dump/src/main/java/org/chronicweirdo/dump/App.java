@@ -35,6 +35,7 @@ public class App
         source.addParserTemplate("jpg", imageParser, "image");
 
         Source source2 = new Source();
+        source2.setMasterTemplate("postPage");
         source2.setFolder(new File("dump/data2"));
         source2.setScanner(new FileNameScanner());
         source2.setMasterTemplate("postPage");
