@@ -42,7 +42,7 @@ public class FileNameScanner implements Scanner {
     }
 
     private String getExtension(File file) {
-        return file.getName().substring(file.getName().lastIndexOf('.')+1);
+        return file.getName().substring(file.getName().lastIndexOf('.')+1).toLowerCase();
     }
 
     private String getTitle(File file, Map<String, Set<String>> tags) throws FormattingException {

@@ -30,9 +30,18 @@ public class App
         XPathParser htmlParser = new XPathParser();
         htmlParser.addXPath("contents", XPathParser.HTML_BODY_ELEMENTS);
         source.addParserTemplate("html", htmlParser, "contents");
-        source.addParserTemplate("png", new ReferenceParser(), "image");
+        ReferenceParser imageParser = new ReferenceParser();
+        source.addParserTemplate("png", imageParser, "image");
+        source.addParserTemplate("jpg", imageParser, "image");
 
-        server.setSources(Arrays.asList(source));
+        Source source2 = new Source();
+        source2.setFolder(new File("dump/data2"));
+        source2.setScanner(new FileNameScanner());
+        source2.setMasterTemplate("postPage");
+        source2.addParserTemplate("html", htmlParser, "contents");
+        source2.addParserTemplate("jpg", imageParser, "image");
+
+        server.setSources(Arrays.asList(source, source2));
 
         server.start();
         //((ConfigurableApplicationContext) context).refresh();
