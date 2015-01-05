@@ -24,3 +24,13 @@ build a tree of parsers and templates in config files and apply that processing 
     on content folders
 
 add styles
+
+
+SourceService
+    scans sources and returns a list of posts
+    caching and periodic rescanning
+    configuration: a list of source folders
+
+BuilderService
+    takes a post and assembles it into a HtmlPage
+    configuration: a collection of parsers and templates associated with processor names

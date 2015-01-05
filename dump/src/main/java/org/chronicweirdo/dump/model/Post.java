@@ -17,6 +17,7 @@ public class Post {
     private String title;
     private Date creationDate;
     private Set<String> tags = new HashSet<String>();
+    private String master;
 
     public String getTitle() {
         return title;
@@ -80,5 +81,13 @@ public class Post {
     public void merge(Post filePost) {
         this.addTags(filePost.getTags());
         this.sections.putAll(filePost.sections);
+    }
+
+    public String getMaster() {
+        return master;
+    }
+
+    public void setMaster(String master) {
+        this.master = master;
     }
 }

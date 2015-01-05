@@ -3,8 +3,6 @@ package org.chronicweirdo.dump.service;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Section;
 import org.chronicweirdo.dump.parsers.Parser;
-import org.chronicweirdo.dump.parsers.ReferenceParser;
-import org.chronicweirdo.dump.parsers.XPathParser;
 import org.chronicweirdo.dump.view.Viewer;
 
 import java.io.*;
@@ -21,7 +19,7 @@ import java.util.Map;
 public class BuilderService {
 
     private Viewer viewer;
-    private String masterTemplate;
+    private String defaultMaster;
     private Map<String, Parser> parsers = new HashMap<>();
     private Map<String, String> templates = new HashMap<>();
 
@@ -33,8 +31,8 @@ public class BuilderService {
         }
     }
 
-    public void setMasterTemplate(String masterTemplate) {
-        this.masterTemplate = masterTemplate;
+    public void setDefaultMaster(String defaultMaster) {
+        this.defaultMaster = defaultMaster;
     }
 
     public void setParsers(Map<String, Parser> parsers) {
@@ -54,16 +52,7 @@ public class BuilderService {
     }
 
     public String convert(Post post) {
-        /*StringBuilder builder = new StringBuilder();
-        // write header
-        builder.append("<html><body>");
-        // write content
-        for (Section section: post.getSections()) {
-            writeSection(builder, section);
-        }
-        // write footer
-        builder.append("</body></html>");
-        return builder.toString();*/
+
         Map model = new HashMap<>(1);
         List<String> sections = new ArrayList<>(post.getSections().size());
         for (Section section: post.getSections()) {
@@ -71,7 +60,11 @@ public class BuilderService {
         }
         model.put("sections", sections);
         model.put("title", post.getTitle());
-        return viewer.apply(model, masterTemplate);
+        String master = post.getMaster();
+        if (master == null) {
+            master = defaultMaster;
+        }
+        return viewer.apply(model, master);
     }
 
     private String getSectionText(Section section) {

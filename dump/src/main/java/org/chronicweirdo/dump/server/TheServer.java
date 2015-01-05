@@ -1,18 +1,14 @@
 package org.chronicweirdo.dump.server;
 
-import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Source;
 import org.chronicweirdo.dump.parsers.ReferenceParser;
 import org.chronicweirdo.dump.parsers.XPathParser;
-import org.chronicweirdo.dump.scanners.FileNameScanner;
 import org.chronicweirdo.dump.service.BuilderService;
-import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.ScannerService;
 import org.chronicweirdo.dump.service.SourceService;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
 import org.eclipse.jetty.server.Handler;
-import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.handler.DefaultHandler;
 import org.eclipse.jetty.server.handler.HandlerCollection;
@@ -21,11 +17,6 @@ import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,6 +29,10 @@ public class TheServer {
     @Autowired
     private HomeHandler homeHandler;
 
+    private BuilderService builderService;
+
+    private SourceService sourceService;
+
     private List<Source> sources;
 
     public void setHomeHandler(HomeHandler homeHandler) {
@@ -46,6 +41,14 @@ public class TheServer {
 
     public void setSources(List<Source> sources) {
         this.sources = sources;
+    }
+
+    public void setBuilderService(BuilderService builderService) {
+        this.builderService = builderService;
+    }
+
+    public void setSourceService(SourceService sourceService) {
+        this.sourceService = sourceService;
     }
 
     public void start() {
@@ -63,30 +66,15 @@ public class TheServer {
         rootRule.setReplacement("/home");
         rewriteHandler.addRule(rootRule);
 
-        BuilderService builderService = new BuilderService();
-        XPathParser htmlParser = new XPathParser();
-        htmlParser.addXPath("contents", XPathParser.HTML_BODY_ELEMENTS);
-        builderService.addParser("html", htmlParser);
-        builderService.addTemplate("html", "contents");
-        ReferenceParser imageParser = new ReferenceParser();
-        builderService.addParser("png", imageParser);
-        builderService.addTemplate("png", "image");
-        builderService.addParser("jpg", imageParser);
-        builderService.addTemplate("jpg", "image");
-        builderService.setMasterTemplate("postPage");
 
-        SourceService sourceService = new SourceService();
-        sourceService.setScannerService(new ScannerService());
 
         PostsHandler postsHandler = new PostsHandler();
         postsHandler.setSourceService(sourceService);
         postsHandler.setBuilderService(builderService);
 
+        // add resources
         List<Handler> resourceHandlers = new ArrayList<>();
         for (Source source: sources) {
-            // add source
-            sourceService.addSource(source.getFolder().getPath());
-
             // create a resource handler
             ResourceHandler resourceHandler = new ResourceHandler();
             resourceHandler.setDirectoriesListed(false);
