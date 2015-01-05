@@ -18,14 +18,14 @@ import java.util.Map;
  *
  * Created by scacoveanu on 12/29/2014.
  */
-public class Builder {
+public class BuilderService {
 
     private Viewer viewer;
     private String masterTemplate;
-    private Map<String, Parser> parsers;
-    private Map<String, String> templates;
+    private Map<String, Parser> parsers = new HashMap<>();
+    private Map<String, String> templates = new HashMap<>();
 
-    public Builder() {
+    public BuilderService() {
         try {
             this.viewer = new Viewer();
         } catch (IOException e) {
@@ -43,6 +43,14 @@ public class Builder {
 
     public void setTemplates(Map<String, String> templates) {
         this.templates = templates;
+    }
+
+    public void addParser(String name, Parser parser) {
+        this.parsers.put(name, parser);
+    }
+
+    public void addTemplate(String name, String template) {
+        this.templates.put(name, template);
     }
 
     public String convert(Post post) {

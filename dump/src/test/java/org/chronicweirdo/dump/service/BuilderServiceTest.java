@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by scacoveanu on 12/29/2014.
  */
-public class BuilderTest {
+public class BuilderServiceTest {
 
     @Test
     public void testBuilder() throws Exception {
@@ -18,9 +18,9 @@ public class BuilderTest {
 
         List<Post> posts = scannerService.scan(new File("data"), new FileNameScanner());
 
-        Builder builder = new Builder();
+        BuilderService builderService = new BuilderService();
         for (Post post: posts) {
-            String html = builder.convert(post);
+            String html = builderService.convert(post);
             System.out.println(html);
         }
     }

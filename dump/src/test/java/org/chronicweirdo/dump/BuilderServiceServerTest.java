@@ -2,8 +2,7 @@ package org.chronicweirdo.dump;
 
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.scanners.FileNameScanner;
-import org.chronicweirdo.dump.service.Builder;
-import org.chronicweirdo.dump.service.FileNameParser;
+import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.ScannerService;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
@@ -24,7 +23,7 @@ import java.util.List;
 /**
  * Created by scacoveanu on 12/29/2014.
  */
-public class BuilderServerTest {
+public class BuilderServiceServerTest {
 
     @Test
     public void createServer() throws Exception {
@@ -55,7 +54,7 @@ public class BuilderServerTest {
     private class PostsServlet  extends HttpServlet {
 
         private List<Post> posts;
-        private Builder builder = new Builder();
+        private BuilderService builderService = new BuilderService();
 
         private PostsServlet(List<Post> posts) {
             this.posts = posts;
@@ -68,7 +67,7 @@ public class BuilderServerTest {
             int ii = Integer.parseInt(index);
             resp.setContentType("text/html");
             try {
-                resp.getWriter().write(builder.convert(posts.get(ii)));
+                resp.getWriter().write(builderService.convert(posts.get(ii)));
                 resp.setStatus(HttpServletResponse.SC_OK);
             } catch (IOException e) {
                 throw new ServletException(e);

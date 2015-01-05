@@ -2,13 +2,12 @@ package org.chronicweirdo.dump.server;
 
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Source;
-import org.chronicweirdo.dump.service.Builder;
-import org.chronicweirdo.dump.service.ScannerService;
+import org.chronicweirdo.dump.service.BuilderService;
+import org.chronicweirdo.dump.service.SourceService;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
 
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -24,27 +23,23 @@ public class PostsHandler extends AbstractHandler {
 
     private Source source;
     private Map<String, Post> posts;
-    private Builder builder;
-    private ScannerService scannerService;
+    private BuilderService builderService;
+    private SourceService sourceService;
+
+    public void setSourceService(SourceService sourceService) {
+        this.sourceService = sourceService;
+    }
+
+    public void setBuilderService(BuilderService builderService) {
+        this.builderService = builderService;
+    }
 
     public PostsHandler() {
     }
 
-    public void setScannerService(ScannerService scannerService) {
-        this.scannerService = scannerService;
-    }
-
-    public void setSource(Source source) {
-        this.source = source;
-        this.builder = new Builder();
-        builder.setMasterTemplate(source.getMasterTemplate());
-        builder.setParsers(source.getParsers());
-        builder.setTemplates(source.getTemplates());
-    }
-
-    public void load() {
+    private void load() {
         this.posts = new HashMap<>();
-        List<Post> posts = scannerService.scan(source.getFolder(), source.getScanner());
+        List<Post> posts = sourceService.getPosts();
         for (Post post: posts) {
             for (String url: getUrls(post)) {
                 this.posts.put(url, post);
@@ -65,11 +60,14 @@ public class PostsHandler extends AbstractHandler {
 
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        if (posts == null) {
+            load();
+        }
         String url = convert(target);
         if (posts.containsKey(url)) {
             response.setContentType("text/html");
             try {
-                response.getWriter().write(builder.convert(posts.get(url)));
+                response.getWriter().write(builderService.convert(posts.get(url)));
                 response.setStatus(HttpServletResponse.SC_OK);
                 baseRequest.setHandled(true);
             } catch (IOException e) {

@@ -16,15 +16,13 @@ import java.util.Arrays;
  * Hello world!
  *
  */
-public class App 
+public class App
 {
-    public static void main( String[] args )
-    {
-        ApplicationContext context = new FileSystemXmlApplicationContext("dump/src/main/resources/context.xml");
 
-        TheServer server = context.getBean(TheServer.class);
+    private static Source getSource(String path) {
         Source source = new Source();
-        source.setFolder(new File("dump/data"));
+
+        source.setFolder(new File(path));
         source.setScanner(new FileNameScanner());
         source.setMasterTemplate("postPage");
         XPathParser htmlParser = new XPathParser();
@@ -34,15 +32,15 @@ public class App
         source.addParserTemplate("png", imageParser, "image");
         source.addParserTemplate("jpg", imageParser, "image");
 
-        Source source2 = new Source();
-        source2.setMasterTemplate("postPage");
-        source2.setFolder(new File("dump/data2"));
-        source2.setScanner(new FileNameScanner());
-        source2.setMasterTemplate("postPage");
-        source2.addParserTemplate("html", htmlParser, "contents");
-        source2.addParserTemplate("jpg", imageParser, "image");
+        return source;
+    }
+    public static void main( String[] args )
+    {
+        ApplicationContext context = new FileSystemXmlApplicationContext("dump/src/main/resources/context.xml");
 
-        server.setSources(Arrays.asList(source, source2));
+        TheServer server = context.getBean(TheServer.class);
+
+        server.setSources(Arrays.asList(getSource("dump/data"), getSource("dump/data2")));
 
         server.start();
         //((ConfigurableApplicationContext) context).refresh();

@@ -2,9 +2,13 @@ package org.chronicweirdo.dump.server;
 
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Source;
+import org.chronicweirdo.dump.parsers.ReferenceParser;
+import org.chronicweirdo.dump.parsers.XPathParser;
 import org.chronicweirdo.dump.scanners.FileNameScanner;
+import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.ScannerService;
+import org.chronicweirdo.dump.service.SourceService;
 import org.eclipse.jetty.rewrite.handler.RewriteHandler;
 import org.eclipse.jetty.rewrite.handler.RewritePatternRule;
 import org.eclipse.jetty.server.Handler;
@@ -59,16 +63,29 @@ public class TheServer {
         rootRule.setReplacement("/home");
         rewriteHandler.addRule(rootRule);
 
-        List<Handler> postHandlers = new ArrayList<>();
+        BuilderService builderService = new BuilderService();
+        XPathParser htmlParser = new XPathParser();
+        htmlParser.addXPath("contents", XPathParser.HTML_BODY_ELEMENTS);
+        builderService.addParser("html", htmlParser);
+        builderService.addTemplate("html", "contents");
+        ReferenceParser imageParser = new ReferenceParser();
+        builderService.addParser("png", imageParser);
+        builderService.addTemplate("png", "image");
+        builderService.addParser("jpg", imageParser);
+        builderService.addTemplate("jpg", "image");
+        builderService.setMasterTemplate("postPage");
+
+        SourceService sourceService = new SourceService();
+        sourceService.setScannerService(new ScannerService());
+
+        PostsHandler postsHandler = new PostsHandler();
+        postsHandler.setSourceService(sourceService);
+        postsHandler.setBuilderService(builderService);
+
         List<Handler> resourceHandlers = new ArrayList<>();
-        ScannerService scannerService = new ScannerService();
         for (Source source: sources) {
-            // create a posts handler
-            PostsHandler postsHandler = new PostsHandler();
-            postsHandler.setScannerService(scannerService);
-            postsHandler.setSource(source);
-            postsHandler.load();
-            postHandlers.add(postsHandler);
+            // add source
+            sourceService.addSource(source.getFolder().getPath());
 
             // create a resource handler
             ResourceHandler resourceHandler = new ResourceHandler();
@@ -79,13 +96,10 @@ public class TheServer {
 
 
 
-
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler); TODO: why does this work even if it's not added?
         handlerCollection.addHandler(homeHandler);
-        for (Handler handler: postHandlers) {
-            handlerCollection.addHandler(handler);
-        }
+        handlerCollection.addHandler(postsHandler);
         for (Handler handler: resourceHandlers) {
             handlerCollection.addHandler(handler);
         }
