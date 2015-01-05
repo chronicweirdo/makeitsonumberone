@@ -86,6 +86,7 @@ public class TheServer {
 
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler); TODO: why does this work even if it's not added?
+        homeHandler.setSourceService(sourceService);
         handlerCollection.addHandler(homeHandler);
         handlerCollection.addHandler(postsHandler);
         for (Handler handler: resourceHandlers) {
