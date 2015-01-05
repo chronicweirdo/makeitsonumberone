@@ -29,18 +29,21 @@ public class TheServer {
     @Autowired
     private HomeHandler homeHandler;
 
+    @Autowired
     private BuilderService builderService;
 
+    @Autowired
     private SourceService sourceService;
 
-    private List<Source> sources;
+    @Autowired
+    private PostsHandler postsHandler;
+
+    public void setPostsHandler(PostsHandler postsHandler) {
+        this.postsHandler = postsHandler;
+    }
 
     public void setHomeHandler(HomeHandler homeHandler) {
         this.homeHandler = homeHandler;
-    }
-
-    public void setSources(List<Source> sources) {
-        this.sources = sources;
     }
 
     public void setBuilderService(BuilderService builderService) {
@@ -66,19 +69,13 @@ public class TheServer {
         rootRule.setReplacement("/home");
         rewriteHandler.addRule(rootRule);
 
-
-
-        PostsHandler postsHandler = new PostsHandler();
-        postsHandler.setSourceService(sourceService);
-        postsHandler.setBuilderService(builderService);
-
         // add resources
         List<Handler> resourceHandlers = new ArrayList<>();
-        for (Source source: sources) {
+        for (String source: sourceService.getSources()) {
             // create a resource handler
             ResourceHandler resourceHandler = new ResourceHandler();
             resourceHandler.setDirectoriesListed(false);
-            resourceHandler.setResourceBase(source.getFolder().getPath());
+            resourceHandler.setResourceBase(source);
             resourceHandlers.add(resourceHandler);
         }
 
@@ -86,7 +83,6 @@ public class TheServer {
 
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler); TODO: why does this work even if it's not added?
-        homeHandler.setSourceService(sourceService);
         handlerCollection.addHandler(homeHandler);
         handlerCollection.addHandler(postsHandler);
         for (Handler handler: resourceHandlers) {

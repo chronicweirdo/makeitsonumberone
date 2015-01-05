@@ -6,6 +6,8 @@ import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.SourceService;
 import org.eclipse.jetty.server.Request;
 import org.eclipse.jetty.server.handler.AbstractHandler;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,11 +21,15 @@ import java.util.Map;
 /**
  * Created by scacoveanu on 12/31/2014.
  */
+@Component
 public class PostsHandler extends AbstractHandler {
 
-    private Source source;
     private Map<String, Post> posts;
+
+    @Autowired
     private BuilderService builderService;
+
+    @Autowired
     private SourceService sourceService;
 
     public void setSourceService(SourceService sourceService) {

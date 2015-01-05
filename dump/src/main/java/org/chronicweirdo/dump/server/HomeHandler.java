@@ -26,6 +26,7 @@ import java.util.Map;
 @Component
 public class HomeHandler extends AbstractHandler {
 
+    @Autowired
     private SourceService sourceService;
 
     public void setSourceService(SourceService sourceService) {

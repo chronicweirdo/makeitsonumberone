@@ -3,8 +3,12 @@ package org.chronicweirdo.dump.service;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.model.Section;
 import org.chronicweirdo.dump.parsers.Parser;
+import org.chronicweirdo.dump.parsers.ReferenceParser;
+import org.chronicweirdo.dump.parsers.XPathParser;
 import org.chronicweirdo.dump.view.Viewer;
+import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,6 +20,7 @@ import java.util.Map;
  *
  * Created by scacoveanu on 12/29/2014.
  */
+@Service
 public class BuilderService {
 
     private Viewer viewer;
@@ -29,6 +34,25 @@ public class BuilderService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @PostConstruct
+    public void init() {
+        // default master template
+        this.setDefaultMaster("postPage");
+
+        // parsers
+        XPathParser htmlParser = new XPathParser();
+        htmlParser.addXPath("contents", XPathParser.HTML_BODY_ELEMENTS);
+        this.addParser("html", htmlParser);
+        ReferenceParser imageParser = new ReferenceParser();
+        this.addParser("png", imageParser);
+        this.addParser("jpg", imageParser);
+
+        // templates
+        this.addTemplate("html", "contents");
+        this.addTemplate("png", "image");
+        this.addTemplate("jpg", "image");
     }
 
     public void setDefaultMaster(String defaultMaster) {
