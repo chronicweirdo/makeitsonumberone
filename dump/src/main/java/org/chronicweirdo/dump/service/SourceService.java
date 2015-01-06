@@ -26,13 +26,6 @@ public class SourceService {
 
 
 
-    private static Source getSource(String path) {
-        Source source = new Source();
-        source.setFolder(new File(path));
-        source.setScanner(new FileNameScanner());
-        return source;
-    }
-
     @PostConstruct
     public void init() {
         this.setScannerService(new ScannerService());
@@ -43,6 +36,8 @@ public class SourceService {
             // add source
             this.addSource(source);
         }
+
+        this.addResource("dump/styles");
     }
 
     public void setScannerService(ScannerService scannerService) {
@@ -56,6 +51,10 @@ public class SourceService {
         sources.put(path, scanner);
         resources.add(path);
         scan();
+    }
+
+    public void addResource(String path) {
+        this.resources.add(path);
     }
 
     private void scan() {
@@ -72,5 +71,9 @@ public class SourceService {
 
     public Collection<String> getSources() {
         return this.sources.keySet();
+    }
+
+    public Collection<String> getResources() {
+        return this.resources;
     }
 }

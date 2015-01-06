@@ -71,7 +71,7 @@ public class TheServer {
 
         // add resources
         List<Handler> resourceHandlers = new ArrayList<>();
-        for (String source: sourceService.getSources()) {
+        for (String source: sourceService.getResources()) {
             // create a resource handler
             ResourceHandler resourceHandler = new ResourceHandler();
             resourceHandler.setDirectoriesListed(false);
