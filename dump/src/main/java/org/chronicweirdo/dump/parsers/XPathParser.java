@@ -127,7 +127,7 @@ public class XPathParser implements Parser {
     public static void main(String[] args) {
         XPathParser parser = new XPathParser();
         parser.addXPath("content", HTML_BODY_ELEMENTS);
-        Map model = parser.parse(new File("data/[y.2014][mo.01][d.02][h.11][m.00][ti.maven][t.programming][t.cheatsheet].html"));
+        Map model = parser.parse(new File("data/[y.2014][mo.01][d.02][h.11][m.00][ti.maven-p][t.programming][t.cheatsheet].html"));
         System.out.println(model);
     }
 }

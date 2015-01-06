@@ -3,17 +3,24 @@
 <link rel="stylesheet" href="/base.css" />
 <link rel="stylesheet" href="/post.css" />
 <body>
-<div id="head">
-    <a href="/">
-        <img class="logo" src="/mw.png" alt="mwahaha" />
-    </a>
-    <#list tags as tag>
-        <span class="tag">${tag}</span>
+<div class="page">
+    <div class="head">
+        <p>
+            <a href="/">
+                <img class="logo" src="/mw.png" alt="mwahaha" />
+            </a>
+            <span class="title">${title}</span>
+        </p>
+        <p>
+            <#list tags as tag>
+                <span class="tag">${tag}</span>
+            </#list>
+        </p>
+    </div>
+
+    <#list sections as section>
+        <div class="section">${section}</div>
     </#list>
 </div>
-<h1 class="title">${title}</h1>
-<#list sections as section>
-    <div class="section">${section}</div>
-</#list>
 </body>
 </html>

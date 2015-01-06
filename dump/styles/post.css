@@ -1,36 +1,80 @@
+.page {
+    margin: auto;
+    width: 800px;
+}
+
+@media screen and (max-width: 800px) {
+    .page {
+        width: 100%;
+    }
+}
+
+.page > * {
+    float: left;
+}
+.head {
+    clear: left;
+    width: 100%;
+    border-bottom: 1px dashed #000000;
+}
+
+.head > * {
+    float: none;
+}
+
+.head > p {
+    clear: none;
+}
+
+@media screen and (max-width: 400px) {
+    .head > p {
+        clear: left;
+    }
+}
+
 .logo {
     float: left;
     clear: left;
     height: 50px;
     width: 50px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-}
-
-.tag {
-    padding: 5px 10px;
-    color: white;
-    background-color: black;
-    /*border-radius: 10px;*/
-    height: 40px;
-    line-height: 40px;
-    font-size: 30px;
-    display: block;
-    float: left;
-    margin-right: 10px;
-    margin-bottom: 10px;
+    margin: 2px;
 }
 
 .title {
     float: left;
-    clear: left;
-    border-bottom: 1px solid #000000;
-    width: 100%;
-    line-height: 40px;
+    line-height: 60px;
     font-size: 30px;
+    background-color: greenyellow;
+    height: 50px;
+    margin: 2px;
 }
+
+.tag {
+    margin: 2px;
+    padding: 5px 10px;
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+    /*height: 40px;
+    line-height: 40px;
+    font-size: 30px;*/
+    display: block;
+    float: left;
+}
+
 
 .section {
     float: left;
     clear: left;
+    width: 100%;
+}
+.section img {
+    width: 100%;
+}
+
+.section pre {
+    float: left;
+    display: inline;
+    width: 100%;
+    overflow: scroll;
 }
