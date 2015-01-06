@@ -34,3 +34,6 @@ SourceService
 BuilderService
     takes a post and assembles it into a HtmlPage
     configuration: a collection of parsers and templates associated with processor names
+
+design UI
+    http://en.wikipedia.org/wiki/Responsive_web_desig
