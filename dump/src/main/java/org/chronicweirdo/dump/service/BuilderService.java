@@ -39,7 +39,7 @@ public class BuilderService {
     @PostConstruct
     public void init() {
         // default master template
-        this.setDefaultMaster("postPage");
+        this.setDefaultMaster("post");
 
         // parsers
         XPathParser htmlParser = new XPathParser();
@@ -84,6 +84,7 @@ public class BuilderService {
         }
         model.put("sections", sections);
         model.put("title", post.getTitle());
+        model.put("tags", post.getTags());
         String master = post.getMaster();
         if (master == null) {
             master = defaultMaster;

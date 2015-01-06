@@ -26,6 +26,7 @@ public class FileNameScanner implements Scanner {
             Post post = new Post();
             post.setTitle(getTitle(file, tags));
             post.setCreationDate(getCreationDate(file, tags));
+            post.addTags(tags.get(FileNameParser.TAG));
             post.addFile(file,
                     getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
                     getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""),

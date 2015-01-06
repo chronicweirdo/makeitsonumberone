@@ -74,7 +74,8 @@ public class HomeHandler extends AbstractHandler {
             pages.add(Util.map(
                     "url", "/" + post.getTitle().replaceAll("\\s", "_"),
                     "date", post.getCreationDate().getTime(),
-                    "title", post.getTitle()
+                    "title", post.getTitle(),
+                    "tags", post.getTags()
             ));
         }
         model.put("pages", pages);
