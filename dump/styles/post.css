@@ -11,20 +11,52 @@
 
 .page > * {
     float: left;
+    width: 100%;
 }
+
 .head {
     clear: left;
-    width: 100%;
     border-bottom: 1px dashed #000000;
 }
 
-.head > * {
+.head .filter {
+    float: left;
+    width: 75%;
+}
+
+.head .navigation {
+    float: right;
+    width: 25%;
+}
+
+@media screen and (max-width: 600px) {
+    .head .filter {
+        width: 60%;
+    }
+    .head .navigation {
+        width: 40%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .head .filter, .head .navigation {
+        width: 100%;
+        float: left;
+        clear: left;
+    }
+}
+
+.head .navigation > * {
+    width: 25%;
+    float: right;
+    background-color: #456464;
+    color: white;
+    text-align: center;
+}
+.head .navigation .span > * {
     float: none;
 }
 
-.head > p {
-    clear: none;
-}
 
 @media screen and (max-width: 400px) {
     .head > p {
@@ -34,10 +66,7 @@
 
 .logo {
     float: left;
-    clear: left;
-    height: 50px;
-    width: 50px;
-    margin: 2px;
+    width: 100%;
 }
 
 .title {
@@ -74,7 +103,6 @@
 
 .section pre {
     float: left;
-    display: inline;
-    width: 100%;
+    display: inline-block;
     overflow: scroll;
 }
