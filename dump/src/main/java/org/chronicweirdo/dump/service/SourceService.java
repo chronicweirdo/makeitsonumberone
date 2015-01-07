@@ -38,6 +38,7 @@ public class SourceService {
         }
 
         this.addResource("dump/styles");
+        this.addResource("dump/js");
     }
 
     public void setScannerService(ScannerService scannerService) {

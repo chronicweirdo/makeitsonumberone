@@ -2,6 +2,10 @@
 <title>mwahaha: ${title}</title>
 <link rel="stylesheet" href="/base.css" />
 <link rel="stylesheet" href="/post.css" />
+
+<script type="text/javascript" src="/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="/post.js"></script>
+
 <body>
 <div class="page">
     <div class="head">

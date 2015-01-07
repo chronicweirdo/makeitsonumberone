@@ -16,8 +16,9 @@
 
 .head {
     clear: left;
-    border-bottom: 1px dashed #000000;
+    /*border-bottom: 1px dashed #000000;*/
     vertical-align: bottom;
+    /*padding-bottom: 5px;*/
 }
 
 .head .filter {
@@ -62,12 +63,12 @@
     }
 }
 
-.logo {
+.logo, .navigation a {
     float: left;
     width: 100%;
 }
 @media screen and (max-width: 500px) {
-    .logo {
+    .logo, .navigation a {
         float: none;
         width: 30px;
     }
@@ -83,13 +84,15 @@
 }
 
 .tag {
-    height: 30px;
-    margin: 5px;
-    padding: 5px 10px;
+    text-align: center;
+    margin: 1px 1px 0 0;
+    height: 49px;
+    /*margin: 5px;*/
+    /*padding: 5px 10px;*/
     color: white;
     background-color: black;
-    border-radius: 10px;
-    line-height: 30px;
+    /*border-radius: 10px;*/
+    line-height: 49px;
     /*height: 40px;
     line-height: 40px;
     font-size: 30px;*/
