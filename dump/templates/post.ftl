@@ -6,6 +6,9 @@
 <div class="page">
     <div class="head">
         <p class="filter">
+            <#--<span class="filterin">-->
+            <#--the filterin element allows us to add a background color to the tags but changes the vertical-align
+            of the navigation element-->
             <#list tags as tag>
                 <span class="tag">${tag}</span>
             </#list>
@@ -16,6 +19,7 @@
                 <span class="tag">dghjgjxastr</span>
                 <span class="tag">sasadfeewqrghhj</span>
                 <span class="tag">httrt34r</span>
+            <#--</span>-->
         </p>
         <p class="navigation">
             <span>
@@ -23,9 +27,9 @@
                     <img class="logo" src="/mw.png" alt="mwahaha" />
                 </a>
             </span>
-            <span><a>&lt;</a></span>
-            <span><a>?</a></span>
             <span><a>&gt;</a></span>
+            <span><a>?</a></span>
+            <span><a>&lt;</a></span>
         </p>
     </div>
     <div class="title">
