@@ -16,6 +16,7 @@
 
 .head {
     clear: left;
+    margin-bottom: 10px;
 }
 
 .head p  {
@@ -23,13 +24,26 @@
     clear: left;
 }
 
-.head .navigation > * {
-    float: left;
-    width: 49px;
-    height: 49px;
+.head .link, .head .tag, .head .title {
+    text-align: center;
     margin: 1px 1px 0 0;
+    height: 49px;
+    color: white;
+    line-height: 49px;
+    display: block;
+    float: left;
 }
-.head .navigation img {
+.head .link {
+    width: 49px;
+}
+.head .link, .head .title {
+    background-color: black;
+}
+.head .tag {
+    background-color: #373737;
+}
+
+.link img {
     width: 49px;
     height: 49px;
 }
@@ -50,16 +64,7 @@
     margin: 2px;
 }
 
-.tag {
-    text-align: center;
-    margin: 1px 1px 0 0;
-    height: 49px;
-    color: white;
-    background-color: black;
-    line-height: 49px;
-    display: block;
-    float: left;
-}
+
 
 
 .section {
