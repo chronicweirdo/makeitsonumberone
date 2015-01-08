@@ -10,6 +10,7 @@ function fixWidths() {
         logoWidth += elementWidth;
     });
     console.log(logoWidth);
+    logoWidth = 330;
     var remainingWidth = headWidth - logoWidth;
     console.log(remainingWidth);
     if (remainingWidth > 0) {
@@ -23,8 +24,8 @@ function fixWidths() {
 $(document).ready(function() {
     fixWidths();
 
-    console.log($(".logo.m img").first());
-    console.log($(".logo.m img").first().outerWidth());
-    /*$(window).resize(resizeLogo);
-    resizeLogo();*/
+    //console.log($(".logo.m img").first());
+    console.log($('.logo').first().width());
+    $(window).resize(fixWidths);
+    /*resizeLogo();*/
 });

@@ -2,6 +2,19 @@
     background-color: black;
 }
 
-.head > * {
+.head * {
     float: left;
+}
+
+.m, .w {
+    width: 60px;
+}
+.a, .h {
+    width: 40px;
+}
+.aend {
+    width: 50px;
+}
+.head .separator {
+    display: block;
 }
