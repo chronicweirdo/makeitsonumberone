@@ -8,3 +8,20 @@ body, div, p, span, a {
     padding: 0;
 
 }
+
+.page {
+    margin: auto;
+    width: 800px;
+}
+
+@media screen and (max-width: 800px) {
+    .page {
+        width: 100%;
+    }
+}
+
+.page > * {
+    float: left;
+    clear: left;
+    width: 100%;
+}

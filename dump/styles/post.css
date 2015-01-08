@@ -1,18 +1,4 @@
-.page {
-    margin: auto;
-    width: 800px;
-}
 
-@media screen and (max-width: 800px) {
-    .page {
-        width: 100%;
-    }
-}
-
-.page > * {
-    float: left;
-    width: 100%;
-}
 
 .head {
     clear: left;
