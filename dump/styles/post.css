@@ -25,6 +25,7 @@
 }
 
 .head .link, .head .tag, .head .title {
+    letter-spacing: 2px;
     text-align: center;
     margin: 1px 1px 0 0;
     height: 49px;
