@@ -41,6 +41,7 @@ public class HomeHandler extends AbstractHandler {
 
         if ("/home".equals(target) || "/".equals(target)) {
             System.out.println("handling this");
+            response.setContentType("text/html");
             try {
                 response.getWriter().write(getPage());
                 response.setStatus(HttpServletResponse.SC_OK);

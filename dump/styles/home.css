@@ -5,22 +5,3 @@
 .head > * {
     float: left;
 }
-
-.head .m, .head .w {
-    width: 18.181818181818181818181818181818%;
-}
-.head .a, .head .h {
-    width: 12.121212121212121212121212121212%;
-}
-.head .aend {
-    width: 15.151515151515151515151515151515%;
-}
-.head .m img {
-    float: left;
-}
-.head .aend img {
-    float: right;
-}
-.head .w, .head .a, .head .h {
-    text-align: center;
-}
