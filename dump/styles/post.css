@@ -16,57 +16,24 @@
 
 .head {
     clear: left;
-    /*border-bottom: 1px dashed #000000;*/
-    vertical-align: bottom;
-    /*padding-bottom: 5px;*/
 }
 
-.head .filter {
-    margin-right: 25%;
-}
-
-/*.head .filter .filterin {
+.head p  {
     float: left;
-    background-color: #847916;
-    width: 100%;
-}*/
-
-.head .navigation {
-    float: right;
-    width: 25%;
-}
-
-@media screen and (max-width: 500px) {
-    .head .filter, .head .navigation {
-        width: 100%;
-        float: left;
-        clear: left;
-    }
-    .head .navigation * {
-        height: 30px;
-    }
+    clear: left;
 }
 
 .head .navigation > * {
-    width: 25%;
-    /*height: 50px;*/
-    float: right;
-    background-color: #456464;
-    color: white;
-    text-align: center;
-}
-
-
-@media screen and (max-width: 400px) {
-    .head > p {
-        clear: left;
-    }
-}
-
-.logo, .navigation a {
     float: left;
-    width: 100%;
+    width: 49px;
+    height: 49px;
+    margin: 1px 1px 0 0;
 }
+.head .navigation img {
+    width: 49px;
+    height: 49px;
+}
+
 @media screen and (max-width: 500px) {
     .logo, .navigation a {
         float: none;
@@ -87,35 +54,11 @@
     text-align: center;
     margin: 1px 1px 0 0;
     height: 49px;
-    /*margin: 5px;*/
-    /*padding: 5px 10px;*/
     color: white;
     background-color: black;
-    /*border-radius: 10px;*/
     line-height: 49px;
-    /*height: 40px;
-    line-height: 40px;
-    font-size: 30px;*/
     display: block;
     float: left;
-}
-@media screen and (max-width: 700px) {
-    .tag {
-        height: 25px;
-        line-height: 25px;
-    }
-}
-@media screen and (max-width: 600px) {
-    .tag {
-        height: 20px;
-        line-height: 20px;
-    }
-}
-@media screen and (max-width: 500px) {
-    .tag {
-        height: 15px;
-        line-height: 15px;
-    }
 }
 
 
