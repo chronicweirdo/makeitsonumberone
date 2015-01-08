@@ -15,9 +15,9 @@
                     <img class="logo" src="/mw.png" alt="mwahaha" />
                 </a>
             </span>
-            <span class="link"><a>&lt;</a></span>
-            <span class="link"><a>?</a></span>
-            <span class="link"><a>&gt;</a></span>
+            <span class="link"><img src="/left.png" alt="&lt;" /></span>
+            <span class="link"><img src="/question.png" alt="?" /></span>
+            <span class="link"><img src="/right.png" alt="&gt;" /></span>
 
             <#list tags as tag>
                 <span class="tag">${tag}</span>
