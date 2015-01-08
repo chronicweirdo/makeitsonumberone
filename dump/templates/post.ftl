@@ -22,13 +22,13 @@
             <#list tags as tag>
                 <span class="tag">${tag}</span>
             </#list>
-                <#--<span class="tag">sfafasgasfa</span>
+                <span class="tag">sfafasgasfa</span>
                 <span class="tag">weqerwqda</span>
                 <span class="tag">jhjf</span>
                 <span class="tag">dsada</span>
                 <span class="tag">dghjgjxastr</span>
                 <span class="tag">sasadfeewqrghhj</span>
-                <span class="tag">httrt34r</span>-->
+                <span class="tag">httrt34r</span>
             <span class="title">${title}</span>
         </p>
     </div>
