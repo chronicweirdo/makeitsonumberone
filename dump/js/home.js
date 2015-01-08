@@ -1,24 +1,18 @@
+function fixWidth(element, unit, padding, margin) {
+    var width = $(element).width();
+    var dW = Math.ceil((width + padding) / unit);
+    var nw = unit * dW - margin;
+    console.log(width + " " + dW + " " + nw);
+    $(element).width(nw);
+}
+
 function fixWidths() {
-    var headWidth = $(".head").width();
-    console.log(headWidth);
-    var logoWidth = 0;
-    console.log($(".head .logo").length);
-    $(".head .logo").each(function (index, element) {
-        console.log(element);
-        var elementWidth = parseInt($(element).width(), 10);
-        console.log(elementWidth);
-        logoWidth += elementWidth;
+    var padding = 20;
+    var unit = 50;
+    var margin = 1;
+    $(".link > *").each(function (index, element) {
+        fixWidth(element, unit, padding, margin);
     });
-    console.log(logoWidth);
-    logoWidth = 330;
-    var remainingWidth = headWidth - logoWidth;
-    console.log(remainingWidth);
-    if (remainingWidth > 0) {
-        var separatorCount = $(".head .separator").length;
-        var separatorWidth = remainingWidth / separatorCount;
-        console.log(separatorWidth);
-        $(".head .separator").width(separatorWidth);
-    }
 }
 
 $(document).ready(function() {

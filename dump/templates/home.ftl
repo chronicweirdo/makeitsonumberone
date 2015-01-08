@@ -10,32 +10,17 @@
 <body>
 <div class="page">
     <p class="head">
-        <span class="logo m"><img src="/m.png" alt="m" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo w"><img src="/w.png" alt="w" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo a"><img src="/a.png" alt="a" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo h"><img src="/h.png" alt="h" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo a"><img src="/a.png" alt="a" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo h"><img src="/h.png" alt="h" /></span>
-        <span class="separator">&nbsp;</span>
-        <span class="logo aend"><img src="/aend.png" alt="a" /></span>
+        <span class="logo"><img src="/mwahaha.png" /></span>
     </p>
-    <p>
-        <ul>
-            <#list pages as page>
-                <li>
-                    <a href="${page.url}"><span>${page.date}</span><span>${page.title}</span></a>
-                    <#list page.tags as tag>
-                        <span class="tag">${tag}</span>
-                    </#list>
-                </li>
-            </#list>
-        </ul>
+    <#list pages as page>
+    <p class="link">
+        <span class="date">${page.date}</span>
+        <a class="title" href="${page.url}">${page.title}</a>
+        <#list page.tags as tag>
+            <span class="tag">${tag}</span>
+        </#list>
     </p>
+    </#list>
 </div>
 </body>
 </html>
