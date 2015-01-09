@@ -4,8 +4,8 @@ function loadNext(filterType, tags) {
         data: {
             'id': window.location.pathname,
             'filterType': "or",
-            'tags'
-        }
+            'tag': getFilter()
+        },
         dataType: "json",
         context: $(".next"),
         success: function(result) {
@@ -14,6 +14,9 @@ function loadNext(filterType, tags) {
     }).done(function() {
         $(this).title()
     });
+}
+function getFilter() {
+
 }
 
 $(document).ready(function() {
