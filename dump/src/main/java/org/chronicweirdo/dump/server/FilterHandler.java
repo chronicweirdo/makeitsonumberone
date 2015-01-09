@@ -1,5 +1,6 @@
 package org.chronicweirdo.dump.server;
 
+import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.SourceService;
@@ -12,10 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by scacoveanu on 12/31/2014.
@@ -52,6 +50,32 @@ public class FilterHandler extends AbstractHandler {
             String filterType = request.getParameterMap().get("type")[0];
             String[] tags = request.getParameterMap().get("tag");
             System.out.println(sourceService.getPosts(filterType, Arrays.asList(tags)));
+        }
+        if ("filterNext".equals(url)) {
+            String filterType = request.getParameter("type");
+            List<String> tags = Arrays.asList(request.getParameterValues("tag"));
+            String title = request.getParameter("title");
+            String year = request.getParameter("year");
+            String month = request.getParameter("month");
+            String day = request.getParameter("day");
+            String hour = request.getParameter("hour");
+            String minute = request.getParameter("minute");
+            Date date = Util.getDate(year, month, day, hour, minute);
+            Post nextPost = sourceService.getNextPost(sourceService.getPost(title, date), filterType, tags);
+            System.out.println(nextPost.getTitle());
+        }
+        if ("filterPrevious".equals(url)) {
+            String filterType = request.getParameter("type");
+            List<String> tags = Arrays.asList(request.getParameterValues("tag"));
+            String title = request.getParameter("title");
+            String year = request.getParameter("year");
+            String month = request.getParameter("month");
+            String day = request.getParameter("day");
+            String hour = request.getParameter("hour");
+            String minute = request.getParameter("minute");
+            Date date = Util.getDate(year, month, day, hour, minute);
+            Post previousPost = sourceService.getPreviousPost(sourceService.getPost(title, date), filterType, tags);
+            System.out.println(previousPost.getTitle());
         }
     }
 }

@@ -41,3 +41,7 @@ design UI
     http://alistapart.com/article/responsive-web-design
     http://unstoppablerobotninja.com/entry/fluid-images
     http://alistapart.com/article/fluidgrids
+
+
+
+http://localhost:8080/filterPrevious?type=and&tag=comic&year=2014&month=12&day=25&hour=10&minute=0&title=holiday%20curse

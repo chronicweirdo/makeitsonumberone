@@ -65,6 +65,15 @@ public class SourceService {
         }
     }
 
+    public Post getPost(String title, Date creationDate) {
+        for (Post post: posts) {
+            if (title.equalsIgnoreCase(post.getTitle()) && creationDate.equals(post.getCreationDate())) {
+                return post;
+            }
+        }
+        return null;
+    }
+
     public List<Post> getPosts() {
         return posts;
     }

@@ -96,7 +96,7 @@ public class BuilderService {
         calendar.setTime(post.getCreationDate());
 
         map.put("year", Integer.toString(calendar.get(Calendar.YEAR)));
-        map.put("month", Integer.toString(calendar.get(Calendar.MONTH + 1)));
+        map.put("month", Integer.toString(calendar.get(Calendar.MONTH) + 1));
         map.put("day", Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
         map.put("hour", Integer.toString(calendar.get(Calendar.HOUR_OF_DAY)));
         map.put("minute", Integer.toString(calendar.get(Calendar.MINUTE)));
