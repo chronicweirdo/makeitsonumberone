@@ -59,28 +59,16 @@ public class FilterHandler extends AbstractHandler {
         if ("filterNext".equals(url)) {
             String filterType = request.getParameter("type");
             List<String> tags = Arrays.asList(request.getParameterValues("tag"));
-            String title = request.getParameter("title");
-            String year = request.getParameter("year");
-            String month = request.getParameter("month");
-            String day = request.getParameter("day");
-            String hour = request.getParameter("hour");
-            String minute = request.getParameter("minute");
-            Date date = Util.getDate(year, month, day, hour, minute);
-            Post nextPost = sourceService.getNextPost(sourceService.getPost(title, date), filterType, tags);
+            String currentId = request.getParameter("id");
+            Post nextPost = sourceService.getNextPost(sourceService.getPost(currentId), filterType, tags);
             System.out.println(nextPost.getTitle());
             writeJsonToResponse(baseRequest, response, postToJSON(nextPost).toJSONString());
         }
         if ("filterPrevious".equals(url)) {
             String filterType = request.getParameter("type");
             List<String> tags = Arrays.asList(request.getParameterValues("tag"));
-            String title = request.getParameter("title");
-            String year = request.getParameter("year");
-            String month = request.getParameter("month");
-            String day = request.getParameter("day");
-            String hour = request.getParameter("hour");
-            String minute = request.getParameter("minute");
-            Date date = Util.getDate(year, month, day, hour, minute);
-            Post previousPost = sourceService.getPreviousPost(sourceService.getPost(title, date), filterType, tags);
+            String currentId = request.getParameter("id");
+            Post previousPost = sourceService.getPreviousPost(sourceService.getPost(currentId), filterType, tags);
             System.out.println(previousPost.getTitle());
             writeJsonToResponse(baseRequest, response, postToJSON(previousPost).toJSONString());
         }

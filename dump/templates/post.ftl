@@ -17,9 +17,17 @@
                     <img class="logo" src="/mw.png" alt="mwahaha" />
                 </a>
             </span>
-            <span class="link"><img src="/left.png" alt="&lt;" /></span>
+            <span class="link">
+                <a class="previous">
+                    <img src="/left.png" alt="&lt;" />
+                </a>
+            </span>
             <span class="link"><img src="/question.png" alt="?" /></span>
-            <span class="link"><img src="/right.png" alt="&gt;" /></span>
+            <span class="link">
+                <a class="next">
+                    <img src="/right.png" alt="&gt;" />
+                </a>
+            </span>
 
             <#list tags as tag>
                 <span class="tag">${tag}</span>

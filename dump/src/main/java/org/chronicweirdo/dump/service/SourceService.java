@@ -74,6 +74,15 @@ public class SourceService {
         return null;
     }
 
+    public Post getPost(String url) {
+        for (Post post: posts) {
+            if (post.getUrl().equals(url)) {
+                return post;
+            }
+        }
+        return null;
+    }
+
     public List<Post> getPosts() {
         return posts;
     }
