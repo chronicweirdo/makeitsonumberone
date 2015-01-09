@@ -69,7 +69,7 @@ public class HomeHandler extends AbstractHandler {
         List<Map> pages = new ArrayList<>();
         for (Post post: sourceService.getPosts()) {
             Map postMap = Util.map(
-                    "url", "/" + post.getTitle().replaceAll("\\s", "_"),
+                    "url", "/" + post.getUrl(),
                     "date", post.getCreationDate().getTime(),
                     "title", post.getTitle(),
                     "tags", post.getTags()

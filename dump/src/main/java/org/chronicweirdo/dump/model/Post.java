@@ -1,6 +1,9 @@
 package org.chronicweirdo.dump.model;
 
+import org.chronicweirdo.dump.scanners.FileNameScanner;
+import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.FileNameParser;
+import org.chronicweirdo.dump.service.SourceService;
 
 import java.io.File;
 import java.util.*;
@@ -44,6 +47,17 @@ public class Post {
     }
 
     private TreeMap<String, Section> sections = new TreeMap<String, Section>();
+
+    public String getUrl() {
+        Map<String, String> dateMap = BuilderService.getDateMap(this);
+        String title = this.title.replaceAll("\\s", "_");
+        return dateMap.get("year")
+                + dateMap.get("month")
+                + dateMap.get("day")
+                + dateMap.get("hour")
+                + dateMap.get("minute")
+                + "_" + title;
+    }
 
     public void addFile(File root, String caption, String index, String processor) {
         Section section = new Section();

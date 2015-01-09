@@ -95,13 +95,20 @@ public class BuilderService {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(post.getCreationDate());
 
-        map.put("year", Integer.toString(calendar.get(Calendar.YEAR)));
-        map.put("month", Integer.toString(calendar.get(Calendar.MONTH) + 1));
-        map.put("day", Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
-        map.put("hour", Integer.toString(calendar.get(Calendar.HOUR_OF_DAY)));
-        map.put("minute", Integer.toString(calendar.get(Calendar.MINUTE)));
+        map.put("year", dateFieldToString(calendar.get(Calendar.YEAR)));
+        map.put("month", dateFieldToString(calendar.get(Calendar.MONTH) + 1));
+        map.put("day", dateFieldToString(calendar.get(Calendar.DAY_OF_MONTH)));
+        map.put("hour", dateFieldToString(calendar.get(Calendar.HOUR_OF_DAY)));
+        map.put("minute", dateFieldToString(calendar.get(Calendar.MINUTE)));
 
         return map;
+    }
+    private static String dateFieldToString(Integer field) {
+        String s = field.toString();
+        if (s.length() == 1) {
+            return "0" + s;
+        }
+        return s;
     }
 
     private String getSectionText(Section section) {
