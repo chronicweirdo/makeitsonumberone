@@ -54,7 +54,7 @@ public class PostsHandler extends AbstractHandler {
     }
 
     private List<String> getUrls(Post post) {
-        return Arrays.asList(post.getTitle().replaceAll("\\s","_"));
+        return Arrays.asList(post.getUrl());
     }
 
     private String convert(String target) {

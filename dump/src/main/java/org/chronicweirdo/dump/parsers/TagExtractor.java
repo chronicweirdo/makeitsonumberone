@@ -60,8 +60,6 @@ public class TagExtractor {
         return tags;
     }
 
-    private
-
     public static void main(String[] args) {
         TagExtractor tagExtractor = new TagExtractor(DEFAULT_PATTERN);
         tagExtractor.setFormalize(Util.map(
