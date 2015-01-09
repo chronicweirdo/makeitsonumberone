@@ -69,6 +69,54 @@ public class SourceService {
         return posts;
     }
 
+    public List<Post> getPosts(String filterType, List<String> tags) {
+        List<Post> filtered = new ArrayList<>();
+        for (Post post: posts) {
+            if (matchesFilter(post, filterType, tags)) {
+                filtered.add(post);
+            }
+        }
+        return filtered;
+    }
+
+    public Post getNextPost(Post current, String filterType, List<String> tags) {
+        List<Post> filtered = getPosts(filterType, tags);
+        int currentIndex = filtered.indexOf(current);
+        if (currentIndex != -1 && currentIndex < filtered.size() - 1) {
+            return filtered.get(currentIndex + 1);
+        }
+        return null;
+    }
+
+    public Post getPreviousPost(Post current, String filterType, List<String> tags) {
+        List<Post> filtered = getPosts(filterType, tags);
+        int currentIndex = filtered.indexOf(current);
+        if (currentIndex != -1 && currentIndex > 0) {
+            return filtered.get(currentIndex - 1);
+        }
+        return null;
+    }
+
+    private boolean matchesFilter(Post post, String filterType, List<String> tags) {
+        if ("or".equalsIgnoreCase(filterType)) {
+            for (String tag: tags) {
+                if (post.getTags().contains(tag)) {
+                    return true;
+                }
+            }
+        } else if ("and".equalsIgnoreCase(filterType)) {
+            for (String tag: tags) {
+                if (! post.getTags().contains(tag)) {
+                    return false;
+                }
+            }
+            return true;
+        } else if (filterType == null || filterType.length() == 0) {
+            return true;
+        }
+        return false;
+    }
+
 
     public Collection<String> getSources() {
         return this.sources.keySet();

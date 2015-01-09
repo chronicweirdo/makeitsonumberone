@@ -36,12 +36,9 @@ public class HomeHandler extends AbstractHandler {
 
     @Override
     public void handle(String target, Request baseRequest, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        System.out.println("--> " + target);
         String url = request.getRequestURL().toString();
-        System.out.println(url);
 
         if ("/home".equals(target) || "/".equals(target)) {
-            System.out.println("handling this");
             response.setContentType("text/html");
             try {
                 response.getWriter().write(getPage());
@@ -50,8 +47,6 @@ public class HomeHandler extends AbstractHandler {
             } catch (IOException e) {
                 throw new ServletException(e);
             }
-        } else {
-            System.out.println("not the home page, not handling");
         }
     }
 

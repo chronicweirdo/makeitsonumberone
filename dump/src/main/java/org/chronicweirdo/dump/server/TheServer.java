@@ -33,10 +33,17 @@ public class TheServer {
     private BuilderService builderService;
 
     @Autowired
+    private FilterHandler filterHandler;
+
+    @Autowired
     private SourceService sourceService;
 
     @Autowired
     private PostsHandler postsHandler;
+
+    public void setFilterHandler(FilterHandler filterHandler) {
+        this.filterHandler = filterHandler;
+    }
 
     public void setPostsHandler(PostsHandler postsHandler) {
         this.postsHandler = postsHandler;
@@ -84,6 +91,7 @@ public class TheServer {
         HandlerCollection handlerCollection = new HandlerCollection();
         //handlerCollection.addHandler(rewriteHandler); TODO: why does this work even if it's not added?
         handlerCollection.addHandler(homeHandler);
+        handlerCollection.addHandler(filterHandler);
         handlerCollection.addHandler(postsHandler);
         for (Handler handler: resourceHandlers) {
             handlerCollection.addHandler(handler);
