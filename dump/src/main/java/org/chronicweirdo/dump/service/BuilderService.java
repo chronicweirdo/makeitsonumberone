@@ -10,10 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Service that takes a post and returns a html file.
@@ -85,11 +82,26 @@ public class BuilderService {
         model.put("sections", sections);
         model.put("title", post.getTitle());
         model.put("tags", post.getTags());
+        model.putAll(getDateMap(post));
         String master = post.getMaster();
         if (master == null) {
             master = defaultMaster;
         }
         return viewer.apply(model, master);
+    }
+
+    public static Map<String, String> getDateMap(Post post) {
+        Map<String, String> map = new HashMap<>(5);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(post.getCreationDate());
+
+        map.put("year", Integer.toString(calendar.get(Calendar.YEAR)));
+        map.put("month", Integer.toString(calendar.get(Calendar.MONTH + 1)));
+        map.put("day", Integer.toString(calendar.get(Calendar.DAY_OF_MONTH)));
+        map.put("hour", Integer.toString(calendar.get(Calendar.HOUR_OF_DAY)));
+        map.put("minute", Integer.toString(calendar.get(Calendar.MINUTE)));
+
+        return map;
     }
 
     private String getSectionText(Section section) {

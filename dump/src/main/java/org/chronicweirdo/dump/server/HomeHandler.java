@@ -2,6 +2,7 @@ package org.chronicweirdo.dump.server;
 
 import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
+import org.chronicweirdo.dump.service.BuilderService;
 import org.chronicweirdo.dump.service.SourceService;
 import org.chronicweirdo.dump.view.Viewer;
 import org.eclipse.jetty.server.Handler;
@@ -72,12 +73,14 @@ public class HomeHandler extends AbstractHandler {
         model.put("greeting", "hello");
         List<Map> pages = new ArrayList<>();
         for (Post post: sourceService.getPosts()) {
-            pages.add(Util.map(
+            Map postMap = Util.map(
                     "url", "/" + post.getTitle().replaceAll("\\s", "_"),
                     "date", post.getCreationDate().getTime(),
                     "title", post.getTitle(),
                     "tags", post.getTags()
-            ));
+            );
+            postMap.putAll(BuilderService.getDateMap(post));
+            pages.add(postMap);
         }
         model.put("pages", pages);
         return model;

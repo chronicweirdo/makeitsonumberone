@@ -14,7 +14,7 @@
     </p>
     <#list pages as page>
     <p class="link">
-        <span class="date">${page.date}</span>
+        <span class="date">${page.year}.${page.month}.${page.day}&nbsp;${page.hour}:${page.minute}</span>
         <a class="title" href="${page.url}">${page.title}</a>
         <#list page.tags as tag>
             <span class="tag">${tag}</span>

@@ -19,7 +19,5 @@ $(document).ready(function() {
     fixWidths();
 
     //console.log($(".logo.m img").first());
-    console.log($('.logo').first().width());
-    $(window).resize(fixWidths);
     /*resizeLogo();*/
 });
