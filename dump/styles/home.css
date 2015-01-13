@@ -17,7 +17,13 @@
         width: 100%;
     }
 }
-.link > * {
+
+.filter {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.link > *, .filter > * {
     text-align: center;
     margin: 1px 1px 0 0;
     height: 49px;

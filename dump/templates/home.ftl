@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/base.css" />
     <link rel="stylesheet" href="/home.css" />
 
-    <script type="text/javascript" src="/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="/home.js"></script>
 </head>
 <body>
@@ -12,12 +12,15 @@
     <p class="head">
         <span class="logo"><img src="/mwahaha.png" /></span>
     </p>
+    <p class="filter">
+        <a class="tag" onclick="toggleFilter(this);">comic</a>
+    </p>
     <#list pages as page>
     <p class="link">
         <span class="date">${page.year}.${page.month}.${page.day}&nbsp;${page.hour}:${page.minute}</span>
         <a class="title" href="${page.url}">${page.title}</a>
         <#list page.tags as tag>
-            <span class="tag">${tag}</span>
+            <a class="tag" onclick="toggleFilter(this);">${tag}</a>
         </#list>
     </p>
     </#list>
