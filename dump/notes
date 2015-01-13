@@ -45,3 +45,16 @@ design UI
 
 
 http://localhost:8080/filterPrevious?type=and&tag=comic&year=2014&month=12&day=25&hour=10&minute=0&title=holiday%20curse
+
+
+home page
+    a list of posts ordered by most recent
+    possibility to load more (dynamic loading)
+    possibility to filter them by tags
+clicking on a post opens the post page
+    display post header
+    header contains filter
+    display post title and tags
+    posibility to edit filter
+    posibility to navigate to previous/next post according to current filter
+    how is this filter saved? in URL? in cookies?
