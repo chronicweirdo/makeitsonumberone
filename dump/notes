@@ -58,3 +58,8 @@ clicking on a post opens the post page
     posibility to edit filter
     posibility to navigate to previous/next post according to current filter
     how is this filter saved? in URL? in cookies?
+JSON apis:
+    get posts (filter)
+    get top posts (filter)
+    get next post (filter)
+    get previous post (filter)

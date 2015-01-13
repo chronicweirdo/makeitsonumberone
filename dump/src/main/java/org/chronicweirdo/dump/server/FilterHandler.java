@@ -50,7 +50,10 @@ public class FilterHandler extends AbstractHandler {
         String url = convert(target);
         if ("filter".equals(url)) {
             System.out.println(request.getParameterMap());
-            String filterType = request.getParameterMap().get("type")[0];
+            String filterType = request.getParameter("type");
+            if (filterType == null) {
+                filterType = "and";
+            }
             String[] tags = request.getParameterMap().get("tag");
             List<Post> filtered = sourceService.getPosts(filterType, Arrays.asList(tags));
             System.out.println(filtered);
@@ -58,6 +61,9 @@ public class FilterHandler extends AbstractHandler {
         }
         if ("filterNext".equals(url)) {
             String filterType = request.getParameter("type");
+            if (filterType == null) {
+                filterType = "and";
+            }
             List<String> tags = Arrays.asList(request.getParameterValues("tag"));
             String currentId = request.getParameter("id");
             Post nextPost = sourceService.getNextPost(sourceService.getPost(currentId), filterType, tags);
@@ -66,6 +72,9 @@ public class FilterHandler extends AbstractHandler {
         }
         if ("filterPrevious".equals(url)) {
             String filterType = request.getParameter("type");
+            if (filterType == null) {
+                filterType = "and";
+            }
             List<String> tags = Arrays.asList(request.getParameterValues("tag"));
             String currentId = request.getParameter("id");
             Post previousPost = sourceService.getPreviousPost(sourceService.getPost(currentId), filterType, tags);
