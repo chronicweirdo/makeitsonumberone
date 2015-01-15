@@ -12,9 +12,6 @@
     <p class="head">
         <span class="logo"><img src="/mwahaha.png" /></span>
     </p>
-    <p class="filter">
-        <a class="tag" onclick="toggleFilter(this);">comic</a>
-    </p>
     <#list pages as page>
     <p class="link">
         <span class="date">${page.year}.${page.month}.${page.day}&nbsp;${page.hour}:${page.minute}</span>

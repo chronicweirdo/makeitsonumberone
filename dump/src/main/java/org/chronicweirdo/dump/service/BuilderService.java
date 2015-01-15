@@ -52,6 +52,8 @@ public class BuilderService {
         this.addTemplate("jpg", "image");
     }
 
+    public void
+
     public void setDefaultMaster(String defaultMaster) {
         this.defaultMaster = defaultMaster;
     }

@@ -29,34 +29,9 @@ function toggleFilter(element) {
     console.log("filter: " + getFilterValues());
     load();
 }
-function getFilterValues() {
-    var filter = [];
-    $(".filter *").each(function (index, item) {
-        filter.push($(item).text().trim());
-        console.log(filter);
-    })
-    return filter;
-}
+
 function getTagElement(tag) {
     return '<a class="tag" onclick="toggleFilter(this);">' + tag + '</a>'
-}
-
-function load() {
-    var tags = getFilterValues();
-    console.log(tags);
-    var data = {
-        'tag': tags
-    };
-    console.log(data);
-    $.ajax({
-        traditional: true,
-        url: "filter",
-        data: data,
-        dataType : "json",
-        success: function (data) {
-            console.log(data);
-        }
-    });
 }
 
 $(document).ready(function() {
