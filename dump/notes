@@ -63,3 +63,23 @@ JSON apis:
     get top posts (filter)
     get next post (filter)
     get previous post (filter)
+
+focus plan:
+    [ ] home page:
+        [x] header with site name
+        [x] list posts with date and tags
+    [ ] post page:
+        [ ] header with link to home page, next post and previous post
+        [x] list post name and tags (in title)
+        [x] list post
+    [ ] post service:
+        [ ] periodically refresh post information
+    [ ] file name parser
+        [ ] add creation and last modified date to post
+        [ ] simpler ways to parse dates from file name
+        [ ] simpler ways to parse tags from file name
+        [ ] simpler way to parse title from file name
+    [ ] last design overview
+
+    [ ] add new parsers
+    [ ] allow plugin functionality for parsers (dynamic class loading)
