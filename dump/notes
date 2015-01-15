@@ -65,11 +65,11 @@ JSON apis:
     get previous post (filter)
 
 focus plan:
-    [ ] home page:
+    [x] home page:
         [x] header with site name
         [x] list posts with date and tags
-    [ ] post page:
-        [ ] header with link to home page, next post and previous post
+    [x] post page:
+        [x] header with link to home page, next post and previous post
         [x] list post name and tags (in title)
         [x] list post
     [ ] post service:

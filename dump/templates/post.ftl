@@ -17,17 +17,20 @@
                     <img class="logo" src="/mw.png" alt="mwahaha" />
                 </a>
             </span>
+            <#if previous??>
+                <span class="link">
+                    <a class="previous" href="${previous.url}">
+                        <img src="/left.png" alt="&lt;" />
+                    </a>
+                </span>
+            </#if>
+            <#if next??>
             <span class="link">
-                <a class="previous">
-                    <img src="/left.png" alt="&lt;" />
-                </a>
-            </span>
-            <span class="link"><img src="/question.png" alt="?" /></span>
-            <span class="link">
-                <a class="next">
+                <a class="next" href="${next.url}">
                     <img src="/right.png" alt="&gt;" />
                 </a>
             </span>
+            </#if>
 
             <#list tags as tag>
                 <span class="tag">${tag}</span>

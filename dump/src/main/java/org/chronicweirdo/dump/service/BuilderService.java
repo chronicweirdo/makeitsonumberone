@@ -6,6 +6,7 @@ import org.chronicweirdo.dump.parsers.Parser;
 import org.chronicweirdo.dump.parsers.ReferenceParser;
 import org.chronicweirdo.dump.parsers.XPathParser;
 import org.chronicweirdo.dump.view.Viewer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,13 @@ public class BuilderService {
     private String defaultMaster;
     private Map<String, Parser> parsers = new HashMap<>();
     private Map<String, String> templates = new HashMap<>();
+
+    @Autowired
+    private SourceService sourceService;
+
+    public void setSourceService(SourceService sourceService) {
+        this.sourceService = sourceService;
+    }
 
     public BuilderService() {
         try {
@@ -51,8 +59,6 @@ public class BuilderService {
         this.addTemplate("png", "image");
         this.addTemplate("jpg", "image");
     }
-
-    public void
 
     public void setDefaultMaster(String defaultMaster) {
         this.defaultMaster = defaultMaster;
@@ -84,6 +90,8 @@ public class BuilderService {
         model.put("sections", sections);
         model.put("title", post.getTitle());
         model.put("tags", post.getTags());
+        model.put("next", sourceService.getNextPost(post));
+        model.put("previous", sourceService.getPreviousPost(post));
         model.putAll(getDateMap(post));
         String master = post.getMaster();
         if (master == null) {

@@ -97,6 +97,24 @@ public class SourceService {
         return filtered;
     }
 
+    public Post getNextPost(Post current) {
+        List<Post> posts = getPosts();
+        int currentIndex = posts.indexOf(current);
+        if (currentIndex != -1 && currentIndex < posts.size() - 1) {
+            return posts.get(currentIndex + 1);
+        }
+        return null;
+    }
+
+    public Post getPreviousPost(Post current) {
+        List<Post> posts = getPosts();
+        int currentIndex = posts.indexOf(current);
+        if (currentIndex != -1 && currentIndex > 0) {
+            return posts.get(currentIndex - 1);
+        }
+        return null;
+    }
+
     public Post getNextPost(Post current, String filterType, List<String> tags) {
         List<Post> filtered = getPosts(filterType, tags);
         int currentIndex = filtered.indexOf(current);
