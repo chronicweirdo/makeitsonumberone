@@ -72,14 +72,18 @@ focus plan:
         [x] header with link to home page, next post and previous post
         [x] list post name and tags (in title)
         [x] list post
-    [ ] post service:
-        [ ] periodically refresh post information
     [ ] file name parser
         [ ] add creation and last modified date to post
         [ ] simpler ways to parse dates from file name
         [ ] simpler ways to parse tags from file name
         [ ] simpler way to parse title from file name
+    [ ] post service:
+        [ ] periodically refresh post information
     [ ] last design overview
 
     [ ] add new parsers
-    [ ] allow plugin functionality for parsers (dynamic class loading)
+    [ ] plugin
+        [ ] configure sources, parsers based on cofiguration files
+        [ ] allow plugin functionality for sources
+        [ ] allow plugin functionality for parsers (dynamic class loading)
+        [ ] trigger update manually while server is running (a special request?)

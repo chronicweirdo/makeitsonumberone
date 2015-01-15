@@ -93,4 +93,50 @@ public class FileNameParser {
         }
         return tags;
     }
+
+    public static void splitStringKeepSpaces(String line) throws Exception {
+        String delimiterRegex = "([\\[\\]\\.])";
+        String splitRegex = getSplitRegex(delimiterRegex);
+
+        String[] words = line.split(splitRegex);
+
+        for (String word: words) {
+            System.out.println(">" + word + "<");
+        }
+    }
+
+    public static Map<String, List<String>> process(String[] words) {
+        boolean isTagName = false;
+        boolean isTagValue = false;
+        StringBuilder tagName = null;
+        StringBuilder tagValue = null;
+        StringBuilder outside = null;
+        for (String word: words) {
+            if ("[".equals(word)) {
+                isTagName = true;
+                tagName = new StringBuilder();
+            } else if (".".equals(word) && isTagName) {
+                isTagName = false;
+                isTagValue = true;
+            } else if ("]".equals(word)) {
+                isTagName = false;
+                isTagValue = false;
+                // add gathered value
+            }
+        }
+    }
+
+    private static String getSplitRegex(String delimiterRegex) {
+        // http://stackoverflow.com/questions/2206378/how-to-split-a-string-but-also-keep-the-delimiters
+        // use lookahead and lookbehind to split the string
+        return "(?<=" + delimiterRegex + ")|(?=" + delimiterRegex + ")";
+    }
+
+    public static void main(String[] args) throws Exception {
+        // in filename, tag is defined as [name.value with spaces]
+        // there is an implicit tag [value with spaces]
+        // what is outside the tag definition is appended to the "title" tag
+        String name = "[date.201411041800][comic][pun] the pun is here";
+        splitStringKeepSpaces(name);
+    }
 }
