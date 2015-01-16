@@ -75,8 +75,8 @@ focus plan:
     [ ] file name parser
         [ ] add creation and last modified date to post
         [ ] simpler ways to parse dates from file name
-        [ ] simpler ways to parse tags from file name
-        [ ] simpler way to parse title from file name
+        [x] simpler ways to parse tags from file name
+        [x] simpler way to parse title from file name
     [ ] post service:
         [ ] periodically refresh post information
     [ ] last design overview

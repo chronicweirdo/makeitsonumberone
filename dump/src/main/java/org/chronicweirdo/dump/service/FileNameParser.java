@@ -211,5 +211,7 @@ public class FileNameParser {
         String name = "[created.201411041800][comic][pun] the pun is here.jpg";
         FileNameParser parser = new FileNameParser();
         System.out.println(parser.parse(name));
+        name = "[created.201411041800][comic][pun][p.img] the pun is here.jpg";
+        System.out.println(parser.parse(name));
     }
 }
