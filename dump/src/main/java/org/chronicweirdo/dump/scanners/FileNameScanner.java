@@ -1,5 +1,6 @@
 package org.chronicweirdo.dump.scanners;
 
+import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.FormattingException;
@@ -21,19 +22,21 @@ public class FileNameScanner implements Scanner {
 
     @Override
     public Post scan(File file) {
-        try {
-            Map<String, Set<String>> tags = FileNameParser.parse(file);
-            Post post = new Post();
-            post.setTitle(getTitle(file, tags));
-            post.setCreationDate(getCreationDate(file, tags));
-            post.addTags(tags.get(FileNameParser.TAG));
-            post.addFile(file,
-                    getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
-                    getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""),
-                    getProcessor(file, tags));
-            return post;
-        } catch (Exception e) {
-            e.printStackTrace();
+        if (FileNameParser.accept(file)) {
+            try {
+                Map<String, Set<String>> tags = FileNameParser.parse(file);
+                Post post = new Post();
+                post.setTitle(getTitle(file, tags));
+                post.setCreationDate(getCreationDate(file, tags));
+                post.addTags(tags.get(FileNameParser.TAG));
+                post.addFile(file,
+                        getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
+                        getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""),
+                        getProcessor(file, tags));
+                return post;
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         return null;
     }
@@ -51,23 +54,7 @@ public class FileNameScanner implements Scanner {
     }
 
     private Date getCreationDate(File file, Map<String, Set<String>> tags) throws FormattingException, NumberFormatException {
-        Calendar created = null;
-        try {
-            BasicFileAttributes attr = Files.readAttributes(Paths.get(file.toURI()), BasicFileAttributes.class);
-            created = Calendar.getInstance();
-            created.setTimeInMillis(attr.creationTime().toMillis());
-        } catch (IOException e) {
-            // allowed to not have a date on filesystem
-        }
-        Calendar calendar = Calendar.getInstance();
-        setCalendarField(calendar, Calendar.YEAR, tags, FileNameParser.YEAR, file.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.MONTH, tags, FileNameParser.MONTH, file.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.DAY_OF_MONTH, tags, FileNameParser.DAY, file.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.HOUR_OF_DAY, tags, FileNameParser.HOUR, file.getAbsolutePath(), created);
-        setCalendarField(calendar, Calendar.MINUTE, tags, FileNameParser.MINUTE, file.getAbsolutePath(), created);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-        return calendar.getTime();
+        return Util.getDate(tags.get(FileNameParser.CREATED).iterator().next());
     }
 
     private void setCalendarField(Calendar calendar, int calendarField,

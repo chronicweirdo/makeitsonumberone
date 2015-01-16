@@ -18,6 +18,8 @@ public class FileNameParser {
 
     public static final String TAG_CLOSE = "]";
     public static final String TAG_OPEN = "[";
+    public static final String ACCEPT_PATTERN = ".*\\[.*\\].*";
+
 
     // accepted tags and synonyms
     private static Map<String, String> formal;
@@ -53,6 +55,7 @@ public class FileNameParser {
 
     public static final String FILE_MODIFIED = "file_modified";
 
+    public static final String DEFAULT_TAG_NAME = TAG;
 
     static {
         formal = new HashMap<String, String>();
@@ -84,49 +87,12 @@ public class FileNameParser {
                 "p", PROCESSOR
         ));
 
-        /*formal.put(EXTENSION, EXTENSION);
-
-        formal.put(YEAR, YEAR);
-        formal.put("y", YEAR);
-
-        formal.put(MONTH, MONTH);
-        formal.put("mo", MONTH);
-
-        formal.put(DAY, DAY);
-        formal.put("d", DAY);
-
-        formal.put(HOUR, HOUR);
-        formal.put("h", HOUR);
-
-        formal.put(MINUTE, MINUTE);
-        formal.put("m", MINUTE);
-
-        formal.put(TAG, TAG);
-        formal.put("t", TAG);
-
-        formal.put(INDEX, INDEX);
-        formal.put("i", INDEX);
-
-        formal.put(CAPTION, CAPTION);
-        formal.put("c", CAPTION);
-
-        formal.put(TITLE, TITLE);
-        formal.put("ti", TITLE);
-
-        formal.put(PROCESSOR, PROCESSOR);
-        formal.put("p", PROCESSOR);*/
-
-
-
         copy = new HashMap<String, String>();
         copy.putAll(Util.map(
                 EXTENSION, PROCESSOR,
                 FILE_CREATED, CREATED,
                 FILE_MODIFIED, MODIFIED
         ));
-        /*copy.put(EXTENSION, PROCESSOR);
-        copy.put(FILE_CREATED, CREATED);
-        copy.put(FILE_MODIFIED, MODIFIED);*/
     }
 
     public static Map<String, Set<String>> parse(File file) {
@@ -166,6 +132,10 @@ public class FileNameParser {
         return result;
     }
 
+    public static boolean accept(File file) {
+        return file.getName().matches(ACCEPT_PATTERN);
+    }
+
     private static String[] splitStringKeepSpaces(String line) {
         String delimiterRegex = "([\\" + TAG_OPEN + "\\" + TAG_CLOSE + "])";
         String splitRegex = getSplitRegex(delimiterRegex);
@@ -179,7 +149,7 @@ public class FileNameParser {
         private TagProcessor(String text) {
             int dot = text.indexOf('.');
             if (dot == -1) {
-                name = "tag";
+                name = DEFAULT_TAG_NAME;
                 value = text;
             } else {
                 name = text.substring(0, dot);
@@ -210,10 +180,8 @@ public class FileNameParser {
                 BasicFileAttributes attributes = Files.readAttributes(Paths.get(file.toURI()), BasicFileAttributes.class);
                 dateCreated = Calendar.getInstance();
                 dateCreated.setTimeInMillis(attributes.creationTime().toMillis());
-                System.out.println(dateCreated);
                 dateModified = Calendar.getInstance();
                 dateModified.setTimeInMillis(attributes.lastModifiedTime().toMillis());
-                System.out.println(dateModified);
             } catch (IOException e) {
                 e.printStackTrace();
             }

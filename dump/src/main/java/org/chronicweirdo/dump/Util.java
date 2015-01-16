@@ -56,6 +56,10 @@ public class Util {
         return builder.toString();
     }
 
+    public static Date getDate(String date) {
+        if (date.length() != 12) return null;
+        return getDate(date.substring(0, 4), date.substring(4, 6), date.substring(6, 8), date.substring(8, 10), date.substring(10));
+    }
     public static Date getDate(String year, String month, String day, String hour, String minute) {
         Calendar calendar = Calendar.getInstance();
         try {
