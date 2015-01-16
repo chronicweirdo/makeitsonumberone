@@ -1,5 +1,6 @@
 package org.chronicweirdo.dump.service;
 
+import javafx.geometry.Pos;
 import jdk.internal.util.xml.impl.Pair;
 import jdk.nashorn.internal.runtime.regexp.joni.Regex;
 
@@ -15,11 +16,16 @@ import java.util.regex.Pattern;
 public class FileNameParser {
 
     private static final String PATTERN = "\\[([^.]*)\\.([^\\]]+)\\]";
+    public static final String TAG_CLOSE = "]";
+    public static final String TAG_OPEN = "[";
 
     // accepted tags and synonyms
     private static Map<String, String> formal;
+    private static Map<String, String> copy;
 
     public static final String TITLE = "title";
+
+    public static final String EXTENSION = "extension";
 
     public static final String YEAR = "year";
 
@@ -41,6 +47,8 @@ public class FileNameParser {
 
     static {
         formal = new HashMap<String, String>();
+
+        formal.put(EXTENSION, EXTENSION);
 
         formal.put(YEAR, YEAR);
         formal.put("y", YEAR);
@@ -72,38 +80,40 @@ public class FileNameParser {
         formal.put(PROCESSOR, PROCESSOR);
         formal.put("p", PROCESSOR);
 
-        System.out.println("--- formal size: " + formal.size());
+        copy = new HashMap<String, String>();
+
+        copy.put(EXTENSION, PROCESSOR);
     }
 
     public static Map<String, Set<String>> parse(String fileName) {
-        Map<String, Set<String>> tags = new HashMap<String, Set<String>>();
-        Pattern pattern = Pattern.compile(PATTERN);
-        Matcher matcher = pattern.matcher(fileName);
-        while (matcher.find()) {
-            String tag = matcher.group(1);
-            String value = matcher.group(2);
-            // find formal tag name
-            String formalTag = formal.get(tag);
-            if (formalTag != null) {
-                if (!tags.containsKey(formalTag)) {
-                    tags.put(formalTag, new HashSet<String>());
-                }
-                tags.get(formalTag).add(value);
-            }
-        }
-        return tags;
+        String[] tokens = splitStringKeepSpaces(fileName);
+        Map<String, Set<String>> processResult = process(tokens);
+        Map<String, Set<String>> postProcessResult = postProcess(processResult);
+        return postProcessResult;
     }
 
-    public static void splitStringKeepSpaces(String line) throws Exception {
-        String delimiterRegex = "([\\[\\]])";
-        String splitRegex = getSplitRegex(delimiterRegex);
-
-        String[] words = line.split(splitRegex);
-        for (String word: words) {
-            System.out.println(">" + word + "<");
+    private static Map<String, Set<String>> postProcess(Map<String, Set<String>> processResult) {
+        Map<String, Set<String>> result = new HashMap<>();
+        // replace some shortcut tag names with formal names
+        for (Map.Entry<String, Set<String>> entry: processResult.entrySet()) {
+            String formalName = formal.get(entry.getKey());
+            if (formalName != null) {
+                result.put(formalName, entry.getValue());
+            }
         }
+        // copy some tags unde other tags (ex: extension to processor if processor does not exist)
+        for (Map.Entry<String, String> entry: copy.entrySet()) {
+            if (! result.containsKey(entry.getValue())) {
+                result.put(entry.getValue(), result.get(entry.getKey()));
+            }
+        }
+        return result;
+    }
 
-        process(words);
+    private static String[] splitStringKeepSpaces(String line) {
+        String delimiterRegex = "([\\" + TAG_OPEN + "\\" + TAG_CLOSE + "])";
+        String splitRegex = getSplitRegex(delimiterRegex);
+        return line.split(splitRegex);
     }
 
     private static class TagProcessor {
@@ -119,17 +129,16 @@ public class FileNameParser {
                 name = text.substring(0, dot);
                 value = text.substring(dot+1);
             }
-            System.out.println(name + " :: " + value);
         }
 
-        private void add(Map<String, List<String>> map) {
+        private void add(Map<String, Set<String>> map) {
             addToMap(map, name, value);
         }
     }
 
-    private static void addToMap(Map<String, List<String>> map, String name, String value) {
+    private static void addToMap(Map<String, Set<String>> map, String name, String value) {
         if (! map.containsKey(name)) {
-            map.put(name, new ArrayList<String>());
+            map.put(name, new HashSet<String>());
         }
         map.get(name).add(value);
     }
@@ -148,36 +157,36 @@ public class FileNameParser {
             }
         }
 
-        private void add(Map<String, List<String>> map) {
-            addToMap(map, "title", title);
+        private void add(Map<String, Set<String>> map) {
+            addToMap(map, TITLE, title.trim());
             if (extension != null) {
-                addToMap(map, "extension", extension);
+                addToMap(map, EXTENSION, extension.trim().toLowerCase());
             }
         }
     }
 
-    public static Map<String, List<String>> process(String[] words) {
+    private static Map<String, Set<String>> process(String[] words) {
         boolean tag = false;
-        Map<String, List<String>> result = new HashMap<>();
+        Map<String, Set<String>> result = new HashMap<>();
         StringBuilder outside = new StringBuilder();
         StringBuilder current = new StringBuilder();
         for (String word: words) {
             if (tag) {
-                if ("]".equals(word)) {
+                if (TAG_CLOSE.equals(word)) {
                     tag = false;
                     new TagProcessor(current.toString()).add(result);
                     current = new StringBuilder();
-                } else if ("[".equals(word)) {
+                } else if (TAG_OPEN.equals(word)) {
                     // invalid, but ignore
                 } else {
                     current.append(word);
                 }
             } else {
-                if ("[".equals(word)) {
+                if (TAG_OPEN.equals(word)) {
                     tag = true;
                     outside.append(current.toString());
                     current = new StringBuilder();
-                } else if ("]".equals(word)) {
+                } else if (TAG_CLOSE.equals(word)) {
                     // invalid, ignore
                 } else {
                     current.append(word);
@@ -186,8 +195,7 @@ public class FileNameParser {
         }
         outside.append(current.toString());
         new TitleProcessor(outside.toString()).add(result);
-        System.out.println(result);
-        return null;
+        return result;
     }
 
     private static String getSplitRegex(String delimiterRegex) {
@@ -201,6 +209,7 @@ public class FileNameParser {
         // there is an implicit tag [value with spaces]
         // what is outside the tag definition is appended to the "title" tag
         String name = "[created.201411041800][comic][pun] the pun is here.jpg";
-        splitStringKeepSpaces(name);
+        FileNameParser parser = new FileNameParser();
+        System.out.println(parser.parse(name));
     }
 }
