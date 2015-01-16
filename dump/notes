@@ -80,6 +80,10 @@ focus plan:
     [ ] post service:
         [ ] periodically refresh post information
     [ ] last design overview
+        [ ] make a tiled home page interface
+        [ ] update tile sizes with media queries
+        [ ] make sure post titles are always visible, no hover changes (for touch-screen)
+        [ ] sample colors from adventure time
 
     [ ] add new parsers
     [ ] plugin
