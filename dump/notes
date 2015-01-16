@@ -72,9 +72,9 @@ focus plan:
         [x] header with link to home page, next post and previous post
         [x] list post name and tags (in title)
         [x] list post
-    [ ] file name parser
-        [ ] add creation and last modified date to post
-        [ ] simpler ways to parse dates from file name
+    [x] file name parser
+        [x] add creation and last modified date to post
+        [x] simpler ways to parse dates from file name
         [x] simpler ways to parse tags from file name
         [x] simpler way to parse title from file name
     [ ] post service:

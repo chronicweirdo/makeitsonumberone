@@ -2,6 +2,7 @@ package org.chronicweirdo.dump.parsers;
 
 import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.service.FileNameParser;
+import org.chronicweirdo.dump.service.Tag;
 
 import java.io.File;
 import java.util.HashMap;
@@ -21,7 +22,7 @@ public class ReferenceParser implements Parser {
         // get url to resource
         model.put("url", Util.getServerPath(file));
         // get image caption
-        Set<String> captions = FileNameParser.parse(file).get(FileNameParser.CAPTION);
+        Set<String> captions = FileNameParser.parse(file).get(Tag.CAPTION.n());
         if (captions != null) {
             StringBuilder caption = new StringBuilder();
             for (String c: captions) {

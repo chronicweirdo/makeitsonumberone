@@ -25,73 +25,33 @@ public class FileNameParser {
     private static Map<String, String> formal;
     private static Map<String, String> copy;
 
-    public static final String TITLE = "title";
 
-    public static final String EXTENSION = "extension";
 
-    public static final String YEAR = "year";
-
-    public static final String MONTH = "month";
-
-    public static final String DAY = "day";
-
-    public static final String HOUR = "hour";
-
-    public static final String MINUTE = "minute";
-
-    public static final String TAG = "tag";
-
-    public static final String INDEX = "index";
-
-    public static final String CAPTION = "caption";
-
-    public static final String PROCESSOR = "processor";
-
-    public static final String CREATED = "created";
-
-    public static final String MODIFIED = "modified";
-
-    public static final String FILE_CREATED = "file_created";
-
-    public static final String FILE_MODIFIED = "file_modified";
-
-    public static final String DEFAULT_TAG_NAME = TAG;
+    public static final String DEFAULT_TAG_NAME = Tag.TAG.n();
 
     static {
         formal = new HashMap<String, String>();
         formal.putAll(Util.map(
-                EXTENSION, EXTENSION,
-                CREATED, CREATED,
-                MODIFIED, MODIFIED,
-                FILE_CREATED, FILE_CREATED,
-                FILE_MODIFIED, FILE_MODIFIED,
-                YEAR, YEAR,
-                "y", YEAR,
-                MONTH, MONTH,
-                "mo", MONTH,
-                DAY, DAY,
-                "d", DAY,
-                HOUR, HOUR,
-                "h", HOUR,
-                MINUTE, MINUTE,
-                "m", MINUTE,
-                TAG, TAG,
-                "t", TAG,
-                INDEX, INDEX,
-                "i", INDEX,
-                CAPTION, CAPTION,
-                "c", CAPTION,
-                TITLE, TITLE,
-                "ti", TITLE,
-                PROCESSOR, PROCESSOR,
-                "p", PROCESSOR
+                Tag.EXTENSION.n(), Tag.EXTENSION.n(),
+                Tag.CREATED.n(), Tag.CREATED.n(),
+                Tag.MODIFIED.n(), Tag.MODIFIED.n(),
+                Tag.FILE_CREATED.n(), Tag.FILE_CREATED.n(),
+                Tag.FILE_MODIFIED.n(), Tag.FILE_MODIFIED.n(),
+                Tag.TAG.n(), Tag.TAG.n(),
+                Tag.INDEX.n(), Tag.INDEX.n(),
+                "i", Tag.INDEX.n(),
+                Tag.CAPTION.n(), Tag.CAPTION.n(),
+                "c", Tag.CAPTION.n(),
+                Tag.TITLE.n(), Tag.TITLE.n(),
+                Tag.PROCESSOR.n(), Tag.PROCESSOR.n(),
+                "p", Tag.PROCESSOR.n()
         ));
 
         copy = new HashMap<String, String>();
         copy.putAll(Util.map(
-                EXTENSION, PROCESSOR,
-                FILE_CREATED, CREATED,
-                FILE_MODIFIED, MODIFIED
+                Tag.EXTENSION.n(), Tag.PROCESSOR.n(),
+                Tag.FILE_CREATED.n(), Tag.CREATED.n(),
+                Tag.FILE_MODIFIED.n(), Tag.MODIFIED.n()
         ));
     }
 
@@ -195,10 +155,10 @@ public class FileNameParser {
 
         private void add(Map<String, Set<String>> map) {
             if (created != null) {
-                addToMap(map, FILE_CREATED, created);
+                addToMap(map, Tag.FILE_CREATED.n(), created);
             }
             if (modified != null) {
-                addToMap(map, FILE_MODIFIED, modified);
+                addToMap(map, Tag.FILE_MODIFIED.n(), modified);
             }
         }
     }
@@ -218,9 +178,9 @@ public class FileNameParser {
         }
 
         private void add(Map<String, Set<String>> map) {
-            addToMap(map, TITLE, title.trim());
+            addToMap(map, Tag.TITLE.n(), title.trim());
             if (extension != null) {
-                addToMap(map, EXTENSION, extension.trim().toLowerCase());
+                addToMap(map, Tag.EXTENSION.n(), extension.trim().toLowerCase());
             }
         }
     }

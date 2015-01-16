@@ -4,6 +4,7 @@ import org.chronicweirdo.dump.Util;
 import org.chronicweirdo.dump.model.Post;
 import org.chronicweirdo.dump.service.FileNameParser;
 import org.chronicweirdo.dump.service.FormattingException;
+import org.chronicweirdo.dump.service.Tag;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,10 +29,10 @@ public class FileNameScanner implements Scanner {
                 Post post = new Post();
                 post.setTitle(getTitle(file, tags));
                 post.setCreationDate(getCreationDate(file, tags));
-                post.addTags(tags.get(FileNameParser.TAG));
+                post.addTags(tags.get(Tag.TAG.n()));
                 post.addFile(file,
-                        getSingleField(tags, FileNameParser.CAPTION, file.getPath().toString(), ""),
-                        getSingleField(tags, FileNameParser.INDEX, file.getPath().toString(), ""),
+                        getSingleField(tags, Tag.CAPTION.n(), file.getPath().toString(), ""),
+                        getSingleField(tags, Tag.INDEX.n(), file.getPath().toString(), ""),
                         getProcessor(file, tags));
                 return post;
             } catch (Exception e) {
@@ -42,7 +43,7 @@ public class FileNameScanner implements Scanner {
     }
 
     private String getProcessor(File file, Map<String, Set<String>> tags) {
-        return getSingleField(tags, FileNameParser.PROCESSOR, file.getPath(), getExtension(file));
+        return getSingleField(tags, Tag.PROCESSOR.n(), file.getPath(), getExtension(file));
     }
 
     private String getExtension(File file) {
@@ -50,11 +51,11 @@ public class FileNameScanner implements Scanner {
     }
 
     private String getTitle(File file, Map<String, Set<String>> tags) throws FormattingException {
-        return getSingleField(tags, FileNameParser.TITLE, file.getAbsolutePath());
+        return getSingleField(tags, Tag.TITLE.n(), file.getAbsolutePath());
     }
 
     private Date getCreationDate(File file, Map<String, Set<String>> tags) throws FormattingException, NumberFormatException {
-        return Util.getDate(tags.get(FileNameParser.CREATED).iterator().next());
+        return Util.getDate(tags.get(Tag.CREATED.n()).iterator().next());
     }
 
     private void setCalendarField(Calendar calendar, int calendarField,
