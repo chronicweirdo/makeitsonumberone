@@ -22,7 +22,7 @@ public class FileNameScanner implements Scanner {
     @Override
     public Post scan(File file) {
         try {
-            Map<String, Set<String>> tags = FileNameParser.parse(file.getName());
+            Map<String, Set<String>> tags = FileNameParser.parse(file);
             Post post = new Post();
             post.setTitle(getTitle(file, tags));
             post.setCreationDate(getCreationDate(file, tags));

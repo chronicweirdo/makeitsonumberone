@@ -29,6 +29,33 @@ public class Util {
         return result;
     }
 
+    public static String getString(Calendar calendar) {
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH) + 1;
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        int minute = calendar.get(Calendar.MINUTE);
+        StringBuilder builder = new StringBuilder();
+        builder.append(Integer.toString(year));
+        if (month < 10) {
+            builder.append("0");
+        }
+        builder.append(Integer.toString(month));
+        if (day < 10) {
+            builder.append("0");
+        }
+        builder.append(Integer.toString(day));
+        if (hour < 10) {
+            builder.append("0");
+        }
+        builder.append(Integer.toString(hour));
+        if (minute < 10) {
+            builder.append("0");
+        }
+        builder.append(Integer.toString(minute));
+        return builder.toString();
+    }
+
     public static Date getDate(String year, String month, String day, String hour, String minute) {
         Calendar calendar = Calendar.getInstance();
         try {

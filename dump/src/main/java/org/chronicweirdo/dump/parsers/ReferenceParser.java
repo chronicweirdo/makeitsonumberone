@@ -21,7 +21,7 @@ public class ReferenceParser implements Parser {
         // get url to resource
         model.put("url", Util.getServerPath(file));
         // get image caption
-        Set<String> captions = FileNameParser.parse(file.getName()).get(FileNameParser.CAPTION);
+        Set<String> captions = FileNameParser.parse(file).get(FileNameParser.CAPTION);
         if (captions != null) {
             StringBuilder caption = new StringBuilder();
             for (String c: captions) {

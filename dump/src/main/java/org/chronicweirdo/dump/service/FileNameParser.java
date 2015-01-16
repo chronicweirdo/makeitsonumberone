@@ -1,12 +1,13 @@
 package org.chronicweirdo.dump.service;
 
-import javafx.geometry.Pos;
-import jdk.internal.util.xml.impl.Pair;
-import jdk.nashorn.internal.runtime.regexp.joni.Regex;
+import org.chronicweirdo.dump.Util;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * Service that will take the file name and extract all available tags from it.
@@ -15,7 +16,6 @@ import java.util.regex.Pattern;
  */
 public class FileNameParser {
 
-    private static final String PATTERN = "\\[([^.]*)\\.([^\\]]+)\\]";
     public static final String TAG_CLOSE = "]";
     public static final String TAG_OPEN = "[";
 
@@ -45,10 +45,46 @@ public class FileNameParser {
 
     public static final String PROCESSOR = "processor";
 
+    public static final String CREATED = "created";
+
+    public static final String MODIFIED = "modified";
+
+    public static final String FILE_CREATED = "file_created";
+
+    public static final String FILE_MODIFIED = "file_modified";
+
+
     static {
         formal = new HashMap<String, String>();
+        formal.putAll(Util.map(
+                EXTENSION, EXTENSION,
+                CREATED, CREATED,
+                MODIFIED, MODIFIED,
+                FILE_CREATED, FILE_CREATED,
+                FILE_MODIFIED, FILE_MODIFIED,
+                YEAR, YEAR,
+                "y", YEAR,
+                MONTH, MONTH,
+                "mo", MONTH,
+                DAY, DAY,
+                "d", DAY,
+                HOUR, HOUR,
+                "h", HOUR,
+                MINUTE, MINUTE,
+                "m", MINUTE,
+                TAG, TAG,
+                "t", TAG,
+                INDEX, INDEX,
+                "i", INDEX,
+                CAPTION, CAPTION,
+                "c", CAPTION,
+                TITLE, TITLE,
+                "ti", TITLE,
+                PROCESSOR, PROCESSOR,
+                "p", PROCESSOR
+        ));
 
-        formal.put(EXTENSION, EXTENSION);
+        /*formal.put(EXTENSION, EXTENSION);
 
         formal.put(YEAR, YEAR);
         formal.put("y", YEAR);
@@ -78,18 +114,38 @@ public class FileNameParser {
         formal.put("ti", TITLE);
 
         formal.put(PROCESSOR, PROCESSOR);
-        formal.put("p", PROCESSOR);
+        formal.put("p", PROCESSOR);*/
+
+
 
         copy = new HashMap<String, String>();
-
-        copy.put(EXTENSION, PROCESSOR);
+        copy.putAll(Util.map(
+                EXTENSION, PROCESSOR,
+                FILE_CREATED, CREATED,
+                FILE_MODIFIED, MODIFIED
+        ));
+        /*copy.put(EXTENSION, PROCESSOR);
+        copy.put(FILE_CREATED, CREATED);
+        copy.put(FILE_MODIFIED, MODIFIED);*/
     }
 
-    public static Map<String, Set<String>> parse(String fileName) {
-        String[] tokens = splitStringKeepSpaces(fileName);
-        Map<String, Set<String>> processResult = process(tokens);
+    public static Map<String, Set<String>> parse(File file) {
+        String fileName = file.getName();
+
+        // process
+        Map<String, Set<String>> processResult = new HashMap<>();
+        processResult.putAll(processFileName(fileName));
+        processResult.putAll(processFileAttributes(file));
+
+        // post processFileName
         Map<String, Set<String>> postProcessResult = postProcess(processResult);
         return postProcessResult;
+    }
+
+    private static Map<String, Set<String>> processFileAttributes(File file) {
+        Map<String, Set<String>> result = new HashMap<>();
+        new FileAttributesProcessor(file).add(result);
+        return result;
     }
 
     private static Map<String, Set<String>> postProcess(Map<String, Set<String>> processResult) {
@@ -143,6 +199,42 @@ public class FileNameParser {
         map.get(name).add(value);
     }
 
+    private static class FileAttributesProcessor {
+        private String created;
+        private String modified;
+
+        private FileAttributesProcessor(File file) {
+            Calendar dateCreated = null;
+            Calendar dateModified = null;
+            try {
+                BasicFileAttributes attributes = Files.readAttributes(Paths.get(file.toURI()), BasicFileAttributes.class);
+                dateCreated = Calendar.getInstance();
+                dateCreated.setTimeInMillis(attributes.creationTime().toMillis());
+                System.out.println(dateCreated);
+                dateModified = Calendar.getInstance();
+                dateModified.setTimeInMillis(attributes.lastModifiedTime().toMillis());
+                System.out.println(dateModified);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            if (dateCreated != null) {
+                created = Util.getString(dateCreated);
+            }
+            if (dateModified != null) {
+                modified = Util.getString(dateModified);
+            }
+        }
+
+        private void add(Map<String, Set<String>> map) {
+            if (created != null) {
+                addToMap(map, FILE_CREATED, created);
+            }
+            if (modified != null) {
+                addToMap(map, FILE_MODIFIED, modified);
+            }
+        }
+    }
+
     private static class TitleProcessor {
         private String title;
         private String extension;
@@ -165,31 +257,33 @@ public class FileNameParser {
         }
     }
 
-    private static Map<String, Set<String>> process(String[] words) {
+    private static Map<String, Set<String>> processFileName(String fileName) {
+        String[] tokens = splitStringKeepSpaces(fileName);
+
         boolean tag = false;
         Map<String, Set<String>> result = new HashMap<>();
         StringBuilder outside = new StringBuilder();
         StringBuilder current = new StringBuilder();
-        for (String word: words) {
+        for (String token : tokens) {
             if (tag) {
-                if (TAG_CLOSE.equals(word)) {
+                if (TAG_CLOSE.equals(token)) {
                     tag = false;
                     new TagProcessor(current.toString()).add(result);
                     current = new StringBuilder();
-                } else if (TAG_OPEN.equals(word)) {
+                } else if (TAG_OPEN.equals(token)) {
                     // invalid, but ignore
                 } else {
-                    current.append(word);
+                    current.append(token);
                 }
             } else {
-                if (TAG_OPEN.equals(word)) {
+                if (TAG_OPEN.equals(token)) {
                     tag = true;
                     outside.append(current.toString());
                     current = new StringBuilder();
-                } else if (TAG_CLOSE.equals(word)) {
+                } else if (TAG_CLOSE.equals(token)) {
                     // invalid, ignore
                 } else {
-                    current.append(word);
+                    current.append(token);
                 }
             }
         }
@@ -208,10 +302,8 @@ public class FileNameParser {
         // in filename, tag is defined as [name.value with spaces]
         // there is an implicit tag [value with spaces]
         // what is outside the tag definition is appended to the "title" tag
-        String name = "[created.201411041800][comic][pun] the pun is here.jpg";
+        File file = new File("dump/data/[comic] poems about water[i.01].png");
         FileNameParser parser = new FileNameParser();
-        System.out.println(parser.parse(name));
-        name = "[created.201411041800][comic][pun][p.img] the pun is here.jpg";
-        System.out.println(parser.parse(name));
+        System.out.println(parser.parse(file));
     }
 }
