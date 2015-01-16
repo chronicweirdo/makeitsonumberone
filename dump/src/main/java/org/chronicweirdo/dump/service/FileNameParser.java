@@ -95,35 +95,99 @@ public class FileNameParser {
     }
 
     public static void splitStringKeepSpaces(String line) throws Exception {
-        String delimiterRegex = "([\\[\\]\\.])";
+        String delimiterRegex = "([\\[\\]])";
         String splitRegex = getSplitRegex(delimiterRegex);
 
         String[] words = line.split(splitRegex);
-
         for (String word: words) {
             System.out.println(">" + word + "<");
+        }
+
+        process(words);
+    }
+
+    private static class TagProcessor {
+        private String name;
+        private String value;
+
+        private TagProcessor(String text) {
+            int dot = text.indexOf('.');
+            if (dot == -1) {
+                name = "tag";
+                value = text;
+            } else {
+                name = text.substring(0, dot);
+                value = text.substring(dot+1);
+            }
+            System.out.println(name + " :: " + value);
+        }
+
+        private void add(Map<String, List<String>> map) {
+            addToMap(map, name, value);
+        }
+    }
+
+    private static void addToMap(Map<String, List<String>> map, String name, String value) {
+        if (! map.containsKey(name)) {
+            map.put(name, new ArrayList<String>());
+        }
+        map.get(name).add(value);
+    }
+
+    private static class TitleProcessor {
+        private String title;
+        private String extension;
+
+        private TitleProcessor(String text) {
+            int dot = text.lastIndexOf('.');
+            if (dot == -1) {
+                title = text;
+            } else {
+                title = text.substring(0, dot);
+                extension = text.substring(dot+1);
+            }
+        }
+
+        private void add(Map<String, List<String>> map) {
+            addToMap(map, "title", title);
+            if (extension != null) {
+                addToMap(map, "extension", extension);
+            }
         }
     }
 
     public static Map<String, List<String>> process(String[] words) {
-        boolean isTagName = false;
-        boolean isTagValue = false;
-        StringBuilder tagName = null;
-        StringBuilder tagValue = null;
-        StringBuilder outside = null;
+        boolean tag = false;
+        Map<String, List<String>> result = new HashMap<>();
+        StringBuilder outside = new StringBuilder();
+        StringBuilder current = new StringBuilder();
         for (String word: words) {
-            if ("[".equals(word)) {
-                isTagName = true;
-                tagName = new StringBuilder();
-            } else if (".".equals(word) && isTagName) {
-                isTagName = false;
-                isTagValue = true;
-            } else if ("]".equals(word)) {
-                isTagName = false;
-                isTagValue = false;
-                // add gathered value
+            if (tag) {
+                if ("]".equals(word)) {
+                    tag = false;
+                    new TagProcessor(current.toString()).add(result);
+                    current = new StringBuilder();
+                } else if ("[".equals(word)) {
+                    // invalid, but ignore
+                } else {
+                    current.append(word);
+                }
+            } else {
+                if ("[".equals(word)) {
+                    tag = true;
+                    outside.append(current.toString());
+                    current = new StringBuilder();
+                } else if ("]".equals(word)) {
+                    // invalid, ignore
+                } else {
+                    current.append(word);
+                }
             }
         }
+        outside.append(current.toString());
+        new TitleProcessor(outside.toString()).add(result);
+        System.out.println(result);
+        return null;
     }
 
     private static String getSplitRegex(String delimiterRegex) {
@@ -136,7 +200,7 @@ public class FileNameParser {
         // in filename, tag is defined as [name.value with spaces]
         // there is an implicit tag [value with spaces]
         // what is outside the tag definition is appended to the "title" tag
-        String name = "[date.201411041800][comic][pun] the pun is here";
+        String name = "[created.201411041800][comic][pun] the pun is here.jpg";
         splitStringKeepSpaces(name);
     }
 }
