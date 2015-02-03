@@ -23,7 +23,7 @@ public class MainUI {
 
     private static final Logger log = Logger.getLogger(MainUI.class);
 
-    private static final String DEFAULT_SERVER_URL = "https://analysis-stable.ingenuity.com";
+    private static final String DEFAULT_SERVER_URL = "https://analysis.ingenuity.com";
     public static final String API_PATH_DATASET_UPLOAD = "/pa/api/v1/dataupload";
     public static final String API_PATH_DATASTREAM = "/pa/api/v1/datastream";
     public static final String API_PATH_RUN_ANALYSIS = "/pa/api/v2/multiobsanalysis";
