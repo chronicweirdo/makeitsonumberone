@@ -2,9 +2,43 @@
 <head>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript">
-        
-        $(document).ready(function() {
 
+        function copyTable() {
+            var tableClone = $("table").clone();
+            $("table").addClass("hidden");
+            $("table").css("display", "none");
+            tableClone.appendTo($("body"));
+        }
+
+        function insertInput() {
+            $("table:not(.hidden) td").each(function() {
+                $(this).html('<input type="text" value="" />');
+            });
+        }
+
+        function addCheckButton() {
+            $('<input type="button" value="check" onclick="check()" />').appendTo($("body"));
+        }
+
+        function check() {
+            var correctValues = $("table.hidden td");
+            $("table:not(.hidden) td").each(function(index, element) {
+                var correctValue = $(correctValues[index]).html();
+                var input = $("input", this);
+                var value = $(input).val();
+                if (correctValue === value) {
+                    $(input).css("background-color", "green");
+                } else {
+                    $(input).css("background-color", "red");
+                    $('<span>' + correctValue + '</span>').appendTo($(this));
+                }
+            });
+        }
+
+        $(document).ready(function() {
+            copyTable();
+            addCheckButton();
+            insertInput();
         });
     </script>
 </head>
