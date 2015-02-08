@@ -26,8 +26,8 @@
 .link > *, .filter > * {
     text-align: center;
     margin: 1px 1px 0 0;
-    height: 49px;
-    color: white;
+    height: 49px
+    color: whit;
     line-height: 49px;
     display: block;
     float: left;

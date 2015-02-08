@@ -1,0 +1,16 @@
+Table tester
+
+A simple way to test your knowledge of tables - perfect for language learning.
+
+Prepare function
+	hide the table
+	copy the table
+	replace percentage of td fields with text inputs
+	add check button
+	
+Check function
+	compare all text fields in visible table with corresponding td fields in hidden table
+	highlight correct and wrong cells (green/red backgrounds)
+	compute score as a percentage
+
+Have history?
