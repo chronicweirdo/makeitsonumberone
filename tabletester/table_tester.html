@@ -32,6 +32,7 @@
 
 
         function check() {
+            var score = 0;
             var correctValues = $("table.hidden td");
             $("table:not(.hidden) td").each(function(index, element) {
                 var input = $("input", this);
@@ -42,6 +43,7 @@
                     var correct = (correctValue === value);
                     if (correct) {
                         $(input).css("background-color", "green");
+                        score = score + 1;
                     } else {
                         $(input).css("background-color", "red");
                         $('<span>' + correctValue + '</span>').appendTo($(this));
@@ -49,6 +51,11 @@
                     updateHistory(index, correct);
                 }
             });
+            var finalScore = (score / correctValues.length) * 100;
+            $("input[name=check]").remove();
+            $('<input name="reload" type="button" value="reload" onclick="location.reload()" />').prependTo($("body"));
+            $('<span>score:' + finalScore + '%</span>').prependTo($("body"));
+
         }
 
         function createCookie(name, value, hours) {
