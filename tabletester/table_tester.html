@@ -14,7 +14,7 @@
             var level = getDisplayLevel();
             console.log("testing level: " + getDisplayLevel());
             $("table:not(.hidden) td").each( function(index) {
-                var currentLevel = readCookie("level" + index);
+                var currentLevel = readCookie(document.location + index);
                 if (currentLevel == null || currentLevel <= level) {
                     $(this).html('<input type="text" value="" />');
                 }
@@ -111,7 +111,7 @@
         }
 
         function updateHistory(index, correct) {
-            var name = "level" + index;
+            var name = document.location + index;
             var level = readCookie(name);
             if (level == null) {
                 level = 0;
