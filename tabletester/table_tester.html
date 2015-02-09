@@ -11,8 +11,13 @@
         }
 
         function insertInput() {
-            $("table:not(.hidden) td").each(function() {
-                $(this).html('<input type="text" value="" />');
+            var level = getDisplayLevel();
+            console.log("testing level: " + getDisplayLevel());
+            $("table:not(.hidden) td").each( function(index) {
+                var currentLevel = readCookie("level" + index);
+                if (currentLevel == null || currentLevel <= level) {
+                    $(this).html('<input type="text" value="" />');
+                }
             });
         }
 
@@ -23,29 +28,58 @@
         function check() {
             var correctValues = $("table.hidden td");
             $("table:not(.hidden) td").each(function(index, element) {
-                var correctValue = $(correctValues[index]).html();
                 var input = $("input", this);
-                var value = $(input).val();
-                if (correctValue === value) {
-                    $(input).css("background-color", "green");
-                } else {
-                    $(input).css("background-color", "red");
-                    $('<span>' + correctValue + '</span>').appendTo($(this));
+                console.log(input.length);
+                if (input.length == 1) {
+                    var correctValue = $(correctValues[index]).html();
+                    var value = $(input).val();
+                    var correct = (correctValue === value);
+                    if (correct) {
+                        $(input).css("background-color", "green");
+                    } else {
+                        $(input).css("background-color", "red");
+                        $('<span>' + correctValue + '</span>').appendTo($(this));
+                    }
+                    updateHistory(index, correct);
                 }
             });
         }
 
-        function createCookie(name, value, days) {
+        function createCookie(name, value, hours) {
             var expires;
 
-            if (days) {
-                var date = new Date();
-                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            var date = new Date();
+            if (hours) {
+                date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
                 expires = "; expires=" + date.toGMTString();
             } else {
                 expires = "";
             }
             document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+        }
+
+        function getTime() {
+            return new Date().getTime();
+        }
+
+        /*
+        This function will check the saved last testing time and comapare it to the current
+        time to figure out up to which level we are testing.
+         */
+        function getDisplayLevel() {
+            var last = readCookie("last");
+            if (last == null) {
+                last = getTime();
+            }
+            console.log("last: " + last);
+            var current = getTime();
+            console.log("current: " + current);
+            var timeInterval = current - last;
+            console.log("time interval: " + timeInterval);
+            var hourInterval = timeInterval / (60 * 60 * 1000);
+            console.log("hour interval: " + hourInterval);
+            var level = Math.floor(Math.sqrt(hourInterval));
+            return level;
         }
 
         function readCookie(name) {
@@ -63,16 +97,30 @@
             createCookie(name, "", -1);
         }
 
-        function cookies() {
-            console.log(readCookie("test"));
-            createCookie("test", 100, 150);
+        function updateHistory(index, correct) {
+            var name = "level" + index;
+            var level = readCookie(name);
+            if (level == null) {
+                level = 0;
+            }
+            if (correct) {
+                level = level + 1;
+            } else {
+                if (level > 0) {
+                    level = level - 1;
+                }
+            }
+            createCookie(name, level, 150*24);
+        }
+
+        function updateLastTested() {
+            createCookie("last", getTime(), 150*24);
         }
 
         $(document).ready(function() {
             copyTable();
             addCheckButton();
             insertInput();
-            cookies();
         });
     </script>
 </head>
