@@ -22,8 +22,14 @@
         }
 
         function addCheckButton() {
-            $('<input type="button" value="check" onclick="check()" />').appendTo($("body"));
+            $("input[name=practice]").remove();
+            $('<input name="check" type="button" value="check" onclick="check()" />').prependTo($("body"));
         }
+
+        function addPracticeButton() {
+            $('<input name="practice" type="button" value="practice" onclick="setupPractice()" />').prependTo($("body"));
+        }
+
 
         function check() {
             var correctValues = $("table.hidden td");
@@ -117,10 +123,14 @@
             createCookie("last", getTime(), 150*24);
         }
 
-        $(document).ready(function() {
+        function setupPractice() {
             copyTable();
             addCheckButton();
             insertInput();
+        }
+
+        $(document).ready(function() {
+            addPracticeButton();
         });
     </script>
 </head>
