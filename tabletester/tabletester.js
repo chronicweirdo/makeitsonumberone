@@ -1,59 +1,32 @@
 /**
  * Created by scacoveanu on 2/10/2015.
  */
-var SUFFIX = window.location.pathname.substr(window.location.pathname.lastIndexOf('/')+1);
-var NAME_LAST = "last_" + SUFFIX;
-var NAME_LEVELS = "levels_" + SUFFIX;
+// setup constants
+function setup() {
+    // prepare the suffix
+    var pathname = window.location.pathname;
+    var from = pathname.lastIndexOf("/") + 1;
+    var to = pathname.lastIndexOf(".");
+    pathname = pathname.substring(from, to);
+    pathname = pathname.replace("\\s", "_");
+    window.SUFFIX = pathname;
 
-function copyTables() {
-    $("table").each(function() {
-        var tableClone = $(this).clone();
-        $(this).addClass("hidden");
-        $(this).css("display", "none");
-        tableClone.insertAfter($(this));
-    });
+    window.NAME_LAST = "last_" + SUFFIX;
+    window.NAME_LEVELS = "levels_" + SUFFIX;
+    $.cookie.json = true;
+    $.cookie.path = window.location.pathname;
 }
-
-function insertInput() {
-    var level = getDisplayLevel();
-    console.log("testing level: " + getDisplayLevel());
-    var levels = readCookie(NAME_LEVELS);
-    if (levels == null) {
-        levels = [];
-    }
-    console.log("levels:");
-    console.log(levels);
-    $("table:not(.hidden) td").each( function(index) {
-        var currentLevel = levels[index];
-        if (currentLevel == null || currentLevel <= level) {
-            $(this).html('<input type="text" value="" />');
-        }
-    });
-}
-
-function addCheckButton() {
-    $("input[name=practice]").remove();
-    $('<input name="check" type="button" value="check" onclick="check()" />').prependTo($("body"));
-}
-
-function addPracticeButton() {
-    $('<input name="practice" type="button" value="practice" onclick="setupPractice()" />').prependTo($("body"));
-}
-
 
 function check() {
     var score = 0;
-    var correctValues = $("table.hidden td");
-    var levels = readCookie(NAME_LEVELS);
-    console.log("levels:");
-    console.log(levels);
+    var levels = readCookie(window.NAME_LEVELS);
     if (levels == null) {
         levels = [];
     }
     $("table:not(.hidden) td").each(function(index, element) {
         var input = $("input", this);
         if (input.length == 1) {
-            var correctValue = $(correctValues[index]).html();
+            var correctValue = window.data[index];
             var value = $(input).val();
             var correct = (correctValue === value);
             if (correct) {
@@ -78,8 +51,8 @@ function check() {
             levels[index] = level;
         }
     });
-    createCookie(NAME_LEVELS, levels);
-    var finalScore = (score / correctValues.length) * 100;
+    createCookie(window.NAME_LEVELS, levels);
+    var finalScore = (score / window.data.length) * 100;
     $("input[name=check]").remove();
     $('<input name="reload" type="button" value="reload" onclick="location.reload()" />').prependTo($("body"));
     $('<span>score:' + finalScore + '%</span>').prependTo($("body"));
@@ -99,7 +72,7 @@ function getTime() {
  time to figure out up to which level we are testing.
  */
 function getDisplayLevel() {
-    var last = readCookie(NAME_LAST);
+    var last = readCookie(window.NAME_LAST);
     if (last == null) {
         last = getTime();
     }
@@ -136,18 +109,49 @@ function updateHistory(index, correct) {
 }
 
 function updateLastTested() {
-    createCookie(NAME_LAST, getTime());
+    createCookie(window.NAME_LAST, getTime());
 }
 
-function setupPractice() {
-    copyTables();
+function addCheckButton() {
+    $("input[name=practice]").remove();
+    var checkButtonDefinition = '<input name="check" ' +
+        'type="button" value="check" onclick="check()" />';
+    $(checkButtonDefinition).prependTo($("body"));
+}
+
+function insertInput() {
+    var level = getDisplayLevel();
+    var levels = readCookie(window.NAME_LEVELS);
+    if (levels == null) {
+        levels = [];
+    }
+    window.data = [];
+    $("table td").each( function(index) {
+        var currentLevel = levels[index];
+        if (currentLevel == null || currentLevel <= level) {
+            data[index] = $(this).html();
+            $(this).html('<input type="text" value="" />');
+        }
+    });
+    console.log("hidden data");
+    console.log(window.data);
+}
+
+function practice() {
     addCheckButton();
     insertInput();
 }
 
-$(document).ready(function() {
 
-    $.cookie.json = true;
-    $.cookie.path = window.location.pathname;
+
+function addPracticeButton() {
+    var practiceButtonDefinition = '<input name="practice"'
+        + 'type="button" value="practice"'
+        + 'onclick="practice()" />'
+    $(practiceButtonDefinition).prependTo($("body"));
+}
+
+$(document).ready(function() {
+    setup();
     addPracticeButton();
 });
