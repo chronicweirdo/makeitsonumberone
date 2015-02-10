@@ -1,7 +1,12 @@
 <html>
 <head>
     <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.cookie.js"></script>
     <script type="text/javascript">
+
+        var SUFFIX = window.location.pathname.substr(window.location.pathname.lastIndexOf('/')+1);
+        var NAME_LAST = "last_" + SUFFIX;
+        var NAME_LEVELS = "levels_" + SUFFIX;
 
         function copyTable() {
             var tableClone = $("table").clone();
@@ -13,8 +18,14 @@
         function insertInput() {
             var level = getDisplayLevel();
             console.log("testing level: " + getDisplayLevel());
+            var levels = readCookie(NAME_LEVELS);
+            if (levels == null) {
+                levels = [];
+            }
+            console.log("levels:");
+            console.log(levels);
             $("table:not(.hidden) td").each( function(index) {
-                var currentLevel = readCookie(document.location + index);
+                var currentLevel = levels[index];
                 if (currentLevel == null || currentLevel <= level) {
                     $(this).html('<input type="text" value="" />');
                 }
@@ -34,9 +45,14 @@
         function check() {
             var score = 0;
             var correctValues = $("table.hidden td");
+            var levels = readCookie(NAME_LEVELS);
+            console.log("levels:");
+            console.log(levels);
+            if (levels == null) {
+                levels = [];
+            }
             $("table:not(.hidden) td").each(function(index, element) {
                 var input = $("input", this);
-                console.log(input.length);
                 if (input.length == 1) {
                     var correctValue = $(correctValues[index]).html();
                     var value = $(input).val();
@@ -48,9 +64,22 @@
                         $(input).css("background-color", "red");
                         $('<span>' + correctValue + '</span>').appendTo($(this));
                     }
-                    updateHistory(index, correct);
+
+                    var level = levels[index];
+                    if (level == null) {
+                        level = 0;
+                    }
+                    if (correct) {
+                        level = level + 1;
+                    } else {
+                        if (level > 0) {
+                            level = level - 1;
+                        }
+                    }
+                    levels[index] = level;
                 }
             });
+            createCookie(NAME_LEVELS, levels);
             var finalScore = (score / correctValues.length) * 100;
             $("input[name=check]").remove();
             $('<input name="reload" type="button" value="reload" onclick="location.reload()" />').prependTo($("body"));
@@ -58,17 +87,8 @@
 
         }
 
-        function createCookie(name, value, hours) {
-            var expires;
-
-            var date = new Date();
-            if (hours) {
-                date.setTime(date.getTime() + (hours * 60 * 60 * 1000));
-                expires = "; expires=" + date.toGMTString();
-            } else {
-                expires = "";
-            }
-            document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) + expires + "; path=/";
+        function createCookie(name, value) {
+            $.cookie(name, value, { expires: 365 });
         }
 
         function getTime() {
@@ -80,35 +100,25 @@
         time to figure out up to which level we are testing.
          */
         function getDisplayLevel() {
-            var last = readCookie("last");
+            var last = readCookie(NAME_LAST);
             if (last == null) {
                 last = getTime();
             }
-            console.log("last: " + last);
             var current = getTime();
-            console.log("current: " + current);
             var timeInterval = current - last;
-            console.log("time interval: " + timeInterval);
             var hourInterval = timeInterval / (60 * 60 * 1000);
-            console.log("hour interval: " + hourInterval);
             var level = Math.floor(Math.sqrt(hourInterval));
             return level;
         }
 
         function readCookie(name) {
-            var nameEQ = encodeURIComponent(name) + "=";
-            var ca = document.cookie.split(';');
-            for (var i = 0; i < ca.length; i++) {
-                var c = ca[i];
-                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
-                if (c.indexOf(nameEQ) === 0) return decodeURIComponent(c.substring(nameEQ.length, c.length));
+            var value = $.cookie(name);
+            if (value == undefined) {
+                return null;
             }
-            return null;
+            return value;
         }
 
-        function eraseCookie(name) {
-            createCookie(name, "", -1);
-        }
 
         function updateHistory(index, correct) {
             var name = document.location + index;
@@ -123,11 +133,11 @@
                     level = level - 1;
                 }
             }
-            createCookie(name, level, 150*24);
+            createCookie(name, level);
         }
 
         function updateLastTested() {
-            createCookie("last", getTime(), 150*24);
+            createCookie(NAME_LAST, getTime());
         }
 
         function setupPractice() {
@@ -137,6 +147,14 @@
         }
 
         $(document).ready(function() {
+            console.log(window.location.pathname);
+            console.log(SUFFIX);
+            console.log(window.location);
+            console.log(NAME_LAST);
+            console.log(NAME_LEVELS);
+
+            $.cookie.json = true;
+            $.cookie.path = window.location.pathname;
             addPracticeButton();
         });
     </script>
