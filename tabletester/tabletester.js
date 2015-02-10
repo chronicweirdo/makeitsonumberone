@@ -17,13 +17,20 @@ function setup() {
     $.cookie.path = window.location.pathname;
 }
 
+
+// check answers by comparing input fields
+// if an answer is correct, make the input field background green
+// if an answer is wrong, make the input field backgroun red
+// add the correct answer near fields where the user made a mistake
+// compute the score - correctness percentage
+// add score and reload buttons to page
 function check() {
     var score = 0;
     var levels = readCookie(window.NAME_LEVELS);
     if (levels == null) {
         levels = [];
     }
-    $("table:not(.hidden) td").each(function(index, element) {
+    $("table td").each(function(index) {
         var input = $("input", this);
         if (input.length == 1) {
             var correctValue = window.data[index];
@@ -53,10 +60,25 @@ function check() {
     });
     createCookie(window.NAME_LEVELS, levels);
     var finalScore = (score / window.data.length) * 100;
-    $("input[name=check]").remove();
-    $('<input name="reload" type="button" value="reload" onclick="location.reload()" />').prependTo($("body"));
-    $('<span>score:' + finalScore + '%</span>').prependTo($("body"));
+    addScore(finalScore);
+    addReloadButton();
 
+}
+
+
+// add the score
+function addScore(score) {
+    var scoreDefinition = '<span>score:' + score + '%</span>';
+    $(scoreDefinition).insertBefore($('table').first());
+}
+
+
+// remove check button and add reload button
+function addReloadButton() {
+    $("input[name=check]").remove();
+    var reloadButtonDefinition = '<input name="reload"' +
+        'type="button" value="reload" onclick="location.reload()" />';
+    $(reloadButtonDefinition).insertBefore($('table').first());
 }
 
 function createCookie(name, value) {
@@ -112,14 +134,17 @@ function updateLastTested() {
     createCookie(window.NAME_LAST, getTime());
 }
 
+// replace the practice button with a check button
 function addCheckButton() {
     $("input[name=practice]").remove();
     var checkButtonDefinition = '<input name="check" ' +
         'type="button" value="check" onclick="check()" />';
-    $(checkButtonDefinition).prependTo($("body"));
+    $(checkButtonDefinition).insertBefore($('table').first());
 }
 
-function insertInput() {
+// save table data to a global variable for later reference
+// replace table data with input fields
+function convert() {
     var level = getDisplayLevel();
     var levels = readCookie(window.NAME_LEVELS);
     if (levels == null) {
@@ -133,22 +158,20 @@ function insertInput() {
             $(this).html('<input type="text" value="" />');
         }
     });
-    console.log("hidden data");
-    console.log(window.data);
 }
 
+// start the practice session
 function practice() {
     addCheckButton();
-    insertInput();
+    convert();
 }
 
-
-
+// add a button that will start the practice session
 function addPracticeButton() {
     var practiceButtonDefinition = '<input name="practice"'
         + 'type="button" value="practice"'
         + 'onclick="practice()" />'
-    $(practiceButtonDefinition).prependTo($("body"));
+    $(practiceButtonDefinition).insertBefore($('table').first());
 }
 
 $(document).ready(function() {
