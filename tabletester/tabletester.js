@@ -155,7 +155,7 @@ function convert() {
         var currentLevel = levels[index];
         if (currentLevel == null || currentLevel <= level) {
             data[index] = $(this).html();
-            $(this).html('<input type="text" value="" />');
+            $(this).html('<input type="text" value="" style="width: 100%;"/>');
         }
     });
 }
