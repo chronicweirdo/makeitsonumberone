@@ -77,20 +77,28 @@ function convert() {
     console.log("last: " + last);
     console.log("levels: " + levels);
     window.data = [];
+    var testing = 0;
     $("table td").each( function(index) {
         var currentLevel = levels[index];
         var lastTested = last[index];
         if (shouldTest(currentLevel, lastTested)) {
+            testing = testing + 1;
             data[index] = $(this).html();
             $(this).html('<input type="text" value="" style="width: 100%;"/>');
         }
     });
+    return testing;
 }
 
 // start the practice session
 function practice() {
-    addCheckButton();
-    convert();
+    var testing = convert();
+    if (testing > 0) {
+        addCheckButton();
+    } else {
+        addNoTestMessage();
+        addReloadButton();
+    }
 }
 
 // add a button that will start the practice session
@@ -117,9 +125,11 @@ function check() {
     if (last == null) {
         last = [];
     }
+    var tested = 0;
     $("table td").each(function(index) {
         var input = $("input", this);
         if (input.length == 1) {
+            tested = tested + 1;
             last[index] = getTime();
 
             var correctValue = window.data[index];
@@ -149,7 +159,7 @@ function check() {
     });
     createCookie(window.NAME_LEVELS, levels);
     createCookie(window.NAME_LAST, last);
-    var finalScore = (score / window.data.length) * 100;
+    var finalScore = (score / tested) * 100;
     addScore(finalScore);
     addReloadButton();
 }
@@ -160,10 +170,15 @@ function addScore(score) {
     $(scoreDefinition).insertBefore($('table').first());
 }
 
+function addNoTestMessage(score) {
+    var scoreDefinition = '<span>Nothing to test at the moment! Try again later.</span>';
+    $(scoreDefinition).insertBefore($('table').first());
+}
 
 // remove check button and add reload button
 function addReloadButton() {
     $("input[name=check]").remove();
+    $("input[name=practice]").remove();
     var reloadButtonDefinition = '<input name="reload"' +
         'type="button" value="reload" onclick="location.reload()" />';
     $(reloadButtonDefinition).insertBefore($('table').first());
