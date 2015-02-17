@@ -17,68 +17,12 @@ function setup() {
     $.cookie.path = window.location.pathname;
 }
 
-
-// check answers by comparing input fields
-// if an answer is correct, make the input field background green
-// if an answer is wrong, make the input field backgroun red
-// add the correct answer near fields where the user made a mistake
-// compute the score - correctness percentage
-// add score and reload buttons to page
-function check() {
-    var score = 0;
-    var levels = readCookie(window.NAME_LEVELS);
-    if (levels == null) {
-        levels = [];
+function readCookie(name) {
+    var value = $.cookie(name);
+    if (value == undefined) {
+        return null;
     }
-    $("table td").each(function(index) {
-        var input = $("input", this);
-        if (input.length == 1) {
-            var correctValue = window.data[index];
-            var value = $(input).val();
-            var correct = (correctValue === value);
-            if (correct) {
-                $(input).css("background-color", "green");
-                score = score + 1;
-            } else {
-                $(input).css("background-color", "red");
-                $('<span>' + correctValue + '</span>').appendTo($(this));
-            }
-
-            var level = levels[index];
-            if (level == null) {
-                level = 0;
-            }
-            if (correct) {
-                level = level + 1;
-            } else {
-                if (level > 0) {
-                    level = level - 1;
-                }
-            }
-            levels[index] = level;
-        }
-    });
-    createCookie(window.NAME_LEVELS, levels);
-    var finalScore = (score / window.data.length) * 100;
-    addScore(finalScore);
-    addReloadButton();
-
-}
-
-
-// add the score
-function addScore(score) {
-    var scoreDefinition = '<span>score:' + score + '%</span>';
-    $(scoreDefinition).insertBefore($('table').first());
-}
-
-
-// remove check button and add reload button
-function addReloadButton() {
-    $("input[name=check]").remove();
-    var reloadButtonDefinition = '<input name="reload"' +
-        'type="button" value="reload" onclick="location.reload()" />';
-    $(reloadButtonDefinition).insertBefore($('table').first());
+    return value;
 }
 
 function createCookie(name, value) {
@@ -90,7 +34,7 @@ function getTime() {
 }
 
 /*
- This function will check the saved last testing time and comapare it to the current
+ This function will check the saved last testing time and compare it to the current
  time to figure out up to which level we are testing.
  */
 function getDisplayLevel() {
@@ -104,15 +48,6 @@ function getDisplayLevel() {
     var level = Math.floor(Math.sqrt(hourInterval));
     return level;
 }
-
-function readCookie(name) {
-    var value = $.cookie(name);
-    if (value == undefined) {
-        return null;
-    }
-    return value;
-}
-
 
 function updateHistory(index, correct) {
     var name = document.location + index;
@@ -142,18 +77,41 @@ function addCheckButton() {
     $(checkButtonDefinition).insertBefore($('table').first());
 }
 
+// this function decides how much time must pass before a concept is tested, based on that concept's level
+function getTimeForLevel(level) {
+    if (level == 0) return 0;
+    var hour = 60 * 60 * 1000;
+    return hour * Math.pow(2, level);
+}
+
+function shouldTest(level, lastTested) {
+    if (level == null || lastTested == null) {
+        return true;
+    }
+    // get time elapsed since last tested
+    var elapsedTime = getTime() - lastTested;
+    var timeForLevel = getTimeForLevel(level);
+    return (elapsedTime >= timeForLevel);
+}
+
 // save table data to a global variable for later reference
 // replace table data with input fields
 function convert() {
-    var level = getDisplayLevel();
+    var last = readCookie(window.NAME_LAST);
+    if (last == null) {
+        last = [];
+    }
     var levels = readCookie(window.NAME_LEVELS);
     if (levels == null) {
         levels = [];
     }
+    console.log("last: " + last);
+    console.log("levels: " + levels);
     window.data = [];
     $("table td").each( function(index) {
         var currentLevel = levels[index];
-        if (currentLevel == null || currentLevel <= level) {
+        var lastTested = last[index];
+        if (shouldTest(currentLevel, lastTested)) {
             data[index] = $(this).html();
             $(this).html('<input type="text" value="" style="width: 100%;"/>');
         }
@@ -172,6 +130,74 @@ function addPracticeButton() {
         + 'type="button" value="practice"'
         + 'onclick="practice()" />'
     $(practiceButtonDefinition).insertBefore($('table').first());
+}
+
+// check answers by comparing input fields
+// if an answer is correct, make the input field background green
+// if an answer is wrong, make the input field backgroun red
+// add the correct answer near fields where the user made a mistake
+// compute the score - correctness percentage
+// add score and reload buttons to page
+function check() {
+    var score = 0;
+    var levels = readCookie(window.NAME_LEVELS);
+    if (levels == null) {
+        levels = [];
+    }
+    var last = readCookie(window.NAME_LAST);
+    if (last == null) {
+        last = [];
+    }
+    $("table td").each(function(index) {
+        var input = $("input", this);
+        if (input.length == 1) {
+            last[index] = getTime();
+
+            var correctValue = window.data[index];
+            var value = $(input).val();
+            var correct = (correctValue === value);
+            if (correct) {
+                $(input).css("background-color", "green");
+                score = score + 1;
+            } else {
+                $(input).css("background-color", "red");
+                $('<span>' + correctValue + '</span>').appendTo($(this));
+            }
+
+            var level = levels[index];
+            if (level == null) {
+                level = 0;
+            }
+            if (correct) {
+                level = level + 1;
+            } else {
+                if (level > 0) {
+                    level = level - 1;
+                }
+            }
+            levels[index] = level;
+        }
+    });
+    createCookie(window.NAME_LEVELS, levels);
+    createCookie(window.NAME_LAST, last);
+    var finalScore = (score / window.data.length) * 100;
+    addScore(finalScore);
+    addReloadButton();
+}
+
+// add the score
+function addScore(score) {
+    var scoreDefinition = '<span>score:' + score + '%</span>';
+    $(scoreDefinition).insertBefore($('table').first());
+}
+
+
+// remove check button and add reload button
+function addReloadButton() {
+    $("input[name=check]").remove();
+    var reloadButtonDefinition = '<input name="reload"' +
+        'type="button" value="reload" onclick="location.reload()" />';
+    $(reloadButtonDefinition).insertBefore($('table').first());
 }
 
 $(document).ready(function() {
