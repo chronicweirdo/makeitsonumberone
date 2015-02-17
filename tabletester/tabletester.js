@@ -150,9 +150,7 @@ function check() {
             if (correct) {
                 level = level + 1;
             } else {
-                if (level > 0) {
-                    level = level - 1;
-                }
+                level = 0;
             }
             levels[index] = level;
         }
