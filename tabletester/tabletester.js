@@ -11,8 +11,11 @@ function setup() {
     pathname = pathname.replace("\\s", "_");
     window.SUFFIX = pathname;
 
+    // creating cookie names for this page
     window.NAME_LAST = "last_" + SUFFIX;
     window.NAME_LEVELS = "levels_" + SUFFIX;
+
+    // setting up jquery.cookie plugin
     $.cookie.json = true;
     $.cookie.path = window.location.pathname;
 }
@@ -33,42 +36,6 @@ function getTime() {
     return new Date().getTime();
 }
 
-/*
- This function will check the saved last testing time and compare it to the current
- time to figure out up to which level we are testing.
- */
-function getDisplayLevel() {
-    var last = readCookie(window.NAME_LAST);
-    if (last == null) {
-        last = getTime();
-    }
-    var current = getTime();
-    var timeInterval = current - last;
-    var hourInterval = timeInterval / (60 * 60 * 1000);
-    var level = Math.floor(Math.sqrt(hourInterval));
-    return level;
-}
-
-function updateHistory(index, correct) {
-    var name = document.location + index;
-    var level = readCookie(name);
-    if (level == null) {
-        level = 0;
-    }
-    if (correct) {
-        level = level + 1;
-    } else {
-        if (level > 0) {
-            level = level - 1;
-        }
-    }
-    createCookie(name, level);
-}
-
-function updateLastTested() {
-    createCookie(window.NAME_LAST, getTime());
-}
-
 // replace the practice button with a check button
 function addCheckButton() {
     $("input[name=practice]").remove();
@@ -84,18 +51,20 @@ function getTimeForLevel(level) {
     return hour * Math.pow(2, level);
 }
 
+// this function decides whether we are testing a concept at the current time or not
 function shouldTest(level, lastTested) {
     if (level == null || lastTested == null) {
         return true;
     }
-    // get time elapsed since last tested
     var elapsedTime = getTime() - lastTested;
     var timeForLevel = getTimeForLevel(level);
     return (elapsedTime >= timeForLevel);
 }
 
-// save table data to a global variable for later reference
-// replace table data with input fields
+/*
+    save table data to a global variable for later reference
+    replace table data with input fields
+*/
 function convert() {
     var last = readCookie(window.NAME_LAST);
     if (last == null) {
@@ -134,7 +103,7 @@ function addPracticeButton() {
 
 // check answers by comparing input fields
 // if an answer is correct, make the input field background green
-// if an answer is wrong, make the input field backgroun red
+// if an answer is wrong, make the input field background red
 // add the correct answer near fields where the user made a mistake
 // compute the score - correctness percentage
 // add score and reload buttons to page
@@ -185,7 +154,7 @@ function check() {
     addReloadButton();
 }
 
-// add the score
+// add the score to page
 function addScore(score) {
     var scoreDefinition = '<span>score:' + score + '%</span>';
     $(scoreDefinition).insertBefore($('table').first());
