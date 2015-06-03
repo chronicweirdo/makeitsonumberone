@@ -40,11 +40,24 @@ public class UserStatistics {
     }
 
     public static void main(String[] args) throws Exception {
+        String[] paths = {
+                "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
+        };
         //readAllFilesAndSeeAttributeCountUnder4();
         /*System.out.println("\"test\"");
         System.out.println(strip("\"test\""));*/
 
-        Map<String, Map<String, String>> data = parseFile("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv");
+        //basicStatistics("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv");
+        basicClusteringWithDuplicates(paths[3]);
+
+    }
+
+    private static void basicStatistics(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
         List<Fingerprint> fingerprints = getFingerprints(data);
         System.out.println(fingerprints.size());
 
@@ -74,7 +87,35 @@ public class UserStatistics {
             }
             System.out.println(similarities);
         }
+    }
 
+    private static void basicClusteringWithDuplicates(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
+        List<Fingerprint> fingerprints = getFingerprints(data);
+        System.out.println(fingerprints.size());
+
+        List<List<Fingerprint>> clusters = new ArrayList<>();
+        // take each fingerprint and try to add it to a cluster or create a new cluster for it
+        for (Fingerprint current: fingerprints) {
+            int matchingCluster = -1;
+            for (int i = 0; i < clusters.size(); i++) {
+                for (Fingerprint f: clusters.get(i)) {
+                    if (similar(current, f)) {
+                        matchingCluster = i;
+                        break;
+                    }
+                }
+            }
+            if (matchingCluster == -1) {
+                // add new cluster
+                List<Fingerprint> cluster = new ArrayList<>();
+                cluster.add(current);
+                clusters.add(cluster);
+            } else {
+                clusters.get(matchingCluster).add(current);
+            }
+        }
+        System.out.println("found clusters: " + clusters.size());
     }
 
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
