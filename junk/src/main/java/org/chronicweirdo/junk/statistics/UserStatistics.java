@@ -55,11 +55,11 @@ public class UserStatistics {
 
     public static void main(String[] args) throws Exception {
         String[] paths = {
-                "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
+                "C:\\Users\\Silviu\\Downloads\\franck.letourneur.csv",
+                "C:\\Users\\Silviu\\Downloads\\hel23.csv",
+                "C:\\Users\\Silviu\\Downloads\\mark.boekschoten.csv",
+                "C:\\Users\\Silviu\\Downloads\\o.vasieva.csv",
+                "C:\\Users\\Silviu\\Downloads\\qiuxc.csv"
         };
         //readAllFilesAndSeeAttributeCountUnder4();
         /*System.out.println("\"test\"");
@@ -82,11 +82,13 @@ public class UserStatistics {
             dss.add(clusteringWithOldMatching(path));
             System.out.println("clustering with last logged old matching");
             dss.add(clusteringWithLastLoggedOldMatching(path));
+            System.out.println("combined clustering");
+            dss.add(combinedClustering(path));
             statistics.add(dss);
         }
 
         System.out.println("# of clusters");
-        System.out.println("dataset,one way matching,last logged one way matching, two way matching, last logged two way matching, old matching, last logged old matching");
+        System.out.println("dataset,one way matching,last logged one way matching, two way matching, last logged two way matching, old matching, last logged old matching,combined");
         for (int i = 0; i < statistics.size(); i++) {
             List<Statistics> datasetStatistics = statistics.get(i);
             System.out.print(paths[i].substring(paths[i].lastIndexOf("\\")+1) + ",");
@@ -97,7 +99,7 @@ public class UserStatistics {
         }
 
         System.out.println("# of clusters with variation (more than one signature per cluster)");
-        System.out.println("dataset,one way matching,last logged one way matching, two way matching, last logged two way matching, old matching, last logged old matching");
+        System.out.println("dataset,one way matching,last logged one way matching, two way matching, last logged two way matching, old matching, last logged old matchingcombined");
         for (int i = 0; i < statistics.size(); i++) {
             List<Statistics> datasetStatistics = statistics.get(i);
             System.out.print(paths[i].substring(paths[i].lastIndexOf("\\")+1) + ",");
@@ -436,6 +438,54 @@ public class UserStatistics {
             int matchingCluster = -1;
             for (int i = 0; i < clusters.size(); i++) {
                 if (match(current, clusters.get(i).get(clusters.get(i).size()-1))) {
+                    matchingCluster = i;
+                    break;
+                }
+            }
+            if (matchingCluster == -1) {
+                // add new cluster
+                List<Fingerprint> cluster = new ArrayList<>();
+                cluster.add(current);
+                clusters.add(cluster);
+            } else {
+                if (! clusters.get(matchingCluster).contains(current)) {
+                    // don't add identical computers to a cluster
+                    clusters.get(matchingCluster).add(current);
+                }
+            }
+        }
+        System.out.println("found clusters: " + clusters.size());
+        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
+        for (List<Fingerprint> cluster: clusters) {
+            if (cluster.size() > 1) {
+                clustersWithVariation.add(cluster);
+            }
+        }
+        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
+        int macVaries = 0;
+        for (List<Fingerprint> cluster: clustersWithVariation) {
+            if (primaryMacVaries(cluster)) {
+                macVaries++;
+            }
+        }
+        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+    }
+
+    private static Statistics combinedClustering(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
+        List<Fingerprint> fingerprints = getFingerprints(data);
+        System.out.println(fingerprints.size());
+
+        List<List<Fingerprint>> clusters = new ArrayList<>();
+        // take each fingerprint and try to add it to a cluster or create a new cluster for it
+        for (Fingerprint current: fingerprints) {
+            int matchingCluster = -1;
+            for (int i = 0; i < clusters.size(); i++) {
+                Fingerprint fingerprint = clusters.get(i).get(clusters.get(i).size() - 1);
+                if (match(current, fingerprint)) {
+                    matchingCluster = i;
+                    break;
+                } else if (similar(current, fingerprint) || similar(fingerprint, current)) {
                     matchingCluster = i;
                     break;
                 }
