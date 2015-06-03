@@ -52,7 +52,9 @@ public class UserStatistics {
         System.out.println(strip("\"test\""));*/
 
         //basicStatistics("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv");
-        basicClusteringWithDuplicates(paths[3]);
+        for (String path: paths) {
+            basicClusteringWithoutDuplicates(path);
+        }
 
     }
 
@@ -116,6 +118,45 @@ public class UserStatistics {
             }
         }
         System.out.println("found clusters: " + clusters.size());
+    }
+
+    private static void basicClusteringWithoutDuplicates(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
+        List<Fingerprint> fingerprints = getFingerprints(data);
+        System.out.println(fingerprints.size());
+
+        List<List<Fingerprint>> clusters = new ArrayList<>();
+        // take each fingerprint and try to add it to a cluster or create a new cluster for it
+        for (Fingerprint current: fingerprints) {
+            int matchingCluster = -1;
+            for (int i = 0; i < clusters.size(); i++) {
+                for (Fingerprint f: clusters.get(i)) {
+                    if (similar(current, f)) {
+                        matchingCluster = i;
+                        break;
+                    }
+                }
+            }
+            if (matchingCluster == -1) {
+                // add new cluster
+                List<Fingerprint> cluster = new ArrayList<>();
+                cluster.add(current);
+                clusters.add(cluster);
+            } else {
+                if (! clusters.get(matchingCluster).contains(current)) {
+                    // don't add identical computers to a cluster
+                    clusters.get(matchingCluster).add(current);
+                }
+            }
+        }
+        System.out.println("found clusters: " + clusters.size());
+        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
+        for (List<Fingerprint> cluster: clusters) {
+            if (cluster.size() > 1) {
+                clustersWithVariation.add(cluster);
+            }
+        }
+        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
     }
 
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
