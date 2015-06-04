@@ -29,6 +29,7 @@ public class UserStatistics {
         private String session;
         private String osName;
         private String userHome;
+        private String ram;
         private List<String> macAddress;
 
         @Override
@@ -40,6 +41,7 @@ public class UserStatistics {
 
             if (macAddress != null ? !macAddress.equals(that.macAddress) : that.macAddress != null) return false;
             if (osName != null ? !osName.equals(that.osName) : that.osName != null) return false;
+            if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
             if (userHome != null ? !userHome.equals(that.userHome) : that.userHome != null) return false;
 
             return true;
@@ -49,6 +51,7 @@ public class UserStatistics {
         public int hashCode() {
             int result = osName != null ? osName.hashCode() : 0;
             result = 31 * result + (userHome != null ? userHome.hashCode() : 0);
+            result = 31 * result + (ram != null ? ram.hashCode() : 0);
             result = 31 * result + (macAddress != null ? macAddress.hashCode() : 0);
             return result;
         }
@@ -58,25 +61,24 @@ public class UserStatistics {
         String[] paths = {
                 "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\jcanongo.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
         };
-        //readAllFilesAndSeeAttributeCountUnder4();
-        /*System.out.println("\"test\"");
-        System.out.println(strip("\"test\""));*/
 
-        //basicStatistics("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv");
         List<List<Statistics>> statistics = new ArrayList<List<Statistics>>();
         for (String path: paths) {
-            //String path = paths[0];
+            List<Fingerprint> fingerprints = getFingerprints(path);
+
             List<Statistics> dss = new ArrayList<>(6);
             System.out.println("clustering with last logged and one way matching");
-            dss.add(runStatistics(path, new OneWayLastLoggedClusterMatcher()));
+            dss.add(runStatistics(fingerprints, new OneWayLastLoggedClusterMatcher()));
             System.out.println("clustering with last logged old matching");
-            dss.add(runStatistics(path, new OldClusterMatcher()));
+            dss.add(runStatistics(fingerprints, new OldClusterMatcher()));
             System.out.println("combined clustering");
-            dss.add(runStatistics(path, new CombinedClusterMatched()));
+            dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
+            System.out.println("complex clustering");
+            dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));
             statistics.add(dss);
         }
 
@@ -158,9 +160,19 @@ public class UserStatistics {
         }
     }
 
-    private static Statistics runStatistics(String path, ClusterMatcher clusterMatcher) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
+    public static class RAMAndVariableThresholdClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (complexSimilar(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    private static Statistics runStatistics(List<Fingerprint> fingerprints, ClusterMatcher clusterMatcher) throws IOException {
+
         System.out.println(fingerprints.size());
 
         List<List<Fingerprint>> clusters = new ArrayList<>();
@@ -199,7 +211,12 @@ public class UserStatistics {
                 macVaries++;
             }
         }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+        return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+    }
+
+    private static List<Fingerprint> getFingerprints(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
+        return getFingerprints(data);
     }
 
     private static boolean primaryMacVaries(List<Fingerprint> cluster) {
@@ -211,6 +228,46 @@ public class UserStatistics {
             }
         }
         return false;
+    }
+
+    private static boolean ramMissing(String ram) {
+        try {
+            Long.parseLong(ram);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
+        }
+    }
+
+    private static boolean complexSimilar(Fingerprint current, Fingerprint fingerprint) {
+        // user home 100% matching
+        if (! current.userHome.equals(fingerprint.userHome)) return false;
+        // os name equals? fine
+        if (! current.osName.equals(fingerprint.osName)) {
+            // os name different? can we use ram? do a ram match
+            if (ramMissing(current.ram) || ramMissing(fingerprint.ram)) {
+                // os name different? ram missing as well? a free ride
+                return true;
+            } else if (! current.ram.equals(fingerprint.ram)) {
+                return false;
+            }
+        }
+
+        // last step is to look at a variable ram matcher
+        int found = 0;
+        for (String mac: current.macAddress) {
+            if (fingerprint.macAddress.contains(mac)) {
+                found++;
+            }
+        }
+        double percent = (double)found / current.macAddress.size();
+        if (current.macAddress.size() == 0) return true;
+        if (current.macAddress.size() == 1 && percent < 1) return false;
+        if (current.macAddress.size() == 2 && percent < 0.5) return false;
+        if (current.macAddress.size() == 3 && percent < 0.65) return false;
+        if (current.macAddress.size() == 4 && percent < 0.75) return false;
+        if (current.macAddress.size() >= 5 && percent < 0.8) return false;
+        return true;
     }
 
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
@@ -248,6 +305,7 @@ public class UserStatistics {
             fingerprint.session = entry.getKey();
             fingerprint.osName = entry.getValue().get("os_name");
             fingerprint.userHome = entry.getValue().get("user_home");
+            fingerprint.ram = entry.getValue().get("physical memory in kb");
             fingerprint.macAddress = new ArrayList<String>();
             for (Map.Entry<String, String> attribute: entry.getValue().entrySet()) {
                 if (attribute.getKey().startsWith("mac_address")) {
