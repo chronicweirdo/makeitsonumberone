@@ -26,6 +26,7 @@ public class UserStatistics {
     }
 
     public static class Fingerprint {
+        private String session;
         private String osName;
         private String userHome;
         private List<String> macAddress;
@@ -55,11 +56,11 @@ public class UserStatistics {
 
     public static void main(String[] args) throws Exception {
         String[] paths = {
-                "C:\\Users\\Silviu\\Downloads\\franck.letourneur.csv",
-                "C:\\Users\\Silviu\\Downloads\\hel23.csv",
-                "C:\\Users\\Silviu\\Downloads\\mark.boekschoten.csv",
-                "C:\\Users\\Silviu\\Downloads\\o.vasieva.csv",
-                "C:\\Users\\Silviu\\Downloads\\qiuxc.csv"
+                "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
         };
         //readAllFilesAndSeeAttributeCountUnder4();
         /*System.out.println("\"test\"");
@@ -70,20 +71,12 @@ public class UserStatistics {
         for (String path: paths) {
             //String path = paths[0];
             List<Statistics> dss = new ArrayList<>(6);
-            System.out.println("basic clustering without duplicates with one way matching");
-            dss.add(basicClusteringWithoutDuplicates(path));
             System.out.println("clustering with last logged and one way matching");
-            dss.add(clusteringWithLastLoggedOneWayMatching(path));
-            System.out.println("clustering with two way matching");
-            dss.add(clusteringWithTwoWayMatching(path));
-            System.out.println("clustering with last logged and two way matching");
-            dss.add(clusteringWithLastLoggedTwoWayMatching(path));
-            System.out.println("clustering with old matching");
-            dss.add(clusteringWithOldMatching(path));
+            dss.add(runStatistics(path, new OneWayLastLoggedClusterMatcher()));
             System.out.println("clustering with last logged old matching");
-            dss.add(clusteringWithLastLoggedOldMatching(path));
+            dss.add(runStatistics(path, new OldClusterMatcher()));
             System.out.println("combined clustering");
-            dss.add(combinedClustering(path));
+            dss.add(runStatistics(path, new CombinedClusterMatched()));
             statistics.add(dss);
         }
 
@@ -126,40 +119,46 @@ public class UserStatistics {
         System.out.println("--~ the end ~--");
     }
 
-    private static void basicStatistics(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
+    public static interface ClusterMatcher {
+        boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster);
+    }
 
-        int fingerprintsWithMoreMacs = 0;
-        int fingerprintsWithNoMacs = 0;
-        for (Fingerprint fingerprint: fingerprints) {
-            if (fingerprint.macAddress.size() > 1) {
-                fingerprintsWithMoreMacs++;
+    public static class OneWayLastLoggedClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (similar(fingerprint, f)) {
+                return true;
             }
-            if (fingerprint.macAddress.size() == 0) {
-                fingerprintsWithNoMacs++;
-            }
-        }
-        System.out.println(fingerprintsWithMoreMacs);
-        System.out.println(fingerprintsWithNoMacs);
-
-        // for each fingerprint check how many similar previours fingerprints there are
-        for (int i = 0; i < fingerprints.size(); i++) {
-            Fingerprint current = fingerprints.get(i);
-            List<Fingerprint> remaining = new ArrayList<>(fingerprints);
-            remaining.remove(current);
-            int similarities = 0;
-            for (Fingerprint f: remaining) {
-                if (similar(current, f)) {
-                    similarities++;
-                }
-            }
-            System.out.println(similarities);
+            return false;
         }
     }
 
-    private static void basicClusteringWithDuplicates(String path) throws IOException {
+    public static class OldClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (match(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public static class CombinedClusterMatched implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (match(fingerprint, f)) {
+                return true;
+            } else if (similar(fingerprint, f) || similar(f, fingerprint)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    private static Statistics runStatistics(String path, ClusterMatcher clusterMatcher) throws IOException {
         Map<String, Map<String, String>> data = parseFile(path);
         List<Fingerprint> fingerprints = getFingerprints(data);
         System.out.println(fingerprints.size());
@@ -169,40 +168,9 @@ public class UserStatistics {
         for (Fingerprint current: fingerprints) {
             int matchingCluster = -1;
             for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                clusters.get(matchingCluster).add(current);
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-    }
-
-    private static Statistics basicClusteringWithoutDuplicates(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
+                if (clusterMatcher.matchesCluster(current, clusters.get(i))) {
+                    matchingCluster = i;
+                    break;
                 }
             }
             if (matchingCluster == -1) {
@@ -245,280 +213,6 @@ public class UserStatistics {
         return false;
     }
 
-    private static Statistics clusteringWithTwoWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f) || similar(f, current)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics clusteringWithLastLoggedTwoWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint f = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (similar(current, f) || similar(f, current)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics clusteringWithLastLoggedOneWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint f = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (similar(current, f)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics clusteringWithOldMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (match(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics clusteringWithLastLoggedOldMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                if (match(current, clusters.get(i).get(clusters.get(i).size()-1))) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics combinedClustering(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint fingerprint = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (match(current, fingerprint)) {
-                    matchingCluster = i;
-                    break;
-                } else if (similar(current, fingerprint) || similar(fingerprint, current)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
         // check primary attributes
         if (! current.osName.equals(fingerprint.osName)) return false;
@@ -551,6 +245,7 @@ public class UserStatistics {
         List<Fingerprint> fingerprints = new ArrayList<>();
         for (Map.Entry<String, Map<String, String>> entry: data.entrySet()) {
             Fingerprint fingerprint = new Fingerprint();
+            fingerprint.session = entry.getKey();
             fingerprint.osName = entry.getValue().get("os_name");
             fingerprint.userHome = entry.getValue().get("user_home");
             fingerprint.macAddress = new ArrayList<String>();
@@ -562,28 +257,6 @@ public class UserStatistics {
             fingerprints.add(fingerprint);
         }
         return fingerprints;
-    }
-
-    private static void readAllFilesAndSeeAttributeCountUnder4() throws IOException {
-        // read file
-        Map<String, Map<String, String>> data = new HashMap<>();
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\hel23.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"));
-        System.out.println(data.size());
-        //System.out.println(data.values().iterator().next());
-        int lessThanFourAttributes = 0;
-        for (Map.Entry<String, Map<String, String>> entry: data.entrySet()) {
-            if (entry.getValue().size() < 4) {
-                lessThanFourAttributes++;
-                /*System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
-                System.out.println();*/
-            }
-        }
-        System.out.println(lessThanFourAttributes + "/" + data.size());
     }
 
     private static Map<String, Map<String, String>> parseFile(String path) throws IOException {
