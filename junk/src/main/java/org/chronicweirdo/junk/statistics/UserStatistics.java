@@ -71,12 +71,12 @@ public class UserStatistics {
             List<Fingerprint> fingerprints = getFingerprints(path);
 
             List<Statistics> dss = new ArrayList<>(6);
-            System.out.println("clustering with last logged and one way matching");
-            dss.add(runStatistics(fingerprints, new OneWayLastLoggedClusterMatcher()));
-            System.out.println("clustering with last logged old matching");
-            dss.add(runStatistics(fingerprints, new OldClusterMatcher()));
-            System.out.println("combined clustering");
-            dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
+            //System.out.println("clustering with last logged and one way matching");
+            //dss.add(runStatistics(fingerprints, new OneWayLastLoggedClusterMatcher()));
+            //System.out.println("clustering with last logged old matching");
+            //dss.add(runStatistics(fingerprints, new OldClusterMatcher()));
+            //System.out.println("combined clustering");
+            //dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
             System.out.println("complex clustering");
             dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));
             statistics.add(dss);
@@ -211,7 +211,83 @@ public class UserStatistics {
                 macVaries++;
             }
         }
+
+        buildProblematiCollection(fingerprints, clusters);
+
         return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+    }
+
+    private static class Pair {
+        Fingerprint f1, f2;
+
+        private Pair(Fingerprint f1, Fingerprint f2) {
+            this.f1 = f1;
+            this.f2 = f2;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Pair pair = (Pair) o;
+
+            if (f1 != null ? !f1.equals(pair.f1) : pair.f1 != null) return false;
+            if (f2 != null ? !f2.equals(pair.f2) : pair.f2 != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = f1 != null ? f1.hashCode() : 0;
+            result = 31 * result + (f2 != null ? f2.hashCode() : 0);
+            return result;
+        }
+    }
+
+    private static void buildProblematiCollection(List<Fingerprint> fingerprints, List<List<Fingerprint>> clusters) {
+        Set<Pair> problematic = new HashSet<>();
+        for (int i = 0; i < fingerprints.size(); i++) {
+            for (int j = i+1; j < fingerprints.size(); j++) {
+                Fingerprint f1 = fingerprints.get(i);
+                Fingerprint f2 = fingerprints.get(j);
+                if (f1.osName.equals(f2.osName) && f1.userHome.equals(f2.userHome)) {
+                    int c1 = getCluster(f1, clusters);
+                    int c2 = getCluster(f2, clusters);
+                    if (c1 != c2) {
+                        problematic.add(new Pair(f1, f2));
+                    }
+                }
+            }
+        }
+        System.out.println("problematics found: " + problematic.size());
+    }
+
+    private static Set<Pair> trim(Set<Pair> original) {
+        Set<Pair> trimmed = new HashSet<>();
+        for (Pair p: original) {
+            int found = 0;
+            for (String mac: p.f1.macAddress) {
+                if (p.f2.macAddress.contains(mac)) {
+                    found++;
+                }
+            }
+            double percent = (double)found / p.f1.macAddress.size();
+            if (percent > 0 && p.f1.ram.equals(p.f2.ram)) {
+                trimmed.add(p);
+            }
+        }
+        return trimmed;
+    }
+
+    private static int getCluster(Fingerprint fingerprint, List<List<Fingerprint>> clusters) {
+        for (int i = 0; i < clusters.size(); i++) {
+            if (clusters.get(i).contains(fingerprint)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     private static List<Fingerprint> getFingerprints(String path) throws IOException {
@@ -248,8 +324,12 @@ public class UserStatistics {
             if (ramMissing(current.ram) || ramMissing(fingerprint.ram)) {
                 // os name different? ram missing as well? a free ride
                 return true;
-            } else if (! current.ram.equals(fingerprint.ram)) {
-                return false;
+            } else {
+                long ram1 = Long.parseLong(current.ram);
+                long ram2 = Long.parseLong(fingerprint.ram);
+                if (Math.abs(ram1 - ram2) > 1000) {
+                    return false;
+                }
             }
         }
 
@@ -300,21 +380,35 @@ public class UserStatistics {
 
     private static List<Fingerprint> getFingerprints(Map<String, Map<String, String>> data) {
         List<Fingerprint> fingerprints = new ArrayList<>();
+        int freeRide = 0;
         for (Map.Entry<String, Map<String, String>> entry: data.entrySet()) {
-            Fingerprint fingerprint = new Fingerprint();
-            fingerprint.session = entry.getKey();
-            fingerprint.osName = entry.getValue().get("os_name");
-            fingerprint.userHome = entry.getValue().get("user_home");
-            fingerprint.ram = entry.getValue().get("physical memory in kb");
-            fingerprint.macAddress = new ArrayList<String>();
-            for (Map.Entry<String, String> attribute: entry.getValue().entrySet()) {
-                if (attribute.getKey().startsWith("mac_address")) {
-                    fingerprint.macAddress.add(attribute.getValue());
+            if (valid(entry.getValue())) {
+                Fingerprint fingerprint = new Fingerprint();
+                fingerprint.session = entry.getKey();
+                fingerprint.osName = entry.getValue().get("os_name");
+                fingerprint.userHome = entry.getValue().get("user_home");
+                fingerprint.ram = entry.getValue().get("physical memory in kb");
+                fingerprint.macAddress = new ArrayList<String>();
+                for (Map.Entry<String, String> attribute : entry.getValue().entrySet()) {
+                    if (attribute.getKey().startsWith("mac_address")) {
+                        fingerprint.macAddress.add(attribute.getValue());
+                    }
                 }
+                fingerprints.add(fingerprint);
+            } else {
+                freeRide++;
             }
-            fingerprints.add(fingerprint);
         }
+        System.out.println("!!!! free rides: " + freeRide);
         return fingerprints;
+    }
+
+    private static boolean valid(Map<String, String> value) {
+        if (!value.containsKey("user_home")) return false;
+        if (value.get("user_home") == null || value.get("user_home").length() == 0) return false;
+        if (!value.containsKey("mac_address")) return false;
+        if (value.get("mac_address") == null || value.get("mac_address").length() == 0) return false;
+        return true;
     }
 
     private static Map<String, Map<String, String>> parseFile(String path) throws IOException {
