@@ -16,19 +16,47 @@ public class UserStatistics {
         int clusters;
         int clustersWithVariation;
         int clustersWithMACVariation;
+        int problematicsSize;
 
-        public Statistics(int entries, int clusters, int clustersWithVariation, int clustersWithMACVariation) {
+        public Statistics(int entries, int clusters, int clustersWithVariation, int clustersWithMACVariation, int problematicsSize) {
             this.entries = entries;
             this.clusters = clusters;
             this.clustersWithVariation = clustersWithVariation;
             this.clustersWithMACVariation = clustersWithMACVariation;
+            this.problematicsSize = problematicsSize;
         }
     }
 
     public static class Fingerprint {
+        private String session;
         private String osName;
         private String userHome;
+        private String ram;
         private List<String> macAddress;
+
+        /*@Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Fingerprint that = (Fingerprint) o;
+
+            if (macAddress != null ? !macAddress.equals(that.macAddress) : that.macAddress != null) return false;
+            if (osName != null ? !osName.equals(that.osName) : that.osName != null) return false;
+            if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
+            if (userHome != null ? !userHome.equals(that.userHome) : that.userHome != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = osName != null ? osName.hashCode() : 0;
+            result = 31 * result + (userHome != null ? userHome.hashCode() : 0);
+            result = 31 * result + (ram != null ? ram.hashCode() : 0);
+            result = 31 * result + (macAddress != null ? macAddress.hashCode() : 0);
+            return result;
+        }*/
 
         @Override
         public boolean equals(Object o) {
@@ -39,6 +67,8 @@ public class UserStatistics {
 
             if (macAddress != null ? !macAddress.equals(that.macAddress) : that.macAddress != null) return false;
             if (osName != null ? !osName.equals(that.osName) : that.osName != null) return false;
+            if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
+            if (session != null ? !session.equals(that.session) : that.session != null) return false;
             if (userHome != null ? !userHome.equals(that.userHome) : that.userHome != null) return false;
 
             return true;
@@ -46,8 +76,10 @@ public class UserStatistics {
 
         @Override
         public int hashCode() {
-            int result = osName != null ? osName.hashCode() : 0;
+            int result = session != null ? session.hashCode() : 0;
+            result = 31 * result + (osName != null ? osName.hashCode() : 0);
             result = 31 * result + (userHome != null ? userHome.hashCode() : 0);
+            result = 31 * result + (ram != null ? ram.hashCode() : 0);
             result = 31 * result + (macAddress != null ? macAddress.hashCode() : 0);
             return result;
         }
@@ -55,35 +87,28 @@ public class UserStatistics {
 
     public static void main(String[] args) throws Exception {
         String[] paths = {
-                "C:\\Users\\Silviu\\Downloads\\franck.letourneur.csv",
-                "C:\\Users\\Silviu\\Downloads\\hel23.csv",
-                "C:\\Users\\Silviu\\Downloads\\mark.boekschoten.csv",
-                "C:\\Users\\Silviu\\Downloads\\o.vasieva.csv",
-                "C:\\Users\\Silviu\\Downloads\\qiuxc.csv"
+                "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\jcanongo.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
+                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
         };
-        //readAllFilesAndSeeAttributeCountUnder4();
-        /*System.out.println("\"test\"");
-        System.out.println(strip("\"test\""));*/
 
-        //basicStatistics("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv");
         List<List<Statistics>> statistics = new ArrayList<List<Statistics>>();
         for (String path: paths) {
-            //String path = paths[0];
+            List<Fingerprint> fingerprints = getFingerprints(path);
+
             List<Statistics> dss = new ArrayList<>(6);
-            System.out.println("basic clustering without duplicates with one way matching");
-            dss.add(basicClusteringWithoutDuplicates(path));
-            System.out.println("clustering with last logged and one way matching");
-            dss.add(clusteringWithLastLoggedOneWayMatching(path));
-            System.out.println("clustering with two way matching");
-            dss.add(clusteringWithTwoWayMatching(path));
-            System.out.println("clustering with last logged and two way matching");
-            dss.add(clusteringWithLastLoggedTwoWayMatching(path));
-            System.out.println("clustering with old matching");
-            dss.add(clusteringWithOldMatching(path));
-            System.out.println("clustering with last logged old matching");
-            dss.add(clusteringWithLastLoggedOldMatching(path));
-            System.out.println("combined clustering");
-            dss.add(combinedClustering(path));
+            //System.out.println("clustering with last logged and one way matching");
+            //dss.add(runStatistics(fingerprints, new OneWayLastLoggedClusterMatcher()));
+            //System.out.println("clustering with last logged old matching");
+            //dss.add(runStatistics(fingerprints, new OldClusterMatcher()));
+            //System.out.println("combined clustering");
+            //dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
+            System.out.println("complex clustering");
+            dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));
+            System.out.println("complex primary mac clustering");
+            dss.add(runStatistics(fingerprints, new RAMPrimaryMACAndVariableThresholdClusterMatcher()));
             statistics.add(dss);
         }
 
@@ -119,6 +144,15 @@ public class UserStatistics {
             }
             System.out.println();
         }
+        System.out.println("# of problematic computers");
+        for (int i = 0; i < statistics.size(); i++) {
+            List<Statistics> datasetStatistics = statistics.get(i);
+            System.out.print(paths[i].substring(paths[i].lastIndexOf("\\")+1) + ",");
+            for (Statistics s: datasetStatistics) {
+                System.out.print(s.problematicsSize + ",");
+            }
+            System.out.println();
+        }
 
         /*for (String path: paths) {
             clusteringWithTwoWayMatching(path);
@@ -126,42 +160,69 @@ public class UserStatistics {
         System.out.println("--~ the end ~--");
     }
 
-    private static void basicStatistics(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
+    public static interface ClusterMatcher {
+        boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster);
+    }
 
-        int fingerprintsWithMoreMacs = 0;
-        int fingerprintsWithNoMacs = 0;
-        for (Fingerprint fingerprint: fingerprints) {
-            if (fingerprint.macAddress.size() > 1) {
-                fingerprintsWithMoreMacs++;
+    public static class OneWayLastLoggedClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (similar(fingerprint, f)) {
+                return true;
             }
-            if (fingerprint.macAddress.size() == 0) {
-                fingerprintsWithNoMacs++;
-            }
-        }
-        System.out.println(fingerprintsWithMoreMacs);
-        System.out.println(fingerprintsWithNoMacs);
-
-        // for each fingerprint check how many similar previours fingerprints there are
-        for (int i = 0; i < fingerprints.size(); i++) {
-            Fingerprint current = fingerprints.get(i);
-            List<Fingerprint> remaining = new ArrayList<>(fingerprints);
-            remaining.remove(current);
-            int similarities = 0;
-            for (Fingerprint f: remaining) {
-                if (similar(current, f)) {
-                    similarities++;
-                }
-            }
-            System.out.println(similarities);
+            return false;
         }
     }
 
-    private static void basicClusteringWithDuplicates(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
+    public static class OldClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (match(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public static class CombinedClusterMatched implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (match(fingerprint, f)) {
+                return true;
+            } else if (similar(fingerprint, f) || similar(f, fingerprint)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public static class RAMAndVariableThresholdClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (complexSimilar(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    public static class RAMPrimaryMACAndVariableThresholdClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (complexPrimaryMACSimilar(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
+    private static Statistics runStatistics(List<Fingerprint> fingerprints, ClusterMatcher clusterMatcher) throws IOException {
+
         System.out.println(fingerprints.size());
 
         List<List<Fingerprint>> clusters = new ArrayList<>();
@@ -169,40 +230,9 @@ public class UserStatistics {
         for (Fingerprint current: fingerprints) {
             int matchingCluster = -1;
             for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                clusters.get(matchingCluster).add(current);
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-    }
-
-    private static Statistics basicClusteringWithoutDuplicates(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
+                if (clusterMatcher.matchesCluster(current, clusters.get(i))) {
+                    matchingCluster = i;
+                    break;
                 }
             }
             if (matchingCluster == -1) {
@@ -231,7 +261,101 @@ public class UserStatistics {
                 macVaries++;
             }
         }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+
+        Map<String, Integer> sessionToClusterMap = new HashMap<>();
+        for (int i = 0; i < clusters.size(); i++) {
+            for (Fingerprint f: clusters.get(i)) {
+                sessionToClusterMap.put(f.session, i);
+            }
+        }
+        System.out.println("session 3461751 cluster " + sessionToClusterMap.get("3461751"));
+        System.out.println("session 3613550 cluster " + sessionToClusterMap.get("3613550"));
+        System.out.println("session 3889235 cluster " + sessionToClusterMap.get("3889235"));
+        System.out.println("session 3680071 cluster " + sessionToClusterMap.get("3680071"));
+
+        int problematics = buildProblematicCollection(fingerprints, clusters);
+
+        return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries, problematics);
+    }
+
+    private static class Pair {
+        Fingerprint f1, f2;
+
+        private Pair(Fingerprint f1, Fingerprint f2) {
+            this.f1 = f1;
+            this.f2 = f2;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Pair pair = (Pair) o;
+
+            if (f1 != null ? !f1.equals(pair.f1) : pair.f1 != null) return false;
+            if (f2 != null ? !f2.equals(pair.f2) : pair.f2 != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = f1 != null ? f1.hashCode() : 0;
+            result = 31 * result + (f2 != null ? f2.hashCode() : 0);
+            return result;
+        }
+    }
+
+    private static int buildProblematicCollection(List<Fingerprint> fingerprints, List<List<Fingerprint>> clusters) {
+        Set<Pair> problematic = new HashSet<>();
+        for (int i = 0; i < fingerprints.size(); i++) {
+            for (int j = i+1; j < fingerprints.size(); j++) {
+                Fingerprint f1 = fingerprints.get(i);
+                Fingerprint f2 = fingerprints.get(j);
+                if (f1.osName.equals(f2.osName) && f1.userHome.equals(f2.userHome)
+                        && f1.ram.equals(f2.ram)) {
+                    int c1 = getCluster(f1, clusters);
+                    int c2 = getCluster(f2, clusters);
+                    if (c1 != c2) {
+                        problematic.add(new Pair(f1, f2));
+                    }
+                }
+            }
+        }
+        System.out.println("problematics found: " + problematic.size());
+        return problematic.size();
+    }
+
+    private static Set<Pair> trim(Set<Pair> original) {
+        Set<Pair> trimmed = new HashSet<>();
+        for (Pair p: original) {
+            int found = 0;
+            for (String mac: p.f1.macAddress) {
+                if (p.f2.macAddress.contains(mac)) {
+                    found++;
+                }
+            }
+            double percent = (double)found / p.f1.macAddress.size();
+            if (percent > 0 && p.f1.ram.equals(p.f2.ram)) {
+                trimmed.add(p);
+            }
+        }
+        return trimmed;
+    }
+
+    private static int getCluster(Fingerprint fingerprint, List<List<Fingerprint>> clusters) {
+        for (int i = 0; i < clusters.size(); i++) {
+            if (clusters.get(i).contains(fingerprint)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    private static List<Fingerprint> getFingerprints(String path) throws IOException {
+        Map<String, Map<String, String>> data = parseFile(path);
+        return getFingerprints(data);
     }
 
     private static boolean primaryMacVaries(List<Fingerprint> cluster) {
@@ -245,278 +369,93 @@ public class UserStatistics {
         return false;
     }
 
-    private static Statistics clusteringWithTwoWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (similar(current, f) || similar(f, current)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
+    private static boolean ramMissing(String ram) {
+        try {
+            Long.parseLong(ram);
+            return false;
+        } catch (NumberFormatException e) {
+            return true;
         }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
     }
 
-    private static Statistics clusteringWithLastLoggedTwoWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint f = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (similar(current, f) || similar(f, current)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
+    private static boolean complexSimilar(Fingerprint current, Fingerprint fingerprint) {
+        // user home 100% matching
+        if (! current.userHome.equals(fingerprint.userHome)) return false;
+        // os name equals? fine
+        if (! current.osName.equals(fingerprint.osName)) {
+            // os name different? can we use ram? do a ram match
+            if (ramMissing(current.ram) || ramMissing(fingerprint.ram)) {
+                // os name different? ram missing as well? a free ride
+                return true;
             } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
+                long ram1 = Long.parseLong(current.ram);
+                long ram2 = Long.parseLong(fingerprint.ram);
+                if (Math.abs(ram1 - ram2) > 1000) {
+                    return false;
                 }
             }
         }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
+
+        // last step is to look at a variable ram matcher
+        int found = 0;
+        for (String mac: current.macAddress) {
+            if (fingerprint.macAddress.contains(mac)) {
+                found++;
             }
         }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+        double percent = (double)found / current.macAddress.size();
+        if (current.macAddress.size() == 0) return true;
+        if (current.macAddress.size() == 1 && percent < 1) return false;
+        if (current.macAddress.size() == 2 && percent < 0.5) return false;
+        if (current.macAddress.size() == 3 && percent < 0.65) return false;
+        if (current.macAddress.size() == 4 && percent < 0.75) return false;
+        if (current.macAddress.size() >= 5 && percent < 0.8) return false;
+        return true;
     }
 
-    private static Statistics clusteringWithLastLoggedOneWayMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint f = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (similar(current, f)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
+    private static boolean complexPrimaryMACSimilar(Fingerprint current, Fingerprint fingerprint) {
+        // user home 100% matching
+        if (! current.userHome.equals(fingerprint.userHome)) return false;
+        // os name equals? fine
+        if (! current.osName.equals(fingerprint.osName)) {
+            // os name different? can we use ram? do a ram match
+            if (ramMissing(current.ram) || ramMissing(fingerprint.ram)) {
+                // os name different? ram missing as well? a free ride
+                return true;
             } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
+                long ram1 = Long.parseLong(current.ram);
+                long ram2 = Long.parseLong(fingerprint.ram);
+                if (Math.abs(ram1 - ram2) > 1000) {
+                    return false;
                 }
             }
         }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
 
-    private static Statistics clusteringWithOldMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                for (Fingerprint f: clusters.get(i)) {
-                    if (match(current, f)) {
-                        matchingCluster = i;
-                        break;
-                    }
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
+        int found = 0;
+        for (String mac: current.macAddress) {
+            if (fingerprint.macAddress.contains(mac)) {
+                found++;
             }
         }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
+        double percent = (double)found / current.macAddress.size();
+        // last step is to look at a variable with different thresholds depending on
+        // wether the primary mac matches or not
+        if (current.macAddress.size() >= 1 && fingerprint.macAddress.size() >= 1 &&
+                current.macAddress.get(0).equals(fingerprint.macAddress.get(0))) {
+            if (current.macAddress.size() == 1 && percent < 1) return false;
+            if (current.macAddress.size() == 2 && percent < 0.5) return false;
+            if (current.macAddress.size() == 3 && percent < 0.33) return false;
+            if (current.macAddress.size() >= 4 && percent < 0.75) return false;
+            //if (current.macAddress.size() >= 5 && percent < 0.) return false;
+        } else {
+            if (current.macAddress.size() == 0) return true;
+            if (current.macAddress.size() == 1 && percent < 1) return false;
+            if (current.macAddress.size() == 2 && percent < 0.5) return false;
+            if (current.macAddress.size() == 3 && percent < 0.65) return false;
+            if (current.macAddress.size() == 4 && percent < 0.75) return false;
+            if (current.macAddress.size() >= 5 && percent < 0.8) return false;
         }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics clusteringWithLastLoggedOldMatching(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                if (match(current, clusters.get(i).get(clusters.get(i).size()-1))) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
-    }
-
-    private static Statistics combinedClustering(String path) throws IOException {
-        Map<String, Map<String, String>> data = parseFile(path);
-        List<Fingerprint> fingerprints = getFingerprints(data);
-        System.out.println(fingerprints.size());
-
-        List<List<Fingerprint>> clusters = new ArrayList<>();
-        // take each fingerprint and try to add it to a cluster or create a new cluster for it
-        for (Fingerprint current: fingerprints) {
-            int matchingCluster = -1;
-            for (int i = 0; i < clusters.size(); i++) {
-                Fingerprint fingerprint = clusters.get(i).get(clusters.get(i).size() - 1);
-                if (match(current, fingerprint)) {
-                    matchingCluster = i;
-                    break;
-                } else if (similar(current, fingerprint) || similar(fingerprint, current)) {
-                    matchingCluster = i;
-                    break;
-                }
-            }
-            if (matchingCluster == -1) {
-                // add new cluster
-                List<Fingerprint> cluster = new ArrayList<>();
-                cluster.add(current);
-                clusters.add(cluster);
-            } else {
-                if (! clusters.get(matchingCluster).contains(current)) {
-                    // don't add identical computers to a cluster
-                    clusters.get(matchingCluster).add(current);
-                }
-            }
-        }
-        System.out.println("found clusters: " + clusters.size());
-        List<List<Fingerprint>> clustersWithVariation = new ArrayList<>();
-        for (List<Fingerprint> cluster: clusters) {
-            if (cluster.size() > 1) {
-                clustersWithVariation.add(cluster);
-            }
-        }
-        System.out.println("# of clusters with variation: " + clustersWithVariation.size());
-        int macVaries = 0;
-        for (List<Fingerprint> cluster: clustersWithVariation) {
-            if (primaryMacVaries(cluster)) {
-                macVaries++;
-            }
-        }
-        return new Statistics(data.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+        return true;
     }
 
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
@@ -549,41 +488,40 @@ public class UserStatistics {
 
     private static List<Fingerprint> getFingerprints(Map<String, Map<String, String>> data) {
         List<Fingerprint> fingerprints = new ArrayList<>();
+        int freeRide = 0;
         for (Map.Entry<String, Map<String, String>> entry: data.entrySet()) {
-            Fingerprint fingerprint = new Fingerprint();
-            fingerprint.osName = entry.getValue().get("os_name");
-            fingerprint.userHome = entry.getValue().get("user_home");
-            fingerprint.macAddress = new ArrayList<String>();
-            for (Map.Entry<String, String> attribute: entry.getValue().entrySet()) {
-                if (attribute.getKey().startsWith("mac_address")) {
-                    fingerprint.macAddress.add(attribute.getValue());
+            if (valid(entry.getValue())) {
+                Fingerprint fingerprint = new Fingerprint();
+                fingerprint.session = entry.getKey();
+                fingerprint.osName = entry.getValue().get("os_name");
+                fingerprint.userHome = entry.getValue().get("user_home");
+                fingerprint.ram = entry.getValue().get("physical memory in kb");
+                fingerprint.macAddress = new ArrayList<String>();
+                for (Map.Entry<String, String> attribute : entry.getValue().entrySet()) {
+                    if (attribute.getKey().startsWith("mac_address")) {
+                        // put the primary mac first
+                        if (attribute.getKey().equals("mac_address")) {
+                            fingerprint.macAddress.add(0, attribute.getValue());
+                        } else {
+                            fingerprint.macAddress.add(attribute.getValue());
+                        }
+                    }
                 }
+                fingerprints.add(fingerprint);
+            } else {
+                freeRide++;
             }
-            fingerprints.add(fingerprint);
         }
+        System.out.println("!!!! free rides: " + freeRide);
         return fingerprints;
     }
 
-    private static void readAllFilesAndSeeAttributeCountUnder4() throws IOException {
-        // read file
-        Map<String, Map<String, String>> data = new HashMap<>();
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\hel23.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\mark.boekschoten.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv"));
-        data.putAll(parseFile("C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"));
-        System.out.println(data.size());
-        //System.out.println(data.values().iterator().next());
-        int lessThanFourAttributes = 0;
-        for (Map.Entry<String, Map<String, String>> entry: data.entrySet()) {
-            if (entry.getValue().size() < 4) {
-                lessThanFourAttributes++;
-                /*System.out.println(entry.getKey());
-                System.out.println(entry.getValue());
-                System.out.println();*/
-            }
-        }
-        System.out.println(lessThanFourAttributes + "/" + data.size());
+    private static boolean valid(Map<String, String> value) {
+        if (!value.containsKey("user_home")) return false;
+        if (value.get("user_home") == null || value.get("user_home").length() == 0) return false;
+        if (!value.containsKey("mac_address")) return false;
+        if (value.get("mac_address") == null || value.get("mac_address").length() == 0) return false;
+        return true;
     }
 
     private static Map<String, Map<String, String>> parseFile(String path) throws IOException {
