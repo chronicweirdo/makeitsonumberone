@@ -16,12 +16,14 @@ public class UserStatistics {
         int clusters;
         int clustersWithVariation;
         int clustersWithMACVariation;
+        int problematicsSize;
 
-        public Statistics(int entries, int clusters, int clustersWithVariation, int clustersWithMACVariation) {
+        public Statistics(int entries, int clusters, int clustersWithVariation, int clustersWithMACVariation, int problematicsSize) {
             this.entries = entries;
             this.clusters = clusters;
             this.clustersWithVariation = clustersWithVariation;
             this.clustersWithMACVariation = clustersWithMACVariation;
+            this.problematicsSize = problematicsSize;
         }
     }
 
@@ -32,7 +34,7 @@ public class UserStatistics {
         private String ram;
         private List<String> macAddress;
 
-        @Override
+        /*@Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
@@ -50,6 +52,32 @@ public class UserStatistics {
         @Override
         public int hashCode() {
             int result = osName != null ? osName.hashCode() : 0;
+            result = 31 * result + (userHome != null ? userHome.hashCode() : 0);
+            result = 31 * result + (ram != null ? ram.hashCode() : 0);
+            result = 31 * result + (macAddress != null ? macAddress.hashCode() : 0);
+            return result;
+        }*/
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            Fingerprint that = (Fingerprint) o;
+
+            if (macAddress != null ? !macAddress.equals(that.macAddress) : that.macAddress != null) return false;
+            if (osName != null ? !osName.equals(that.osName) : that.osName != null) return false;
+            if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
+            if (session != null ? !session.equals(that.session) : that.session != null) return false;
+            if (userHome != null ? !userHome.equals(that.userHome) : that.userHome != null) return false;
+
+            return true;
+        }
+
+        @Override
+        public int hashCode() {
+            int result = session != null ? session.hashCode() : 0;
+            result = 31 * result + (osName != null ? osName.hashCode() : 0);
             result = 31 * result + (userHome != null ? userHome.hashCode() : 0);
             result = 31 * result + (ram != null ? ram.hashCode() : 0);
             result = 31 * result + (macAddress != null ? macAddress.hashCode() : 0);
@@ -79,6 +107,8 @@ public class UserStatistics {
             //dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
             System.out.println("complex clustering");
             dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));
+            System.out.println("complex primary mac clustering");
+            dss.add(runStatistics(fingerprints, new RAMPrimaryMACAndVariableThresholdClusterMatcher()));
             statistics.add(dss);
         }
 
@@ -111,6 +141,15 @@ public class UserStatistics {
             System.out.print(paths[i].substring(paths[i].lastIndexOf("\\")+1) + ",");
             for (Statistics s: datasetStatistics) {
                 System.out.print(s.clustersWithMACVariation + ",");
+            }
+            System.out.println();
+        }
+        System.out.println("# of problematic computers");
+        for (int i = 0; i < statistics.size(); i++) {
+            List<Statistics> datasetStatistics = statistics.get(i);
+            System.out.print(paths[i].substring(paths[i].lastIndexOf("\\")+1) + ",");
+            for (Statistics s: datasetStatistics) {
+                System.out.print(s.problematicsSize + ",");
             }
             System.out.println();
         }
@@ -171,6 +210,17 @@ public class UserStatistics {
         }
     }
 
+    public static class RAMPrimaryMACAndVariableThresholdClusterMatcher implements ClusterMatcher {
+        @Override
+        public boolean matchesCluster(Fingerprint fingerprint, List<Fingerprint> cluster) {
+            Fingerprint f = cluster.get(cluster.size() - 1);
+            if (complexPrimaryMACSimilar(fingerprint, f)) {
+                return true;
+            }
+            return false;
+        }
+    }
+
     private static Statistics runStatistics(List<Fingerprint> fingerprints, ClusterMatcher clusterMatcher) throws IOException {
 
         System.out.println(fingerprints.size());
@@ -212,9 +262,20 @@ public class UserStatistics {
             }
         }
 
-        buildProblematiCollection(fingerprints, clusters);
+        Map<String, Integer> sessionToClusterMap = new HashMap<>();
+        for (int i = 0; i < clusters.size(); i++) {
+            for (Fingerprint f: clusters.get(i)) {
+                sessionToClusterMap.put(f.session, i);
+            }
+        }
+        System.out.println("session 3461751 cluster " + sessionToClusterMap.get("3461751"));
+        System.out.println("session 3613550 cluster " + sessionToClusterMap.get("3613550"));
+        System.out.println("session 3889235 cluster " + sessionToClusterMap.get("3889235"));
+        System.out.println("session 3680071 cluster " + sessionToClusterMap.get("3680071"));
 
-        return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries);
+        int problematics = buildProblematicCollection(fingerprints, clusters);
+
+        return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries, problematics);
     }
 
     private static class Pair {
@@ -246,13 +307,14 @@ public class UserStatistics {
         }
     }
 
-    private static void buildProblematiCollection(List<Fingerprint> fingerprints, List<List<Fingerprint>> clusters) {
+    private static int buildProblematicCollection(List<Fingerprint> fingerprints, List<List<Fingerprint>> clusters) {
         Set<Pair> problematic = new HashSet<>();
         for (int i = 0; i < fingerprints.size(); i++) {
             for (int j = i+1; j < fingerprints.size(); j++) {
                 Fingerprint f1 = fingerprints.get(i);
                 Fingerprint f2 = fingerprints.get(j);
-                if (f1.osName.equals(f2.osName) && f1.userHome.equals(f2.userHome)) {
+                if (f1.osName.equals(f2.osName) && f1.userHome.equals(f2.userHome)
+                        && f1.ram.equals(f2.ram)) {
                     int c1 = getCluster(f1, clusters);
                     int c2 = getCluster(f2, clusters);
                     if (c1 != c2) {
@@ -262,6 +324,7 @@ public class UserStatistics {
             }
         }
         System.out.println("problematics found: " + problematic.size());
+        return problematic.size();
     }
 
     private static Set<Pair> trim(Set<Pair> original) {
@@ -350,6 +413,51 @@ public class UserStatistics {
         return true;
     }
 
+    private static boolean complexPrimaryMACSimilar(Fingerprint current, Fingerprint fingerprint) {
+        // user home 100% matching
+        if (! current.userHome.equals(fingerprint.userHome)) return false;
+        // os name equals? fine
+        if (! current.osName.equals(fingerprint.osName)) {
+            // os name different? can we use ram? do a ram match
+            if (ramMissing(current.ram) || ramMissing(fingerprint.ram)) {
+                // os name different? ram missing as well? a free ride
+                return true;
+            } else {
+                long ram1 = Long.parseLong(current.ram);
+                long ram2 = Long.parseLong(fingerprint.ram);
+                if (Math.abs(ram1 - ram2) > 1000) {
+                    return false;
+                }
+            }
+        }
+
+        int found = 0;
+        for (String mac: current.macAddress) {
+            if (fingerprint.macAddress.contains(mac)) {
+                found++;
+            }
+        }
+        double percent = (double)found / current.macAddress.size();
+        // last step is to look at a variable with different thresholds depending on
+        // wether the primary mac matches or not
+        if (current.macAddress.size() >= 1 && fingerprint.macAddress.size() >= 1 &&
+                current.macAddress.get(0).equals(fingerprint.macAddress.get(0))) {
+            if (current.macAddress.size() == 1 && percent < 1) return false;
+            if (current.macAddress.size() == 2 && percent < 0.5) return false;
+            if (current.macAddress.size() == 3 && percent < 0.33) return false;
+            if (current.macAddress.size() >= 4 && percent < 0.75) return false;
+            //if (current.macAddress.size() >= 5 && percent < 0.) return false;
+        } else {
+            if (current.macAddress.size() == 0) return true;
+            if (current.macAddress.size() == 1 && percent < 1) return false;
+            if (current.macAddress.size() == 2 && percent < 0.5) return false;
+            if (current.macAddress.size() == 3 && percent < 0.65) return false;
+            if (current.macAddress.size() == 4 && percent < 0.75) return false;
+            if (current.macAddress.size() >= 5 && percent < 0.8) return false;
+        }
+        return true;
+    }
+
     private static boolean similar(Fingerprint current, Fingerprint fingerprint) {
         // check primary attributes
         if (! current.osName.equals(fingerprint.osName)) return false;
@@ -391,7 +499,12 @@ public class UserStatistics {
                 fingerprint.macAddress = new ArrayList<String>();
                 for (Map.Entry<String, String> attribute : entry.getValue().entrySet()) {
                     if (attribute.getKey().startsWith("mac_address")) {
-                        fingerprint.macAddress.add(attribute.getValue());
+                        // put the primary mac first
+                        if (attribute.getKey().equals("mac_address")) {
+                            fingerprint.macAddress.add(0, attribute.getValue());
+                        } else {
+                            fingerprint.macAddress.add(attribute.getValue());
+                        }
                     }
                 }
                 fingerprints.add(fingerprint);
