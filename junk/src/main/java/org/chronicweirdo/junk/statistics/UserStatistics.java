@@ -67,7 +67,7 @@ public class UserStatistics {
 
             if (macAddress != null ? !macAddress.equals(that.macAddress) : that.macAddress != null) return false;
             if (osName != null ? !osName.equals(that.osName) : that.osName != null) return false;
-            if (ram != null ? !ram.equals(that.ram) : that.ram != null) return false;
+            if (ram != null ? !ramEquals(Fingerprint.this, that) : that.ram != null) return false;
             if (session != null ? !session.equals(that.session) : that.session != null) return false;
             if (userHome != null ? !userHome.equals(that.userHome) : that.userHome != null) return false;
 
@@ -87,11 +87,12 @@ public class UserStatistics {
 
     public static void main(String[] args) throws Exception {
         String[] paths = {
-                "C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
+                /*"C:\\Users\\scacoveanu\\Downloads\\franck.letourneur.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\hel23.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\jcanongo.csv",
                 "C:\\Users\\scacoveanu\\Downloads\\o.vasieva.csv",
-                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv"
+                "C:\\Users\\scacoveanu\\Downloads\\qiuxc.csv",*/
+                "C:\\Users\\scacoveanu\\Downloads\\guenter.jaeger.csv"
         };
 
         List<List<Statistics>> statistics = new ArrayList<List<Statistics>>();
@@ -105,8 +106,8 @@ public class UserStatistics {
             //dss.add(runStatistics(fingerprints, new OldClusterMatcher()));
             //System.out.println("combined clustering");
             //dss.add(runStatistics(fingerprints, new CombinedClusterMatched()));
-            System.out.println("complex clustering");
-            dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));
+            /*System.out.println("complex clustering");
+            dss.add(runStatistics(fingerprints, new RAMAndVariableThresholdClusterMatcher()));*/
             System.out.println("complex primary mac clustering");
             dss.add(runStatistics(fingerprints, new RAMPrimaryMACAndVariableThresholdClusterMatcher()));
             statistics.add(dss);
@@ -273,15 +274,16 @@ public class UserStatistics {
         System.out.println("session 3889235 cluster " + sessionToClusterMap.get("3889235"));
         System.out.println("session 3680071 cluster " + sessionToClusterMap.get("3680071"));
 
-        int problematics = buildProblematicCollection(fingerprints, clusters);
+        //int problematics = buildProblematicCollection(fingerprints, clusters);
+        int problematics = buildProblematicClusters(fingerprints, clusters);
 
         return new Statistics(fingerprints.size(), clusters.size(), clustersWithVariation.size(), macVaries, problematics);
     }
 
-    private static class Pair {
-        Fingerprint f1, f2;
+    private static class Pair<T> {
+        T f1, f2;
 
-        private Pair(Fingerprint f1, Fingerprint f2) {
+        private Pair(T f1, T f2) {
             this.f1 = f1;
             this.f2 = f2;
         }
@@ -314,7 +316,7 @@ public class UserStatistics {
                 Fingerprint f1 = fingerprints.get(i);
                 Fingerprint f2 = fingerprints.get(j);
                 if (f1.osName.equals(f2.osName) && f1.userHome.equals(f2.userHome)
-                        && f1.ram.equals(f2.ram)) {
+                        /*&& ramEquals(f1, f2)*/) {
                     int c1 = getCluster(f1, clusters);
                     int c2 = getCluster(f2, clusters);
                     if (c1 != c2) {
@@ -327,7 +329,28 @@ public class UserStatistics {
         return problematic.size();
     }
 
-    private static Set<Pair> trim(Set<Pair> original) {
+    private static int buildProblematicClusters(List<Fingerprint> fingerprints, List<List<Fingerprint>> clusters) {
+        Set<Pair> problematic = new HashSet<>();
+        for (int i = 0; i < clusters.size(); i++) {
+            for (int j = i+1; j < clusters.size(); j++) {
+                List<Fingerprint> cluster1 = clusters.get(i);
+                List<Fingerprint> cluster2 = clusters.get(j);
+                if (cluster1.get(0).osName.equals(cluster2.get(0).osName)
+                        && cluster1.get(0).userHome.equals(cluster2.get(0).userHome)) {
+                        problematic.add(new Pair(cluster1, cluster2));
+                }
+            }
+        }
+        System.out.println("problematics found: " + problematic.size());
+        return problematic.size();
+    }
+
+    private static boolean ramEquals(Fingerprint f1, Fingerprint f2) {
+        if (f1.ram == null || f2.ram == null) return false;
+        return f1.ram.equals(f2.ram);
+    }
+
+    /*private static Set<Pair> trim(Set<Pair> original) {
         Set<Pair> trimmed = new HashSet<>();
         for (Pair p: original) {
             int found = 0;
@@ -337,12 +360,12 @@ public class UserStatistics {
                 }
             }
             double percent = (double)found / p.f1.macAddress.size();
-            if (percent > 0 && p.f1.ram.equals(p.f2.ram)) {
+            if (percent > 0 && ramEquals(p.f1, p.f2)) {
                 trimmed.add(p);
             }
         }
         return trimmed;
-    }
+    }*/
 
     private static int getCluster(Fingerprint fingerprint, List<List<Fingerprint>> clusters) {
         for (int i = 0; i < clusters.size(); i++) {
@@ -443,10 +466,11 @@ public class UserStatistics {
         if (current.macAddress.size() >= 1 && fingerprint.macAddress.size() >= 1 &&
                 current.macAddress.get(0).equals(fingerprint.macAddress.get(0))) {
             if (current.macAddress.size() == 1 && percent < 1) return false;
-            if (current.macAddress.size() == 2 && percent < 0.5) return false;
-            if (current.macAddress.size() == 3 && percent < 0.33) return false;
-            if (current.macAddress.size() >= 4 && percent < 0.75) return false;
-            //if (current.macAddress.size() >= 5 && percent < 0.) return false;
+            if (current.macAddress.size() == 2 && percent < 1/2) return false;
+            if (current.macAddress.size() == 3 && percent < 1/3) return false;
+            if (current.macAddress.size() == 4 && percent < 2/4) return false;
+            if (current.macAddress.size() == 5 && percent < 3/5) return false;
+            if (current.macAddress.size() > 5 && percent < 4/6) return false;
         } else {
             if (current.macAddress.size() == 0) return true;
             if (current.macAddress.size() == 1 && percent < 1) return false;
